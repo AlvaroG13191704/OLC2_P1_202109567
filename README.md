@@ -12,7 +12,7 @@ El backend esta hecho en Go usando Fiber como framework, para iniciar el proyect
 ```bash
 go run server.go
 
-# Visitar http://0.0.0.0:3000/
+# Visitar http://127.0.0.1:3000
 
 ```
 
