@@ -23,7 +23,19 @@ func (v *BaseSFGrammarVisitor) VisitPrintstmt(ctx *PrintstmtContext) interface{}
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseSFGrammarVisitor) VisitDeclaration(ctx *DeclarationContext) interface{} {
+func (v *BaseSFGrammarVisitor) VisitTypeValueDeclaration(ctx *TypeValueDeclarationContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitTypeOptionalValueDeclaration(ctx *TypeOptionalValueDeclarationContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitValueDeclaration(ctx *ValueDeclarationContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitType_declaration(ctx *Type_declarationContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

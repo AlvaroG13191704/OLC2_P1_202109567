@@ -17,32 +17,37 @@ type PrimitiveValue struct {
 
 // visit digitexpr
 func (v *Visitor) VisitDigitExpr(ctx *parser.DigitExprContext) interface{} {
-	i, _ := strconv.ParseInt(ctx.GetText(), 10, 64) // convert the string to int
-	// cast
-
-	fmt.Println("Digito primitivo: ", i)
-	return &values.Integer{Value: i}
+	digit := ctx.GetText() // get the digit
+	// evalue if the digit has a . to know if it is a float or an integer
+	if strings.Contains(digit, ".") {
+		f, _ := strconv.ParseFloat(digit, 64) // convert to float
+		fmt.Println("Digito primitivo float: ", f)
+		return &values.Float{Value: f}
+	} else {
+		i, _ := strconv.ParseInt(digit, 10, 64) // convert to integer
+		fmt.Println("Digito primitivo int: ", i)
+		return &values.Integer{Value: i}
+	}
 }
 
-// visit idexpr
-func (v *Visitor) VisitIdExpr(ctx *parser.IdExprContext) interface{} {
-	id := ctx.GetText() // get the id
-	fmt.Println("ID: ", id)
-	// cast
-	value := v.VerifyScope(id).(SymbolTable)
-	fmt.Println("Value: ", value)
-	return value.Value
-}
-
-// visit stringexpr
+// visit stringexpr and char
 func (v *Visitor) VisitStringExpr(ctx *parser.StringExprContext) interface{} {
 	str := strings.Trim(ctx.GetText(), "\"") // get the string
-	fmt.Println("String: ", str)
-	return str // return the string
+	if len(str) == 1 {
+		fmt.Println("Primitive Character: ", str)
+		return &values.Character{Value: str}
+	}
+	fmt.Println("Primitive String: ", str)
+	return &values.String{Value: str}
 }
 
 // visit boolean
 func (v *Visitor) VisitBooleanExpr(ctx *parser.BooleanExprContext) interface{} {
 	value := strings.Trim(ctx.GetText(), "\"")
-	return value
+	fmt.Println("Primitive Boolean: ", value)
+	if value == "true" {
+		return &values.Boolean{Value: true}
+	} else {
+		return &values.Boolean{Value: false}
+	}
 }

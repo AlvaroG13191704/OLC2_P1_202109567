@@ -8,7 +8,7 @@ block: (stmts)* // Return a slice
     ;
 
 stmts: printstmt
-    | declaration
+    | declaration (SEMICOLON)?
     ;
 
 printstmt: PRINT LPAREN expr RPAREN ;
@@ -18,11 +18,12 @@ printstmt: PRINT LPAREN expr RPAREN ;
 // var value = 10
 // var valor: Int = 10
 // let constante: String = "Hola"
-declaration: (DECLARATION_1 | DECLARATION_2 ) ID_PRIMITIVE (COLON type) (IS_ expr | QUESTION_MARK )? 
-          | (DECLARATION_1 | DECLARATION_2 ) ID_PRIMITIVE IS_ expr 
-          ;
+declaration: type_declaration  ID_PRIMITIVE COLON type IS_ expr    #TypeValueDeclaration
+           | type_declaration  ID_PRIMITIVE COLON type QUESTION_MARK    #TypeOptionalValueDeclaration
+           | type_declaration  ID_PRIMITIVE IS_ expr               #ValueDeclaration
+           ;
 
-
+type_declaration: DECLARATION_VAR | DECLARATION_LET ;
 
 expr: NEGATION_OPERATOR right=expr                        #NotExpr
     | MINUS right=expr                                    #NegExpr

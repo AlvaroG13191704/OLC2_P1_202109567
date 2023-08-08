@@ -3,12 +3,20 @@ package interpreter
 import "server/parserInterpreter/parser"
 
 type SymbolTable struct {
-	Id         string
-	TypeSymbol string
-	TypeData   string
-	Value      interface{}
-	Line       int
-	Column     int
+	Id           string
+	TypeSymbol   string
+	TypeVariable string
+	TypeData     string
+	Value        interface{}
+	Line         int
+	Column       int
+}
+
+type Error struct {
+	Line   int
+	Column int
+	Msg    string
+	Type   string
 }
 
 // create the visitor struct based on the SymbolTable struct
@@ -17,6 +25,7 @@ type Visitor struct {
 	memory      map[string]SymbolTable
 	symbolStack []map[string]SymbolTable
 	Outputs     []string
+	Errors      []Error
 }
 
 func (v *Visitor) pushScope() {

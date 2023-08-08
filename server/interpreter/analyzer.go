@@ -13,6 +13,7 @@ func NewVisitor() *Visitor {
 		memory:      make(map[string]SymbolTable),
 		symbolStack: []map[string]SymbolTable{},
 		Outputs:     []string{},
+		Errors:      []Error{},
 	}
 }
 
@@ -71,7 +72,17 @@ func (v *Visitor) VisitPrintstmt(ctx *parser.PrintstmtContext) interface{} {
 	return value
 }
 
-// visit varReference
+// visit idexpr
+func (v *Visitor) VisitIdExpr(ctx *parser.IdExprContext) interface{} {
+	id := ctx.GetText() // get the id
+	fmt.Println("Id -> ", id)
+	// verify if the id is in the scope or others
+	value := v.VerifyScope(id).(SymbolTable) // type assertion
+	// return the value
+	return value.Value
+}
+
+// VerifyScope verify if the variable is in the scope
 func (v *Visitor) VerifyScope(varName string) interface{} {
 
 	for i := len(v.symbolStack) - 1; i >= 0; i-- {
@@ -81,5 +92,24 @@ func (v *Visitor) VerifyScope(varName string) interface{} {
 		}
 	}
 	log.Fatalf("Error: Variable '%s' not declared", varName)
+	// add the error to the errors
+	v.Errors = append(v.Errors, Error{
+		Line:   0,
+		Column: 0,
+		Msg:    fmt.Sprintf("Error: Variable '%s' not declared", varName),
+		Type:   "Semantic",
+	})
 	return nil
+}
+
+// VerifyVariableScope verify if the variable is already declared in the scope
+func (v *Visitor) VerifyVariableScope(varName string) bool {
+
+	for i := len(v.symbolStack) - 1; i >= 0; i-- {
+		scope := v.symbolStack[i]
+		if _, ok := scope[varName]; ok {
+			return true
+		}
+	}
+	return false
 }

@@ -1,0 +1,35 @@
+✅ -> done
+❌ -> not done
+⏸️ -> pending
+
+1. Set primitive values 
+1.1. Create the interaces for the primitive values ✅
+    Int 
+    Float
+    String
+    Boolean
+    Character
+    Nil
+1.2. Create methods to determine and set the primitive values ✅
+
+2. Id expression
+    If an IdExpr is found, check if it is a variable or a function
+    Variable -> check if it is declared, and return the value
+
+3. Variable Declaration with type and expression or not
+    1. Evaluate if the variable is already declared ✅
+    2. Evaluate if the variable is "var" or "let" ✅
+        a. If it is "var" -> the variable can have an expression or not ✅
+        b. If it is "let" -> the variable must have an expression if not, throw an error ✅
+    3. Evaluate if the variable has a type or not ✅
+    4. Evaluate if the variable has an expression or not ✅
+
+4. Variable Assigment
+    1. Evaluate if the variable is declared 
+    2. Evaluate if the variable is "var" or "let"
+        a. If it is "var" -> the variable can change its value
+        b. If it is "let" -> the variable cannot change its value
+    3. Evaluate if the new value is the same type as the variable
+        a. If it is the same type -> change the value
+        b. If it is not the same type -> throw an error
+    

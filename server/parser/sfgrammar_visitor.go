@@ -19,8 +19,17 @@ type SFGrammarVisitor interface {
 	// Visit a parse tree produced by SFGrammarParser#printstmt.
 	VisitPrintstmt(ctx *PrintstmtContext) interface{}
 
-	// Visit a parse tree produced by SFGrammarParser#declaration.
-	VisitDeclaration(ctx *DeclarationContext) interface{}
+	// Visit a parse tree produced by SFGrammarParser#TypeValueDeclaration.
+	VisitTypeValueDeclaration(ctx *TypeValueDeclarationContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#TypeOptionalValueDeclaration.
+	VisitTypeOptionalValueDeclaration(ctx *TypeOptionalValueDeclarationContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#ValueDeclaration.
+	VisitValueDeclaration(ctx *ValueDeclarationContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#type_declaration.
+	VisitType_declaration(ctx *Type_declarationContext) interface{}
 
 	// Visit a parse tree produced by SFGrammarParser#StringExpr.
 	VisitStringExpr(ctx *StringExprContext) interface{}

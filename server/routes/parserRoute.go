@@ -16,6 +16,8 @@ func AnalyzeAndParseCode() fiber.Handler {
 		code := string(c.Body())
 		fmt.Println(code)
 
+		fmt.Println("Parsing code.............")
+
 		input := antlr.NewInputStream(code)                                    // convert string to stream
 		lexer := parser.NewSFGrammarLexer(input)                               // create lexer
 		tokens := antlr.NewCommonTokenStream(lexer, antlr.TokenDefaultChannel) // create tokens

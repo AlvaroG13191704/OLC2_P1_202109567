@@ -9,11 +9,13 @@ BOOL: 'Bool';
 CHAR: 'Character';
 
 // -- Keywords
+IF: 'if';
+ELSE: 'else';
 PRINT: 'print';
 TRU: 'true';
 FAL: 'false';
-DECLARATION_1: 'var';
-DECLARATION_2: 'let';
+DECLARATION_VAR: 'var';
+DECLARATION_LET: 'let';
 
 // RE
 DIGIT_PRIMITIVE: [0-9]+ ('.'[0-9]+)?;
