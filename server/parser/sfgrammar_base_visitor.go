@@ -23,6 +23,10 @@ func (v *BaseSFGrammarVisitor) VisitPrintstmt(ctx *PrintstmtContext) interface{}
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseSFGrammarVisitor) VisitDeclaration(ctx *DeclarationContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseSFGrammarVisitor) VisitStringExpr(ctx *StringExprContext) interface{} {
 	return v.VisitChildren(ctx)
 }
@@ -52,5 +56,9 @@ func (v *BaseSFGrammarVisitor) VisitParenExpr(ctx *ParenExprContext) interface{}
 }
 
 func (v *BaseSFGrammarVisitor) VisitBooleanExpr(ctx *BooleanExprContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitType(ctx *TypeContext) interface{} {
 	return v.VisitChildren(ctx)
 }

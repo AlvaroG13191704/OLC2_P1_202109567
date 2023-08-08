@@ -19,6 +19,9 @@ type SFGrammarVisitor interface {
 	// Visit a parse tree produced by SFGrammarParser#printstmt.
 	VisitPrintstmt(ctx *PrintstmtContext) interface{}
 
+	// Visit a parse tree produced by SFGrammarParser#declaration.
+	VisitDeclaration(ctx *DeclarationContext) interface{}
+
 	// Visit a parse tree produced by SFGrammarParser#StringExpr.
 	VisitStringExpr(ctx *StringExprContext) interface{}
 
@@ -42,4 +45,7 @@ type SFGrammarVisitor interface {
 
 	// Visit a parse tree produced by SFGrammarParser#BooleanExpr.
 	VisitBooleanExpr(ctx *BooleanExprContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#type.
+	VisitType(ctx *TypeContext) interface{}
 }

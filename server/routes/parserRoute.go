@@ -26,7 +26,15 @@ func AnalyzeAndParseCode() fiber.Handler {
 
 		// create the visitor
 		visitor := interpreter.NewVisitor()
-		out := visitor.Visit(tree) // visit the tree
+		visitor.Visit(tree) // visit the tree
+
+		output := visitor.Outputs
+
+		// join the output array and separate by new line
+		out := ""
+		for _, v := range output {
+			out += v + "\n"
+		}
 
 		return c.Status(fiber.StatusOK).JSON(fiber.Map{
 			"message": "Code parsed successfully",

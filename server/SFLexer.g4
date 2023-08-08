@@ -6,12 +6,14 @@ INT: 'Int';
 FLOAT: 'Float';
 STRING: 'String';
 BOOL: 'Bool';
-CHAR: 'Char';
+CHAR: 'Character';
 
 // -- Keywords
 PRINT: 'print';
 TRU: 'true';
 FAL: 'false';
+DECLARATION_1: 'var';
+DECLARATION_2: 'let';
 
 // RE
 DIGIT_PRIMITIVE: [0-9]+ ('.'[0-9]+)?;
@@ -22,6 +24,11 @@ ID_PRIMITIVE: ([a-zA-Z_])[a-zA-Z0-9_]*;
 NEGATION_OPERATOR: '!';
 LPAREN: '(';
 RPAREN: ')';
+COLON: ':';
+COMMA: ',';
+SEMICOLON: ';';
+IS_:'=';
+QUESTION_MARK: '?';
 
 // -- Operators
 PLUS : '+';

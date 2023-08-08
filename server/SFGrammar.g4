@@ -8,9 +8,19 @@ block: (stmts)* // Return a slice
     ;
 
 stmts: printstmt
+    | declaration
     ;
 
 printstmt: PRINT LPAREN expr RPAREN ;
+
+// Examples:
+// var value: String?
+// var value = 10
+// var valor: Int = 10
+// let constante: String = "Hola"
+declaration: (DECLARATION_1 | DECLARATION_2 ) ID_PRIMITIVE (COLON type) (IS_ expr | QUESTION_MARK )? 
+          | (DECLARATION_1 | DECLARATION_2 ) ID_PRIMITIVE IS_ expr 
+          ;
 
 
 
@@ -28,3 +38,5 @@ expr: NEGATION_OPERATOR right=expr                        #NotExpr
     | ID_PRIMITIVE                                         #IdExpr
     | (TRU|FAL)                                            #BooleanExpr
     ;
+
+type: (INT|FLOAT|STRING|BOOL|CHAR) ;
