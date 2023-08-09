@@ -31,6 +31,8 @@ COLON: ':';
 COMMA: ',';
 SEMICOLON: ';';
 IS_:'=';
+PLUS_IS: '+=';
+MINUS_IS: '-=';
 QUESTION_MARK: '?';
 
 // -- Operators

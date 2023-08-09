@@ -39,6 +39,18 @@ func (v *BaseSFGrammarVisitor) VisitType_declaration(ctx *Type_declarationContex
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseSFGrammarVisitor) VisitValueAssignment(ctx *ValueAssignmentContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitPlusAssignment(ctx *PlusAssignmentContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitMinusAssignment(ctx *MinusAssignmentContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseSFGrammarVisitor) VisitExprList(ctx *ExprListContext) interface{} {
 	return v.VisitChildren(ctx)
 }

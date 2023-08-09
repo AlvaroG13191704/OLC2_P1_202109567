@@ -31,6 +31,15 @@ type SFGrammarVisitor interface {
 	// Visit a parse tree produced by SFGrammarParser#type_declaration.
 	VisitType_declaration(ctx *Type_declarationContext) interface{}
 
+	// Visit a parse tree produced by SFGrammarParser#ValueAssignment.
+	VisitValueAssignment(ctx *ValueAssignmentContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#PlusAssignment.
+	VisitPlusAssignment(ctx *PlusAssignmentContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#MinusAssignment.
+	VisitMinusAssignment(ctx *MinusAssignmentContext) interface{}
+
 	// Visit a parse tree produced by SFGrammarParser#exprList.
 	VisitExprList(ctx *ExprListContext) interface{}
 

@@ -9,6 +9,7 @@ block: (stmts)* // Return a slice
 
 stmts: printstmt  (SEMICOLON)?
     | declaration (SEMICOLON)?
+    | assignment  (SEMICOLON)?
     ;
 
 
@@ -21,12 +22,22 @@ printstmt: PRINT LPAREN exprList RPAREN ;
 // var value = 10
 // var valor: Int = 10
 // let constante: String = "Hola"
-declaration: type_declaration  ID_PRIMITIVE COLON type IS_ expr    #TypeValueDeclaration
-           | type_declaration  ID_PRIMITIVE COLON type QUESTION_MARK    #TypeOptionalValueDeclaration
-           | type_declaration  ID_PRIMITIVE IS_ expr               #ValueDeclaration
+declaration: type_declaration  ID_PRIMITIVE COLON type IS_ expr          #TypeValueDeclaration
+           | type_declaration  ID_PRIMITIVE COLON type QUESTION_MARK     #TypeOptionalValueDeclaration
+           | type_declaration  ID_PRIMITIVE IS_ expr                     #ValueDeclaration
            ;
 
 type_declaration: DECLARATION_VAR | DECLARATION_LET ;
+
+
+// examples of assignments
+// value = 10
+// value = "Hola"
+// var += 10
+assignment: ID_PRIMITIVE IS_ expr         #ValueAssignment
+          | ID_PRIMITIVE PLUS_IS expr     #PlusAssignment
+          | ID_PRIMITIVE MINUS_IS expr    #MinusAssignment
+          ;
 
 
 exprList : expr (COMMA expr)* ;

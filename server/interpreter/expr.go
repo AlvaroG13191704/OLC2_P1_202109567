@@ -2,6 +2,7 @@ package interpreter
 
 import (
 	"fmt"
+	"log"
 	"server/parserInterpreter/interpreter/values"
 	"server/parserInterpreter/parser"
 )
@@ -11,9 +12,23 @@ func (v *Visitor) VisitIdExpr(ctx *parser.IdExprContext) interface{} {
 	id := ctx.GetText() // get the id
 	fmt.Println("Id -> ", id)
 	// verify if the id is in the scope or others
-	value := v.VerifyScope(id).(SymbolTable) // type assertion
-	// return the value
-	return value.Value
+	variable, ok := v.VerifyScope(id)
+	value := variable.(SymbolTable)
+	if ok {
+		// return the value
+		return value.Value
+
+	} else {
+		// add the error to the errors
+		log.Fatalf("Error: Variable '%s' not declared", id)
+		v.Errors = append(v.Errors, Error{
+			Line:   ctx.GetStart().GetLine(),
+			Column: ctx.GetStart().GetColumn(),
+			Msg:    "Variable '" + id + "' not declared",
+			Type:   "VariableError",
+		})
+	}
+	return nil
 }
 
 // visit parenexpr
