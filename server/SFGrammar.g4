@@ -7,10 +7,12 @@ start: block EOF;
 block: (stmts)* // Return a slice 
     ;
 
-stmts: printstmt  (SEMICOLON)?
-    | declaration (SEMICOLON)?
-    | assignment  (SEMICOLON)?
-    ;
+
+stmts: declaration (SEMICOLON)?
+     | assignment  (SEMICOLON)?
+     | embbededFunc (SEMICOLON)?
+     | ifstmt
+     ;
 
 
 printstmt: PRINT LPAREN exprList RPAREN ;
@@ -29,6 +31,13 @@ assignment: ID_PRIMITIVE IS_ expr         #ValueAssignment // value = 10
           | ID_PRIMITIVE MINUS_IS expr    #MinusAssignment // var -= 10
           ;
 
+
+ifstmt: IF expr LBRACE block RBRACE ELSE ifstmt                      #IfElseStmt
+      | IF expr LBRACE block RBRACE (ELSE LBRACE block RBRACE)?      #IfStmt
+      ;
+
+
+embbededFunc: printstmt  ;
 
 exprList : expr (COMMA expr)* ;
 

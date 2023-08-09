@@ -9,7 +9,6 @@ import (
 
 func NewVisitor() *Visitor {
 	return &Visitor{
-		memory:      make(map[string]SymbolTable),
 		symbolStack: []map[string]SymbolTable{},
 		Outputs:     []string{},
 		Errors:      []Error{},
@@ -49,15 +48,29 @@ func (v *Visitor) VisitBlock(ctx *parser.BlockContext) interface{} {
 // visit stmts
 func (v *Visitor) VisitStmts(ctx *parser.StmtsContext) interface{} {
 	// verify if the stmt which stmt is
-	if ctx.Printstmt() != nil {
-		return v.Visit(ctx.Printstmt())
-	}
 	if ctx.Declaration() != nil {
 		return v.Visit(ctx.Declaration())
 	}
 	if ctx.Assignment() != nil {
 		return v.Visit(ctx.Assignment())
 	}
+	if ctx.EmbbededFunc() != nil {
+		return v.Visit(ctx.EmbbededFunc())
+	}
+	if ctx.Ifstmt() != nil {
+		return v.Visit(ctx.Ifstmt())
+	}
 
 	return nil
+}
+
+// visit embbededFunc
+func (v *Visitor) VisitEmbbededFunc(ctx *parser.EmbbededFuncContext) interface{} {
+	// verify if the function is a print
+	if ctx.Printstmt() != nil {
+		return v.Visit(ctx.Printstmt())
+	}
+
+	return nil
+
 }

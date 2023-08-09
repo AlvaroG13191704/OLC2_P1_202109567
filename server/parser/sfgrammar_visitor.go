@@ -40,6 +40,15 @@ type SFGrammarVisitor interface {
 	// Visit a parse tree produced by SFGrammarParser#MinusAssignment.
 	VisitMinusAssignment(ctx *MinusAssignmentContext) interface{}
 
+	// Visit a parse tree produced by SFGrammarParser#IfElseStmt.
+	VisitIfElseStmt(ctx *IfElseStmtContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#IfStmt.
+	VisitIfStmt(ctx *IfStmtContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#embbededFunc.
+	VisitEmbbededFunc(ctx *EmbbededFuncContext) interface{}
+
 	// Visit a parse tree produced by SFGrammarParser#exprList.
 	VisitExprList(ctx *ExprListContext) interface{}
 

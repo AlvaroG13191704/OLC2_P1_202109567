@@ -27,6 +27,8 @@ ID_PRIMITIVE: ([a-zA-Z_])[a-zA-Z0-9_]*;
 NEGATION_OPERATOR: '!';
 LPAREN: '(';
 RPAREN: ')';
+LBRACE: '{';
+RBRACE: '}';
 COLON: ':';
 COMMA: ',';
 SEMICOLON: ';';

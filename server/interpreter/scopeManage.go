@@ -2,7 +2,6 @@ package interpreter
 
 import (
 	"fmt"
-	"log"
 	"server/parserInterpreter/parser"
 )
 
@@ -26,7 +25,6 @@ type Error struct {
 // create the visitor struct based on the SymbolTable struct
 type Visitor struct {
 	parser.BaseSFGrammarVisitor
-	memory      map[string]SymbolTable
 	symbolStack []map[string]SymbolTable
 	Outputs     []string
 	Errors      []Error
@@ -66,18 +64,10 @@ func (v *Visitor) VerifyScope(varName string) (interface{}, bool) {
 			return val, true
 		}
 	}
-	log.Fatalf("Error: Variable '%s' not declared", varName)
-	// add the error to the errors
-	v.Errors = append(v.Errors, Error{
-		Line:   0,
-		Column: 0,
-		Msg:    fmt.Sprintf("Error: Variable '%s' not declared", varName),
-		Type:   "Semantic",
-	})
 	return nil, false
 }
 
-// VerifyVariableScope verify if the variable is already declared in the scope
+// VerifyVariableScope verify if the variable is already declared in the current scope, if not navigate to the others scopes
 func (v *Visitor) VerifyVariableScope(varName string) bool {
 
 	for i := len(v.symbolStack) - 1; i >= 0; i-- {
@@ -85,6 +75,17 @@ func (v *Visitor) VerifyVariableScope(varName string) bool {
 		if _, ok := scope[varName]; ok {
 			return true
 		}
+	}
+	return false
+}
+
+// VerifyVariableCurrentScope verify if the variable is already declared in the current scope
+func (v *Visitor) VerifyVariableCurrentScope(varName string) bool {
+
+	scope := v.symbolStack[len(v.symbolStack)-1]
+	fmt.Println("Current scope ->", scope)
+	if _, ok := scope[varName]; ok {
+		return true
 	}
 	return false
 }

@@ -12,7 +12,7 @@ func (v *Visitor) VisitTypeValueDeclaration(ctx *parser.TypeValueDeclarationCont
 	// get the id of the variable
 	varId := ctx.ID_PRIMITIVE().GetText()
 	// verify if the variable is in the scope
-	if v.VerifyVariableScope(varId) {
+	if v.VerifyVariableCurrentScope(varId) {
 		log.Printf("Error: Variable '%s' already declared \n", varId)
 		// add error
 		v.Errors = append(v.Errors, Error{
@@ -69,8 +69,8 @@ func (v *Visitor) VisitTypeOptionalValueDeclaration(ctx *parser.TypeOptionalValu
 	// get the id of the variable
 	varId := ctx.ID_PRIMITIVE().GetText()
 	// verify if the variable is in the scope
-	if v.VerifyVariableScope(varId) {
-		fmt.Println("Error: Variable already declared")
+	if v.VerifyVariableCurrentScope(varId) {
+		log.Printf("Error: Variable '%s' already declared \n", varId)
 		// add error
 		v.Errors = append(v.Errors, Error{
 			Line:   ctx.GetStart().GetLine(),
@@ -131,8 +131,8 @@ func (v *Visitor) VisitValueDeclaration(ctx *parser.ValueDeclarationContext) int
 	// get the id of the variable
 	varId := ctx.ID_PRIMITIVE().GetText()
 	// verify if the variable is in the scope
-	if v.VerifyVariableScope(varId) {
-		fmt.Println("Error: Variable already declared")
+	if v.VerifyVariableCurrentScope(varId) {
+		log.Printf("Error: Variable '%s' already declared \n", varId)
 		// add error
 		v.Errors = append(v.Errors, Error{
 			Line:   ctx.GetStart().GetLine(),
