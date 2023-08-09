@@ -6,7 +6,7 @@ const (
 	StringType  = "String"
 	BooleanType = "Bool"
 	CharType    = "Character"
-	nilType     = "nil"
+	NilType     = "nil"
 )
 
 type PRIMITIVE interface {

@@ -59,29 +59,6 @@ func (v *Visitor) VisitStmts(ctx *parser.StmtsContext) interface{} {
 	return nil
 }
 
-// visit printstmt
-func (v *Visitor) VisitPrintstmt(ctx *parser.PrintstmtContext) interface{} {
-	value := v.Visit(ctx.Expr()) // visit the expression
-
-	//TODO: evaluate the type of the value
-
-	fmt.Println("print value ->", value)
-
-	// add to the outputs
-	v.Outputs = append(v.Outputs, fmt.Sprint(value))
-	return value
-}
-
-// visit idexpr
-func (v *Visitor) VisitIdExpr(ctx *parser.IdExprContext) interface{} {
-	id := ctx.GetText() // get the id
-	fmt.Println("Id -> ", id)
-	// verify if the id is in the scope or others
-	value := v.VerifyScope(id).(SymbolTable) // type assertion
-	// return the value
-	return value.Value
-}
-
 // VerifyScope verify if the variable is in the scope
 func (v *Visitor) VerifyScope(varName string) interface{} {
 

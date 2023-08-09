@@ -75,5 +75,5 @@ func (n *Nil) GetValue() interface{} {
 }
 
 func (n *Nil) GetType() string {
-	return nilType
+	return NilType
 }

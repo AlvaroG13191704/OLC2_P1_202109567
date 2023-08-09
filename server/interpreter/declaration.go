@@ -29,12 +29,11 @@ func (v *Visitor) VisitTypeValueDeclaration(ctx *parser.TypeValueDeclarationCont
 	varTypeValue := ctx.Type_().GetText()
 	// get the value of the variable
 	varValue := v.Visit(ctx.Expr()).(values.PRIMITIVE)
-	// get the type of the value
 	// cast int to float
 	if varTypeValue == "Float" && varValue.GetType() == "Int" {
 		// cast the value to float
 		varValue = &values.Float{
-			Value: float64(varValue.GetValue().(int)),
+			Value: float64(varValue.GetValue().(int64)),
 		}
 	} else if varTypeValue != varValue.GetType() { // evaluate if the type of the value is the same as the type of the variable
 		// add error
@@ -53,7 +52,7 @@ func (v *Visitor) VisitTypeValueDeclaration(ctx *parser.TypeValueDeclarationCont
 		TypeSymbol:   "Variable",
 		TypeVariable: varType,
 		TypeData:     varTypeValue,
-		Value:        varValue.GetValue(),
+		Value:        varValue,
 		Line:         ctx.GetStart().GetLine(),
 		Column:       ctx.GetStart().GetColumn(),
 	}
@@ -100,7 +99,7 @@ func (v *Visitor) VisitTypeOptionalValueDeclaration(ctx *parser.TypeOptionalValu
 			TypeSymbol:   "Variable",
 			TypeVariable: varType,
 			TypeData:     varTypeValue,
-			Value:        varValue.GetValue(),
+			Value:        varValue,
 			Line:         ctx.GetStart().GetLine(),
 			Column:       ctx.GetStart().GetColumn(),
 		}
@@ -157,7 +156,7 @@ func (v *Visitor) VisitValueDeclaration(ctx *parser.ValueDeclarationContext) int
 		TypeSymbol:   "Variable",
 		TypeVariable: varType,
 		TypeData:     varTypeValue,
-		Value:        varValue.GetValue(),
+		Value:        varValue,
 		Line:         ctx.GetStart().GetLine(),
 		Column:       ctx.GetStart().GetColumn(),
 	}

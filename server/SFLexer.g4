@@ -14,6 +14,7 @@ ELSE: 'else';
 PRINT: 'print';
 TRU: 'true';
 FAL: 'false';
+NIL: 'nil';
 DECLARATION_VAR: 'var';
 DECLARATION_LET: 'let';
 

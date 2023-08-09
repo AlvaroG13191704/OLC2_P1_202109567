@@ -7,11 +7,14 @@ start: block EOF;
 block: (stmts)* // Return a slice 
     ;
 
-stmts: printstmt
+stmts: printstmt  (SEMICOLON)?
     | declaration (SEMICOLON)?
     ;
 
-printstmt: PRINT LPAREN expr RPAREN ;
+
+printstmt: PRINT LPAREN exprList RPAREN ;
+
+
 
 // Examples:
 // var value: String?
@@ -25,10 +28,13 @@ declaration: type_declaration  ID_PRIMITIVE COLON type IS_ expr    #TypeValueDec
 
 type_declaration: DECLARATION_VAR | DECLARATION_LET ;
 
+
+exprList : expr (COMMA expr)* ;
+
 expr: NEGATION_OPERATOR right=expr                        #NotExpr
     | MINUS right=expr                                    #NegExpr
-    | left=expr op=(DIVIDE|MULTIPLY|MODULO) right=expr    #OperationExpr
-    | left=expr op=(PLUS|MINUS) right=expr                #OperationExpr
+    | left=expr op=(DIVIDE|MULTIPLY|MODULO) right=expr    #ArithmeticOperationExpr
+    | left=expr op=(PLUS|MINUS) right=expr                #ArithmeticOperationExpr
     // add comparison operators
     // add relational operators
     // add logical operators
@@ -37,6 +43,7 @@ expr: NEGATION_OPERATOR right=expr                        #NotExpr
     | DIGIT_PRIMITIVE                                      #DigitExpr
     | STRING_PRIMITIVE                                     #StringExpr
     | ID_PRIMITIVE                                         #IdExpr
+    | NIL                                                  #NilExpr
     | (TRU|FAL)                                            #BooleanExpr
     ;
 

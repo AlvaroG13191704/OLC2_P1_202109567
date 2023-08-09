@@ -39,15 +39,23 @@ func (v *BaseSFGrammarVisitor) VisitType_declaration(ctx *Type_declarationContex
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseSFGrammarVisitor) VisitExprList(ctx *ExprListContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseSFGrammarVisitor) VisitStringExpr(ctx *StringExprContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseSFGrammarVisitor) VisitIdExpr(ctx *IdExprContext) interface{} {
+func (v *BaseSFGrammarVisitor) VisitArithmeticOperationExpr(ctx *ArithmeticOperationExprContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseSFGrammarVisitor) VisitOperationExpr(ctx *OperationExprContext) interface{} {
+func (v *BaseSFGrammarVisitor) VisitNilExpr(ctx *NilExprContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitIdExpr(ctx *IdExprContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

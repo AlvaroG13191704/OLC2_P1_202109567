@@ -24,7 +24,7 @@
     3. Evaluate if the variable has a type or not ✅
     4. Evaluate if the variable has an expression or not ✅
 
-4. Variable Assigment
+4. Variable Assigment 
     1. Evaluate if the variable is declared 
     2. Evaluate if the variable is "var" or "let"
         a. If it is "var" -> the variable can change its value

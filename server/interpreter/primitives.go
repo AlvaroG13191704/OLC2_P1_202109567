@@ -51,3 +51,11 @@ func (v *Visitor) VisitBooleanExpr(ctx *parser.BooleanExprContext) interface{} {
 		return &values.Boolean{Value: false}
 	}
 }
+
+// visit nil
+func (v *Visitor) VisitNilExpr(ctx *parser.NilExprContext) interface{} {
+	fmt.Println("Primitive Nil")
+	return &values.Nil{
+		Value: nil,
+	}
+}

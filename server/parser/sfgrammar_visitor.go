@@ -31,14 +31,20 @@ type SFGrammarVisitor interface {
 	// Visit a parse tree produced by SFGrammarParser#type_declaration.
 	VisitType_declaration(ctx *Type_declarationContext) interface{}
 
+	// Visit a parse tree produced by SFGrammarParser#exprList.
+	VisitExprList(ctx *ExprListContext) interface{}
+
 	// Visit a parse tree produced by SFGrammarParser#StringExpr.
 	VisitStringExpr(ctx *StringExprContext) interface{}
 
+	// Visit a parse tree produced by SFGrammarParser#ArithmeticOperationExpr.
+	VisitArithmeticOperationExpr(ctx *ArithmeticOperationExprContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#NilExpr.
+	VisitNilExpr(ctx *NilExprContext) interface{}
+
 	// Visit a parse tree produced by SFGrammarParser#IdExpr.
 	VisitIdExpr(ctx *IdExprContext) interface{}
-
-	// Visit a parse tree produced by SFGrammarParser#OperationExpr.
-	VisitOperationExpr(ctx *OperationExprContext) interface{}
 
 	// Visit a parse tree produced by SFGrammarParser#NegExpr.
 	VisitNegExpr(ctx *NegExprContext) interface{}
