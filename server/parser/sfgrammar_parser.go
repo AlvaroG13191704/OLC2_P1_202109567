@@ -35,15 +35,17 @@ func sfgrammarParserInit() {
 		"", "'Int'", "'Float'", "'String'", "'Bool'", "'Character'", "'if'",
 		"'else'", "'print'", "'true'", "'false'", "'nil'", "'var'", "'let'",
 		"", "", "", "'!'", "'('", "')'", "':'", "','", "';'", "'='", "'+='",
-		"'-='", "'?'", "'+'", "'-'", "'*'", "'/'", "'%'",
+		"'-='", "'?'", "'+'", "'-'", "'*'", "'/'", "'%'", "'=='", "'!='", "'>'",
+		"'>='", "'<'", "'<='", "'&&'", "'||'",
 	}
 	staticData.SymbolicNames = []string{
 		"", "INT", "FLOAT", "STRING", "BOOL", "CHAR", "IF", "ELSE", "PRINT",
 		"TRU", "FAL", "NIL", "DECLARATION_VAR", "DECLARATION_LET", "DIGIT_PRIMITIVE",
 		"STRING_PRIMITIVE", "ID_PRIMITIVE", "NEGATION_OPERATOR", "LPAREN", "RPAREN",
 		"COLON", "COMMA", "SEMICOLON", "IS_", "PLUS_IS", "MINUS_IS", "QUESTION_MARK",
-		"PLUS", "MINUS", "MULTIPLY", "DIVIDE", "MODULO", "WHITESPACE", "MULTI_COMMENT",
-		"LINE_COMMENT",
+		"PLUS", "MINUS", "MULTIPLY", "DIVIDE", "MODULO", "EQUALS", "NOT_EQUALS",
+		"GREATER", "GREATER_EQUALS", "LESS", "LESS_EQUALS", "AND", "OR", "WHITESPACE",
+		"MULTI_COMMENT", "LINE_COMMENT",
 	}
 	staticData.RuleNames = []string{
 		"start", "block", "stmts", "printstmt", "declaration", "type_declaration",
@@ -51,7 +53,7 @@ func sfgrammarParserInit() {
 	}
 	staticData.PredictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
-		4, 1, 34, 119, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
+		4, 1, 42, 128, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
 		4, 2, 5, 7, 5, 2, 6, 7, 6, 2, 7, 7, 7, 2, 8, 7, 8, 2, 9, 7, 9, 1, 0, 1,
 		0, 1, 0, 1, 1, 5, 1, 25, 8, 1, 10, 1, 12, 1, 28, 9, 1, 1, 2, 1, 2, 3, 2,
 		32, 8, 2, 1, 2, 1, 2, 3, 2, 36, 8, 2, 1, 2, 1, 2, 3, 2, 40, 8, 2, 3, 2,
@@ -61,47 +63,52 @@ func sfgrammarParserInit() {
 		1, 6, 1, 6, 3, 6, 80, 8, 6, 1, 7, 1, 7, 1, 7, 5, 7, 85, 8, 7, 10, 7, 12,
 		7, 88, 9, 7, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8,
 		1, 8, 1, 8, 1, 8, 1, 8, 3, 8, 104, 8, 8, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8,
-		1, 8, 5, 8, 112, 8, 8, 10, 8, 12, 8, 115, 9, 8, 1, 9, 1, 9, 1, 9, 0, 1,
-		16, 10, 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 0, 5, 1, 0, 12, 13, 1, 0, 9,
-		10, 1, 0, 29, 31, 1, 0, 27, 28, 1, 0, 1, 5, 128, 0, 20, 1, 0, 0, 0, 2,
-		26, 1, 0, 0, 0, 4, 41, 1, 0, 0, 0, 6, 43, 1, 0, 0, 0, 8, 66, 1, 0, 0, 0,
-		10, 68, 1, 0, 0, 0, 12, 79, 1, 0, 0, 0, 14, 81, 1, 0, 0, 0, 16, 103, 1,
-		0, 0, 0, 18, 116, 1, 0, 0, 0, 20, 21, 3, 2, 1, 0, 21, 22, 5, 0, 0, 1, 22,
-		1, 1, 0, 0, 0, 23, 25, 3, 4, 2, 0, 24, 23, 1, 0, 0, 0, 25, 28, 1, 0, 0,
-		0, 26, 24, 1, 0, 0, 0, 26, 27, 1, 0, 0, 0, 27, 3, 1, 0, 0, 0, 28, 26, 1,
-		0, 0, 0, 29, 31, 3, 6, 3, 0, 30, 32, 5, 22, 0, 0, 31, 30, 1, 0, 0, 0, 31,
-		32, 1, 0, 0, 0, 32, 42, 1, 0, 0, 0, 33, 35, 3, 8, 4, 0, 34, 36, 5, 22,
-		0, 0, 35, 34, 1, 0, 0, 0, 35, 36, 1, 0, 0, 0, 36, 42, 1, 0, 0, 0, 37, 39,
-		3, 12, 6, 0, 38, 40, 5, 22, 0, 0, 39, 38, 1, 0, 0, 0, 39, 40, 1, 0, 0,
-		0, 40, 42, 1, 0, 0, 0, 41, 29, 1, 0, 0, 0, 41, 33, 1, 0, 0, 0, 41, 37,
-		1, 0, 0, 0, 42, 5, 1, 0, 0, 0, 43, 44, 5, 8, 0, 0, 44, 45, 5, 18, 0, 0,
-		45, 46, 3, 14, 7, 0, 46, 47, 5, 19, 0, 0, 47, 7, 1, 0, 0, 0, 48, 49, 3,
-		10, 5, 0, 49, 50, 5, 16, 0, 0, 50, 51, 5, 20, 0, 0, 51, 52, 3, 18, 9, 0,
-		52, 53, 5, 23, 0, 0, 53, 54, 3, 16, 8, 0, 54, 67, 1, 0, 0, 0, 55, 56, 3,
-		10, 5, 0, 56, 57, 5, 16, 0, 0, 57, 58, 5, 20, 0, 0, 58, 59, 3, 18, 9, 0,
-		59, 60, 5, 26, 0, 0, 60, 67, 1, 0, 0, 0, 61, 62, 3, 10, 5, 0, 62, 63, 5,
-		16, 0, 0, 63, 64, 5, 23, 0, 0, 64, 65, 3, 16, 8, 0, 65, 67, 1, 0, 0, 0,
-		66, 48, 1, 0, 0, 0, 66, 55, 1, 0, 0, 0, 66, 61, 1, 0, 0, 0, 67, 9, 1, 0,
-		0, 0, 68, 69, 7, 0, 0, 0, 69, 11, 1, 0, 0, 0, 70, 71, 5, 16, 0, 0, 71,
-		72, 5, 23, 0, 0, 72, 80, 3, 16, 8, 0, 73, 74, 5, 16, 0, 0, 74, 75, 5, 24,
-		0, 0, 75, 80, 3, 16, 8, 0, 76, 77, 5, 16, 0, 0, 77, 78, 5, 25, 0, 0, 78,
-		80, 3, 16, 8, 0, 79, 70, 1, 0, 0, 0, 79, 73, 1, 0, 0, 0, 79, 76, 1, 0,
-		0, 0, 80, 13, 1, 0, 0, 0, 81, 86, 3, 16, 8, 0, 82, 83, 5, 21, 0, 0, 83,
-		85, 3, 16, 8, 0, 84, 82, 1, 0, 0, 0, 85, 88, 1, 0, 0, 0, 86, 84, 1, 0,
-		0, 0, 86, 87, 1, 0, 0, 0, 87, 15, 1, 0, 0, 0, 88, 86, 1, 0, 0, 0, 89, 90,
-		6, 8, -1, 0, 90, 91, 5, 17, 0, 0, 91, 104, 3, 16, 8, 10, 92, 93, 5, 28,
-		0, 0, 93, 104, 3, 16, 8, 9, 94, 95, 5, 18, 0, 0, 95, 96, 3, 16, 8, 0, 96,
-		97, 5, 19, 0, 0, 97, 104, 1, 0, 0, 0, 98, 104, 5, 14, 0, 0, 99, 104, 5,
-		15, 0, 0, 100, 104, 5, 16, 0, 0, 101, 104, 5, 11, 0, 0, 102, 104, 7, 1,
-		0, 0, 103, 89, 1, 0, 0, 0, 103, 92, 1, 0, 0, 0, 103, 94, 1, 0, 0, 0, 103,
-		98, 1, 0, 0, 0, 103, 99, 1, 0, 0, 0, 103, 100, 1, 0, 0, 0, 103, 101, 1,
-		0, 0, 0, 103, 102, 1, 0, 0, 0, 104, 113, 1, 0, 0, 0, 105, 106, 10, 8, 0,
-		0, 106, 107, 7, 2, 0, 0, 107, 112, 3, 16, 8, 9, 108, 109, 10, 7, 0, 0,
-		109, 110, 7, 3, 0, 0, 110, 112, 3, 16, 8, 8, 111, 105, 1, 0, 0, 0, 111,
-		108, 1, 0, 0, 0, 112, 115, 1, 0, 0, 0, 113, 111, 1, 0, 0, 0, 113, 114,
-		1, 0, 0, 0, 114, 17, 1, 0, 0, 0, 115, 113, 1, 0, 0, 0, 116, 117, 7, 4,
-		0, 0, 117, 19, 1, 0, 0, 0, 11, 26, 31, 35, 39, 41, 66, 79, 86, 103, 111,
-		113,
+		1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 5, 8, 121,
+		8, 8, 10, 8, 12, 8, 124, 9, 8, 1, 9, 1, 9, 1, 9, 0, 1, 16, 10, 0, 2, 4,
+		6, 8, 10, 12, 14, 16, 18, 0, 8, 1, 0, 12, 13, 1, 0, 9, 10, 1, 0, 29, 31,
+		1, 0, 27, 28, 1, 0, 32, 33, 1, 0, 34, 37, 1, 0, 38, 39, 1, 0, 1, 5, 140,
+		0, 20, 1, 0, 0, 0, 2, 26, 1, 0, 0, 0, 4, 41, 1, 0, 0, 0, 6, 43, 1, 0, 0,
+		0, 8, 66, 1, 0, 0, 0, 10, 68, 1, 0, 0, 0, 12, 79, 1, 0, 0, 0, 14, 81, 1,
+		0, 0, 0, 16, 103, 1, 0, 0, 0, 18, 125, 1, 0, 0, 0, 20, 21, 3, 2, 1, 0,
+		21, 22, 5, 0, 0, 1, 22, 1, 1, 0, 0, 0, 23, 25, 3, 4, 2, 0, 24, 23, 1, 0,
+		0, 0, 25, 28, 1, 0, 0, 0, 26, 24, 1, 0, 0, 0, 26, 27, 1, 0, 0, 0, 27, 3,
+		1, 0, 0, 0, 28, 26, 1, 0, 0, 0, 29, 31, 3, 6, 3, 0, 30, 32, 5, 22, 0, 0,
+		31, 30, 1, 0, 0, 0, 31, 32, 1, 0, 0, 0, 32, 42, 1, 0, 0, 0, 33, 35, 3,
+		8, 4, 0, 34, 36, 5, 22, 0, 0, 35, 34, 1, 0, 0, 0, 35, 36, 1, 0, 0, 0, 36,
+		42, 1, 0, 0, 0, 37, 39, 3, 12, 6, 0, 38, 40, 5, 22, 0, 0, 39, 38, 1, 0,
+		0, 0, 39, 40, 1, 0, 0, 0, 40, 42, 1, 0, 0, 0, 41, 29, 1, 0, 0, 0, 41, 33,
+		1, 0, 0, 0, 41, 37, 1, 0, 0, 0, 42, 5, 1, 0, 0, 0, 43, 44, 5, 8, 0, 0,
+		44, 45, 5, 18, 0, 0, 45, 46, 3, 14, 7, 0, 46, 47, 5, 19, 0, 0, 47, 7, 1,
+		0, 0, 0, 48, 49, 3, 10, 5, 0, 49, 50, 5, 16, 0, 0, 50, 51, 5, 20, 0, 0,
+		51, 52, 3, 18, 9, 0, 52, 53, 5, 23, 0, 0, 53, 54, 3, 16, 8, 0, 54, 67,
+		1, 0, 0, 0, 55, 56, 3, 10, 5, 0, 56, 57, 5, 16, 0, 0, 57, 58, 5, 20, 0,
+		0, 58, 59, 3, 18, 9, 0, 59, 60, 5, 26, 0, 0, 60, 67, 1, 0, 0, 0, 61, 62,
+		3, 10, 5, 0, 62, 63, 5, 16, 0, 0, 63, 64, 5, 23, 0, 0, 64, 65, 3, 16, 8,
+		0, 65, 67, 1, 0, 0, 0, 66, 48, 1, 0, 0, 0, 66, 55, 1, 0, 0, 0, 66, 61,
+		1, 0, 0, 0, 67, 9, 1, 0, 0, 0, 68, 69, 7, 0, 0, 0, 69, 11, 1, 0, 0, 0,
+		70, 71, 5, 16, 0, 0, 71, 72, 5, 23, 0, 0, 72, 80, 3, 16, 8, 0, 73, 74,
+		5, 16, 0, 0, 74, 75, 5, 24, 0, 0, 75, 80, 3, 16, 8, 0, 76, 77, 5, 16, 0,
+		0, 77, 78, 5, 25, 0, 0, 78, 80, 3, 16, 8, 0, 79, 70, 1, 0, 0, 0, 79, 73,
+		1, 0, 0, 0, 79, 76, 1, 0, 0, 0, 80, 13, 1, 0, 0, 0, 81, 86, 3, 16, 8, 0,
+		82, 83, 5, 21, 0, 0, 83, 85, 3, 16, 8, 0, 84, 82, 1, 0, 0, 0, 85, 88, 1,
+		0, 0, 0, 86, 84, 1, 0, 0, 0, 86, 87, 1, 0, 0, 0, 87, 15, 1, 0, 0, 0, 88,
+		86, 1, 0, 0, 0, 89, 90, 6, 8, -1, 0, 90, 91, 5, 17, 0, 0, 91, 104, 3, 16,
+		8, 13, 92, 93, 5, 28, 0, 0, 93, 104, 3, 16, 8, 12, 94, 95, 5, 18, 0, 0,
+		95, 96, 3, 16, 8, 0, 96, 97, 5, 19, 0, 0, 97, 104, 1, 0, 0, 0, 98, 104,
+		5, 14, 0, 0, 99, 104, 5, 15, 0, 0, 100, 104, 5, 16, 0, 0, 101, 104, 5,
+		11, 0, 0, 102, 104, 7, 1, 0, 0, 103, 89, 1, 0, 0, 0, 103, 92, 1, 0, 0,
+		0, 103, 94, 1, 0, 0, 0, 103, 98, 1, 0, 0, 0, 103, 99, 1, 0, 0, 0, 103,
+		100, 1, 0, 0, 0, 103, 101, 1, 0, 0, 0, 103, 102, 1, 0, 0, 0, 104, 122,
+		1, 0, 0, 0, 105, 106, 10, 11, 0, 0, 106, 107, 7, 2, 0, 0, 107, 121, 3,
+		16, 8, 12, 108, 109, 10, 10, 0, 0, 109, 110, 7, 3, 0, 0, 110, 121, 3, 16,
+		8, 11, 111, 112, 10, 9, 0, 0, 112, 113, 7, 4, 0, 0, 113, 121, 3, 16, 8,
+		10, 114, 115, 10, 8, 0, 0, 115, 116, 7, 5, 0, 0, 116, 121, 3, 16, 8, 9,
+		117, 118, 10, 7, 0, 0, 118, 119, 7, 6, 0, 0, 119, 121, 3, 16, 8, 8, 120,
+		105, 1, 0, 0, 0, 120, 108, 1, 0, 0, 0, 120, 111, 1, 0, 0, 0, 120, 114,
+		1, 0, 0, 0, 120, 117, 1, 0, 0, 0, 121, 124, 1, 0, 0, 0, 122, 120, 1, 0,
+		0, 0, 122, 123, 1, 0, 0, 0, 123, 17, 1, 0, 0, 0, 124, 122, 1, 0, 0, 0,
+		125, 126, 7, 7, 0, 0, 126, 19, 1, 0, 0, 0, 11, 26, 31, 35, 39, 41, 66,
+		79, 86, 103, 120, 122,
 	}
 	deserializer := antlr.NewATNDeserializer(nil)
 	staticData.atn = deserializer.Deserialize(staticData.serializedATN)
@@ -171,9 +178,17 @@ const (
 	SFGrammarParserMULTIPLY          = 29
 	SFGrammarParserDIVIDE            = 30
 	SFGrammarParserMODULO            = 31
-	SFGrammarParserWHITESPACE        = 32
-	SFGrammarParserMULTI_COMMENT     = 33
-	SFGrammarParserLINE_COMMENT      = 34
+	SFGrammarParserEQUALS            = 32
+	SFGrammarParserNOT_EQUALS        = 33
+	SFGrammarParserGREATER           = 34
+	SFGrammarParserGREATER_EQUALS    = 35
+	SFGrammarParserLESS              = 36
+	SFGrammarParserLESS_EQUALS       = 37
+	SFGrammarParserAND               = 38
+	SFGrammarParserOR                = 39
+	SFGrammarParserWHITESPACE        = 40
+	SFGrammarParserMULTI_COMMENT     = 41
+	SFGrammarParserLINE_COMMENT      = 42
 )
 
 // SFGrammarParser rules.
@@ -2032,6 +2047,106 @@ func (s *NilExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	}
 }
 
+type RelationalOperationExprContext struct {
+	ExprContext
+	left  IExprContext
+	op    antlr.Token
+	right IExprContext
+}
+
+func NewRelationalOperationExprContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *RelationalOperationExprContext {
+	var p = new(RelationalOperationExprContext)
+
+	InitEmptyExprContext(&p.ExprContext)
+	p.parser = parser
+	p.CopyAll(ctx.(*ExprContext))
+
+	return p
+}
+
+func (s *RelationalOperationExprContext) GetOp() antlr.Token { return s.op }
+
+func (s *RelationalOperationExprContext) SetOp(v antlr.Token) { s.op = v }
+
+func (s *RelationalOperationExprContext) GetLeft() IExprContext { return s.left }
+
+func (s *RelationalOperationExprContext) GetRight() IExprContext { return s.right }
+
+func (s *RelationalOperationExprContext) SetLeft(v IExprContext) { s.left = v }
+
+func (s *RelationalOperationExprContext) SetRight(v IExprContext) { s.right = v }
+
+func (s *RelationalOperationExprContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *RelationalOperationExprContext) AllExpr() []IExprContext {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(IExprContext); ok {
+			len++
+		}
+	}
+
+	tst := make([]IExprContext, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(IExprContext); ok {
+			tst[i] = t.(IExprContext)
+			i++
+		}
+	}
+
+	return tst
+}
+
+func (s *RelationalOperationExprContext) Expr(i int) IExprContext {
+	var t antlr.RuleContext
+	j := 0
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IExprContext); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IExprContext)
+}
+
+func (s *RelationalOperationExprContext) GREATER() antlr.TerminalNode {
+	return s.GetToken(SFGrammarParserGREATER, 0)
+}
+
+func (s *RelationalOperationExprContext) GREATER_EQUALS() antlr.TerminalNode {
+	return s.GetToken(SFGrammarParserGREATER_EQUALS, 0)
+}
+
+func (s *RelationalOperationExprContext) LESS() antlr.TerminalNode {
+	return s.GetToken(SFGrammarParserLESS, 0)
+}
+
+func (s *RelationalOperationExprContext) LESS_EQUALS() antlr.TerminalNode {
+	return s.GetToken(SFGrammarParserLESS_EQUALS, 0)
+}
+
+func (s *RelationalOperationExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case SFGrammarVisitor:
+		return t.VisitRelationalOperationExpr(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 type IdExprContext struct {
 	ExprContext
 }
@@ -2058,6 +2173,98 @@ func (s *IdExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
 		return t.VisitIdExpr(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+type LogicalOperationExprContext struct {
+	ExprContext
+	left  IExprContext
+	op    antlr.Token
+	right IExprContext
+}
+
+func NewLogicalOperationExprContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *LogicalOperationExprContext {
+	var p = new(LogicalOperationExprContext)
+
+	InitEmptyExprContext(&p.ExprContext)
+	p.parser = parser
+	p.CopyAll(ctx.(*ExprContext))
+
+	return p
+}
+
+func (s *LogicalOperationExprContext) GetOp() antlr.Token { return s.op }
+
+func (s *LogicalOperationExprContext) SetOp(v antlr.Token) { s.op = v }
+
+func (s *LogicalOperationExprContext) GetLeft() IExprContext { return s.left }
+
+func (s *LogicalOperationExprContext) GetRight() IExprContext { return s.right }
+
+func (s *LogicalOperationExprContext) SetLeft(v IExprContext) { s.left = v }
+
+func (s *LogicalOperationExprContext) SetRight(v IExprContext) { s.right = v }
+
+func (s *LogicalOperationExprContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *LogicalOperationExprContext) AllExpr() []IExprContext {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(IExprContext); ok {
+			len++
+		}
+	}
+
+	tst := make([]IExprContext, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(IExprContext); ok {
+			tst[i] = t.(IExprContext)
+			i++
+		}
+	}
+
+	return tst
+}
+
+func (s *LogicalOperationExprContext) Expr(i int) IExprContext {
+	var t antlr.RuleContext
+	j := 0
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IExprContext); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IExprContext)
+}
+
+func (s *LogicalOperationExprContext) AND() antlr.TerminalNode {
+	return s.GetToken(SFGrammarParserAND, 0)
+}
+
+func (s *LogicalOperationExprContext) OR() antlr.TerminalNode {
+	return s.GetToken(SFGrammarParserOR, 0)
+}
+
+func (s *LogicalOperationExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case SFGrammarVisitor:
+		return t.VisitLogicalOperationExpr(s)
 
 	default:
 		return t.VisitChildren(s)
@@ -2143,6 +2350,98 @@ func (s *DigitExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
 		return t.VisitDigitExpr(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+type ComparationOperationExprContext struct {
+	ExprContext
+	left  IExprContext
+	op    antlr.Token
+	right IExprContext
+}
+
+func NewComparationOperationExprContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *ComparationOperationExprContext {
+	var p = new(ComparationOperationExprContext)
+
+	InitEmptyExprContext(&p.ExprContext)
+	p.parser = parser
+	p.CopyAll(ctx.(*ExprContext))
+
+	return p
+}
+
+func (s *ComparationOperationExprContext) GetOp() antlr.Token { return s.op }
+
+func (s *ComparationOperationExprContext) SetOp(v antlr.Token) { s.op = v }
+
+func (s *ComparationOperationExprContext) GetLeft() IExprContext { return s.left }
+
+func (s *ComparationOperationExprContext) GetRight() IExprContext { return s.right }
+
+func (s *ComparationOperationExprContext) SetLeft(v IExprContext) { s.left = v }
+
+func (s *ComparationOperationExprContext) SetRight(v IExprContext) { s.right = v }
+
+func (s *ComparationOperationExprContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *ComparationOperationExprContext) AllExpr() []IExprContext {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(IExprContext); ok {
+			len++
+		}
+	}
+
+	tst := make([]IExprContext, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(IExprContext); ok {
+			tst[i] = t.(IExprContext)
+			i++
+		}
+	}
+
+	return tst
+}
+
+func (s *ComparationOperationExprContext) Expr(i int) IExprContext {
+	var t antlr.RuleContext
+	j := 0
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IExprContext); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IExprContext)
+}
+
+func (s *ComparationOperationExprContext) EQUALS() antlr.TerminalNode {
+	return s.GetToken(SFGrammarParserEQUALS, 0)
+}
+
+func (s *ComparationOperationExprContext) NOT_EQUALS() antlr.TerminalNode {
+	return s.GetToken(SFGrammarParserNOT_EQUALS, 0)
+}
+
+func (s *ComparationOperationExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case SFGrammarVisitor:
+		return t.VisitComparationOperationExpr(s)
 
 	default:
 		return t.VisitChildren(s)
@@ -2331,7 +2630,7 @@ func (p *SFGrammarParser) expr(_p int) (localctx IExprContext) {
 		{
 			p.SetState(91)
 
-			var _x = p.expr(10)
+			var _x = p.expr(13)
 
 			localctx.(*NotExprContext).right = _x
 		}
@@ -2351,7 +2650,7 @@ func (p *SFGrammarParser) expr(_p int) (localctx IExprContext) {
 		{
 			p.SetState(93)
 
-			var _x = p.expr(9)
+			var _x = p.expr(12)
 
 			localctx.(*NegExprContext).right = _x
 		}
@@ -2454,7 +2753,7 @@ func (p *SFGrammarParser) expr(_p int) (localctx IExprContext) {
 		goto errorExit
 	}
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
-	p.SetState(113)
+	p.SetState(122)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -2469,7 +2768,7 @@ func (p *SFGrammarParser) expr(_p int) (localctx IExprContext) {
 				p.TriggerExitRuleEvent()
 			}
 			_prevctx = localctx
-			p.SetState(111)
+			p.SetState(120)
 			p.GetErrorHandler().Sync(p)
 			if p.HasError() {
 				goto errorExit
@@ -2483,8 +2782,8 @@ func (p *SFGrammarParser) expr(_p int) (localctx IExprContext) {
 				p.PushNewRecursionContext(localctx, _startState, SFGrammarParserRULE_expr)
 				p.SetState(105)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 8)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 8)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 11)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 11)", ""))
 					goto errorExit
 				}
 				{
@@ -2508,7 +2807,7 @@ func (p *SFGrammarParser) expr(_p int) (localctx IExprContext) {
 				{
 					p.SetState(107)
 
-					var _x = p.expr(9)
+					var _x = p.expr(12)
 
 					localctx.(*ArithmeticOperationExprContext).right = _x
 				}
@@ -2520,8 +2819,8 @@ func (p *SFGrammarParser) expr(_p int) (localctx IExprContext) {
 				p.PushNewRecursionContext(localctx, _startState, SFGrammarParserRULE_expr)
 				p.SetState(108)
 
-				if !(p.Precpred(p.GetParserRuleContext(), 7)) {
-					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 7)", ""))
+				if !(p.Precpred(p.GetParserRuleContext(), 10)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 10)", ""))
 					goto errorExit
 				}
 				{
@@ -2545,9 +2844,120 @@ func (p *SFGrammarParser) expr(_p int) (localctx IExprContext) {
 				{
 					p.SetState(110)
 
-					var _x = p.expr(8)
+					var _x = p.expr(11)
 
 					localctx.(*ArithmeticOperationExprContext).right = _x
+				}
+
+			case 3:
+				localctx = NewComparationOperationExprContext(p, NewExprContext(p, _parentctx, _parentState))
+				localctx.(*ComparationOperationExprContext).left = _prevctx
+
+				p.PushNewRecursionContext(localctx, _startState, SFGrammarParserRULE_expr)
+				p.SetState(111)
+
+				if !(p.Precpred(p.GetParserRuleContext(), 9)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 9)", ""))
+					goto errorExit
+				}
+				{
+					p.SetState(112)
+
+					var _lt = p.GetTokenStream().LT(1)
+
+					localctx.(*ComparationOperationExprContext).op = _lt
+
+					_la = p.GetTokenStream().LA(1)
+
+					if !(_la == SFGrammarParserEQUALS || _la == SFGrammarParserNOT_EQUALS) {
+						var _ri = p.GetErrorHandler().RecoverInline(p)
+
+						localctx.(*ComparationOperationExprContext).op = _ri
+					} else {
+						p.GetErrorHandler().ReportMatch(p)
+						p.Consume()
+					}
+				}
+				{
+					p.SetState(113)
+
+					var _x = p.expr(10)
+
+					localctx.(*ComparationOperationExprContext).right = _x
+				}
+
+			case 4:
+				localctx = NewRelationalOperationExprContext(p, NewExprContext(p, _parentctx, _parentState))
+				localctx.(*RelationalOperationExprContext).left = _prevctx
+
+				p.PushNewRecursionContext(localctx, _startState, SFGrammarParserRULE_expr)
+				p.SetState(114)
+
+				if !(p.Precpred(p.GetParserRuleContext(), 8)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 8)", ""))
+					goto errorExit
+				}
+				{
+					p.SetState(115)
+
+					var _lt = p.GetTokenStream().LT(1)
+
+					localctx.(*RelationalOperationExprContext).op = _lt
+
+					_la = p.GetTokenStream().LA(1)
+
+					if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&257698037760) != 0) {
+						var _ri = p.GetErrorHandler().RecoverInline(p)
+
+						localctx.(*RelationalOperationExprContext).op = _ri
+					} else {
+						p.GetErrorHandler().ReportMatch(p)
+						p.Consume()
+					}
+				}
+				{
+					p.SetState(116)
+
+					var _x = p.expr(9)
+
+					localctx.(*RelationalOperationExprContext).right = _x
+				}
+
+			case 5:
+				localctx = NewLogicalOperationExprContext(p, NewExprContext(p, _parentctx, _parentState))
+				localctx.(*LogicalOperationExprContext).left = _prevctx
+
+				p.PushNewRecursionContext(localctx, _startState, SFGrammarParserRULE_expr)
+				p.SetState(117)
+
+				if !(p.Precpred(p.GetParserRuleContext(), 7)) {
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 7)", ""))
+					goto errorExit
+				}
+				{
+					p.SetState(118)
+
+					var _lt = p.GetTokenStream().LT(1)
+
+					localctx.(*LogicalOperationExprContext).op = _lt
+
+					_la = p.GetTokenStream().LA(1)
+
+					if !(_la == SFGrammarParserAND || _la == SFGrammarParserOR) {
+						var _ri = p.GetErrorHandler().RecoverInline(p)
+
+						localctx.(*LogicalOperationExprContext).op = _ri
+					} else {
+						p.GetErrorHandler().ReportMatch(p)
+						p.Consume()
+					}
+				}
+				{
+					p.SetState(119)
+
+					var _x = p.expr(8)
+
+					localctx.(*LogicalOperationExprContext).right = _x
 				}
 
 			case antlr.ATNInvalidAltNumber:
@@ -2555,7 +2965,7 @@ func (p *SFGrammarParser) expr(_p int) (localctx IExprContext) {
 			}
 
 		}
-		p.SetState(115)
+		p.SetState(124)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
@@ -2674,7 +3084,7 @@ func (p *SFGrammarParser) Type_() (localctx ITypeContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(116)
+		p.SetState(125)
 		_la = p.GetTokenStream().LA(1)
 
 		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&62) != 0) {
@@ -2715,9 +3125,18 @@ func (p *SFGrammarParser) Sempred(localctx antlr.RuleContext, ruleIndex, predInd
 func (p *SFGrammarParser) Expr_Sempred(localctx antlr.RuleContext, predIndex int) bool {
 	switch predIndex {
 	case 0:
-		return p.Precpred(p.GetParserRuleContext(), 8)
+		return p.Precpred(p.GetParserRuleContext(), 11)
 
 	case 1:
+		return p.Precpred(p.GetParserRuleContext(), 10)
+
+	case 2:
+		return p.Precpred(p.GetParserRuleContext(), 9)
+
+	case 3:
+		return p.Precpred(p.GetParserRuleContext(), 8)
+
+	case 4:
 		return p.Precpred(p.GetParserRuleContext(), 7)
 
 	default:

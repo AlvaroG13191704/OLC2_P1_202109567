@@ -43,8 +43,18 @@ DIVIDE : '/';
 MODULO : '%';
 
 // -- Comparators
+EQUALS : '==';
+NOT_EQUALS : '!=';
 
+// -- Relational
+GREATER : '>';
+GREATER_EQUALS : '>=';
+LESS : '<';
+LESS_EQUALS : '<=';
 
+// -- Logical
+AND : '&&';
+OR : '||';
 
 // skip
 WHITESPACE: [ \\\r\n\t]+ -> skip;

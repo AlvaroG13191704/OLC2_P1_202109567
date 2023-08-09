@@ -28,7 +28,9 @@ func (v *Visitor) VisitIdExpr(ctx *parser.IdExprContext) interface{} {
 			Type:   "VariableError",
 		})
 	}
-	return nil
+	return &values.Nil{
+		Value: nil,
+	}
 }
 
 // visit parenexpr
@@ -46,5 +48,21 @@ func (v *Visitor) VisitNegExpr(ctx *parser.NegExprContext) interface{} {
 	} else if value.GetType() == values.FloatType {
 		return &values.Float{Value: -value.GetValue().(float64)} // return the negative of the value
 	}
-	return nil
+	return &values.Nil{
+		Value: nil,
+	}
+}
+
+// visit notexpr
+func (v *Visitor) VisitNotExpr(ctx *parser.NotExprContext) interface{} {
+	// get the value
+	value := v.Visit(ctx.Expr()).(values.PRIMITIVE)
+	// verify if the value is a boolean
+	if value.GetType() == values.BooleanType {
+		return &values.Boolean{Value: !value.GetValue().(bool)} // return the negative of the value
+	}
+	return &values.Nil{
+		Value: nil,
+	}
+
 }

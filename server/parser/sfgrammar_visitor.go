@@ -52,14 +52,23 @@ type SFGrammarVisitor interface {
 	// Visit a parse tree produced by SFGrammarParser#NilExpr.
 	VisitNilExpr(ctx *NilExprContext) interface{}
 
+	// Visit a parse tree produced by SFGrammarParser#RelationalOperationExpr.
+	VisitRelationalOperationExpr(ctx *RelationalOperationExprContext) interface{}
+
 	// Visit a parse tree produced by SFGrammarParser#IdExpr.
 	VisitIdExpr(ctx *IdExprContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#LogicalOperationExpr.
+	VisitLogicalOperationExpr(ctx *LogicalOperationExprContext) interface{}
 
 	// Visit a parse tree produced by SFGrammarParser#NegExpr.
 	VisitNegExpr(ctx *NegExprContext) interface{}
 
 	// Visit a parse tree produced by SFGrammarParser#DigitExpr.
 	VisitDigitExpr(ctx *DigitExprContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#ComparationOperationExpr.
+	VisitComparationOperationExpr(ctx *ComparationOperationExprContext) interface{}
 
 	// Visit a parse tree produced by SFGrammarParser#NotExpr.
 	VisitNotExpr(ctx *NotExprContext) interface{}

@@ -67,7 +67,15 @@ func (v *BaseSFGrammarVisitor) VisitNilExpr(ctx *NilExprContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseSFGrammarVisitor) VisitRelationalOperationExpr(ctx *RelationalOperationExprContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseSFGrammarVisitor) VisitIdExpr(ctx *IdExprContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitLogicalOperationExpr(ctx *LogicalOperationExprContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -76,6 +84,10 @@ func (v *BaseSFGrammarVisitor) VisitNegExpr(ctx *NegExprContext) interface{} {
 }
 
 func (v *BaseSFGrammarVisitor) VisitDigitExpr(ctx *DigitExprContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitComparationOperationExpr(ctx *ComparationOperationExprContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
