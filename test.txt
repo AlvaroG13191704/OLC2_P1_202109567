@@ -1,0 +1,86 @@
+var comparationVar = 1 == 1;
+print(comparationVar);
+
+var comparationVar2 = 1 != 1;
+print(comparationVar2);
+
+var comparationVar3 = 13.0 == 13.0;
+print(comparationVar3);
+
+var comparationVar4 = 13.0 != 13.0;
+print(comparationVar4);
+
+var comparationVar5 = true == false;
+print(comparationVar5);
+
+var comparationVar6 = false != true;
+print(comparationVar6);
+
+var comparationVar7 = "ha" == "ha";
+print(comparationVar7);
+
+var comparationVar8 = "Ho" != "Ho";
+print(comparationVar8);
+
+// ----------------------------
+// relational operators
+// ----------------------------
+
+var relationalVar = 1 < 2;
+print(relationalVar);
+
+// ----------------------------
+// logical operators
+// ----------------------------
+
+var logicalVar = true && true;
+print(logicalVar);
+
+var logicalVar2 = true && false;
+print(logicalVar2);
+
+var logicalVar3 = false && true;
+print(logicalVar3);
+
+var logicalVar4 = false && false;
+print(logicalVar4);
+
+var logicalVar5 = true || true;
+print(logicalVar5);
+
+var logicalVar6 = true || false;
+print(logicalVar6);
+
+var logicalVar7 = false || true;
+print(logicalVar7);
+
+var logicalVar8 = false || false;
+print(logicalVar8);
+
+var logicalVar9 = !true;
+print(logicalVar9);
+
+var logicalVar10 = !false;
+print(logicalVar10);
+
+// if statement
+if (true) {
+    print("true");
+}
+
+var ifVar = 1;
+if (ifVar == 1) {
+    print("ifVar == 1");
+} else if (ifVar == 2) {
+    print("ifVar == 2");
+} else {
+    print("ifVar != 1 && ifVar != 2");
+}
+
+// create a if statement test 
+var ifVar2 = 1;
+
+if ((ifVar2 == 1) && "hola" == "hola") {
+  print("ifVar2 == 1 && hola == hola");
+}
+

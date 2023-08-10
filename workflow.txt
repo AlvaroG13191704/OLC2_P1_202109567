@@ -42,3 +42,13 @@
         3. Evaluate if the new value is the same type as the variable
             a. If it is the same type -> change the value -> variable = variable + expression
             b. If it is not the same type -> throw an error
+
+6. Comparation operations ✅
+7. Relational operations ✅
+8. Logical operations ✅
+
+Cntrol Sentences
+--------------------------------
+1. If statement ✅
+2. Switch statement ✅
+3. While statement 
