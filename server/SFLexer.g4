@@ -11,6 +11,17 @@ CHAR: 'Character';
 // -- Keywords
 IF: 'if';
 ELSE: 'else';
+SWITCH: 'switch';
+CASE: 'case';
+DEFAULT: 'default';
+BREAK: 'break';
+CONTINUE: 'continue';
+RETURN: 'return';
+WHILE: 'while';
+FOR: 'for';
+IN: 'in';
+FOR_DOT: '...';
+GUARD: 'guard';
 PRINT: 'print';
 TRU: 'true';
 FAL: 'false';

@@ -60,6 +60,12 @@ func (v *Visitor) VisitStmts(ctx *parser.StmtsContext) interface{} {
 	if ctx.Ifstmt() != nil {
 		return v.Visit(ctx.Ifstmt())
 	}
+	if ctx.SwitchStmt() != nil {
+		return v.Visit(ctx.SwitchStmt())
+	}
+	if ctx.WhileStmt() != nil {
+		return v.Visit(ctx.WhileStmt())
+	}
 
 	return nil
 }

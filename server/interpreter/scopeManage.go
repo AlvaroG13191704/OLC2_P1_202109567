@@ -40,6 +40,7 @@ func (v *Visitor) popScope() {
 	}
 }
 
+// MANAGE SYMBOL TABLE
 func (v *Visitor) getCurrentScope() map[string]SymbolTable {
 	return v.symbolStack[len(v.symbolStack)-1]
 }

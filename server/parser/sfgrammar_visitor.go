@@ -46,6 +46,18 @@ type SFGrammarVisitor interface {
 	// Visit a parse tree produced by SFGrammarParser#IfStmt.
 	VisitIfStmt(ctx *IfStmtContext) interface{}
 
+	// Visit a parse tree produced by SFGrammarParser#switchStmt.
+	VisitSwitchStmt(ctx *SwitchStmtContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#caseBlock.
+	VisitCaseBlock(ctx *CaseBlockContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#defaultBlock.
+	VisitDefaultBlock(ctx *DefaultBlockContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#whileStmt.
+	VisitWhileStmt(ctx *WhileStmtContext) interface{}
+
 	// Visit a parse tree produced by SFGrammarParser#embbededFunc.
 	VisitEmbbededFunc(ctx *EmbbededFuncContext) interface{}
 

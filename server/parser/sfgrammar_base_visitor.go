@@ -59,6 +59,22 @@ func (v *BaseSFGrammarVisitor) VisitIfStmt(ctx *IfStmtContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseSFGrammarVisitor) VisitSwitchStmt(ctx *SwitchStmtContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitCaseBlock(ctx *CaseBlockContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitDefaultBlock(ctx *DefaultBlockContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitWhileStmt(ctx *WhileStmtContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseSFGrammarVisitor) VisitEmbbededFunc(ctx *EmbbededFuncContext) interface{} {
 	return v.VisitChildren(ctx)
 }

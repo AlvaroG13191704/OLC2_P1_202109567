@@ -12,6 +12,9 @@ stmts: declaration (SEMICOLON)?
      | assignment  (SEMICOLON)?
      | embbededFunc (SEMICOLON)?
      | ifstmt
+     | switchStmt
+     | whileStmt
+     | BREAK (SEMICOLON)?
      ;
 
 
@@ -36,6 +39,15 @@ ifstmt: IF expr LBRACE block RBRACE ELSE ifstmt                      #IfElseStmt
       | IF expr LBRACE block RBRACE (ELSE LBRACE block RBRACE)?      #IfStmt
       ;
 
+// switch
+switchStmt : SWITCH expr LBRACE (caseBlock)* (defaultBlock)? RBRACE ;
+
+caseBlock : CASE expr COLON block   ;
+
+defaultBlock : DEFAULT COLON block  ;
+
+// while
+whileStmt : WHILE expr LBRACE block RBRACE ;
 
 embbededFunc: printstmt  ;
 
