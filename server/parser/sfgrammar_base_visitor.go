@@ -75,6 +75,18 @@ func (v *BaseSFGrammarVisitor) VisitWhileStmt(ctx *WhileStmtContext) interface{}
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseSFGrammarVisitor) VisitForRangeExpr(ctx *ForRangeExprContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitForExpr(ctx *ForExprContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitForRange(ctx *ForRangeContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseSFGrammarVisitor) VisitEmbbededFunc(ctx *EmbbededFuncContext) interface{} {
 	return v.VisitChildren(ctx)
 }

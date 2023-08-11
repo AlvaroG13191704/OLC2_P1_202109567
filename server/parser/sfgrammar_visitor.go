@@ -58,6 +58,15 @@ type SFGrammarVisitor interface {
 	// Visit a parse tree produced by SFGrammarParser#whileStmt.
 	VisitWhileStmt(ctx *WhileStmtContext) interface{}
 
+	// Visit a parse tree produced by SFGrammarParser#ForRangeExpr.
+	VisitForRangeExpr(ctx *ForRangeExprContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#ForExpr.
+	VisitForExpr(ctx *ForExprContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#forRange.
+	VisitForRange(ctx *ForRangeContext) interface{}
+
 	// Visit a parse tree produced by SFGrammarParser#embbededFunc.
 	VisitEmbbededFunc(ctx *EmbbededFuncContext) interface{}
 

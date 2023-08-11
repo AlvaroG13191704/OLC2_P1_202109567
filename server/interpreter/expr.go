@@ -13,12 +13,13 @@ func (v *Visitor) VisitIdExpr(ctx *parser.IdExprContext) interface{} {
 	fmt.Println("Id -> ", id)
 	// verify if the id is in the scope or others
 	variable, ok := v.VerifyScope(id)
-	value := variable.(SymbolTable)
 	if ok {
+		value := variable.(SymbolTable)
 		// return the value
 		return value.Value
 
 	} else {
+		fmt.Printf("Scope -> %v\n", v.symbolStack)
 		// add the error to the errors
 		log.Fatalf("Error: Variable '%s' not declared", id)
 		v.Errors = append(v.Errors, Error{

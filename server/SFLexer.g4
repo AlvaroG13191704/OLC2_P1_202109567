@@ -20,7 +20,7 @@ RETURN: 'return';
 WHILE: 'while';
 FOR: 'for';
 IN: 'in';
-FOR_DOT: '...';
+DOT: '.';
 GUARD: 'guard';
 PRINT: 'print';
 TRU: 'true';

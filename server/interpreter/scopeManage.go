@@ -6,10 +6,10 @@ import (
 )
 
 type SymbolTable struct {
-	Id           string
-	TypeSymbol   string
-	TypeVariable string
-	TypeData     string
+	Id           string // the name of the variable
+	TypeSymbol   string // the type of the symbol variable or function
+	TypeVariable string // the type of the variable -> var or let
+	TypeData     string // the type of the data -> Int, Float, String, Boolean, Character
 	Value        interface{}
 	Line         int
 	Column       int
@@ -38,6 +38,18 @@ func (v *Visitor) popScope() {
 	if len(v.symbolStack) > 1 {
 		v.symbolStack = v.symbolStack[:len(v.symbolStack)-1]
 	}
+}
+
+// AssignVariable assign a variable to the current scope -> works for loops
+func (v *Visitor) AssignVariable(varName string, value interface{}) {
+	scope := v.getCurrentScope()
+	scope[varName] = value.(SymbolTable)
+}
+
+// DeleteVariable delete a variable from the current scope -> works for loops
+func (v *Visitor) DeleteVariable(varName string) {
+	scope := v.getCurrentScope()
+	delete(scope, varName)
 }
 
 // MANAGE SYMBOL TABLE

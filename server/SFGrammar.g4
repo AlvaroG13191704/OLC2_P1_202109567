@@ -14,7 +14,10 @@ stmts: declaration (SEMICOLON)?
      | ifstmt
      | switchStmt
      | whileStmt
+     | forStmt
      | BREAK (SEMICOLON)?
+     | CONTINUE (SEMICOLON)?
+     | RETURN (expr)? (SEMICOLON)?
      ;
 
 
@@ -48,6 +51,14 @@ defaultBlock : DEFAULT COLON block  ;
 
 // while
 whileStmt : WHILE expr LBRACE block RBRACE ;
+
+
+// for
+forStmt :FOR ID_PRIMITIVE IN forRange LBRACE block RBRACE #ForRangeExpr
+        |FOR ID_PRIMITIVE IN expr LBRACE block RBRACE     #ForExpr
+        ;
+
+forRange: left=expr DOT DOT DOT right=expr ;
 
 embbededFunc: printstmt  ;
 

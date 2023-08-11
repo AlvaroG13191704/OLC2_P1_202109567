@@ -66,6 +66,9 @@ func (v *Visitor) VisitStmts(ctx *parser.StmtsContext) interface{} {
 	if ctx.WhileStmt() != nil {
 		return v.Visit(ctx.WhileStmt())
 	}
+	if ctx.ForStmt() != nil {
+		return v.Visit(ctx.ForStmt())
+	}
 
 	return nil
 }

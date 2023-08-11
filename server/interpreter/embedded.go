@@ -43,7 +43,7 @@ func (v *Visitor) VisitPrintstmt(ctx *parser.PrintstmtContext) interface{} {
 			output += fmt.Sprint(value.GetValue().(bool))
 
 		case values.CharType:
-			fmt.Println("print value ->", value.GetValue().(string))
+			fmt.Println("print value char ->", value.GetValue().(string))
 			// v.Outputs = append(v.Outputs, fmt.Sprint(value.GetValue().(string)))
 			output += fmt.Sprint(value.GetValue().(string))
 

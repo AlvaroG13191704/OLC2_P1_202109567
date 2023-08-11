@@ -40,9 +40,8 @@ func (v *Visitor) VisitWhileStmt(ctx *parser.WhileStmtContext) interface{} {
 			})
 			return nil
 		}
+
 	}
 
 	return nil
 }
-
-// TODO: FIX PROBLEM OF RESETING THE VALUES OF THE VARIABLES
