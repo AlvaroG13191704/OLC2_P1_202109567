@@ -17,6 +17,8 @@ stmts: declaration (SEMICOLON)?
      | forStmt
      | guardStmt
      | transferStmt
+     | functionStmt
+     | callFunctionStmt (SEMICOLON)?
      ;
 
 transferStmt: BREAK (SEMICOLON)?          #BreakStmt
@@ -65,6 +67,14 @@ forRange: left=expr DOT DOT DOT right=expr ;
 // guard
 guardStmt : GUARD expr ELSE LBRACE block RBRACE ;
 
+// functions
+functionStmt:FUNC ID_PRIMITIVE LPAREN  RPAREN (ARROW_FUNCTION type)? LBRACE block RBRACE  #FunctionWithoutParams
+            // |FUNC ID_PRIMITIVE LPAREN  RPAREN ARROW_FUNCTION type LBRACE block RBRACE     #FunctionWithParams
+            ;
+callFunctionStmt: ID_PRIMITIVE LPAREN  RPAREN  #CallFunctionWithoutParams
+                // | ID_PRIMITIVE LPAREN exprList RPAREN #CallFunctionWithParams
+                ;
+
 // Embedded functions
 embbededFunc: printstmt  ;
 
@@ -83,6 +93,8 @@ expr: NEGATION_OPERATOR right=expr                                      #NotExpr
     // add logical operators
     | left=expr op=(AND|OR) right=expr                                  #LogicalOperationExpr
     | LPAREN expr RPAREN                                                #ParenExpr
+    // function call
+    | callFunctionStmt  (SEMICOLON)?                                    #CallFunctionExpr
     // Primitives
     | DIGIT_PRIMITIVE                                                   #DigitExpr
     | STRING_PRIMITIVE                                                  #StringExpr

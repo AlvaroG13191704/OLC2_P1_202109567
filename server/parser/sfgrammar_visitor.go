@@ -76,6 +76,12 @@ type SFGrammarVisitor interface {
 	// Visit a parse tree produced by SFGrammarParser#guardStmt.
 	VisitGuardStmt(ctx *GuardStmtContext) interface{}
 
+	// Visit a parse tree produced by SFGrammarParser#FunctionWithoutParams.
+	VisitFunctionWithoutParams(ctx *FunctionWithoutParamsContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#CallFunctionWithoutParams.
+	VisitCallFunctionWithoutParams(ctx *CallFunctionWithoutParamsContext) interface{}
+
 	// Visit a parse tree produced by SFGrammarParser#embbededFunc.
 	VisitEmbbededFunc(ctx *EmbbededFuncContext) interface{}
 
@@ -88,14 +94,8 @@ type SFGrammarVisitor interface {
 	// Visit a parse tree produced by SFGrammarParser#StringExpr.
 	VisitStringExpr(ctx *StringExprContext) interface{}
 
-	// Visit a parse tree produced by SFGrammarParser#ArithmeticOperationExpr.
-	VisitArithmeticOperationExpr(ctx *ArithmeticOperationExprContext) interface{}
-
 	// Visit a parse tree produced by SFGrammarParser#NilExpr.
 	VisitNilExpr(ctx *NilExprContext) interface{}
-
-	// Visit a parse tree produced by SFGrammarParser#RelationalOperationExpr.
-	VisitRelationalOperationExpr(ctx *RelationalOperationExprContext) interface{}
 
 	// Visit a parse tree produced by SFGrammarParser#IdExpr.
 	VisitIdExpr(ctx *IdExprContext) interface{}
@@ -106,17 +106,26 @@ type SFGrammarVisitor interface {
 	// Visit a parse tree produced by SFGrammarParser#NegExpr.
 	VisitNegExpr(ctx *NegExprContext) interface{}
 
-	// Visit a parse tree produced by SFGrammarParser#DigitExpr.
-	VisitDigitExpr(ctx *DigitExprContext) interface{}
-
 	// Visit a parse tree produced by SFGrammarParser#ComparationOperationExpr.
 	VisitComparationOperationExpr(ctx *ComparationOperationExprContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#ArithmeticOperationExpr.
+	VisitArithmeticOperationExpr(ctx *ArithmeticOperationExprContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#RelationalOperationExpr.
+	VisitRelationalOperationExpr(ctx *RelationalOperationExprContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#DigitExpr.
+	VisitDigitExpr(ctx *DigitExprContext) interface{}
 
 	// Visit a parse tree produced by SFGrammarParser#NotExpr.
 	VisitNotExpr(ctx *NotExprContext) interface{}
 
 	// Visit a parse tree produced by SFGrammarParser#ParenExpr.
 	VisitParenExpr(ctx *ParenExprContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#CallFunctionExpr.
+	VisitCallFunctionExpr(ctx *CallFunctionExprContext) interface{}
 
 	// Visit a parse tree produced by SFGrammarParser#BooleanExpr.
 	VisitBooleanExpr(ctx *BooleanExprContext) interface{}

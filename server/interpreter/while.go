@@ -1,7 +1,6 @@
 package interpreter
 
 import (
-	"fmt"
 	"log"
 	"server/parserInterpreter/interpreter/values"
 	"server/parserInterpreter/parser"
@@ -66,7 +65,7 @@ func (v *Visitor) VisitWhileStmt(ctx *parser.WhileStmtContext) interface{} {
 	}
 
 	// print loop context
-	fmt.Println("loop context -> ", v.loopContexts)
+	// fmt.Println("loop context -> ", v.loopContexts)
 
 	return nil
 }

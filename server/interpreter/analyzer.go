@@ -37,6 +37,22 @@ func (v *Visitor) VisitStart(ctx *parser.StartContext) interface{} {
 func (v *Visitor) VisitBlock(ctx *parser.BlockContext) interface{} {
 	// push the scope
 	v.pushScope()
+	// declare all the functions
+	if !v.FirstPass {
+		fmt.Println("FIRST TRAVEL ")
+		for _, stmt := range ctx.AllStmts() {
+			if stmt.FunctionStmt() != nil {
+				v.Visit(stmt.FunctionStmt())
+			}
+		}
+		v.FirstPass = true
+		// print the symbol table
+		fmt.Println("----------------------------------------------------")
+		fmt.Println("Current scope or symbol table ->", v.getCurrentScope())
+		fmt.Println("Global scope or symbol table ->", v.symbolStack)
+		fmt.Println("----------------------------------------------------")
+	}
+
 	for _, stmt := range ctx.AllStmts() {
 
 		// evaluate if there is a transfer stmt in the stack
@@ -47,18 +63,39 @@ func (v *Visitor) VisitBlock(ctx *parser.BlockContext) interface{} {
 			}
 			// check if there is a continue in the loop
 			isContinue := v.GetLoopContext()
-			if isContinue.ContinueFound {
-				continue
+			if isContinue.TypeLoop == "while" {
+				if isContinue.ContinueFound {
+					continue
+				}
+			} else if isContinue.TypeLoop == "for" {
+				if isContinue.ContinueFound {
+					// reset the continue found
+					isContinue.ContinueFound = false
+					// reset the continue found
+					v.UpdateLoopContext(isContinue)
+					continue
+				}
 			}
 			// evalaute if the stmt is not a interface nil
 			v.Visit(stmt)
 
 		} else {
+			if v.IsReturn {
+				// change the return value
+				v.IsReturn = false
+				// pop the scope
+				v.popScope()
+				return nil
+			}
 			// evalaute if the stmt is not a interface nil
 			v.Visit(stmt)
 		}
 
 	}
+	fmt.Println("----------------------------------------------------")
+	fmt.Println("Current scope or symbol table ->", v.getCurrentScope())
+	fmt.Println("Global scope or symbol table ->", v.symbolStack)
+	fmt.Println("----------------------------------------------------")
 	// pop the scope
 	v.popScope()
 	return nil
@@ -93,14 +130,14 @@ func (v *Visitor) VisitStmts(ctx *parser.StmtsContext) interface{} {
 	}
 	// visit transfer
 	if ctx.TransferStmt() != nil {
-		fmt.Println("transfer")
 		return v.Visit(ctx.TransferStmt())
+	}
+	if ctx.CallFunctionStmt() != nil {
+		return v.Visit(ctx.CallFunctionStmt())
 	}
 
 	return nil
 }
-
-// VisitTransfer
 
 // visit embbededFunc
 func (v *Visitor) VisitEmbbededFunc(ctx *parser.EmbbededFuncContext) interface{} {

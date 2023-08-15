@@ -99,6 +99,14 @@ func (v *BaseSFGrammarVisitor) VisitGuardStmt(ctx *GuardStmtContext) interface{}
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseSFGrammarVisitor) VisitFunctionWithoutParams(ctx *FunctionWithoutParamsContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitCallFunctionWithoutParams(ctx *CallFunctionWithoutParamsContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseSFGrammarVisitor) VisitEmbbededFunc(ctx *EmbbededFuncContext) interface{} {
 	return v.VisitChildren(ctx)
 }
@@ -115,15 +123,7 @@ func (v *BaseSFGrammarVisitor) VisitStringExpr(ctx *StringExprContext) interface
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseSFGrammarVisitor) VisitArithmeticOperationExpr(ctx *ArithmeticOperationExprContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
 func (v *BaseSFGrammarVisitor) VisitNilExpr(ctx *NilExprContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseSFGrammarVisitor) VisitRelationalOperationExpr(ctx *RelationalOperationExprContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -139,11 +139,19 @@ func (v *BaseSFGrammarVisitor) VisitNegExpr(ctx *NegExprContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseSFGrammarVisitor) VisitDigitExpr(ctx *DigitExprContext) interface{} {
+func (v *BaseSFGrammarVisitor) VisitComparationOperationExpr(ctx *ComparationOperationExprContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseSFGrammarVisitor) VisitComparationOperationExpr(ctx *ComparationOperationExprContext) interface{} {
+func (v *BaseSFGrammarVisitor) VisitArithmeticOperationExpr(ctx *ArithmeticOperationExprContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitRelationalOperationExpr(ctx *RelationalOperationExprContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitDigitExpr(ctx *DigitExprContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -152,6 +160,10 @@ func (v *BaseSFGrammarVisitor) VisitNotExpr(ctx *NotExprContext) interface{} {
 }
 
 func (v *BaseSFGrammarVisitor) VisitParenExpr(ctx *ParenExprContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitCallFunctionExpr(ctx *CallFunctionExprContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

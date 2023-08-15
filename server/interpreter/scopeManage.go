@@ -1,7 +1,7 @@
 package interpreter
 
 import (
-	"fmt"
+	"server/parserInterpreter/interpreter/values"
 	"server/parserInterpreter/parser"
 )
 
@@ -11,6 +11,7 @@ type SymbolTable struct {
 	TypeVariable string // the type of the variable -> var or let
 	TypeData     string // the type of the data -> Int, Float, String, Boolean, Character
 	Value        interface{}
+	ListParams   []SymbolTable
 	Line         int
 	Column       int
 }
@@ -35,7 +36,11 @@ type Visitor struct {
 	Outputs     []string
 	Errors      []Error
 	// manage loop context
-	loopContexts []LoopContext
+	loopContexts    []LoopContext
+	ReturnValue     interface{}
+	IsReturn        bool
+	FirstPass       bool
+	FunctionContext []string
 }
 
 func (v *Visitor) pushScope() {
@@ -132,9 +137,53 @@ func (v *Visitor) VerifyVariableScope(varName string) bool {
 func (v *Visitor) VerifyVariableCurrentScope(varName string) bool {
 
 	scope := v.symbolStack[len(v.symbolStack)-1]
-	fmt.Println("Current scope ->", scope)
-	if _, ok := scope[varName]; ok {
-		return true
+	// fmt.Println("Current scope ->", scope)
+	if variable, ok := scope[varName]; ok {
+		// evaluate if the variable is not a function
+		return variable.TypeSymbol == values.Type_Variable
+
 	}
 	return false
+}
+
+// VerifyFunctionScope verify if the function is already declared in the current scope
+func (v *Visitor) VerifyFunctionScope(varName string) bool {
+
+	scope := v.symbolStack[len(v.symbolStack)-1]
+	if variable, ok := scope[varName]; ok {
+		// evaluate if the variable is a function
+		return variable.TypeSymbol == values.Type_Function
+
+	}
+	return false
+}
+
+// GetFunction from the scope
+func (v *Visitor) GetFunction(varName string) (SymbolTable, bool) {
+	for i := len(v.symbolStack) - 1; i >= 0; i-- {
+		scope := v.symbolStack[i]
+		if val, ok := scope[varName]; ok {
+			if val.TypeSymbol == values.Type_Function {
+				return val, true
+			}
+		}
+	}
+	return SymbolTable{}, false
+}
+
+// ExistsFunctionContext check if a function context exists
+func (v *Visitor) ExistsFunctionContext() bool {
+	return len(v.FunctionContext) > 0
+}
+
+// PushFunctionContext push a function context
+func (v *Visitor) PushFunctionContext(functionContext string) {
+	v.FunctionContext = append(v.FunctionContext, functionContext)
+}
+
+// PopFunctionContext pop a function context
+func (v *Visitor) PopFunctionContext() {
+	if len(v.FunctionContext) > 0 {
+		v.FunctionContext = v.FunctionContext[:len(v.FunctionContext)-1]
+	}
 }

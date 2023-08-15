@@ -60,3 +60,12 @@ Transfer Sentences
 1. Break statement ✅
 2. Continue statement ✅
 3. Return statement 
+
+Functions 
+--------------------------------
+1. Function declaration without params ✅
+2. Function call without params ✅
+3. Function declaration with params 
+4. Function call with params
+
+3. Test Return 

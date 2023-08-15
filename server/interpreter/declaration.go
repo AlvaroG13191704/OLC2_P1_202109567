@@ -49,7 +49,7 @@ func (v *Visitor) VisitTypeValueDeclaration(ctx *parser.TypeValueDeclarationCont
 	// add the variable to the scope
 	v.getCurrentScope()[varId] = SymbolTable{
 		Id:           varId,
-		TypeSymbol:   "Variable",
+		TypeSymbol:   values.Type_Variable,
 		TypeVariable: varType,
 		TypeData:     varTypeValue,
 		Value:        varValue,
@@ -58,8 +58,8 @@ func (v *Visitor) VisitTypeValueDeclaration(ctx *parser.TypeValueDeclarationCont
 	}
 
 	// print the symbol table
-	fmt.Println("Current scope or symbol table ->", v.getCurrentScope())
-	fmt.Println("Global scope or symbol table ->", v.symbolStack)
+	// fmt.Println("Current scope or symbol table ->", v.getCurrentScope())
+	// fmt.Println("Global scope or symbol table ->", v.symbolStack)
 
 	return nil
 }
@@ -96,7 +96,7 @@ func (v *Visitor) VisitTypeOptionalValueDeclaration(ctx *parser.TypeOptionalValu
 		// add the variable to the scope
 		v.getCurrentScope()[varId] = SymbolTable{
 			Id:           varId,
-			TypeSymbol:   "Variable",
+			TypeSymbol:   values.Type_Variable,
 			TypeVariable: varType,
 			TypeData:     varTypeValue,
 			Value:        varValue,
@@ -119,8 +119,8 @@ func (v *Visitor) VisitTypeOptionalValueDeclaration(ctx *parser.TypeOptionalValu
 	}
 
 	// print the symbol table
-	fmt.Println("Current scope or symbol table ->", v.getCurrentScope())
-	fmt.Println("Global scope or symbol table ->", v.symbolStack)
+	// fmt.Println("Current scope or symbol table ->", v.getCurrentScope())
+	// fmt.Println("Global scope or symbol table ->", v.symbolStack)
 
 	return nil
 }
@@ -153,7 +153,7 @@ func (v *Visitor) VisitValueDeclaration(ctx *parser.ValueDeclarationContext) int
 	// add the variable to the scope
 	v.getCurrentScope()[varId] = SymbolTable{
 		Id:           varId,
-		TypeSymbol:   "Variable",
+		TypeSymbol:   values.Type_Variable,
 		TypeVariable: varType,
 		TypeData:     varTypeValue,
 		Value:        varValue,
@@ -162,8 +162,8 @@ func (v *Visitor) VisitValueDeclaration(ctx *parser.ValueDeclarationContext) int
 	}
 
 	// print the symbol table
-	fmt.Println("Current scope or symbol table ->", v.getCurrentScope())
-	fmt.Println("Global scope or symbol table ->", v.symbolStack)
+	// fmt.Println("Current scope or symbol table ->", v.getCurrentScope())
+	// fmt.Println("Global scope or symbol table ->", v.symbolStack)
 
 	return nil
 

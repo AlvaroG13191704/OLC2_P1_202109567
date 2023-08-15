@@ -19,6 +19,8 @@ CONTINUE: 'continue';
 RETURN: 'return';
 WHILE: 'while';
 FOR: 'for';
+FUNC: 'func';
+ARROW_FUNCTION: '->';
 IN: 'in';
 DOT: '.';
 GUARD: 'guard';

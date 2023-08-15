@@ -9,6 +9,12 @@ const (
 	NilType     = "nil"
 )
 
+const (
+	// Types
+	Type_Variable = "variable"
+	Type_Function = "function"
+)
+
 type PRIMITIVE interface {
 	GetValue() interface{}
 	GetType() string

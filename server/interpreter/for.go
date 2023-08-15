@@ -47,10 +47,6 @@ func (v *Visitor) VisitForRangeExpr(ctx *parser.ForRangeExprContext) interface{}
 
 	for i := leftValue.GetValue().(int64); i <= rightValue.GetValue().(int64); i++ {
 
-		// check if there is a break in the loop
-		if isBreak := v.GetLoopContext().BreakFound; isBreak {
-			break
-		}
 		// assign the value to the loopVarName
 		v.AssignVariable(loopVarName, SymbolTable{
 			Id:           loopVarName,
@@ -130,11 +126,6 @@ func (v *Visitor) VisitForExpr(ctx *parser.ForExprContext) interface{} {
 			Line:   ctx.GetStart().GetLine(),
 			Column: ctx.GetStart().GetColumn(),
 		})
-
-		// check if there is a break in the loop
-		if isBreak := v.GetLoopContext().BreakFound; isBreak {
-			break
-		}
 
 		// execute the statements
 		v.Visit(ctx.Block())

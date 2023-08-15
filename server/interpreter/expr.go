@@ -10,7 +10,8 @@ import (
 // visit idexpr
 func (v *Visitor) VisitIdExpr(ctx *parser.IdExprContext) interface{} {
 	id := ctx.GetText() // get the id
-	fmt.Println("Id -> ", id)
+	// fmt.Println("Id -> ", id)
+
 	// verify if the id is in the scope or others
 	variable, ok := v.VerifyScope(id)
 	if ok {
