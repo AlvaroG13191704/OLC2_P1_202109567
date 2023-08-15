@@ -16,8 +16,14 @@ type SFGrammarVisitor interface {
 	// Visit a parse tree produced by SFGrammarParser#stmts.
 	VisitStmts(ctx *StmtsContext) interface{}
 
-	// Visit a parse tree produced by SFGrammarParser#printstmt.
-	VisitPrintstmt(ctx *PrintstmtContext) interface{}
+	// Visit a parse tree produced by SFGrammarParser#BreakStmt.
+	VisitBreakStmt(ctx *BreakStmtContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#ContinueStmt.
+	VisitContinueStmt(ctx *ContinueStmtContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#ReturnStmt.
+	VisitReturnStmt(ctx *ReturnStmtContext) interface{}
 
 	// Visit a parse tree produced by SFGrammarParser#TypeValueDeclaration.
 	VisitTypeValueDeclaration(ctx *TypeValueDeclarationContext) interface{}
@@ -67,8 +73,14 @@ type SFGrammarVisitor interface {
 	// Visit a parse tree produced by SFGrammarParser#forRange.
 	VisitForRange(ctx *ForRangeContext) interface{}
 
+	// Visit a parse tree produced by SFGrammarParser#guardStmt.
+	VisitGuardStmt(ctx *GuardStmtContext) interface{}
+
 	// Visit a parse tree produced by SFGrammarParser#embbededFunc.
 	VisitEmbbededFunc(ctx *EmbbededFuncContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#printstmt.
+	VisitPrintstmt(ctx *PrintstmtContext) interface{}
 
 	// Visit a parse tree produced by SFGrammarParser#exprList.
 	VisitExprList(ctx *ExprListContext) interface{}

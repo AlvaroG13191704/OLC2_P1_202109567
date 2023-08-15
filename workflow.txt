@@ -49,14 +49,14 @@
 
 Cntrol Sentences
 --------------------------------
-1. If statement ✅
-2. Switch statement ✅
-3. While statement ✅
-4. For statement ⏸️ -> pending work with arrays
-5. Guard statement 
+1. If statement ✅ -> pending work with continue and return
+2. Switch statement ✅ -> break done
+3. While statement ✅ -> pending work with break, continue and return
+4. For statement ✅ -> pending work with arrays
+5. Guard statement ✅ -> pending work with break, continue and return [add error if any transfer sentence is found]
 
 Transfer Sentences
 --------------------------------
-1. Break statement 
-2. Continue statement
+1. Break statement ✅
+2. Continue statement ✅
 3. Return statement 

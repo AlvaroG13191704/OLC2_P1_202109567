@@ -1,6 +1,7 @@
 package interpreter
 
 import (
+	"fmt"
 	"log"
 	"server/parserInterpreter/parser"
 
@@ -37,8 +38,26 @@ func (v *Visitor) VisitBlock(ctx *parser.BlockContext) interface{} {
 	// push the scope
 	v.pushScope()
 	for _, stmt := range ctx.AllStmts() {
-		// evalaute if the stmt is not a interface nil
-		v.Visit(stmt)
+
+		// evaluate if there is a transfer stmt in the stack
+		if v.ExistsLoopContext() {
+			// check if there is a break in the loop
+			if isBreak := v.GetLoopContext().BreakFound; isBreak {
+				break
+			}
+			// check if there is a continue in the loop
+			isContinue := v.GetLoopContext()
+			if isContinue.ContinueFound {
+				continue
+			}
+			// evalaute if the stmt is not a interface nil
+			v.Visit(stmt)
+
+		} else {
+			// evalaute if the stmt is not a interface nil
+			v.Visit(stmt)
+		}
+
 	}
 	// pop the scope
 	v.popScope()
@@ -60,6 +79,9 @@ func (v *Visitor) VisitStmts(ctx *parser.StmtsContext) interface{} {
 	if ctx.Ifstmt() != nil {
 		return v.Visit(ctx.Ifstmt())
 	}
+	if ctx.GuardStmt() != nil {
+		return v.Visit(ctx.GuardStmt())
+	}
 	if ctx.SwitchStmt() != nil {
 		return v.Visit(ctx.SwitchStmt())
 	}
@@ -69,9 +91,16 @@ func (v *Visitor) VisitStmts(ctx *parser.StmtsContext) interface{} {
 	if ctx.ForStmt() != nil {
 		return v.Visit(ctx.ForStmt())
 	}
+	// visit transfer
+	if ctx.TransferStmt() != nil {
+		fmt.Println("transfer")
+		return v.Visit(ctx.TransferStmt())
+	}
 
 	return nil
 }
+
+// VisitTransfer
 
 // visit embbededFunc
 func (v *Visitor) VisitEmbbededFunc(ctx *parser.EmbbededFuncContext) interface{} {

@@ -19,7 +19,15 @@ func (v *BaseSFGrammarVisitor) VisitStmts(ctx *StmtsContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseSFGrammarVisitor) VisitPrintstmt(ctx *PrintstmtContext) interface{} {
+func (v *BaseSFGrammarVisitor) VisitBreakStmt(ctx *BreakStmtContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitContinueStmt(ctx *ContinueStmtContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitReturnStmt(ctx *ReturnStmtContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -87,7 +95,15 @@ func (v *BaseSFGrammarVisitor) VisitForRange(ctx *ForRangeContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseSFGrammarVisitor) VisitGuardStmt(ctx *GuardStmtContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseSFGrammarVisitor) VisitEmbbededFunc(ctx *EmbbededFuncContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitPrintstmt(ctx *PrintstmtContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

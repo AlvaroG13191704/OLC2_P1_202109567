@@ -22,12 +22,20 @@ type Error struct {
 	Type   string
 }
 
+type LoopContext struct {
+	TypeLoop      string
+	ContinueFound bool
+	BreakFound    bool
+}
+
 // create the visitor struct based on the SymbolTable struct
 type Visitor struct {
 	parser.BaseSFGrammarVisitor
 	symbolStack []map[string]SymbolTable
 	Outputs     []string
 	Errors      []Error
+	// manage loop context
+	loopContexts []LoopContext
 }
 
 func (v *Visitor) pushScope() {
@@ -38,6 +46,34 @@ func (v *Visitor) popScope() {
 	if len(v.symbolStack) > 1 {
 		v.symbolStack = v.symbolStack[:len(v.symbolStack)-1]
 	}
+}
+
+// PushLoopContext push a loop context
+func (v *Visitor) PushLoopContext(typeLoop string) {
+	v.loopContexts = append(v.loopContexts, LoopContext{TypeLoop: typeLoop, ContinueFound: false, BreakFound: false})
+}
+
+// PopLoopContext pop a loop context
+func (v *Visitor) PopLoopContext() {
+	if len(v.loopContexts) > 0 {
+		v.loopContexts = v.loopContexts[:len(v.loopContexts)-1]
+	}
+}
+
+// ExistsLoopContext check if a loop context exists
+func (v *Visitor) ExistsLoopContext() bool {
+	return len(v.loopContexts) > 0
+}
+
+// update the current loop context
+func (v *Visitor) UpdateLoopContext(ctx LoopContext) {
+	v.loopContexts[len(v.loopContexts)-1] = ctx
+}
+
+// GetLoopContext get the current loop context
+func (v *Visitor) GetLoopContext() LoopContext {
+
+	return v.loopContexts[len(v.loopContexts)-1]
 }
 
 // AssignVariable assign a variable to the current scope -> works for loops

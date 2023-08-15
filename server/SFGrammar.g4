@@ -15,13 +15,14 @@ stmts: declaration (SEMICOLON)?
      | switchStmt
      | whileStmt
      | forStmt
-     | BREAK (SEMICOLON)?
-     | CONTINUE (SEMICOLON)?
-     | RETURN (expr)? (SEMICOLON)?
+     | guardStmt
+     | transferStmt
      ;
 
-
-printstmt: PRINT LPAREN exprList RPAREN ;
+transferStmt: BREAK (SEMICOLON)?          #BreakStmt
+            | CONTINUE (SEMICOLON)?       #ContinueStmt
+            | RETURN (expr)? (SEMICOLON)? #ReturnStmt
+            ;
 
 
 declaration: type_declaration  ID_PRIMITIVE COLON type IS_ expr          #TypeValueDeclaration // var value: String = "Hola"
@@ -60,7 +61,14 @@ forStmt :FOR ID_PRIMITIVE IN forRange LBRACE block RBRACE #ForRangeExpr
 
 forRange: left=expr DOT DOT DOT right=expr ;
 
+
+// guard
+guardStmt : GUARD expr ELSE LBRACE block RBRACE ;
+
+// Embedded functions
 embbededFunc: printstmt  ;
+
+printstmt: PRINT LPAREN exprList RPAREN ;
 
 exprList : expr (COMMA expr)* ;
 

@@ -1,12 +1,17 @@
 package interpreter
 
 import (
+	"fmt"
 	"log"
 	"server/parserInterpreter/interpreter/values"
 	"server/parserInterpreter/parser"
 )
 
 func (v *Visitor) VisitForRangeExpr(ctx *parser.ForRangeExprContext) interface{} {
+	// push a loop to the loop context
+	v.PushLoopContext("for")
+	defer v.PopLoopContext() // pop the loop context after the execution
+
 	// get the loopVarName
 	loopVarName := ctx.ID_PRIMITIVE().GetText()
 	// get the range
@@ -41,6 +46,11 @@ func (v *Visitor) VisitForRangeExpr(ctx *parser.ForRangeExprContext) interface{}
 	})
 
 	for i := leftValue.GetValue().(int64); i <= rightValue.GetValue().(int64); i++ {
+
+		// check if there is a break in the loop
+		if isBreak := v.GetLoopContext().BreakFound; isBreak {
+			break
+		}
 		// assign the value to the loopVarName
 		v.AssignVariable(loopVarName, SymbolTable{
 			Id:           loopVarName,
@@ -61,11 +71,16 @@ func (v *Visitor) VisitForRangeExpr(ctx *parser.ForRangeExprContext) interface{}
 	// delete the variable from the scope
 	v.DeleteVariable(loopVarName)
 
+	// print loop context
+	fmt.Println(v.loopContexts)
+
 	return nil
 }
 
 // VisitForExpr visit forExpr
 func (v *Visitor) VisitForExpr(ctx *parser.ForExprContext) interface{} {
+	v.PushLoopContext("for")
+	defer v.PopLoopContext() // pop the loop context after the execution
 	// get the loopVarName
 	loopVarName := ctx.ID_PRIMITIVE().GetText()
 	// get the expr
@@ -102,6 +117,7 @@ func (v *Visitor) VisitForExpr(ctx *parser.ForExprContext) interface{} {
 
 	// loop the string
 	for _, char := range str {
+
 		// assign the value to the loopVarName
 		v.AssignVariable(loopVarName, SymbolTable{
 			Id:           loopVarName,
@@ -114,6 +130,12 @@ func (v *Visitor) VisitForExpr(ctx *parser.ForExprContext) interface{} {
 			Line:   ctx.GetStart().GetLine(),
 			Column: ctx.GetStart().GetColumn(),
 		})
+
+		// check if there is a break in the loop
+		if isBreak := v.GetLoopContext().BreakFound; isBreak {
+			break
+		}
+
 		// execute the statements
 		v.Visit(ctx.Block())
 

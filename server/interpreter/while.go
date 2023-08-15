@@ -1,12 +1,18 @@
 package interpreter
 
 import (
+	"fmt"
 	"log"
 	"server/parserInterpreter/interpreter/values"
 	"server/parserInterpreter/parser"
 )
 
 func (v *Visitor) VisitWhileStmt(ctx *parser.WhileStmtContext) interface{} {
+
+	// push a loop to the loop context
+	v.PushLoopContext("while")
+	defer v.PopLoopContext() // pop the loop context after the execution
+
 	// get the condition
 	conditionExpr := v.Visit(ctx.Expr()).(values.PRIMITIVE)
 	// verify if the condition is a Bool
@@ -24,8 +30,24 @@ func (v *Visitor) VisitWhileStmt(ctx *parser.WhileStmtContext) interface{} {
 
 	// evaluate the condition
 	for conditionExpr.GetValue().(bool) {
+		// check if there is a continue in the loop
+		isContinue := v.GetLoopContext()
+		if isContinue.ContinueFound {
+			// reset the continue found
+			isContinue.ContinueFound = false
+			// reset the continue found
+			v.UpdateLoopContext(isContinue)
+			continue
+		}
+
+		// check if there is a break in the loop
+		if isBreak := v.GetLoopContext().BreakFound; isBreak {
+			break
+		}
+
 		// return the block
 		v.Visit(ctx.Block())
+
 		// get the condition
 		conditionExpr = v.Visit(ctx.Expr()).(values.PRIMITIVE)
 		// verify if the condition is a Bool
@@ -42,6 +64,9 @@ func (v *Visitor) VisitWhileStmt(ctx *parser.WhileStmtContext) interface{} {
 		}
 
 	}
+
+	// print loop context
+	fmt.Println("loop context -> ", v.loopContexts)
 
 	return nil
 }

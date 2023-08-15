@@ -34,6 +34,10 @@ func (v *Visitor) VisitComparationOperationExpr(ctx *parser.ComparationOperation
 
 			return &values.Boolean{Value: leftValue.GetValue().(bool) == rightValue.GetValue().(bool)}
 
+		} else if leftValue.GetType() == values.CharType && rightValue.GetType() == values.CharType { // Char == Char
+
+			return &values.Boolean{Value: leftValue.GetValue().(string) == rightValue.GetValue().(string)}
+
 		} else {
 			// error
 			log.Printf("Error: Invalid operation between '==' '%s' and '%s' \n", leftValue.GetType(), rightValue.GetType())
@@ -62,6 +66,9 @@ func (v *Visitor) VisitComparationOperationExpr(ctx *parser.ComparationOperation
 
 			return &values.Boolean{Value: leftValue.GetValue().(bool) != rightValue.GetValue().(bool)}
 
+		} else if leftValue.GetType() == values.CharType && rightValue.GetType() == values.CharType { // Char != Char
+
+			return &values.Boolean{Value: leftValue.GetValue().(string) != rightValue.GetValue().(string)}
 		} else {
 			// error
 			log.Printf("Error: Invalid operation between '!=' '%s' and '%s' \n", leftValue.GetType(), rightValue.GetType())
