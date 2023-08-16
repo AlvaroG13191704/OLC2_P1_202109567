@@ -208,7 +208,7 @@ func resta(_ x : Int, _ y: Int) -> Int {
 // Nombres internos: x, y
 func mul(x: Int, y: Int) -> Int {
     let res = x * y
-    // return x * y
+    return x * y
 }
 
 // func duplicar(_ x: inout Int){
@@ -262,3 +262,57 @@ func ackerman(_ m: Int, _ n: Int) -> Int {
 
 print("Debería ser 125")
 print(ackerman(3,4))
+
+
+
+
+func factorial(_ n: Int) -> Int {
+    if n <= 1 {
+        return 1
+    }
+    return n * factorial(n - 1)
+}
+
+let number = 5
+let result = factorial(number)
+
+print("factorial of ->", number, "is: ", result)
+
+func Hanoi(_ discos: Int, _ origen: Int, _ auxiliar: Int, _ destino: Int) {
+    if discos == 1 {
+        print("Mover disco de", origen, "a", destino)
+    } else {
+        Hanoi(discos - 1, origen, destino, auxiliar)
+        print("Mover disco de", origen, "a", destino)
+        Hanoi(discos - 1, auxiliar, origen, destino)
+    }
+}
+
+print("Hanoi")
+Hanoi(3, 1, 2, 3)
+
+
+let n = 0
+
+if n > 1 {
+    print("es mayor a 1")
+} else if n == 1 {
+    print("es igual a 1")
+} else if n == 0 {
+    print("es igual a 0")
+} else {
+    print("error")
+}
+
+func fibonacci(_ n: Int) -> Int {
+    if n > 1 {
+        return fibonacci(n - 1) + fibonacci(n - 2)
+    } else if n == 1 {
+        return 1
+    } else  {
+        return 0
+    } 
+}
+
+print("Debería ser 55")
+print(fibonacci(10)) 

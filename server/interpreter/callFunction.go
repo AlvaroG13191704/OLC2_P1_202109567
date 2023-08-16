@@ -65,6 +65,8 @@ func (v *Visitor) VisitCallFunctionWithoutParams(ctx *parser.CallFunctionWithout
 func (v *Visitor) VisitCallFunctionExpr(ctx *parser.CallFunctionExprContext) interface{} {
 	v.Visit(ctx.CallFunctionStmt())
 	// visit the expression
+	// change the return value
+	v.IsReturn = false
 	fmt.Println("VisitCallFunctionExpr", v.ReturnValue)
 
 	return v.ReturnValue
@@ -92,20 +94,6 @@ func (v *Visitor) VisitCallFunctionWithParamsEI(ctx *parser.CallFunctionWithPara
 		return nil
 	}
 
-	// verifiy if the return value type is the same as the function return type
-	if function.TypeVariable == "void" {
-		// add error
-		v.Errors = append(v.Errors, Error{
-			Line:   ctx.GetStart().GetLine(),
-			Column: ctx.GetStart().GetColumn(),
-			Msg:    fmt.Sprintf("function '%s' is void", functionName),
-			Type:   "Semantic",
-		})
-		log.Printf("function '%s' is void", functionName)
-		return nil
-	}
-
-	// fmt.Println("function", function)
 	// get list params
 	listParams := function.ListParams.(map[string][]SymbolTable)
 	// get list of arguments
@@ -113,6 +101,7 @@ func (v *Visitor) VisitCallFunctionWithParamsEI(ctx *parser.CallFunctionWithPara
 
 	// if both list has external and internal keys then validate
 	if listParams["external"] != nil && listArguments.(map[string][]SymbolTable)["external"] != nil && listParams["internal"] != nil && listArguments.(map[string][]SymbolTable)["internal"] != nil {
+		fmt.Println("params with external and internal")
 		fmt.Println("listParams ->", listParams)
 		fmt.Println("listArguments ->", listArguments)
 		// validate external params with external arguments
@@ -172,35 +161,9 @@ func (v *Visitor) VisitCallFunctionWithParamsEI(ctx *parser.CallFunctionWithPara
 			listParams["internal"][i] = param
 		}
 
-		// create the internal values
-		v.pushScope()
-		// defer v.popScope()
-		for _, param := range listParams["internal"] {
-			v.getCurrentScope()[param.Id] = param
-		}
-
-		// // execute the function
-		v.Visit(function.Value.(*parser.BlockContext))
-		// fmt.Println("----------------------------------------------------")
-		// fmt.Println("Current scope or symbol table ->", v.getCurrentScope())
-		// fmt.Println("Global scope or symbol table ->", v.symbolStack)
-		// fmt.Println("----------------------------------------------------")
-		// evaluate if the return type is the same as the function return type
-		if function.TypeVariable != v.ReturnValue.(values.PRIMITIVE).GetType() {
-			// add error
-			v.Errors = append(v.Errors, Error{
-				Line:   ctx.GetStart().GetLine(),
-				Column: ctx.GetStart().GetColumn(),
-				Msg:    fmt.Sprintf("function %s return type is %s, expected %s", functionName, function.TypeVariable, v.ReturnValue.(values.PRIMITIVE).GetType()),
-				Type:   "Semantic",
-			})
-			log.Printf("function %s return type is %s, expected %s", functionName, function.TypeVariable, v.ReturnValue.(values.PRIMITIVE).GetType())
-			return nil
-		}
-
 	} else if listParams["internal"] != nil && listArguments.(map[string][]SymbolTable)["internal"] != nil {
-		fmt.Println("listParams ->", listParams)
-		fmt.Println("listArguments ->", listArguments)
+		fmt.Println("params with only internal, not external")
+
 		// validate internal params with internal arguments
 		if len(listParams["internal"]) != len(listArguments.(map[string][]SymbolTable)["internal"]) {
 			// add error
@@ -238,51 +201,28 @@ func (v *Visitor) VisitCallFunctionWithParamsEI(ctx *parser.CallFunctionWithPara
 			// asign the symbol table to the internal params
 			listParams["internal"][i] = param
 		}
+		fmt.Println("listParams ->", listParams)
+		fmt.Println("listArguments ->", listArguments)
 
-		// create the internal values
-		v.pushScope()
-		// defer v.popScope()
-		for _, param := range listParams["internal"] {
-			v.getCurrentScope()[param.Id] = param
-		}
-
-		// // execute the function
-		v.Visit(function.Value.(*parser.BlockContext))
-		// fmt.Println("----------------------------------------------------")
-		// fmt.Println("Current scope or symbol table ->", v.getCurrentScope())
-		// fmt.Println("Global scope or symbol table ->", v.symbolStack)
-		// fmt.Println("----------------------------------------------------")
-		// evaluate if the return type is the same as the function return type
-		if function.TypeVariable != v.ReturnValue.(values.PRIMITIVE).GetType() {
-			// add error
-			v.Errors = append(v.Errors, Error{
-				Line:   ctx.GetStart().GetLine(),
-				Column: ctx.GetStart().GetColumn(),
-				Msg:    fmt.Sprintf("function %s return type is %s, expected %s", functionName, function.TypeVariable, v.ReturnValue.(values.PRIMITIVE).GetType()),
-				Type:   "Semantic",
-			})
-			log.Printf("function %s return type is %s, expected %s", functionName, function.TypeVariable, v.ReturnValue.(values.PRIMITIVE).GetType())
-			return nil
-		}
-
-	} else if listParams["EI"] != nil && listArguments.(map[string][]SymbolTable)["external"] != nil {
+	} else if listParams["internal"] != nil && listArguments.(map[string][]SymbolTable)["external"] != nil {
+		fmt.Println("params with both internal and external, same name")
 		fmt.Println("listParams ->", listParams)
 		fmt.Println("listArguments ->", listArguments)
 		// validate external params with external arguments
-		if len(listParams["EI"]) != len(listArguments.(map[string][]SymbolTable)["external"]) {
+		if len(listParams["internal"]) != len(listArguments.(map[string][]SymbolTable)["external"]) {
 			// add error
 			v.Errors = append(v.Errors, Error{
 				Line:   ctx.GetStart().GetLine(),
 				Column: ctx.GetStart().GetColumn(),
-				Msg:    fmt.Sprintf("function %s expected %d arguments, got %d", functionName, len(listParams["EI"]), len(listArguments.(map[string][]SymbolTable)["external"])),
+				Msg:    fmt.Sprintf("function %s expected %d arguments, got %d", functionName, len(listParams["internal"]), len(listArguments.(map[string][]SymbolTable)["external"])),
 				Type:   "Semantic",
 			})
-			log.Printf("function %s expected %d arguments, got %d", functionName, len(listParams["EI"]), len(listArguments.(map[string][]SymbolTable)["external"]))
+			log.Printf("function %s expected %d arguments, got %d", functionName, len(listParams["internal"]), len(listArguments.(map[string][]SymbolTable)["external"]))
 			return nil
 		}
 
 		// evaluate if the values are the same type in external params and external arguments
-		for i, param := range listParams["EI"] {
+		for i, param := range listParams["internal"] {
 			// get the value of the expression
 			value := listArguments.(map[string][]SymbolTable)["external"][i].Value.(values.PRIMITIVE)
 
@@ -301,7 +241,7 @@ func (v *Visitor) VisitCallFunctionWithParamsEI(ctx *parser.CallFunctionWithPara
 		}
 
 		// asign the values to the internal params
-		for i, param := range listParams["EI"] {
+		for i, param := range listParams["internal"] {
 			// get the value of the expression
 			value := listArguments.(map[string][]SymbolTable)["external"][i].Value.(values.PRIMITIVE)
 
@@ -323,39 +263,24 @@ func (v *Visitor) VisitCallFunctionWithParamsEI(ctx *parser.CallFunctionWithPara
 			param.Value = value
 
 			// asign the symbol table to the internal params
-			listParams["EI"][i] = param
+			listParams["internal"][i] = param
 
 		}
-
-		// create the internal values
-		v.pushScope()
-		// defer v.popScope()
-		for _, param := range listParams["EI"] {
-			v.getCurrentScope()[param.Id] = param
-		}
-
-		// // execute the function
-		v.Visit(function.Value.(*parser.BlockContext))
-		// fmt.Println("----------------------------------------------------")
-		// fmt.Println("Current scope or symbol table ->", v.getCurrentScope())
-		// fmt.Println("Global scope or symbol table ->", v.symbolStack)
-		// fmt.Println("----------------------------------------------------")
-
-		// evaluate if the return type is the same as the function return type
-		if function.TypeVariable != v.ReturnValue.(values.PRIMITIVE).GetType() {
-			// add error
-			v.Errors = append(v.Errors, Error{
-				Line: ctx.GetStart().GetLine(),
-				Column: ctx.GetStart().
-					GetColumn(),
-				Msg:  fmt.Sprintf("function %s return type is %s, expected %s", functionName, function.TypeVariable, v.ReturnValue.(values.PRIMITIVE).GetType()),
-				Type: "Semantic",
-			})
-			log.Printf("function %s return type is %s, expected %s", functionName, function.TypeVariable, v.ReturnValue.(values.PRIMITIVE).GetType())
-			return nil
-		}
-
 	}
+
+	// // execute the function
+	v.pushScope()
+	defer v.popScope()
+	for _, param := range listParams["internal"] {
+		v.getCurrentScope()[param.Id] = param
+	}
+	// create the internal values
+	v.Visit(function.Value.(*parser.BlockContext))
+	fmt.Println("function context -> ", v.FunctionContext)
+	// fmt.Println("----------------------------------------------------")
+	// fmt.Println("Current scope or symbol table ->", v.getCurrentScope())
+	// fmt.Println("Global scope or symbol table ->", v.symbolStack)
+	// fmt.Println("----------------------------------------------------")
 
 	return nil
 }

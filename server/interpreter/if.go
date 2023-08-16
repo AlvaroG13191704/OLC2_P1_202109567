@@ -56,10 +56,9 @@ func (v *Visitor) VisitIfElseStmt(ctx *parser.IfElseStmtContext) interface{} {
 	if conditionExpr.GetValue().(bool) {
 		// return the block
 		return v.Visit(ctx.Block())
-
 	} else {
 		// return the else block
-		return v.Visit(ctx.Ifstmt().(*parser.IfStmtContext))
+		return v.Visit(&ctx.IfstmtContext)
 	}
 
 }

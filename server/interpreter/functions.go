@@ -203,7 +203,7 @@ func (v *Visitor) VisitListFunctionParamsBEI(ctx *parser.ListFunctionParamsBEICo
 	params := make(map[string][]SymbolTable)
 
 	// create two keys, external and internal
-	params["EI"] = []SymbolTable{}
+	params["internal"] = []SymbolTable{}
 
 	listIds := ctx.AllID_PRIMITIVE()
 	listTypes := ctx.AllType_()
@@ -224,7 +224,7 @@ func (v *Visitor) VisitListFunctionParamsBEI(ctx *parser.ListFunctionParamsBEICo
 			Column:       ctx.GetStart().GetColumn(),
 		}
 		// comes external then internal
-		params["EI"] = append(params["EI"], symbol)
+		params["internal"] = append(params["internal"], symbol)
 
 	}
 

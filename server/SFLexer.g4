@@ -31,11 +31,12 @@ NIL: 'nil';
 DECLARATION_VAR: 'var';
 DECLARATION_LET: 'let';
 REFERENCE: '&';
+REFERENCE_PARAM: 'inout';
 NOT_PARAM: '_';
 
 // RE
 DIGIT_PRIMITIVE: [0-9]+ ('.'[0-9]+)?;
-STRING_PRIMITIVE: '"'~["]*'"'; // : '"' (~["\r\n] | '""')* '"' ;
+STRING_PRIMITIVE: '"' ( '\\' [nrt"\\] | ~[\n\r"])* '"'; // : '"' (~["\r\n] | '""')* '"' ;   '"'~["]*'"'
 ID_PRIMITIVE: ([a-zA-Z_])[a-zA-Z0-9_]*;
 
 // -- Symbols

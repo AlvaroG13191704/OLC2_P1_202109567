@@ -1,6 +1,7 @@
 package interpreter
 
 import (
+	"fmt"
 	"log"
 	"server/parserInterpreter/interpreter/values"
 	"server/parserInterpreter/parser"
@@ -8,7 +9,7 @@ import (
 
 func (v *Visitor) VisitReturnStmt(ctx *parser.ReturnStmtContext) interface{} {
 	// evaluate if the expression is not null
-
+	fmt.Println("RETURN STMT")
 	// evaluate if the return is inside a function
 	if !v.ExistsFunctionContext() {
 		v.Errors = append(v.Errors, Error{
