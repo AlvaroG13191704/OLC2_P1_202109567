@@ -30,6 +30,8 @@ FAL: 'false';
 NIL: 'nil';
 DECLARATION_VAR: 'var';
 DECLARATION_LET: 'let';
+REFERENCE: '&';
+NOT_PARAM: '_';
 
 // RE
 DIGIT_PRIMITIVE: [0-9]+ ('.'[0-9]+)?;

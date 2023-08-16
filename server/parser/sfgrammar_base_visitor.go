@@ -103,7 +103,35 @@ func (v *BaseSFGrammarVisitor) VisitFunctionWithoutParams(ctx *FunctionWithoutPa
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseSFGrammarVisitor) VisitFunctionWithParams(ctx *FunctionWithParamsContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitListFunctionParamsEI(ctx *ListFunctionParamsEIContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitListFunctionParamsNEI(ctx *ListFunctionParamsNEIContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitListFunctionParamsBEI(ctx *ListFunctionParamsBEIContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseSFGrammarVisitor) VisitCallFunctionWithoutParams(ctx *CallFunctionWithoutParamsContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitCallFunctionWithParamsEI(ctx *CallFunctionWithParamsEIContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitListCallFunctionStmtEI(ctx *ListCallFunctionStmtEIContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitListCallFunctionStmtNEI(ctx *ListCallFunctionStmtNEIContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

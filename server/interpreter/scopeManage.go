@@ -11,7 +11,7 @@ type SymbolTable struct {
 	TypeVariable string // the type of the variable -> var or let
 	TypeData     string // the type of the data -> Int, Float, String, Boolean, Character
 	Value        interface{}
-	ListParams   []SymbolTable
+	ListParams   interface{}
 	Line         int
 	Column       int
 }

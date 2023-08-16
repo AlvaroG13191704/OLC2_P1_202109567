@@ -68,12 +68,22 @@ forRange: left=expr DOT DOT DOT right=expr ;
 guardStmt : GUARD expr ELSE LBRACE block RBRACE ;
 
 // functions
-functionStmt:FUNC ID_PRIMITIVE LPAREN  RPAREN (ARROW_FUNCTION type)? LBRACE block RBRACE  #FunctionWithoutParams
-            // |FUNC ID_PRIMITIVE LPAREN  RPAREN ARROW_FUNCTION type LBRACE block RBRACE     #FunctionWithParams
+functionStmt:FUNC ID_PRIMITIVE LPAREN  RPAREN (ARROW_FUNCTION type)? LBRACE block RBRACE                        #FunctionWithoutParams
+            |FUNC ID_PRIMITIVE LPAREN listFunctionParams  RPAREN (ARROW_FUNCTION type)? LBRACE block RBRACE     #FunctionWithParams
             ;
-callFunctionStmt: ID_PRIMITIVE LPAREN  RPAREN  #CallFunctionWithoutParams
-                // | ID_PRIMITIVE LPAREN exprList RPAREN #CallFunctionWithParams
+
+listFunctionParams: ID_PRIMITIVE ID_PRIMITIVE COLON type (COMMA ID_PRIMITIVE ID_PRIMITIVE COLON type)* #listFunctionParamsEI
+                  | NOT_PARAM ID_PRIMITIVE COLON type (COMMA NOT_PARAM ID_PRIMITIVE COLON type)*       #listFunctionParamsNEI
+                  | ID_PRIMITIVE COLON type (COMMA ID_PRIMITIVE COLON type)*                           #listFunctionParamsBEI
+                  ;
+
+
+callFunctionStmt: ID_PRIMITIVE LPAREN  RPAREN                     #CallFunctionWithoutParams
+                | ID_PRIMITIVE LPAREN listCallFunctionStmt RPAREN #CallFunctionWithParamsEI
                 ;
+listCallFunctionStmt: ID_PRIMITIVE COLON expr (COMMA ID_PRIMITIVE COLON expr)* #listCallFunctionStmtEI
+                    | expr (COMMA expr)*                                       #listCallFunctionStmtNEI
+                    ;
 
 // Embedded functions
 embbededFunc: printstmt  ;

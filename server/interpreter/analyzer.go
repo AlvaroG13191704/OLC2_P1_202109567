@@ -84,18 +84,18 @@ func (v *Visitor) VisitBlock(ctx *parser.BlockContext) interface{} {
 				// change the return value
 				v.IsReturn = false
 				// pop the scope
-				v.popScope()
-				return nil
+				// v.popScope()
+				continue // break or continue
 			}
 			// evalaute if the stmt is not a interface nil
 			v.Visit(stmt)
 		}
 
 	}
-	fmt.Println("----------------------------------------------------")
-	fmt.Println("Current scope or symbol table ->", v.getCurrentScope())
-	fmt.Println("Global scope or symbol table ->", v.symbolStack)
-	fmt.Println("----------------------------------------------------")
+	// fmt.Println("----------------------------------------------------")
+	// fmt.Println("Current scope or symbol table ->", v.getCurrentScope())
+	// fmt.Println("Global scope or symbol table ->", v.symbolStack)
+	// fmt.Println("----------------------------------------------------")
 	// pop the scope
 	v.popScope()
 	return nil

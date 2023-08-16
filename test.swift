@@ -1,17 +1,17 @@
-// let a = true
-// let aa = false
-// var b =  2
-// var c = 1.1 + 2
-// var d = -c * -1
-// var e = false + 1.1
-// var f = m + 1
-// var evalWhile = 10
-// var num: Float = 1
-// var num3: Int = 10.1
-// var num2: Int = false
-// evalWhile = 5
-// evalWhile = false
-// // b = 1
+let a = true
+let aa = false
+var b =  2
+var c = 1.1 + 2
+var d = -c * -1
+var e = false + 1.1
+var f = m + 1
+var evalWhile = 10
+var num: Float = 1
+var num3: Int = 10.1
+var num2: Int = false
+evalWhile = 5
+evalWhile = false
+
 
 // var g = 1 > 1.1
 
@@ -27,21 +27,21 @@
 // let m: Float?
 // var n: Int?
 
-// // Test simple if with nested if
-// if a {
-//     let testIfB = 6
-// 	evalWhile = testIfB
-//     if !aa {
-//         evalWhile = 7
-//         if b < c{
-//             evalWhile = 8
-//         }
-//     }
+// Test simple if with nested if
+if a {
+    let testIfB = 6
+	evalWhile = testIfB
+    if !aa {
+        evalWhile = 7
+        if b < c{
+            evalWhile = 8
+        }
+    }
 
-//     if !!a{
-//         evalWhile = 9
-//     }
-// }
+    if !!a{
+        evalWhile = 9
+    }
+}
 
 // // Test if else
 // var testIf = 0
@@ -186,12 +186,12 @@ print("\tcadena1 \ncadena2") // mostraría cadena1 y cadena2 en líneas separada
 // Test double quote
 print("cadena1 \"cadena2\" cadena3")
 
-// func addTwoNumbers(a: Int, b: Int) -> Int {
-//     let c = a + b
-//     print(c)
-// }
+func addTwoNumbers(a: Int, b: Int) -> Int {
+    let c = a + b
+    print(c)
+}
 
-// addTwoNumbers(a: 1, b: 2)
+addTwoNumbers(a: 1, b: 2)
 
 func suma( num1 x : Int, num2 y: Int) -> Int {
     let res = x + y

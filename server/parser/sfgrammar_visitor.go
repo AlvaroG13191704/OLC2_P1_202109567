@@ -79,8 +79,29 @@ type SFGrammarVisitor interface {
 	// Visit a parse tree produced by SFGrammarParser#FunctionWithoutParams.
 	VisitFunctionWithoutParams(ctx *FunctionWithoutParamsContext) interface{}
 
+	// Visit a parse tree produced by SFGrammarParser#FunctionWithParams.
+	VisitFunctionWithParams(ctx *FunctionWithParamsContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#listFunctionParamsEI.
+	VisitListFunctionParamsEI(ctx *ListFunctionParamsEIContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#listFunctionParamsNEI.
+	VisitListFunctionParamsNEI(ctx *ListFunctionParamsNEIContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#listFunctionParamsBEI.
+	VisitListFunctionParamsBEI(ctx *ListFunctionParamsBEIContext) interface{}
+
 	// Visit a parse tree produced by SFGrammarParser#CallFunctionWithoutParams.
 	VisitCallFunctionWithoutParams(ctx *CallFunctionWithoutParamsContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#CallFunctionWithParamsEI.
+	VisitCallFunctionWithParamsEI(ctx *CallFunctionWithParamsEIContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#listCallFunctionStmtEI.
+	VisitListCallFunctionStmtEI(ctx *ListCallFunctionStmtEIContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#listCallFunctionStmtNEI.
+	VisitListCallFunctionStmtNEI(ctx *ListCallFunctionStmtNEIContext) interface{}
 
 	// Visit a parse tree produced by SFGrammarParser#embbededFunc.
 	VisitEmbbededFunc(ctx *EmbbededFuncContext) interface{}
