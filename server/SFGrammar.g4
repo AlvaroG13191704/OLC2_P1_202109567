@@ -40,10 +40,11 @@ assignment: ID_PRIMITIVE IS_ expr         #ValueAssignment // value = 10
           | ID_PRIMITIVE MINUS_IS expr    #MinusAssignment // var -= 10
           ;
 
+// if
+ifstmt : IF expr LBRACE block RBRACE (ELSE LBRACE block RBRACE)?  #IfElseStmt
+       | IF expr LBRACE block RBRACE ELSE ifstmt                  #ElseIfStmt
+       ;
 
-ifstmt: IF expr LBRACE block RBRACE ELSE ifstmt                      #IfElseStmt
-      | IF expr LBRACE block RBRACE (ELSE LBRACE block RBRACE)?      #IfStmt
-      ;
 
 // switch
 switchStmt : SWITCH expr LBRACE (caseBlock)* (defaultBlock)? RBRACE ;

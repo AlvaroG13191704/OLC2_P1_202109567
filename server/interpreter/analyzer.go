@@ -84,7 +84,7 @@ func (v *Visitor) VisitBlock(ctx *parser.BlockContext) interface{} {
 			// change the return value
 			// v.IsReturn = false
 			// pop the scope
-			v.popScope()
+			// v.popScope()
 			fmt.Println("----------------------------------------------------")
 			fmt.Println("Return value ->", v.ReturnValue)
 			fmt.Println("Current scope or symbol table ->", v.getCurrentScope())

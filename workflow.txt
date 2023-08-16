@@ -67,6 +67,13 @@ Functions
 2. Function call without params ✅
 3. Test Return statement ✅
 4. Function declaration with params 
-    4.1 Save params external and internal names
+    4.1 Save params external and internal names ✅
+    4.2 Save params  internal names ✅
+    4.3 Save params both external and internal names ✅
+    4.4 Save params by reference 
 5. Function call with params
-    5.1 execute params external and internal names
+    5.1 execute params external and internal names ✅
+    5.2 execute params internal names ✅
+    5.3 execute params both external and internal names ✅
+    5.4 execute params by reference
+

@@ -49,8 +49,8 @@ type SFGrammarVisitor interface {
 	// Visit a parse tree produced by SFGrammarParser#IfElseStmt.
 	VisitIfElseStmt(ctx *IfElseStmtContext) interface{}
 
-	// Visit a parse tree produced by SFGrammarParser#IfStmt.
-	VisitIfStmt(ctx *IfStmtContext) interface{}
+	// Visit a parse tree produced by SFGrammarParser#ElseIfStmt.
+	VisitElseIfStmt(ctx *ElseIfStmtContext) interface{}
 
 	// Visit a parse tree produced by SFGrammarParser#switchStmt.
 	VisitSwitchStmt(ctx *SwitchStmtContext) interface{}

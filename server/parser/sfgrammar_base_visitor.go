@@ -63,7 +63,7 @@ func (v *BaseSFGrammarVisitor) VisitIfElseStmt(ctx *IfElseStmtContext) interface
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseSFGrammarVisitor) VisitIfStmt(ctx *IfStmtContext) interface{} {
+func (v *BaseSFGrammarVisitor) VisitElseIfStmt(ctx *ElseIfStmtContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
