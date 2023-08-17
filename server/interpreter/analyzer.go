@@ -98,6 +98,7 @@ func (v *Visitor) VisitBlock(ctx *parser.BlockContext) interface{} {
 
 	}
 	// pop the scope
+
 	v.popScope()
 	return nil
 }
@@ -136,15 +137,27 @@ func (v *Visitor) VisitStmts(ctx *parser.StmtsContext) interface{} {
 	if ctx.CallFunctionStmt() != nil {
 		return v.Visit(ctx.CallFunctionStmt())
 	}
+	// verify if the function is a print
+	if ctx.Printstmt() != nil {
+		return v.Visit(ctx.Printstmt())
+	}
 
 	return nil
 }
 
 // visit embbededFunc
 func (v *Visitor) VisitEmbbededFunc(ctx *parser.EmbbededFuncContext) interface{} {
-	// verify if the function is a print
-	if ctx.Printstmt() != nil {
-		return v.Visit(ctx.Printstmt())
+	// verify if the function is a int
+	if ctx.Intstmt() != nil {
+		return v.Visit(ctx.Intstmt())
+	}
+	// verify if the function is a float
+	if ctx.Floatstmt() != nil {
+		return v.Visit(ctx.Floatstmt())
+	}
+	// verify if the function is a string
+	if ctx.Stringstmt() != nil {
+		return v.Visit(ctx.Stringstmt())
 	}
 
 	return nil

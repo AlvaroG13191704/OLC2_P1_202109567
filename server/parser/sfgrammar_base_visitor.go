@@ -123,7 +123,7 @@ func (v *BaseSFGrammarVisitor) VisitCallFunctionWithoutParams(ctx *CallFunctionW
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseSFGrammarVisitor) VisitCallFunctionWithParamsEI(ctx *CallFunctionWithParamsEIContext) interface{} {
+func (v *BaseSFGrammarVisitor) VisitCallFunctionWithParams(ctx *CallFunctionWithParamsContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -147,7 +147,23 @@ func (v *BaseSFGrammarVisitor) VisitExprList(ctx *ExprListContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseSFGrammarVisitor) VisitIntstmt(ctx *IntstmtContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitFloatstmt(ctx *FloatstmtContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitStringstmt(ctx *StringstmtContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseSFGrammarVisitor) VisitStringExpr(ctx *StringExprContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitEmbeddedFunctionExpr(ctx *EmbeddedFunctionExprContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

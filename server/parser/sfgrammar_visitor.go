@@ -94,8 +94,8 @@ type SFGrammarVisitor interface {
 	// Visit a parse tree produced by SFGrammarParser#CallFunctionWithoutParams.
 	VisitCallFunctionWithoutParams(ctx *CallFunctionWithoutParamsContext) interface{}
 
-	// Visit a parse tree produced by SFGrammarParser#CallFunctionWithParamsEI.
-	VisitCallFunctionWithParamsEI(ctx *CallFunctionWithParamsEIContext) interface{}
+	// Visit a parse tree produced by SFGrammarParser#CallFunctionWithParams.
+	VisitCallFunctionWithParams(ctx *CallFunctionWithParamsContext) interface{}
 
 	// Visit a parse tree produced by SFGrammarParser#listCallFunctionStmtEI.
 	VisitListCallFunctionStmtEI(ctx *ListCallFunctionStmtEIContext) interface{}
@@ -112,8 +112,20 @@ type SFGrammarVisitor interface {
 	// Visit a parse tree produced by SFGrammarParser#exprList.
 	VisitExprList(ctx *ExprListContext) interface{}
 
+	// Visit a parse tree produced by SFGrammarParser#intstmt.
+	VisitIntstmt(ctx *IntstmtContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#floatstmt.
+	VisitFloatstmt(ctx *FloatstmtContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#stringstmt.
+	VisitStringstmt(ctx *StringstmtContext) interface{}
+
 	// Visit a parse tree produced by SFGrammarParser#StringExpr.
 	VisitStringExpr(ctx *StringExprContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#EmbeddedFunctionExpr.
+	VisitEmbeddedFunctionExpr(ctx *EmbeddedFunctionExprContext) interface{}
 
 	// Visit a parse tree produced by SFGrammarParser#NilExpr.
 	VisitNilExpr(ctx *NilExprContext) interface{}

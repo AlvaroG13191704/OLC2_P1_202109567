@@ -73,7 +73,7 @@ func (v *Visitor) VisitCallFunctionExpr(ctx *parser.CallFunctionExprContext) int
 }
 
 // VisitCallFunctionWithParamsEI
-func (v *Visitor) VisitCallFunctionWithParamsEI(ctx *parser.CallFunctionWithParamsEIContext) interface{} {
+func (v *Visitor) VisitCallFunctionWithParams(ctx *parser.CallFunctionWithParamsContext) interface{} {
 	// push a new function context
 	v.PushFunctionContext("function")
 	defer v.PopFunctionContext()
@@ -163,7 +163,8 @@ func (v *Visitor) VisitCallFunctionWithParamsEI(ctx *parser.CallFunctionWithPara
 
 	} else if listParams["internal"] != nil && listArguments.(map[string][]SymbolTable)["internal"] != nil {
 		fmt.Println("params with only internal, not external")
-
+		fmt.Println("listParams ->", listParams)
+		fmt.Println("listArguments ->", listArguments)
 		// validate internal params with internal arguments
 		if len(listParams["internal"]) != len(listArguments.(map[string][]SymbolTable)["internal"]) {
 			// add error
@@ -179,6 +180,7 @@ func (v *Visitor) VisitCallFunctionWithParamsEI(ctx *parser.CallFunctionWithPara
 
 		// evaluate if the values are the same type in internal params and internal arguments
 		for i, param := range listParams["internal"] {
+
 			// get the value of the expression
 			value := listArguments.(map[string][]SymbolTable)["internal"][i].Value.(values.PRIMITIVE)
 
@@ -201,8 +203,6 @@ func (v *Visitor) VisitCallFunctionWithParamsEI(ctx *parser.CallFunctionWithPara
 			// asign the symbol table to the internal params
 			listParams["internal"][i] = param
 		}
-		fmt.Println("listParams ->", listParams)
-		fmt.Println("listArguments ->", listArguments)
 
 	} else if listParams["internal"] != nil && listArguments.(map[string][]SymbolTable)["external"] != nil {
 		fmt.Println("params with both internal and external, same name")

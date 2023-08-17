@@ -33,7 +33,7 @@ func (v *Visitor) VisitValueAssignment(ctx *parser.ValueAssignmentContext) inter
 
 		typeVariable := value.Value.(values.PRIMITIVE).GetType()
 		// evaluate if the type of the variable is the same of the expr
-		if typeVariable == expr.GetType() {
+		if typeVariable == expr.GetType() || typeVariable == values.NilType {
 			// update the value
 			value.Value = expr
 			// update the value no matter the scope

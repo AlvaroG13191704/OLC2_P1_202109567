@@ -77,3 +77,16 @@ func (n *Nil) GetValue() interface{} {
 func (n *Nil) GetType() string {
 	return NilType
 }
+
+// Reference
+type Reference struct {
+	Value interface{}
+}
+
+func (r *Reference) GetValue() interface{} {
+	return r.Value
+}
+
+func (r *Reference) GetType() string {
+	return ReferenceType
+}

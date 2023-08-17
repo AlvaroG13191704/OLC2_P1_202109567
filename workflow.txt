@@ -2,6 +2,41 @@
 ❌ -> not done
 ⏸️ -> pending
 
+Tasks to do
+--------------------------------
+Tasks external of coding
+--------------------------------
+1. Create the client to send the code to the server 
+2. Create report of the errors
+3. Create the Symbol Table
+4. Create the CST
+5. Grammar used
+6. Documentation
+--------------------------------
+Tasks of coding
+--------------------------------
+1. For statement for vectors
+2. Data Structs
+    2.1 Vectors
+        2.2 Declaration of vectors
+        2.3 Functions of vectors
+            2.3.1 append
+            2.3.2 removeLast
+            2.3.3 remove
+            2.3.4 isEmpty
+            2.3.5 count
+        2.4 Access to vectors
+            2.4.1 Access to vectors by index
+    2.1 Matrix
+3 Structs
+4. Functions by reference
+
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------
 1. Set primitive values 
 1.1. Create the interaces for the primitive values ✅
     Int 
@@ -70,10 +105,15 @@ Functions
     4.1 Save params external and internal names ✅
     4.2 Save params  internal names ✅
     4.3 Save params both external and internal names ✅
-    4.4 Save params by reference 
+    4.4 Save params by reference ❌
 5. Function call with params
     5.1 execute params external and internal names ✅
     5.2 execute params internal names ✅
     5.3 execute params both external and internal names ✅
-    5.4 execute params by reference
+    5.4 execute params by reference ❌
 
+6. Embedded functions 
+    6.1 Print ✅
+    6.2 Int ✅
+    6.3 Float ✅
+    6.4 String ✅

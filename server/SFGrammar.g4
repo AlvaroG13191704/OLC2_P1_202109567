@@ -18,6 +18,7 @@ stmts: declaration (SEMICOLON)?
      | guardStmt
      | transferStmt
      | functionStmt
+     | printstmt
      | callFunctionStmt (SEMICOLON)?
      ;
 
@@ -75,23 +76,34 @@ functionStmt:FUNC ID_PRIMITIVE LPAREN  RPAREN (ARROW_FUNCTION type)? LBRACE bloc
 
 listFunctionParams: ID_PRIMITIVE ID_PRIMITIVE COLON type (COMMA ID_PRIMITIVE ID_PRIMITIVE COLON type)* #listFunctionParamsEI
                   | NOT_PARAM ID_PRIMITIVE COLON type (COMMA NOT_PARAM ID_PRIMITIVE COLON type)*       #listFunctionParamsNEI
-                  | ID_PRIMITIVE COLON type (COMMA ID_PRIMITIVE COLON type)*                           #listFunctionParamsBEI
+                  | ID_PRIMITIVE COLON  type (COMMA ID_PRIMITIVE COLON type)*                           #listFunctionParamsBEI
                   ;
 
 
 callFunctionStmt: ID_PRIMITIVE LPAREN  RPAREN                     #CallFunctionWithoutParams
-                | ID_PRIMITIVE LPAREN listCallFunctionStmt RPAREN #CallFunctionWithParamsEI
+                | ID_PRIMITIVE LPAREN listCallFunctionStmt RPAREN #CallFunctionWithParams
                 ;
-listCallFunctionStmt: ID_PRIMITIVE COLON expr (COMMA ID_PRIMITIVE COLON expr)* #listCallFunctionStmtEI
-                    | expr (COMMA expr)*                                       #listCallFunctionStmtNEI
+                
+listCallFunctionStmt: ID_PRIMITIVE COLON expr (COMMA ID_PRIMITIVE COLON expr)*              #listCallFunctionStmtEI
+                    | expr (COMMA expr)*                                                    #listCallFunctionStmtNEI
                     ;
 
 // Embedded functions
-embbededFunc: printstmt  ;
+embbededFunc  
+            : intstmt
+            | floatstmt
+            | stringstmt
+            ;
 
 printstmt: PRINT LPAREN exprList RPAREN ;
-
 exprList : expr (COMMA expr)* ;
+
+intstmt: INT LPAREN expr RPAREN ;
+
+floatstmt: FLOAT LPAREN expr RPAREN ;
+
+stringstmt: STRING LPAREN expr RPAREN ;
+
 
 expr: NEGATION_OPERATOR right=expr                                      #NotExpr
     | MINUS right=expr                                                  #NegExpr
@@ -106,6 +118,8 @@ expr: NEGATION_OPERATOR right=expr                                      #NotExpr
     | LPAREN expr RPAREN                                                #ParenExpr
     // function call
     | callFunctionStmt  (SEMICOLON)?                                    #CallFunctionExpr
+    // emmbeded functions
+    | embbededFunc                                                      #EmbeddedFunctionExpr
     // Primitives
     | DIGIT_PRIMITIVE                                                   #DigitExpr
     | STRING_PRIMITIVE                                                  #StringExpr
