@@ -79,6 +79,65 @@ func (v *Visitor) VisitForExpr(ctx *parser.ForExprContext) interface{} {
 	defer v.PopLoopContext() // pop the loop context after the execution
 	// get the loopVarName
 	loopVarName := ctx.ID_PRIMITIVE().GetText()
+
+	// get the id from expr
+	idName := ctx.Expr().GetText()
+
+	// search the variable in the scope
+	valueFromScope, ok := v.VerifyScope(idName)
+	// evaluate if the name is declared
+	if !ok {
+		// add the error to the errors
+		log.Fatalf("Error: Variable '%s' not declared", idName)
+		v.Errors = append(v.Errors, Error{
+			Line:   ctx.GetStart().GetLine(),
+			Column: ctx.GetStart().GetColumn(),
+			Msg:    "Variable '" + idName + "' not declared",
+			Type:   "VariableError",
+		})
+		return nil
+	}
+	symbolValue := valueFromScope.(SymbolTable)
+
+	if symbolValue.TypeSymbol == values.Type_Vector {
+		// get the vector
+		vector := symbolValue.Value.([]values.PRIMITIVE)
+
+		// loop the vector
+		for _, value := range vector {
+			// assign the value to the loopVarName
+			v.AssignVariable(loopVarName, SymbolTable{
+				Id:           loopVarName,
+				TypeSymbol:   "variable",
+				TypeVariable: "let",
+				TypeData:     value.GetType(),
+				Value:        &values.Nil{Value: nil},
+				Line:         ctx.GetStart().GetLine(),
+				Column:       ctx.GetStart().GetColumn(),
+			})
+
+			// assign the value to the loopVarName
+			v.AssignVariable(loopVarName, SymbolTable{
+				Id:           loopVarName,
+				TypeSymbol:   "variable",
+				TypeVariable: "let",
+				TypeData:     value.GetType(),
+				Value:        value,
+				Line:         ctx.GetStart().GetLine(),
+				Column:       ctx.GetStart().GetColumn(),
+			})
+
+			// execute the statements
+			v.Visit(ctx.Block())
+		}
+
+		// delete the variable from the scope
+
+		v.DeleteVariable(loopVarName)
+
+		return nil
+	}
+
 	// get the expr
 	expr := v.Visit(ctx.Expr()).(values.PRIMITIVE)
 

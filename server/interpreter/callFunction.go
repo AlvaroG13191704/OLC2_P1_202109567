@@ -7,6 +7,18 @@ import (
 	"server/parserInterpreter/parser"
 )
 
+// CallFunctionExpr
+func (v *Visitor) VisitCallFunctionExpr(ctx *parser.CallFunctionExprContext) interface{} {
+	v.Visit(ctx.CallFunctionStmt())
+	// visit the expression
+	// change the return value
+	v.IsReturn = false
+	fmt.Println("VisitCallFunctionExpr", v.ReturnValue)
+
+	return v.ReturnValue
+}
+
+// VisitCallFunctionWithoutParams
 func (v *Visitor) VisitCallFunctionWithoutParams(ctx *parser.CallFunctionWithoutParamsContext) interface{} {
 	// push a new function context
 	v.PushFunctionContext("function")
@@ -59,17 +71,6 @@ func (v *Visitor) VisitCallFunctionWithoutParams(ctx *parser.CallFunctionWithout
 		return nil
 	}
 
-}
-
-// CallFunctionExpr
-func (v *Visitor) VisitCallFunctionExpr(ctx *parser.CallFunctionExprContext) interface{} {
-	v.Visit(ctx.CallFunctionStmt())
-	// visit the expression
-	// change the return value
-	v.IsReturn = false
-	fmt.Println("VisitCallFunctionExpr", v.ReturnValue)
-
-	return v.ReturnValue
 }
 
 // VisitCallFunctionWithParamsEI

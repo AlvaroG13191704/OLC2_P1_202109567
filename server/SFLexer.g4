@@ -10,6 +10,12 @@ CHAR: 'Character';
 
 // -- Keywords
 IF: 'if';
+APPEND: 'append';
+COUNT: 'count';
+REMOVELAST: 'removeLast';
+REMOVE: 'remove';
+ISEMPTY: 'isEmpty';
+AT: 'at';
 ELSE: 'else';
 SWITCH: 'switch';
 CASE: 'case';
@@ -34,6 +40,7 @@ REFERENCE: '&';
 REFERENCE_PARAM: 'inout';
 NOT_PARAM: '_';
 
+
 // RE
 DIGIT_PRIMITIVE: [0-9]+ ('.'[0-9]+)?;
 STRING_PRIMITIVE: '"' ( '\\' [nrt"\\] | ~[\n\r"])* '"'; // : '"' (~["\r\n] | '""')* '"' ;   '"'~["]*'"'
@@ -45,6 +52,8 @@ LPAREN: '(';
 RPAREN: ')';
 LBRACE: '{';
 RBRACE: '}';
+LBRACKET: '[';
+RBRACKET: ']';
 COLON: ':';
 COMMA: ',';
 SEMICOLON: ';';

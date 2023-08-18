@@ -90,3 +90,16 @@ func (r *Reference) GetValue() interface{} {
 func (r *Reference) GetType() string {
 	return ReferenceType
 }
+
+// Vector
+type Vector struct {
+	Value []interface{}
+}
+
+func (v *Vector) GetValue() []interface{} {
+	return v.Value
+}
+
+func (v *Vector) GetType() string {
+	return VectorType
+}

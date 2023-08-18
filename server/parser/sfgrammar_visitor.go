@@ -34,6 +34,9 @@ type SFGrammarVisitor interface {
 	// Visit a parse tree produced by SFGrammarParser#ValueDeclaration.
 	VisitValueDeclaration(ctx *ValueDeclarationContext) interface{}
 
+	// Visit a parse tree produced by SFGrammarParser#VectorDeclaration.
+	VisitVectorDeclaration(ctx *VectorDeclarationContext) interface{}
+
 	// Visit a parse tree produced by SFGrammarParser#type_declaration.
 	VisitType_declaration(ctx *Type_declarationContext) interface{}
 
@@ -45,6 +48,9 @@ type SFGrammarVisitor interface {
 
 	// Visit a parse tree produced by SFGrammarParser#MinusAssignment.
 	VisitMinusAssignment(ctx *MinusAssignmentContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#VectorAssignment.
+	VisitVectorAssignment(ctx *VectorAssignmentContext) interface{}
 
 	// Visit a parse tree produced by SFGrammarParser#IfElseStmt.
 	VisitIfElseStmt(ctx *IfElseStmtContext) interface{}
@@ -103,6 +109,24 @@ type SFGrammarVisitor interface {
 	// Visit a parse tree produced by SFGrammarParser#listCallFunctionStmtNEI.
 	VisitListCallFunctionStmtNEI(ctx *ListCallFunctionStmtNEIContext) interface{}
 
+	// Visit a parse tree produced by SFGrammarParser#AppendVector.
+	VisitAppendVector(ctx *AppendVectorContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#RemoveLastVector.
+	VisitRemoveLastVector(ctx *RemoveLastVectorContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#RemoveAtVector.
+	VisitRemoveAtVector(ctx *RemoveAtVectorContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#IsEmptyVector.
+	VisitIsEmptyVector(ctx *IsEmptyVectorContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#CountVector.
+	VisitCountVector(ctx *CountVectorContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#AccessVector.
+	VisitAccessVector(ctx *AccessVectorContext) interface{}
+
 	// Visit a parse tree produced by SFGrammarParser#embbededFunc.
 	VisitEmbbededFunc(ctx *EmbbededFuncContext) interface{}
 
@@ -132,6 +156,9 @@ type SFGrammarVisitor interface {
 
 	// Visit a parse tree produced by SFGrammarParser#IdExpr.
 	VisitIdExpr(ctx *IdExprContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#CallBackExpr.
+	VisitCallBackExpr(ctx *CallBackExprContext) interface{}
 
 	// Visit a parse tree produced by SFGrammarParser#LogicalOperationExpr.
 	VisitLogicalOperationExpr(ctx *LogicalOperationExprContext) interface{}

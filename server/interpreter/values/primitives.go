@@ -8,12 +8,14 @@ const (
 	CharType      = "Character"
 	NilType       = "nil"
 	ReferenceType = "Reference"
+	VectorType    = "Vector"
 )
 
 const (
 	// Types
 	Type_Variable  = "variable"
 	Type_Function  = "function"
+	Type_Vector    = "vector"
 	Type_Reference = "Reference"
 )
 

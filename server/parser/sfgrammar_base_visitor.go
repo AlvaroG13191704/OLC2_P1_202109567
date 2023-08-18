@@ -43,6 +43,10 @@ func (v *BaseSFGrammarVisitor) VisitValueDeclaration(ctx *ValueDeclarationContex
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseSFGrammarVisitor) VisitVectorDeclaration(ctx *VectorDeclarationContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseSFGrammarVisitor) VisitType_declaration(ctx *Type_declarationContext) interface{} {
 	return v.VisitChildren(ctx)
 }
@@ -56,6 +60,10 @@ func (v *BaseSFGrammarVisitor) VisitPlusAssignment(ctx *PlusAssignmentContext) i
 }
 
 func (v *BaseSFGrammarVisitor) VisitMinusAssignment(ctx *MinusAssignmentContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitVectorAssignment(ctx *VectorAssignmentContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -135,6 +143,30 @@ func (v *BaseSFGrammarVisitor) VisitListCallFunctionStmtNEI(ctx *ListCallFunctio
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseSFGrammarVisitor) VisitAppendVector(ctx *AppendVectorContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitRemoveLastVector(ctx *RemoveLastVectorContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitRemoveAtVector(ctx *RemoveAtVectorContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitIsEmptyVector(ctx *IsEmptyVectorContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitCountVector(ctx *CountVectorContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitAccessVector(ctx *AccessVectorContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseSFGrammarVisitor) VisitEmbbededFunc(ctx *EmbbededFuncContext) interface{} {
 	return v.VisitChildren(ctx)
 }
@@ -172,6 +204,10 @@ func (v *BaseSFGrammarVisitor) VisitNilExpr(ctx *NilExprContext) interface{} {
 }
 
 func (v *BaseSFGrammarVisitor) VisitIdExpr(ctx *IdExprContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitCallBackExpr(ctx *CallBackExprContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

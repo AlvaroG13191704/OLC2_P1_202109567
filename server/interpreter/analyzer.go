@@ -98,7 +98,10 @@ func (v *Visitor) VisitBlock(ctx *parser.BlockContext) interface{} {
 
 	}
 	// pop the scope
-
+	fmt.Println("----------------------------------------------------")
+	fmt.Println("Current scope or symbol table ->", v.getCurrentScope())
+	fmt.Println("Global scope or symbol table ->", v.symbolStack)
+	fmt.Println("----------------------------------------------------")
 	v.popScope()
 	return nil
 }
@@ -140,6 +143,9 @@ func (v *Visitor) VisitStmts(ctx *parser.StmtsContext) interface{} {
 	// verify if the function is a print
 	if ctx.Printstmt() != nil {
 		return v.Visit(ctx.Printstmt())
+	}
+	if ctx.CallBack() != nil {
+		return v.Visit(ctx.CallBack())
 	}
 
 	return nil

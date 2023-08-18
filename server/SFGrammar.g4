@@ -20,6 +20,7 @@ stmts: declaration (SEMICOLON)?
      | functionStmt
      | printstmt
      | callFunctionStmt (SEMICOLON)?
+     | callBack (SEMICOLON)?
      ;
 
 transferStmt: BREAK (SEMICOLON)?          #BreakStmt
@@ -31,6 +32,7 @@ transferStmt: BREAK (SEMICOLON)?          #BreakStmt
 declaration: type_declaration  ID_PRIMITIVE COLON type IS_ expr          #TypeValueDeclaration // var value: String = "Hola"
            | type_declaration  ID_PRIMITIVE COLON type QUESTION_MARK     #TypeOptionalValueDeclaration // var value: String?
            | type_declaration  ID_PRIMITIVE IS_ expr                     #ValueDeclaration // var value = 10
+           | type_declaration  ID_PRIMITIVE COLON LBRACKET type RBRACKET IS_ (LBRACKET exprList RBRACKET | ID_PRIMITIVE ) #VectorDeclaration // var value: [Int] = [1,2,3]
            ;
 
 type_declaration: DECLARATION_VAR | DECLARATION_LET ;
@@ -39,6 +41,7 @@ type_declaration: DECLARATION_VAR | DECLARATION_LET ;
 assignment: ID_PRIMITIVE IS_ expr         #ValueAssignment // value = 10
           | ID_PRIMITIVE PLUS_IS expr     #PlusAssignment // var += 10
           | ID_PRIMITIVE MINUS_IS expr    #MinusAssignment // var -= 10
+          | ID_PRIMITIVE LBRACKET expr RBRACKET IS_ expr #VectorAssignment // var[0] = 
           ;
 
 // if
@@ -88,6 +91,15 @@ listCallFunctionStmt: ID_PRIMITIVE COLON expr (COMMA ID_PRIMITIVE COLON expr)*  
                     | expr (COMMA expr)*                                                    #listCallFunctionStmtNEI
                     ;
 
+
+callBack: ID_PRIMITIVE DOT APPEND LPAREN expr LPAREN            #AppendVector // vector.append(10)
+        | ID_PRIMITIVE DOT REMOVELAST LPAREN  RPAREN            #RemoveLastVector // vector.removeLast()
+        | ID_PRIMITIVE DOT REMOVE LPAREN AT COLON expr RPAREN   #RemoveAtVector // vector.remove(at: 0)
+        | ID_PRIMITIVE DOT ISEMPTY LPAREN  RPAREN               #IsEmptyVector // vector.isEmpty()
+        | ID_PRIMITIVE DOT COUNT                                #CountVector // vector.count
+        | ID_PRIMITIVE LBRACKET expr RBRACKET                   #AccessVector // let value = vector[0]
+        ;
+
 // Embedded functions
 embbededFunc  
             : intstmt
@@ -118,6 +130,8 @@ expr: NEGATION_OPERATOR right=expr                                      #NotExpr
     | LPAREN expr RPAREN                                                #ParenExpr
     // function call
     | callFunctionStmt  (SEMICOLON)?                                    #CallFunctionExpr
+    // callbacks
+    | callBack (SEMICOLON)?                                             #CallBackExpr
     // emmbeded functions
     | embbededFunc                                                      #EmbeddedFunctionExpr
     // Primitives

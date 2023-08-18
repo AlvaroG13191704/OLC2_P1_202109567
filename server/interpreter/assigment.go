@@ -1,6 +1,7 @@
 package interpreter
 
 import (
+	"fmt"
 	"log"
 	"server/parserInterpreter/interpreter/values"
 	"server/parserInterpreter/parser"
@@ -250,5 +251,65 @@ func makeRest(a values.PRIMITIVE, b values.PRIMITIVE) values.PRIMITIVE {
 			}
 		}
 	}
+	return nil
+}
+
+// VisitVectorAssignment
+func (v *Visitor) VisitVectorAssignment(ctx *parser.VectorAssignmentContext) interface{} {
+	// get the variable name
+	idName := ctx.ID_PRIMITIVE().GetText()
+	// get the value
+	valueFromScope, ok := v.VerifyScope(idName)
+	// evaluate if the name is declared
+	if !ok {
+		// add the error to the errors
+		log.Fatalf("Error: Variable '%s' not declared", idName)
+		v.Errors = append(v.Errors, Error{
+			Line:   ctx.GetStart().GetLine(),
+			Column: ctx.GetStart().GetColumn(),
+			Msg:    "Variable '" + idName + "' not declared",
+			Type:   "VariableError",
+		})
+		return nil
+	}
+	symbolValue := valueFromScope.(SymbolTable)
+
+	index := int(v.Visit(ctx.Expr(0)).(values.PRIMITIVE).GetValue().(int64))
+	// evaluate if the index is out of bounds
+	if index < 0 || index >= len(symbolValue.Value.([]values.PRIMITIVE)) {
+		log.Printf("Error: Index '%d' is out of bounds \n", index)
+		// add error
+		v.Errors = append(v.Errors, Error{
+			Line:   ctx.GetStart().GetLine(),
+			Column: ctx.GetStart().GetColumn(),
+			Msg:    fmt.Sprintf("Error: Index '%d' is out of bounds", index),
+			Type:   "Semantic",
+		})
+		return nil
+	}
+
+	// get the expr
+	expr := v.Visit(ctx.Expr(1)).(values.PRIMITIVE)
+
+	// evaluate if the expr type is the same as the symbol value
+	if expr.GetType() != symbolValue.TypeData {
+		log.Printf("Error: Type of the expression is different from the type of the vector")
+		// add error
+		v.Errors = append(v.Errors, Error{
+			Line:   ctx.GetStart().GetLine(),
+			Column: ctx.GetStart().GetColumn(),
+			Msg:    fmt.Sprintf("Error: Type of the expression is different from the type of the vector"),
+			Type:   "Semantic",
+		})
+		return nil
+	}
+	fmt.Println("before assign", symbolValue.Value)
+	// update the value
+	symbolValue.Value.([]values.PRIMITIVE)[index] = expr
+
+	fmt.Println("after assign", symbolValue.Value)
+	// update the value no matter the scope
+	v.UpdateVariable(idName, symbolValue)
+
 	return nil
 }
