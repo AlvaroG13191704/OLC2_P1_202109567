@@ -109,18 +109,6 @@ func (v *Visitor) UpdateVariable(varName string, value interface{}) {
 	}
 }
 
-// VerifyVariableAddress verify if the variable is in the scope and return their memory address
-func (v *Visitor) VerifyVariableAddress(varName string) (*SymbolTable, bool) {
-
-	for i := len(v.symbolStack) - 1; i >= 0; i-- {
-		scope := v.symbolStack[i]
-		if val, ok := scope[varName]; ok {
-			return &val, true
-		}
-	}
-	return &SymbolTable{}, false
-}
-
 // VerifyScope verify if the variable is in the scope
 func (v *Visitor) VerifyScope(varName string) (interface{}, bool) {
 

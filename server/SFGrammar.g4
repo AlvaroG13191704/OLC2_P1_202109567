@@ -41,7 +41,9 @@ type_declaration: DECLARATION_VAR | DECLARATION_LET ;
 assignment: ID_PRIMITIVE IS_ expr         #ValueAssignment // value = 10
           | ID_PRIMITIVE PLUS_IS expr     #PlusAssignment // var += 10
           | ID_PRIMITIVE MINUS_IS expr    #MinusAssignment // var -= 10
-          | ID_PRIMITIVE LBRACKET expr RBRACKET IS_ expr #VectorAssignment // var[0] = 
+          | ID_PRIMITIVE LBRACKET expr RBRACKET IS_ expr #VectorAssignment // var[0] = expr
+          | ID_PRIMITIVE LBRACKET expr RBRACKET MINUS_IS expr #VectorMinusAssignment // var[0] -= expr
+          | ID_PRIMITIVE LBRACKET expr RBRACKET PLUS_IS expr  #VectorPlusAssignment // var[0] += expr
           ;
 
 // if
@@ -79,7 +81,10 @@ functionStmt:FUNC ID_PRIMITIVE LPAREN  RPAREN (ARROW_FUNCTION type)? LBRACE bloc
 
 listFunctionParams: ID_PRIMITIVE ID_PRIMITIVE COLON type (COMMA ID_PRIMITIVE ID_PRIMITIVE COLON type)* #listFunctionParamsEI
                   | NOT_PARAM ID_PRIMITIVE COLON type (COMMA NOT_PARAM ID_PRIMITIVE COLON type)*       #listFunctionParamsNEI
-                  | ID_PRIMITIVE COLON  type (COMMA ID_PRIMITIVE COLON type)*                           #listFunctionParamsBEI
+                  | ID_PRIMITIVE COLON  type (COMMA ID_PRIMITIVE COLON type)*                          #listFunctionParamsBEI
+                  | ID_PRIMITIVE ID_PRIMITIVE COLON LBRACKET type RBRACKET (COMMA ID_PRIMITIVE ID_PRIMITIVE COLON LBRACKET type RBRACKET )* #listFunctionParamsEIVector
+                  | NOT_PARAM ID_PRIMITIVE COLON LBRACKET type RBRACKET (COMMA NOT_PARAM ID_PRIMITIVE COLON LBRACKET type RBRACKET )*       #listFunctionParamsNEIVector
+                  | ID_PRIMITIVE COLON  LBRACKET type RBRACKET (COMMA ID_PRIMITIVE COLON LBRACKET type RBRACKET )*                          #listFunctionParamsBEIVector
                   ;
 
 
@@ -142,4 +147,5 @@ expr: NEGATION_OPERATOR right=expr                                      #NotExpr
     | (TRU|FAL)                                                         #BooleanExpr
     ;
 
-type: (INT|FLOAT|STRING|BOOL|CHAR) ;
+
+type: (INT|FLOAT|STRING|BOOL|CHAR|) ;

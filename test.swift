@@ -316,3 +316,28 @@ func fibonacci(_ n: Int) -> Int {
 
 print("Debería ser 55")
 print(fibonacci(10)) 
+
+//vector con valores
+var vec1: [Int] = [10,20,30,40,50]
+var i = 0
+
+while i < vec1.count {
+    vec1[i] += vec1[i]
+    i += 1
+}
+
+for i in vec1 {
+    print(i)
+}
+
+//vector con valores
+var vec1: [Int] = [10,20,30,40,50]
+
+func suma(interVec : [Int])  {
+    for i in interVec {
+        print(i)
+    }
+}
+
+
+suma(vec1)

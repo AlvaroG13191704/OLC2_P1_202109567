@@ -28,12 +28,13 @@ Tasks of coding
         2.4 Access to vectors
             2.4.1 Access to vectors by index ✅
         2.5. Assigment of vectors ✅
-        2.6 Add += and -= to vectors 
-        
+        2.6 Add += and -= to vectors ✅
+        2.7 Vectors in functions ✅
     2.2 Matrix
+
 3 Structs
 4. Functions by reference
-
+    4.1 Functions by reference in functions -> only id 
 
 
 

@@ -67,6 +67,14 @@ func (v *BaseSFGrammarVisitor) VisitVectorAssignment(ctx *VectorAssignmentContex
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseSFGrammarVisitor) VisitVectorMinusAssignment(ctx *VectorMinusAssignmentContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitVectorPlusAssignment(ctx *VectorPlusAssignmentContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseSFGrammarVisitor) VisitIfElseStmt(ctx *IfElseStmtContext) interface{} {
 	return v.VisitChildren(ctx)
 }
@@ -124,6 +132,18 @@ func (v *BaseSFGrammarVisitor) VisitListFunctionParamsNEI(ctx *ListFunctionParam
 }
 
 func (v *BaseSFGrammarVisitor) VisitListFunctionParamsBEI(ctx *ListFunctionParamsBEIContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitListFunctionParamsEIVector(ctx *ListFunctionParamsEIVectorContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitListFunctionParamsNEIVector(ctx *ListFunctionParamsNEIVectorContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitListFunctionParamsBEIVector(ctx *ListFunctionParamsBEIVectorContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

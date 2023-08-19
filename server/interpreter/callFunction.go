@@ -3,6 +3,7 @@ package interpreter
 import (
 	"fmt"
 	"log"
+	"reflect"
 	"server/parserInterpreter/interpreter/values"
 	"server/parserInterpreter/parser"
 )
@@ -121,39 +122,48 @@ func (v *Visitor) VisitCallFunctionWithParams(ctx *parser.CallFunctionWithParams
 		// evaluate if the values are the same type in external params and external arguments
 		for i, param := range listParams["external"] {
 			// get the value of the expression
-			value := listArguments.(map[string][]SymbolTable)["external"][i].Value.(values.PRIMITIVE)
+			// value := listArguments.(map[string][]SymbolTable)["external"][i].Value.(values.PRIMITIVE)
+			value := listArguments.(map[string][]SymbolTable)["external"][i].Value
 
-			// evaluate if the values are the same type
-			if param.TypeData != value.GetType() {
-				// add error
-				v.Errors = append(v.Errors, Error{
-					Line:   ctx.GetStart().GetLine(),
-					Column: ctx.GetStart().GetColumn(),
-					Msg:    fmt.Sprintf("function %s expected %s type, got %s", functionName, param.TypeData, value.GetType()),
-					Type:   "Semantic",
-				})
-				log.Printf("function %s expected %s type, got %s", functionName, param.TypeData, value.GetType())
-				return nil
+			// verifiy if the value is a slice
+			if reflect.TypeOf(value).Kind() == reflect.Slice {
+				value = listArguments.(map[string][]SymbolTable)["external"][i].Value.([]values.PRIMITIVE)
+				typeValue := listArguments.(map[string][]SymbolTable)["external"][i].TypeData
+				// evaluate if the values are the same type
+				if param.TypeData != typeValue {
+					// add error
+					v.Errors = append(v.Errors, Error{
+						Line:   ctx.GetStart().GetLine(),
+						Column: ctx.GetStart().GetColumn(),
+						Msg:    fmt.Sprintf("function %s expected %s type, got %s", functionName, param.TypeData, typeValue),
+						Type:   "Semantic",
+					})
+					log.Printf("function %s expected %s type, got %s", functionName, param.TypeData, typeValue)
+					return nil
+				}
+
+			} else {
+				valueP := listArguments.(map[string][]SymbolTable)["external"][i].Value.(values.PRIMITIVE)
+				// evaluate if the values are the same type
+				if param.TypeData != valueP.GetType() {
+					// add error
+					v.Errors = append(v.Errors, Error{
+						Line:   ctx.GetStart().GetLine(),
+						Column: ctx.GetStart().GetColumn(),
+						Msg:    fmt.Sprintf("function %s expected %s type, got %s", functionName, param.TypeData, valueP.GetType()),
+						Type:   "Semantic",
+					})
+					log.Printf("function %s expected %s type, got %s", functionName, param.TypeData, valueP.GetType())
+					return nil
+				}
 			}
+
 		}
 
 		// asign the values to the internal params
 		for i, param := range listParams["internal"] {
 			// get the value of the expression
-			value := listArguments.(map[string][]SymbolTable)["external"][i].Value.(values.PRIMITIVE)
-
-			// evaluate if the values are the same type
-			if param.TypeData != value.GetType() {
-				// add error
-				v.Errors = append(v.Errors, Error{
-					Line:   ctx.GetStart().GetLine(),
-					Column: ctx.GetStart().GetColumn(),
-					Msg:    fmt.Sprintf("function %s expected %s type, got %s", functionName, param.TypeData, value.GetType()),
-					Type:   "Semantic",
-				})
-				log.Printf("function %s expected %s type, got %s", functionName, param.TypeData, value.GetType())
-				return nil
-			}
+			value := listArguments.(map[string][]SymbolTable)["external"][i].Value
 
 			// asign the value to the symbol table
 			param.Value = value
@@ -181,21 +191,41 @@ func (v *Visitor) VisitCallFunctionWithParams(ctx *parser.CallFunctionWithParams
 
 		// evaluate if the values are the same type in internal params and internal arguments
 		for i, param := range listParams["internal"] {
-
 			// get the value of the expression
-			value := listArguments.(map[string][]SymbolTable)["internal"][i].Value.(values.PRIMITIVE)
+			value := listArguments.(map[string][]SymbolTable)["internal"][i].Value
 
-			// evaluate if the values are the same type
-			if param.TypeData != value.GetType() {
-				// add error
-				v.Errors = append(v.Errors, Error{
-					Line:   ctx.GetStart().GetLine(),
-					Column: ctx.GetStart().GetColumn(),
-					Msg:    fmt.Sprintf("function %s expected %s type, got %s", functionName, param.TypeData, value.GetType()),
-					Type:   "Semantic",
-				})
-				log.Printf("function %s expected %s type, got %s", functionName, param.TypeData, value.GetType())
-				return nil
+			// verifiy if the value is a slice
+			if reflect.TypeOf(value).Kind() == reflect.Slice {
+				value = listArguments.(map[string][]SymbolTable)["internal"][i].Value.([]values.PRIMITIVE)
+				typeValue := listArguments.(map[string][]SymbolTable)["internal"][i].TypeData
+				// evaluate if the values are the same type
+				if param.TypeData != typeValue {
+					// add error
+					v.Errors = append(v.Errors, Error{
+						Line:   ctx.GetStart().GetLine(),
+						Column: ctx.GetStart().GetColumn(),
+						Msg:    fmt.Sprintf("function %s expected %s type, got %s", functionName, param.TypeData, typeValue),
+						Type:   "Semantic",
+					})
+					log.Printf("function %s expected %s type, got %s", functionName, param.TypeData, typeValue)
+					return nil
+				}
+
+			} else {
+				value = listArguments.(map[string][]SymbolTable)["internal"][i].Value.(values.PRIMITIVE)
+				valueP := listArguments.(map[string][]SymbolTable)["internal"][i].Value.(values.PRIMITIVE)
+				// evaluate if the values are the same type
+				if param.TypeData != valueP.GetType() {
+					// add error
+					v.Errors = append(v.Errors, Error{
+						Line:   ctx.GetStart().GetLine(),
+						Column: ctx.GetStart().GetColumn(),
+						Msg:    fmt.Sprintf("function %s expected %s type, got %s", functionName, param.TypeData, valueP.GetType()),
+						Type:   "Semantic",
+					})
+					log.Printf("function %s expected %s type, got %s", functionName, param.TypeData, valueP.GetType())
+					return nil
+				}
 			}
 
 			// asign the value to the symbol table
@@ -225,40 +255,46 @@ func (v *Visitor) VisitCallFunctionWithParams(ctx *parser.CallFunctionWithParams
 		// evaluate if the values are the same type in external params and external arguments
 		for i, param := range listParams["internal"] {
 			// get the value of the expression
-			value := listArguments.(map[string][]SymbolTable)["external"][i].Value.(values.PRIMITIVE)
+			value := listArguments.(map[string][]SymbolTable)["external"][i].Value
 
-			// evaluate if the values are the same type
-			if param.TypeData != value.GetType() {
-				// add error
-				v.Errors = append(v.Errors, Error{
-					Line:   ctx.GetStart().GetLine(),
-					Column: ctx.GetStart().GetColumn(),
-					Msg:    fmt.Sprintf("function %s expected %s type, got %s", functionName, param.TypeData, value.GetType()),
-					Type:   "Semantic",
-				})
-				log.Printf("function %s expected %s type, got %s", functionName, param.TypeData, value.GetType())
-				return nil
+			// verifiy if the value is a slice
+			if reflect.TypeOf(value).Kind() == reflect.Slice {
+				value = listArguments.(map[string][]SymbolTable)["external"][i].Value.([]values.PRIMITIVE)
+				typeValue := listArguments.(map[string][]SymbolTable)["external"][i].TypeData
+				// evaluate if the values are the same type
+				if param.TypeData != typeValue {
+					// add error
+					v.Errors = append(v.Errors, Error{
+						Line:   ctx.GetStart().GetLine(),
+						Column: ctx.GetStart().GetColumn(),
+						Msg:    fmt.Sprintf("function %s expected %s type, got %s", functionName, param.TypeData, typeValue),
+						Type:   "Semantic",
+					})
+					log.Printf("function %s expected %s type, got %s", functionName, param.TypeData, typeValue)
+					return nil
+				}
+			} else {
+				valueP := listArguments.(map[string][]SymbolTable)["external"][i].Value.(values.PRIMITIVE)
+				// evaluate if the values are the same type
+				if param.TypeData != valueP.GetType() {
+					// add error
+					v.Errors = append(v.Errors, Error{
+						Line:   ctx.GetStart().GetLine(),
+						Column: ctx.GetStart().GetColumn(),
+						Msg:    fmt.Sprintf("function %s expected %s type, got %s", functionName, param.TypeData, valueP.GetType()),
+						Type:   "Semantic",
+					})
+					log.Printf("function %s expected %s type, got %s", functionName, param.TypeData, valueP.GetType())
+					return nil
+				}
 			}
+
 		}
 
 		// asign the values to the internal params
 		for i, param := range listParams["internal"] {
 			// get the value of the expression
-			value := listArguments.(map[string][]SymbolTable)["external"][i].Value.(values.PRIMITIVE)
-
-			// evaluate if the values are the same type
-			if param.TypeData != value.GetType() {
-				// add error
-				v.Errors = append(v.Errors, Error{
-					Line: ctx.GetStart().GetLine(),
-					Column: ctx.GetStart().
-						GetColumn(),
-					Msg:  fmt.Sprintf("function %s expected %s type, got %s", functionName, param.TypeData, value.GetType()),
-					Type: "Semantic",
-				})
-				log.Printf("function %s expected %s type, got %s", functionName, param.TypeData, value.GetType())
-				return nil
-			}
+			value := listArguments.(map[string][]SymbolTable)["external"][i].Value
 
 			// asign the value to the symbol table
 			param.Value = value
@@ -278,12 +314,31 @@ func (v *Visitor) VisitCallFunctionWithParams(ctx *parser.CallFunctionWithParams
 	// create the internal values
 	v.Visit(function.Value.(*parser.BlockContext))
 
+	// // evaluate if the return type is the same as the function return type
+	// fmt.Printf("Return value -> %v\n", v.ReturnValue)
+	// fmt.Printf("Return type -> %v\n", v.ReturnValue.(values.PRIMITIVE).GetType())
+	// fmt.Printf("Function return type -> %v\n", function.TypeVariable)
+
+	if v.ReturnValue != nil {
+		if function.TypeVariable != v.ReturnValue.(values.PRIMITIVE).GetType() {
+			// add error
+			v.Errors = append(v.Errors, Error{
+				Line:   ctx.GetStart().GetLine(),
+				Column: ctx.GetStart().GetColumn(),
+				Msg:    fmt.Sprintf("function %s return type is %s, expected %s", functionName, function.TypeVariable, v.ReturnValue.(values.PRIMITIVE).GetType()),
+				Type:   "Semantic",
+			})
+			log.Printf("function %s return type is %s, expected %s", functionName, function.TypeVariable, v.ReturnValue.(values.PRIMITIVE).GetType())
+			return values.Nil{}
+		}
+	}
+
 	fmt.Println("----------------------------------------------------")
 	fmt.Println("Current scope or symbol table ->", v.getCurrentScope())
 	fmt.Println("Global scope or symbol table ->", v.symbolStack)
 	fmt.Println("----------------------------------------------------")
 
-	return nil
+	return values.Nil{}
 }
 
 // listCallFunctionStmtEI
@@ -297,28 +352,47 @@ func (v *Visitor) VisitListCallFunctionStmtEI(ctx *parser.ListCallFunctionStmtEI
 	listIds := ctx.AllID_PRIMITIVE()
 	listExpr := ctx.AllExpr()
 
-	// iterate over the list of ids and save the values
 	for i, id := range listIds {
-		// get the value of the expression
-		value := v.Visit(listExpr[i]).(values.PRIMITIVE)
+		value := v.Visit(listExpr[i])
 
 		// get the id
 		idValue := id.GetText()
 
-		// create a symbol table
-		symbolTable := SymbolTable{
-			Id:           idValue,
-			TypeSymbol:   values.Type_Variable,
-			TypeVariable: "let",
-			TypeData:     value.GetType(),
-			Value:        value,
-			ListParams:   nil,
-			Line:         ctx.GetStart().GetLine(),
-			Column:       ctx.GetStart().GetColumn(),
-		}
+		if reflect.TypeOf(value).Kind() == reflect.Slice {
+			fmt.Println("is a slice")
+			// create a symbol table
+			primitives := value.([]values.PRIMITIVE)
+			symbolTable := SymbolTable{
+				Id:           idValue,
+				TypeSymbol:   values.Type_Vector,
+				TypeVariable: "let",
+				TypeData:     primitives[0].GetType(),
+				Value:        primitives,
+				ListParams:   nil,
+				Line:         ctx.GetStart().GetLine(),
+				Column:       ctx.GetStart().GetColumn(),
+			}
 
-		// append the symbol table to the params
-		params["external"] = append(params["external"], symbolTable)
+			// append the symbol table to the params
+			params["external"] = append(params["external"], symbolTable)
+
+		} else {
+			primitiveValue := value.(values.PRIMITIVE)
+			// create a symbol table
+			symbolTable := SymbolTable{
+				Id:           idValue,
+				TypeSymbol:   values.Type_Variable,
+				TypeVariable: "let",
+				TypeData:     primitiveValue.GetType(),
+				Value:        primitiveValue,
+				ListParams:   nil,
+				Line:         ctx.GetStart().GetLine(),
+				Column:       ctx.GetStart().GetColumn(),
+			}
+
+			// append the symbol table to the params
+			params["external"] = append(params["external"], symbolTable)
+		}
 	}
 
 	return params
@@ -337,22 +411,44 @@ func (v *Visitor) VisitListCallFunctionStmtNEI(ctx *parser.ListCallFunctionStmtN
 	// iterate over the list of ids and save the values
 	for _, expr := range listExpr {
 		// get the value of the expression
-		value := v.Visit(expr).(values.PRIMITIVE)
+		value := v.Visit(expr)
 
 		// create a symbol table
-		symbolTable := SymbolTable{
-			Id:           expr.GetText(),
-			TypeSymbol:   values.Type_Variable,
-			TypeVariable: "let",
-			TypeData:     value.GetType(),
-			Value:        value,
-			ListParams:   nil,
-			Line:         ctx.GetStart().GetLine(),
-			Column:       ctx.GetStart().GetColumn(),
+		if reflect.TypeOf(value).Kind() == reflect.Slice {
+			fmt.Println("is a slice")
+			// create a symbol table
+			primitives := value.([]values.PRIMITIVE)
+			symbolTable := SymbolTable{
+				Id:           expr.GetText(),
+				TypeSymbol:   values.Type_Vector,
+				TypeVariable: "let",
+				TypeData:     primitives[0].GetType(),
+				Value:        primitives,
+				ListParams:   nil,
+				Line:         ctx.GetStart().GetLine(),
+				Column:       ctx.GetStart().GetColumn(),
+			}
+
+			// append the symbol table to the params
+			params["internal"] = append(params["internal"], symbolTable)
+
+		} else {
+			primitiveValue := value.(values.PRIMITIVE)
+			// create a symbol table
+			symbolTable := SymbolTable{
+				Id:           expr.GetText(),
+				TypeSymbol:   values.Type_Variable,
+				TypeVariable: "let",
+				TypeData:     primitiveValue.GetType(),
+				Value:        primitiveValue,
+				ListParams:   nil,
+				Line:         ctx.GetStart().GetLine(),
+				Column:       ctx.GetStart().GetColumn(),
+			}
+			// append the symbol table to the params
+			params["internal"] = append(params["internal"], symbolTable)
 		}
 
-		// append the symbol table to the params
-		params["internal"] = append(params["internal"], symbolTable)
 	}
 
 	return params

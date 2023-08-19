@@ -52,6 +52,12 @@ type SFGrammarVisitor interface {
 	// Visit a parse tree produced by SFGrammarParser#VectorAssignment.
 	VisitVectorAssignment(ctx *VectorAssignmentContext) interface{}
 
+	// Visit a parse tree produced by SFGrammarParser#VectorMinusAssignment.
+	VisitVectorMinusAssignment(ctx *VectorMinusAssignmentContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#VectorPlusAssignment.
+	VisitVectorPlusAssignment(ctx *VectorPlusAssignmentContext) interface{}
+
 	// Visit a parse tree produced by SFGrammarParser#IfElseStmt.
 	VisitIfElseStmt(ctx *IfElseStmtContext) interface{}
 
@@ -96,6 +102,15 @@ type SFGrammarVisitor interface {
 
 	// Visit a parse tree produced by SFGrammarParser#listFunctionParamsBEI.
 	VisitListFunctionParamsBEI(ctx *ListFunctionParamsBEIContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#listFunctionParamsEIVector.
+	VisitListFunctionParamsEIVector(ctx *ListFunctionParamsEIVectorContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#listFunctionParamsNEIVector.
+	VisitListFunctionParamsNEIVector(ctx *ListFunctionParamsNEIVectorContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#listFunctionParamsBEIVector.
+	VisitListFunctionParamsBEIVector(ctx *ListFunctionParamsBEIVectorContext) interface{}
 
 	// Visit a parse tree produced by SFGrammarParser#CallFunctionWithoutParams.
 	VisitCallFunctionWithoutParams(ctx *CallFunctionWithoutParamsContext) interface{}
