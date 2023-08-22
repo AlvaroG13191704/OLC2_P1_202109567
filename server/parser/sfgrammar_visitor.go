@@ -25,6 +25,30 @@ type SFGrammarVisitor interface {
 	// Visit a parse tree produced by SFGrammarParser#ReturnStmt.
 	VisitReturnStmt(ctx *ReturnStmtContext) interface{}
 
+	// Visit a parse tree produced by SFGrammarParser#structStmt.
+	VisitStructStmt(ctx *StructStmtContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#structBlock.
+	VisitStructBlock(ctx *StructBlockContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#structStmts.
+	VisitStructStmts(ctx *StructStmtsContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#StructDeclarationWithValueAndType.
+	VisitStructDeclarationWithValueAndType(ctx *StructDeclarationWithValueAndTypeContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#StructDeclarationWithoutValue.
+	VisitStructDeclarationWithoutValue(ctx *StructDeclarationWithoutValueContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#StructDeclarationImplicitValue.
+	VisitStructDeclarationImplicitValue(ctx *StructDeclarationImplicitValueContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#StructDeclarationVector.
+	VisitStructDeclarationVector(ctx *StructDeclarationVectorContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#structCallList.
+	VisitStructCallList(ctx *StructCallListContext) interface{}
+
 	// Visit a parse tree produced by SFGrammarParser#TypeValueDeclaration.
 	VisitTypeValueDeclaration(ctx *TypeValueDeclarationContext) interface{}
 
@@ -142,6 +166,15 @@ type SFGrammarVisitor interface {
 	// Visit a parse tree produced by SFGrammarParser#AccessVector.
 	VisitAccessVector(ctx *AccessVectorContext) interface{}
 
+	// Visit a parse tree produced by SFGrammarParser#SelfFunction.
+	VisitSelfFunction(ctx *SelfFunctionContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#StructAttribute.
+	VisitStructAttribute(ctx *StructAttributeContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#StructFunction.
+	VisitStructFunction(ctx *StructFunctionContext) interface{}
+
 	// Visit a parse tree produced by SFGrammarParser#embbededFunc.
 	VisitEmbbededFunc(ctx *EmbbededFuncContext) interface{}
 
@@ -186,6 +219,9 @@ type SFGrammarVisitor interface {
 
 	// Visit a parse tree produced by SFGrammarParser#ArithmeticOperationExpr.
 	VisitArithmeticOperationExpr(ctx *ArithmeticOperationExprContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#StructCallExpr.
+	VisitStructCallExpr(ctx *StructCallExprContext) interface{}
 
 	// Visit a parse tree produced by SFGrammarParser#RelationalOperationExpr.
 	VisitRelationalOperationExpr(ctx *RelationalOperationExprContext) interface{}

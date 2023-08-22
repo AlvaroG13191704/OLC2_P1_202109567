@@ -173,7 +173,6 @@ func (v *Visitor) VisitListFunctionParamsNEI(ctx *parser.ListFunctionParamsNEICo
 
 	// iterate over the list of ids
 	for i, id := range listIds {
-		// create the
 		// get the type
 		typeParam := listTypes[i/2].GetText()
 		// create a new symbol table

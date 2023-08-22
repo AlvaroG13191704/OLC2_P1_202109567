@@ -341,3 +341,24 @@ func suma(interVec : [Int])  {
 
 
 suma(vec1)
+
+/// STRUCTS
+//struct con atributo sin valor por defecto
+// y con un atributo con valor por defecto
+struct Persona{
+    var Nombre: String
+    var edad = 0
+
+    // mutable
+    mutating func cambiarNombre() {
+        self.edad = 0;
+    }
+
+
+    // function inmutable
+    func mostrarNombre() {
+        self.Nombre = "Alvaro" /// error
+        print("nombre: " )
+    }
+
+}

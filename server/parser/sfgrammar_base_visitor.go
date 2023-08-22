@@ -31,6 +31,38 @@ func (v *BaseSFGrammarVisitor) VisitReturnStmt(ctx *ReturnStmtContext) interface
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseSFGrammarVisitor) VisitStructStmt(ctx *StructStmtContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitStructBlock(ctx *StructBlockContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitStructStmts(ctx *StructStmtsContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitStructDeclarationWithValueAndType(ctx *StructDeclarationWithValueAndTypeContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitStructDeclarationWithoutValue(ctx *StructDeclarationWithoutValueContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitStructDeclarationImplicitValue(ctx *StructDeclarationImplicitValueContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitStructDeclarationVector(ctx *StructDeclarationVectorContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitStructCallList(ctx *StructCallListContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseSFGrammarVisitor) VisitTypeValueDeclaration(ctx *TypeValueDeclarationContext) interface{} {
 	return v.VisitChildren(ctx)
 }
@@ -187,6 +219,18 @@ func (v *BaseSFGrammarVisitor) VisitAccessVector(ctx *AccessVectorContext) inter
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseSFGrammarVisitor) VisitSelfFunction(ctx *SelfFunctionContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitStructAttribute(ctx *StructAttributeContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitStructFunction(ctx *StructFunctionContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseSFGrammarVisitor) VisitEmbbededFunc(ctx *EmbbededFuncContext) interface{} {
 	return v.VisitChildren(ctx)
 }
@@ -244,6 +288,10 @@ func (v *BaseSFGrammarVisitor) VisitComparationOperationExpr(ctx *ComparationOpe
 }
 
 func (v *BaseSFGrammarVisitor) VisitArithmeticOperationExpr(ctx *ArithmeticOperationExprContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitStructCallExpr(ctx *StructCallExprContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

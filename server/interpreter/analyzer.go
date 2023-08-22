@@ -147,6 +147,10 @@ func (v *Visitor) VisitStmts(ctx *parser.StmtsContext) interface{} {
 	if ctx.CallBack() != nil {
 		return v.Visit(ctx.CallBack())
 	}
+	// structs
+	if ctx.StructStmt() != nil {
+		return v.Visit(ctx.StructStmt())
+	}
 
 	return nil
 }

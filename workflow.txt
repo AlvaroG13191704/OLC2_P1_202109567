@@ -30,11 +30,24 @@ Tasks of coding
         2.5. Assigment of vectors ✅
         2.6 Add += and -= to vectors ✅
         2.7 Vectors in functions ✅
+
     2.2 Matrix
 
 3 Structs
-4. Functions by reference
+    3.1 Write Grammar
+        3.1.1 Declaration of structs  ✅
+        3.1.2 Call of structs ✅
+    3.2 Read and save structs in the symbol table 
+    3.3 Initialize structs
+    3.4 Access to structs
+    
+
+
+4. Functions by reference ❌
     4.1 Functions by reference in functions -> only id 
+        4.1.1 variables
+        4.1.2 vectors
+        4.1.3 structs
 
 
 

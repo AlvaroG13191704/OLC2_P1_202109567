@@ -10,11 +10,14 @@ CHAR: 'Character';
 
 // -- Keywords
 IF: 'if';
+STRUCT: 'struct';
+MUTATING: 'mutating';
 APPEND: 'append';
 COUNT: 'count';
 REMOVELAST: 'removeLast';
 REMOVE: 'remove';
 ISEMPTY: 'isEmpty';
+SELF: 'self';
 AT: 'at';
 ELSE: 'else';
 SWITCH: 'switch';
@@ -37,7 +40,7 @@ NIL: 'nil';
 DECLARATION_VAR: 'var';
 DECLARATION_LET: 'let';
 REFERENCE: '&';
-REFERENCE_PARAM: 'inout';
+INOUT: 'inout';
 NOT_PARAM: '_';
 
 

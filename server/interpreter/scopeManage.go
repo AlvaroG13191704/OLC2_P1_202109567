@@ -7,11 +7,12 @@ import (
 
 type SymbolTable struct {
 	Id           string // the name of the variable
-	TypeSymbol   string // the type of the symbol variable or function
-	TypeVariable string // the type of the variable -> var or let
+	TypeSymbol   string // the type of the symbol variable or function, vector, reference, struct
+	TypeVariable string // the type of the variable -> var or let, struct
 	TypeData     string // the type of the data -> Int, Float, String, Boolean, Character
 	Value        interface{}
 	ListParams   interface{}
+	Mutating     bool
 	Line         int
 	Column       int
 }

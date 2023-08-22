@@ -78,19 +78,6 @@ func (n *Nil) GetType() string {
 	return NilType
 }
 
-// Reference
-type Reference struct {
-	Value interface{}
-}
-
-func (r *Reference) GetValue() interface{} {
-	return r.Value
-}
-
-func (r *Reference) GetType() string {
-	return ReferenceType
-}
-
 // Vector
 type Vector struct {
 	Value []interface{}
@@ -102,4 +89,17 @@ func (v *Vector) GetValue() []interface{} {
 
 func (v *Vector) GetType() string {
 	return VectorType
+}
+
+// Struct
+type Struct struct {
+	Value map[string]interface{}
+}
+
+func (s *Struct) GetValue() map[string]interface{} {
+	return s.Value
+}
+
+func (s *Struct) GetType() string {
+	return StructType
 }

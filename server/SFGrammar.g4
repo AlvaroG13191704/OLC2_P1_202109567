@@ -21,12 +21,33 @@ stmts: declaration (SEMICOLON)?
      | printstmt
      | callFunctionStmt (SEMICOLON)?
      | callBack (SEMICOLON)?
+     | structStmt
      ;
 
 transferStmt: BREAK (SEMICOLON)?          #BreakStmt
             | CONTINUE (SEMICOLON)?       #ContinueStmt
             | RETURN (expr)? (SEMICOLON)? #ReturnStmt
             ;
+
+
+// struct
+structStmt: STRUCT ID_PRIMITIVE LBRACE structBlock RBRACE ;
+
+structBlock: (structStmts)* ;
+
+structStmts: declarationStructs (SEMICOLON)?
+           ;
+
+declarationStructs :type_declaration  ID_PRIMITIVE COLON type IS_ expr #StructDeclarationWithValueAndType
+           | type_declaration  ID_PRIMITIVE COLON type #StructDeclarationWithoutValue
+           | type_declaration  ID_PRIMITIVE IS_ expr #StructDeclarationImplicitValue
+           | type_declaration  ID_PRIMITIVE COLON LBRACKET type RBRACKET IS_ (LBRACKET exprList RBRACKET | ID_PRIMITIVE ) #StructDeclarationVector
+           ;
+
+           
+structCallList: ID_PRIMITIVE COLON expr (COMMA ID_PRIMITIVE COLON expr)* ;
+
+
 
 
 declaration: type_declaration  ID_PRIMITIVE COLON type IS_ expr          #TypeValueDeclaration // var value: String = "Hola"
@@ -75,16 +96,16 @@ forRange: left=expr DOT DOT DOT right=expr ;
 guardStmt : GUARD expr ELSE LBRACE block RBRACE ;
 
 // functions
-functionStmt:FUNC ID_PRIMITIVE LPAREN  RPAREN (ARROW_FUNCTION type)? LBRACE block RBRACE                        #FunctionWithoutParams
-            |FUNC ID_PRIMITIVE LPAREN listFunctionParams  RPAREN (ARROW_FUNCTION type)? LBRACE block RBRACE     #FunctionWithParams
+functionStmt:MUTATING? FUNC ID_PRIMITIVE LPAREN  RPAREN (ARROW_FUNCTION type)? LBRACE block RBRACE                        #FunctionWithoutParams
+            |MUTATING? FUNC ID_PRIMITIVE LPAREN listFunctionParams  RPAREN (ARROW_FUNCTION type)? LBRACE block RBRACE     #FunctionWithParams
             ;
 
-listFunctionParams: ID_PRIMITIVE ID_PRIMITIVE COLON type (COMMA ID_PRIMITIVE ID_PRIMITIVE COLON type)* #listFunctionParamsEI
-                  | NOT_PARAM ID_PRIMITIVE COLON type (COMMA NOT_PARAM ID_PRIMITIVE COLON type)*       #listFunctionParamsNEI
-                  | ID_PRIMITIVE COLON  type (COMMA ID_PRIMITIVE COLON type)*                          #listFunctionParamsBEI
-                  | ID_PRIMITIVE ID_PRIMITIVE COLON LBRACKET type RBRACKET (COMMA ID_PRIMITIVE ID_PRIMITIVE COLON LBRACKET type RBRACKET )* #listFunctionParamsEIVector
-                  | NOT_PARAM ID_PRIMITIVE COLON LBRACKET type RBRACKET (COMMA NOT_PARAM ID_PRIMITIVE COLON LBRACKET type RBRACKET )*       #listFunctionParamsNEIVector
-                  | ID_PRIMITIVE COLON  LBRACKET type RBRACKET (COMMA ID_PRIMITIVE COLON LBRACKET type RBRACKET )*                          #listFunctionParamsBEIVector
+listFunctionParams: ID_PRIMITIVE ID_PRIMITIVE COLON INOUT? type (COMMA ID_PRIMITIVE ID_PRIMITIVE COLON type)* #listFunctionParamsEI
+                  | NOT_PARAM ID_PRIMITIVE COLON INOUT? type (COMMA NOT_PARAM ID_PRIMITIVE COLON type)*       #listFunctionParamsNEI
+                  | ID_PRIMITIVE COLON INOUT?  type (COMMA ID_PRIMITIVE COLON INOUT? type)*                          #listFunctionParamsBEI
+                  | ID_PRIMITIVE ID_PRIMITIVE COLON INOUT? LBRACKET type RBRACKET (COMMA ID_PRIMITIVE ID_PRIMITIVE COLON INOUT? LBRACKET type RBRACKET )* #listFunctionParamsEIVector
+                  | NOT_PARAM ID_PRIMITIVE COLON INOUT? LBRACKET type RBRACKET (COMMA NOT_PARAM ID_PRIMITIVE COLON INOUT? LBRACKET type RBRACKET )*       #listFunctionParamsNEIVector
+                  | ID_PRIMITIVE COLON INOUT? LBRACKET type RBRACKET (COMMA ID_PRIMITIVE COLON INOUT? LBRACKET type RBRACKET )*                          #listFunctionParamsBEIVector
                   ;
 
 
@@ -92,8 +113,8 @@ callFunctionStmt: ID_PRIMITIVE LPAREN  RPAREN                     #CallFunctionW
                 | ID_PRIMITIVE LPAREN listCallFunctionStmt RPAREN #CallFunctionWithParams
                 ;
                 
-listCallFunctionStmt: ID_PRIMITIVE COLON expr (COMMA ID_PRIMITIVE COLON expr)*              #listCallFunctionStmtEI
-                    | expr (COMMA expr)*                                                    #listCallFunctionStmtNEI
+listCallFunctionStmt: REFERENCE? ID_PRIMITIVE COLON expr (COMMA REFERENCE? ID_PRIMITIVE COLON expr)*   #listCallFunctionStmtEI
+                    | REFERENCE? expr (COMMA REFERENCE? expr)*                                         #listCallFunctionStmtNEI
                     ;
 
 
@@ -103,6 +124,9 @@ callBack: ID_PRIMITIVE DOT APPEND LPAREN expr LPAREN            #AppendVector //
         | ID_PRIMITIVE DOT ISEMPTY LPAREN  RPAREN               #IsEmptyVector // vector.isEmpty()
         | ID_PRIMITIVE DOT COUNT                                #CountVector // vector.count
         | ID_PRIMITIVE LBRACKET expr RBRACKET                   #AccessVector // let value = vector[0]
+        | SELF DOT ID_PRIMITIVE (IS_ expr)?                     #SelfFunction // self.function(10) // PENDING IMPLEMENTATION
+        | ID_PRIMITIVE DOT ID_PRIMITIVE (IS_ expr)?             #StructAttribute // struct.value = 10 // PENDING IMPLEMENTATION
+        | ID_PRIMITIVE DOT ID_PRIMITIVE LPAREN listFunctionParams RPAREN #StructFunction // struct.function(params) // PENDING IMPLEMENTATION
         ;
 
 // Embedded functions
@@ -139,6 +163,8 @@ expr: NEGATION_OPERATOR right=expr                                      #NotExpr
     | callBack (SEMICOLON)?                                             #CallBackExpr
     // emmbeded functions
     | embbededFunc                                                      #EmbeddedFunctionExpr
+    // struct call
+    | ID_PRIMITIVE LPAREN structCallList RPAREN                         #StructCallExpr // PENDING IMPLEMENTATION
     // Primitives
     | DIGIT_PRIMITIVE                                                   #DigitExpr
     | STRING_PRIMITIVE                                                  #StringExpr
@@ -148,4 +174,4 @@ expr: NEGATION_OPERATOR right=expr                                      #NotExpr
     ;
 
 
-type: (INT|FLOAT|STRING|BOOL|CHAR|) ;
+type: (INT|FLOAT|STRING|BOOL|CHAR|ID_PRIMITIVE) ;

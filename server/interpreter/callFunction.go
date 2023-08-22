@@ -103,7 +103,7 @@ func (v *Visitor) VisitCallFunctionWithParams(ctx *parser.CallFunctionWithParams
 
 	// if both list has external and internal keys then validate
 	if listParams["external"] != nil && listArguments.(map[string][]SymbolTable)["external"] != nil && listParams["internal"] != nil && listArguments.(map[string][]SymbolTable)["internal"] != nil {
-		fmt.Println("params with external and internal")
+		fmt.Println("params with external and internal --> _ value")
 		fmt.Println("listParams ->", listParams)
 		fmt.Println("listArguments ->", listArguments)
 		// validate external params with external arguments
@@ -173,7 +173,7 @@ func (v *Visitor) VisitCallFunctionWithParams(ctx *parser.CallFunctionWithParams
 		}
 
 	} else if listParams["internal"] != nil && listArguments.(map[string][]SymbolTable)["internal"] != nil {
-		fmt.Println("params with only internal, not external")
+		fmt.Println("params with only internal, not external --> _ value")
 		fmt.Println("listParams ->", listParams)
 		fmt.Println("listArguments ->", listArguments)
 		// validate internal params with internal arguments
@@ -314,11 +314,6 @@ func (v *Visitor) VisitCallFunctionWithParams(ctx *parser.CallFunctionWithParams
 	// create the internal values
 	v.Visit(function.Value.(*parser.BlockContext))
 
-	// // evaluate if the return type is the same as the function return type
-	// fmt.Printf("Return value -> %v\n", v.ReturnValue)
-	// fmt.Printf("Return type -> %v\n", v.ReturnValue.(values.PRIMITIVE).GetType())
-	// fmt.Printf("Function return type -> %v\n", function.TypeVariable)
-
 	if v.ReturnValue != nil {
 		if function.TypeVariable != v.ReturnValue.(values.PRIMITIVE).GetType() {
 			// add error
@@ -333,10 +328,10 @@ func (v *Visitor) VisitCallFunctionWithParams(ctx *parser.CallFunctionWithParams
 		}
 	}
 
-	fmt.Println("----------------------------------------------------")
-	fmt.Println("Current scope or symbol table ->", v.getCurrentScope())
-	fmt.Println("Global scope or symbol table ->", v.symbolStack)
-	fmt.Println("----------------------------------------------------")
+	// fmt.Println("----------------------------------------------------")
+	// fmt.Println("Current scope or symbol table ->", v.getCurrentScope())
+	// fmt.Println("Global scope or symbol table ->", v.symbolStack)
+	// fmt.Println("----------------------------------------------------")
 
 	return values.Nil{}
 }

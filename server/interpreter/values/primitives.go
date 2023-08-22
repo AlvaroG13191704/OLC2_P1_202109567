@@ -9,6 +9,7 @@ const (
 	NilType       = "nil"
 	ReferenceType = "Reference"
 	VectorType    = "Vector"
+	StructType    = "Struct"
 )
 
 const (
@@ -17,6 +18,7 @@ const (
 	Type_Function  = "function"
 	Type_Vector    = "vector"
 	Type_Reference = "Reference"
+	Type_Struct    = "Struct"
 )
 
 type PRIMITIVE interface {
