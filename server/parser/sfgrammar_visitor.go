@@ -46,8 +46,17 @@ type SFGrammarVisitor interface {
 	// Visit a parse tree produced by SFGrammarParser#StructDeclarationVector.
 	VisitStructDeclarationVector(ctx *StructDeclarationVectorContext) interface{}
 
+	// Visit a parse tree produced by SFGrammarParser#StructFunctionWithoutParams.
+	VisitStructFunctionWithoutParams(ctx *StructFunctionWithoutParamsContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#StructFunctionWithParams.
+	VisitStructFunctionWithParams(ctx *StructFunctionWithParamsContext) interface{}
+
 	// Visit a parse tree produced by SFGrammarParser#structCallList.
 	VisitStructCallList(ctx *StructCallListContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#StructCreation.
+	VisitStructCreation(ctx *StructCreationContext) interface{}
 
 	// Visit a parse tree produced by SFGrammarParser#TypeValueDeclaration.
 	VisitTypeValueDeclaration(ctx *TypeValueDeclarationContext) interface{}

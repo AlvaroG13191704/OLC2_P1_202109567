@@ -76,6 +76,21 @@ func (v *Visitor) VisitStructDeclarationWithoutValue(ctx *parser.StructDeclarati
 			Column:       ctx.GetStart().GetColumn(),
 		}
 
+	} else if varType == "let" {
+		// save the value of the variable as nil
+		varValue := &values.Nil{
+			Value: nil,
+		}
+		// add the variable to the scope
+		SymbolValue = SymbolTable{
+			Id:           varId,
+			TypeSymbol:   values.Type_Variable,
+			TypeVariable: varType,
+			TypeData:     varTypeValue,
+			Value:        varValue,
+			Line:         ctx.GetStart().GetLine(),
+			Column:       ctx.GetStart().GetColumn(),
+		}
 	}
 
 	return SymbolValue

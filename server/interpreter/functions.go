@@ -8,7 +8,6 @@ import (
 )
 
 func (v *Visitor) VisitFunctionWithoutParams(ctx *parser.FunctionWithoutParamsContext) interface{} {
-
 	// get the id
 	idFunction := ctx.ID_PRIMITIVE().GetText()
 	// verify if the function is already declared

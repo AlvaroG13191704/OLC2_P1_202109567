@@ -59,7 +59,19 @@ func (v *BaseSFGrammarVisitor) VisitStructDeclarationVector(ctx *StructDeclarati
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseSFGrammarVisitor) VisitStructFunctionWithoutParams(ctx *StructFunctionWithoutParamsContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitStructFunctionWithParams(ctx *StructFunctionWithParamsContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseSFGrammarVisitor) VisitStructCallList(ctx *StructCallListContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitStructCreation(ctx *StructCreationContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

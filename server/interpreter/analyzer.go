@@ -98,10 +98,10 @@ func (v *Visitor) VisitBlock(ctx *parser.BlockContext) interface{} {
 
 	}
 	// pop the scope
-	fmt.Println("----------------------------------------------------")
-	fmt.Println("Current scope or symbol table ->", v.getCurrentScope())
-	fmt.Println("Global scope or symbol table ->", v.symbolStack)
-	fmt.Println("----------------------------------------------------")
+	// fmt.Println("----------------------------------------------------")
+	// fmt.Println("Current scope or symbol table ->", v.getCurrentScope())
+	// fmt.Println("Global scope or symbol table ->", v.symbolStack)
+	// fmt.Println("----------------------------------------------------")
 	v.popScope()
 	return nil
 }

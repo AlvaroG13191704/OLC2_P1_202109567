@@ -362,3 +362,44 @@ struct Persona{
     }
 
 }
+
+
+struct Persona{
+    var Nombre: String
+    var edad = 0
+    var vec1: [Int] = [10,20,30,40,50]
+    var pasajeros = 0
+    var velocidad = 100
+    var nombre: String
+    var piloto: Persona
+    // funcion mutating without params
+    mutating func frenar(){
+        print("Frenando")
+        //al ser mutable sí afecta al struct
+        self.velocidad = 0
+    }
+    // function non mutating with params
+    func setEdad(_ value: Int) {
+        self.edad = value
+    }
+}
+
+struct Persona{
+    var Nombre: String
+    var edad = 0
+}
+
+// creacion
+var p1 = Persona(Nombre: "Alvaro", edad: 20)
+
+struct Avion {
+    var pasajeros = 0
+    var velocidad = 100
+    var nombre: String
+    var piloto: Persona
+}
+
+// creacion
+var avion1 = Avion(pasajeros: 100, velocidad: 1000, nombre: "Avion1", piloto: p1)
+// o
+var avion2 = Avion(pasajeros: 100, velocidad: 1000, nombre: "Avion1", piloto: Persona(Nombre: "Alvaro", edad: 20))

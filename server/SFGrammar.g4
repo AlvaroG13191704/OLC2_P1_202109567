@@ -36,6 +36,7 @@ structStmt: STRUCT ID_PRIMITIVE LBRACE structBlock RBRACE ;
 structBlock: (structStmts)* ;
 
 structStmts: declarationStructs (SEMICOLON)?
+           | functionStructs 
            ;
 
 declarationStructs :type_declaration  ID_PRIMITIVE COLON type IS_ expr #StructDeclarationWithValueAndType
@@ -44,13 +45,18 @@ declarationStructs :type_declaration  ID_PRIMITIVE COLON type IS_ expr #StructDe
            | type_declaration  ID_PRIMITIVE COLON LBRACKET type RBRACKET IS_ (LBRACKET exprList RBRACKET | ID_PRIMITIVE ) #StructDeclarationVector
            ;
 
+functionStructs:MUTATING? FUNC ID_PRIMITIVE LPAREN  RPAREN (ARROW_FUNCTION type)? LBRACE block RBRACE                  #StructFunctionWithoutParams
+            |MUTATING? FUNC ID_PRIMITIVE LPAREN listFunctionParams  RPAREN (ARROW_FUNCTION type)? LBRACE block RBRACE  #StructFunctionWithParams
+            ;
            
 structCallList: ID_PRIMITIVE COLON expr (COMMA ID_PRIMITIVE COLON expr)* ;
 
 
 
 
-declaration: type_declaration  ID_PRIMITIVE COLON type IS_ expr          #TypeValueDeclaration // var value: String = "Hola"
+declaration  // var fruta = Fruta(nombre: "pera", precio: 10) -> Struct creation
+           : type_declaration  ID_PRIMITIVE IS_ ID_PRIMITIVE LPAREN structCallList RPAREN #StructCreation
+           | type_declaration  ID_PRIMITIVE COLON type IS_ expr          #TypeValueDeclaration // var value: String = "Hola"
            | type_declaration  ID_PRIMITIVE COLON type QUESTION_MARK     #TypeOptionalValueDeclaration // var value: String?
            | type_declaration  ID_PRIMITIVE IS_ expr                     #ValueDeclaration // var value = 10
            | type_declaration  ID_PRIMITIVE COLON LBRACKET type RBRACKET IS_ (LBRACKET exprList RBRACKET | ID_PRIMITIVE ) #VectorDeclaration // var value: [Int] = [1,2,3]
@@ -96,8 +102,8 @@ forRange: left=expr DOT DOT DOT right=expr ;
 guardStmt : GUARD expr ELSE LBRACE block RBRACE ;
 
 // functions
-functionStmt:MUTATING? FUNC ID_PRIMITIVE LPAREN  RPAREN (ARROW_FUNCTION type)? LBRACE block RBRACE                        #FunctionWithoutParams
-            |MUTATING? FUNC ID_PRIMITIVE LPAREN listFunctionParams  RPAREN (ARROW_FUNCTION type)? LBRACE block RBRACE     #FunctionWithParams
+functionStmt:FUNC ID_PRIMITIVE LPAREN  RPAREN (ARROW_FUNCTION type)? LBRACE block RBRACE                        #FunctionWithoutParams
+            |FUNC ID_PRIMITIVE LPAREN listFunctionParams  RPAREN (ARROW_FUNCTION type)? LBRACE block RBRACE     #FunctionWithParams
             ;
 
 listFunctionParams: ID_PRIMITIVE ID_PRIMITIVE COLON INOUT? type (COMMA ID_PRIMITIVE ID_PRIMITIVE COLON type)* #listFunctionParamsEI
@@ -124,9 +130,9 @@ callBack: ID_PRIMITIVE DOT APPEND LPAREN expr LPAREN            #AppendVector //
         | ID_PRIMITIVE DOT ISEMPTY LPAREN  RPAREN               #IsEmptyVector // vector.isEmpty()
         | ID_PRIMITIVE DOT COUNT                                #CountVector // vector.count
         | ID_PRIMITIVE LBRACKET expr RBRACKET                   #AccessVector // let value = vector[0]
-        | SELF DOT ID_PRIMITIVE (IS_ expr)?                     #SelfFunction // self.function(10) // PENDING IMPLEMENTATION
-        | ID_PRIMITIVE DOT ID_PRIMITIVE (IS_ expr)?             #StructAttribute // struct.value = 10 // PENDING IMPLEMENTATION
-        | ID_PRIMITIVE DOT ID_PRIMITIVE LPAREN listFunctionParams RPAREN #StructFunction // struct.function(params) // PENDING IMPLEMENTATION
+        | SELF DOT ID_PRIMITIVE (IS_ expr)?                     #SelfFunction // self.function(10) // TODO: PENDING IMPLEMENTATION
+        | ID_PRIMITIVE DOT ID_PRIMITIVE (IS_ expr)?             #StructAttribute // struct.value = 10 //TODO: PENDING IMPLEMENTATION
+        | ID_PRIMITIVE DOT ID_PRIMITIVE LPAREN listFunctionParams RPAREN #StructFunction // struct.function(params) // TODO: PENDING IMPLEMENTATION
         ;
 
 // Embedded functions
@@ -137,6 +143,7 @@ embbededFunc
             ;
 
 printstmt: PRINT LPAREN exprList RPAREN ;
+
 exprList : expr (COMMA expr)* ;
 
 intstmt: INT LPAREN expr RPAREN ;
@@ -164,7 +171,7 @@ expr: NEGATION_OPERATOR right=expr                                      #NotExpr
     // emmbeded functions
     | embbededFunc                                                      #EmbeddedFunctionExpr
     // struct call
-    | ID_PRIMITIVE LPAREN structCallList RPAREN                         #StructCallExpr // PENDING IMPLEMENTATION
+    | ID_PRIMITIVE LPAREN structCallList RPAREN                         #StructCallExpr //TODO: PENDING IMPLEMENTATION 
     // Primitives
     | DIGIT_PRIMITIVE                                                   #DigitExpr
     | STRING_PRIMITIVE                                                  #StringExpr
