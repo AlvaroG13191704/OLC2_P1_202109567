@@ -61,19 +61,44 @@ func (v *Visitor) VisitStructDeclarationWithoutValue(ctx *parser.StructDeclarati
 
 	// evaluate if the var or let
 	if varType == "var" {
-		// save the value of the variable as nil
-		varValue := &values.Nil{
-			Value: nil,
-		}
-		// add the variable to the scope
-		SymbolValue = SymbolTable{
-			Id:           varId,
-			TypeSymbol:   values.Type_Variable,
-			TypeVariable: varType,
-			TypeData:     varTypeValue,
-			Value:        varValue,
-			Line:         ctx.GetStart().GetLine(),
-			Column:       ctx.GetStart().GetColumn(),
+
+		// if varTypeValue is different of Int, Float, String, Boolean, Character
+		if varTypeValue != "Int" && varTypeValue != "Float" && varTypeValue != "String" && varTypeValue != "Boolean" && varTypeValue != "Character" {
+			// Find the struct
+			structValue, ok := v.VerifyScope(varTypeValue)
+
+			if !ok {
+				v.Errors = append(v.Errors, Error{Line: ctx.GetStart().GetLine(), Column: ctx.GetStart().GetColumn(), Msg: "The struct " + varTypeValue + " does not exists", Type: "Variable"})
+				log.Printf("The struct %s does not exists", varTypeValue)
+				return nil
+			}
+
+			// add the variable to the scope
+			SymbolValue = SymbolTable{
+				Id:           varId,
+				TypeSymbol:   values.Type_Struct,
+				TypeVariable: varType,
+				TypeData:     "struct",
+				Value:        structValue,
+				Line:         ctx.GetStart().GetLine(),
+				Column:       ctx.GetStart().GetColumn(),
+			}
+		} else {
+
+			// save the value of the variable as nil
+			varValue := &values.Nil{
+				Value: nil,
+			}
+			// add the variable to the scope
+			SymbolValue = SymbolTable{
+				Id:           varId,
+				TypeSymbol:   values.Type_Variable,
+				TypeVariable: varType,
+				TypeData:     varTypeValue,
+				Value:        varValue,
+				Line:         ctx.GetStart().GetLine(),
+				Column:       ctx.GetStart().GetColumn(),
+			}
 		}
 
 	} else if varType == "let" {
@@ -92,6 +117,8 @@ func (v *Visitor) VisitStructDeclarationWithoutValue(ctx *parser.StructDeclarati
 			Column:       ctx.GetStart().GetColumn(),
 		}
 	}
+
+	fmt.Println("SymbolValue ->", SymbolValue)
 
 	return SymbolValue
 }

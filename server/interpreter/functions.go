@@ -30,7 +30,7 @@ func (v *Visitor) VisitFunctionWithoutParams(ctx *parser.FunctionWithoutParamsCo
 	if ctx.ARROW_FUNCTION() != nil {
 		returnType = ctx.Type_().GetText()
 		// save the function in the symbol table
-		v.getCurrentScope()[idFunction] = SymbolTable{
+		symbol := SymbolTable{
 			Id:           idFunction,
 			TypeSymbol:   values.Type_Function,
 			TypeVariable: returnType,
@@ -40,10 +40,15 @@ func (v *Visitor) VisitFunctionWithoutParams(ctx *parser.FunctionWithoutParamsCo
 			Column:       ctx.GetStart().GetColumn(),
 		}
 
+		//
+		v.getCurrentScope()[idFunction] = symbol
+
+		v.TableSymbol = append(v.TableSymbol, symbol)
+
 	} else {
 		returnType = "void"
 		// save the function in the symbol table
-		v.getCurrentScope()[idFunction] = SymbolTable{
+		symbol := SymbolTable{
 			Id:           idFunction,
 			TypeSymbol:   values.Type_Function,
 			TypeVariable: returnType,
@@ -52,6 +57,10 @@ func (v *Visitor) VisitFunctionWithoutParams(ctx *parser.FunctionWithoutParamsCo
 			Line:         ctx.GetStart().GetLine(),
 			Column:       ctx.GetStart().GetColumn(),
 		}
+
+		v.getCurrentScope()[idFunction] = symbol
+
+		v.TableSymbol = append(v.TableSymbol, symbol)
 	}
 
 	fmt.Println("FunctionWithoutParams: ", idFunction, returnType)
@@ -87,7 +96,7 @@ func (v *Visitor) VisitFunctionWithParams(ctx *parser.FunctionWithParamsContext)
 	if ctx.ARROW_FUNCTION() != nil {
 		returnType = ctx.Type_().GetText()
 		// save the function in the symbol table
-		v.getCurrentScope()[idFunction] = SymbolTable{
+		symbol := SymbolTable{
 			Id:           idFunction,
 			TypeSymbol:   values.Type_Function,
 			TypeVariable: returnType,
@@ -98,10 +107,14 @@ func (v *Visitor) VisitFunctionWithParams(ctx *parser.FunctionWithParamsContext)
 			Column:       ctx.GetStart().GetColumn(),
 		}
 
+		v.getCurrentScope()[idFunction] = symbol
+
+		v.TableSymbol = append(v.TableSymbol, symbol)
+
 	} else {
 		returnType = "void"
 		// save the function in the symbol table
-		v.getCurrentScope()[idFunction] = SymbolTable{
+		symbol := SymbolTable{
 			Id:           idFunction,
 			TypeSymbol:   values.Type_Function,
 			TypeVariable: returnType,
@@ -111,6 +124,10 @@ func (v *Visitor) VisitFunctionWithParams(ctx *parser.FunctionWithParamsContext)
 			Line:         ctx.GetStart().GetLine(),
 			Column:       ctx.GetStart().GetColumn(),
 		}
+
+		v.getCurrentScope()[idFunction] = symbol
+
+		v.TableSymbol = append(v.TableSymbol, symbol)
 	}
 
 	return nil

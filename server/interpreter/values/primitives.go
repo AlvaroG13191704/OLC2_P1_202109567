@@ -18,7 +18,7 @@ const (
 	Type_Function  = "function"
 	Type_Vector    = "vector"
 	Type_Reference = "Reference"
-	Type_Struct    = "Struct"
+	Type_Struct    = "struct"
 )
 
 type PRIMITIVE interface {

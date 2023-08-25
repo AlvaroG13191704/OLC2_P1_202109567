@@ -10,7 +10,8 @@ import (
 
 func NewVisitor() *Visitor {
 	return &Visitor{
-		symbolStack: []map[string]SymbolTable{},
+		SymbolStack: []map[string]SymbolTable{},
+		TableSymbol: []SymbolTable{},
 		Outputs:     []string{},
 		Errors:      []Error{},
 	}
@@ -49,7 +50,7 @@ func (v *Visitor) VisitBlock(ctx *parser.BlockContext) interface{} {
 		// print the symbol table
 		fmt.Println("----------------------------------------------------")
 		fmt.Println("Current scope or symbol table ->", v.getCurrentScope())
-		fmt.Println("Global scope or symbol table ->", v.symbolStack)
+		fmt.Println("Global scope or symbol table ->", v.SymbolStack)
 		fmt.Println("----------------------------------------------------")
 	}
 
@@ -88,7 +89,7 @@ func (v *Visitor) VisitBlock(ctx *parser.BlockContext) interface{} {
 			fmt.Println("----------------------------------------------------")
 			fmt.Println("Return value ->", v.ReturnValue)
 			fmt.Println("Current scope or symbol table ->", v.getCurrentScope())
-			fmt.Println("Global scope or symbol table ->", v.symbolStack)
+			fmt.Println("Global scope or symbol table ->", v.SymbolStack)
 			fmt.Println("----------------------------------------------------")
 			// break or continue
 			continue

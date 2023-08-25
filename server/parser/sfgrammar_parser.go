@@ -135,158 +135,158 @@ func sfgrammarParserInit() {
 		28, 649, 8, 28, 10, 28, 12, 28, 652, 9, 28, 1, 29, 1, 29, 1, 29, 1, 29,
 		1, 29, 1, 30, 1, 30, 1, 30, 1, 30, 1, 30, 1, 31, 1, 31, 1, 31, 1, 31, 1,
 		31, 1, 32, 1, 32, 1, 32, 1, 32, 1, 32, 1, 32, 1, 32, 1, 32, 1, 32, 1, 32,
-		1, 32, 3, 32, 680, 8, 32, 1, 32, 1, 32, 3, 32, 684, 8, 32, 1, 32, 1, 32,
-		1, 32, 1, 32, 1, 32, 1, 32, 1, 32, 1, 32, 1, 32, 1, 32, 1, 32, 3, 32, 697,
-		8, 32, 1, 32, 1, 32, 1, 32, 1, 32, 1, 32, 1, 32, 1, 32, 1, 32, 1, 32, 1,
-		32, 1, 32, 1, 32, 1, 32, 1, 32, 1, 32, 5, 32, 714, 8, 32, 10, 32, 12, 32,
-		717, 9, 32, 1, 33, 1, 33, 1, 33, 0, 1, 64, 34, 0, 2, 4, 6, 8, 10, 12, 14,
-		16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50,
-		52, 54, 56, 58, 60, 62, 64, 66, 0, 8, 1, 0, 34, 35, 1, 0, 31, 32, 1, 0,
-		58, 60, 1, 0, 56, 57, 1, 0, 61, 62, 1, 0, 63, 66, 1, 0, 67, 68, 2, 0, 1,
-		5, 41, 41, 802, 0, 68, 1, 0, 0, 0, 2, 74, 1, 0, 0, 0, 4, 106, 1, 0, 0,
-		0, 6, 123, 1, 0, 0, 0, 8, 125, 1, 0, 0, 0, 10, 134, 1, 0, 0, 0, 12, 142,
-		1, 0, 0, 0, 14, 175, 1, 0, 0, 0, 16, 208, 1, 0, 0, 0, 18, 210, 1, 0, 0,
-		0, 20, 262, 1, 0, 0, 0, 22, 264, 1, 0, 0, 0, 24, 296, 1, 0, 0, 0, 26, 318,
-		1, 0, 0, 0, 28, 320, 1, 0, 0, 0, 30, 334, 1, 0, 0, 0, 32, 339, 1, 0, 0,
-		0, 34, 343, 1, 0, 0, 0, 36, 365, 1, 0, 0, 0, 38, 367, 1, 0, 0, 0, 40, 373,
-		1, 0, 0, 0, 42, 405, 1, 0, 0, 0, 44, 532, 1, 0, 0, 0, 46, 542, 1, 0, 0,
-		0, 48, 576, 1, 0, 0, 0, 50, 633, 1, 0, 0, 0, 52, 638, 1, 0, 0, 0, 54, 640,
-		1, 0, 0, 0, 56, 645, 1, 0, 0, 0, 58, 653, 1, 0, 0, 0, 60, 658, 1, 0, 0,
-		0, 62, 663, 1, 0, 0, 0, 64, 696, 1, 0, 0, 0, 66, 718, 1, 0, 0, 0, 68, 69,
-		3, 2, 1, 0, 69, 70, 5, 0, 0, 1, 70, 1, 1, 0, 0, 0, 71, 73, 3, 4, 2, 0,
-		72, 71, 1, 0, 0, 0, 73, 76, 1, 0, 0, 0, 74, 72, 1, 0, 0, 0, 74, 75, 1,
-		0, 0, 0, 75, 3, 1, 0, 0, 0, 76, 74, 1, 0, 0, 0, 77, 79, 3, 20, 10, 0, 78,
-		80, 5, 51, 0, 0, 79, 78, 1, 0, 0, 0, 79, 80, 1, 0, 0, 0, 80, 107, 1, 0,
-		0, 0, 81, 83, 3, 24, 12, 0, 82, 84, 5, 51, 0, 0, 83, 82, 1, 0, 0, 0, 83,
-		84, 1, 0, 0, 0, 84, 107, 1, 0, 0, 0, 85, 87, 3, 52, 26, 0, 86, 88, 5, 51,
-		0, 0, 87, 86, 1, 0, 0, 0, 87, 88, 1, 0, 0, 0, 88, 107, 1, 0, 0, 0, 89,
-		107, 3, 26, 13, 0, 90, 107, 3, 28, 14, 0, 91, 107, 3, 34, 17, 0, 92, 107,
-		3, 36, 18, 0, 93, 107, 3, 40, 20, 0, 94, 107, 3, 6, 3, 0, 95, 107, 3, 42,
-		21, 0, 96, 107, 3, 54, 27, 0, 97, 99, 3, 46, 23, 0, 98, 100, 5, 51, 0,
-		0, 99, 98, 1, 0, 0, 0, 99, 100, 1, 0, 0, 0, 100, 107, 1, 0, 0, 0, 101,
-		103, 3, 50, 25, 0, 102, 104, 5, 51, 0, 0, 103, 102, 1, 0, 0, 0, 103, 104,
-		1, 0, 0, 0, 104, 107, 1, 0, 0, 0, 105, 107, 3, 8, 4, 0, 106, 77, 1, 0,
-		0, 0, 106, 81, 1, 0, 0, 0, 106, 85, 1, 0, 0, 0, 106, 89, 1, 0, 0, 0, 106,
-		90, 1, 0, 0, 0, 106, 91, 1, 0, 0, 0, 106, 92, 1, 0, 0, 0, 106, 93, 1, 0,
-		0, 0, 106, 94, 1, 0, 0, 0, 106, 95, 1, 0, 0, 0, 106, 96, 1, 0, 0, 0, 106,
-		97, 1, 0, 0, 0, 106, 101, 1, 0, 0, 0, 106, 105, 1, 0, 0, 0, 107, 5, 1,
-		0, 0, 0, 108, 110, 5, 20, 0, 0, 109, 111, 5, 51, 0, 0, 110, 109, 1, 0,
-		0, 0, 110, 111, 1, 0, 0, 0, 111, 124, 1, 0, 0, 0, 112, 114, 5, 21, 0, 0,
-		113, 115, 5, 51, 0, 0, 114, 113, 1, 0, 0, 0, 114, 115, 1, 0, 0, 0, 115,
-		124, 1, 0, 0, 0, 116, 118, 5, 22, 0, 0, 117, 119, 3, 64, 32, 0, 118, 117,
-		1, 0, 0, 0, 118, 119, 1, 0, 0, 0, 119, 121, 1, 0, 0, 0, 120, 122, 5, 51,
-		0, 0, 121, 120, 1, 0, 0, 0, 121, 122, 1, 0, 0, 0, 122, 124, 1, 0, 0, 0,
-		123, 108, 1, 0, 0, 0, 123, 112, 1, 0, 0, 0, 123, 116, 1, 0, 0, 0, 124,
-		7, 1, 0, 0, 0, 125, 126, 5, 7, 0, 0, 126, 127, 5, 41, 0, 0, 127, 128, 5,
-		45, 0, 0, 128, 129, 3, 10, 5, 0, 129, 130, 5, 46, 0, 0, 130, 9, 1, 0, 0,
-		0, 131, 133, 3, 12, 6, 0, 132, 131, 1, 0, 0, 0, 133, 136, 1, 0, 0, 0, 134,
-		132, 1, 0, 0, 0, 134, 135, 1, 0, 0, 0, 135, 11, 1, 0, 0, 0, 136, 134, 1,
-		0, 0, 0, 137, 139, 3, 14, 7, 0, 138, 140, 5, 51, 0, 0, 139, 138, 1, 0,
-		0, 0, 139, 140, 1, 0, 0, 0, 140, 143, 1, 0, 0, 0, 141, 143, 3, 16, 8, 0,
-		142, 137, 1, 0, 0, 0, 142, 141, 1, 0, 0, 0, 143, 13, 1, 0, 0, 0, 144, 145,
-		3, 22, 11, 0, 145, 146, 5, 41, 0, 0, 146, 147, 5, 49, 0, 0, 147, 148, 3,
-		66, 33, 0, 148, 149, 5, 52, 0, 0, 149, 150, 3, 64, 32, 0, 150, 176, 1,
-		0, 0, 0, 151, 152, 3, 22, 11, 0, 152, 153, 5, 41, 0, 0, 153, 154, 5, 49,
-		0, 0, 154, 155, 3, 66, 33, 0, 155, 176, 1, 0, 0, 0, 156, 157, 3, 22, 11,
-		0, 157, 158, 5, 41, 0, 0, 158, 159, 5, 52, 0, 0, 159, 160, 3, 64, 32, 0,
-		160, 176, 1, 0, 0, 0, 161, 162, 3, 22, 11, 0, 162, 163, 5, 41, 0, 0, 163,
-		164, 5, 49, 0, 0, 164, 165, 5, 47, 0, 0, 165, 166, 3, 66, 33, 0, 166, 167,
-		5, 48, 0, 0, 167, 173, 5, 52, 0, 0, 168, 169, 5, 47, 0, 0, 169, 170, 3,
-		56, 28, 0, 170, 171, 5, 48, 0, 0, 171, 174, 1, 0, 0, 0, 172, 174, 5, 41,
-		0, 0, 173, 168, 1, 0, 0, 0, 173, 172, 1, 0, 0, 0, 174, 176, 1, 0, 0, 0,
-		175, 144, 1, 0, 0, 0, 175, 151, 1, 0, 0, 0, 175, 156, 1, 0, 0, 0, 175,
-		161, 1, 0, 0, 0, 176, 15, 1, 0, 0, 0, 177, 179, 5, 8, 0, 0, 178, 177, 1,
-		0, 0, 0, 178, 179, 1, 0, 0, 0, 179, 180, 1, 0, 0, 0, 180, 181, 5, 25, 0,
-		0, 181, 182, 5, 41, 0, 0, 182, 183, 5, 43, 0, 0, 183, 186, 5, 44, 0, 0,
-		184, 185, 5, 26, 0, 0, 185, 187, 3, 66, 33, 0, 186, 184, 1, 0, 0, 0, 186,
-		187, 1, 0, 0, 0, 187, 188, 1, 0, 0, 0, 188, 189, 5, 45, 0, 0, 189, 190,
-		3, 2, 1, 0, 190, 191, 5, 46, 0, 0, 191, 209, 1, 0, 0, 0, 192, 194, 5, 8,
-		0, 0, 193, 192, 1, 0, 0, 0, 193, 194, 1, 0, 0, 0, 194, 195, 1, 0, 0, 0,
-		195, 196, 5, 25, 0, 0, 196, 197, 5, 41, 0, 0, 197, 198, 5, 43, 0, 0, 198,
-		199, 3, 44, 22, 0, 199, 202, 5, 44, 0, 0, 200, 201, 5, 26, 0, 0, 201, 203,
-		3, 66, 33, 0, 202, 200, 1, 0, 0, 0, 202, 203, 1, 0, 0, 0, 203, 204, 1,
-		0, 0, 0, 204, 205, 5, 45, 0, 0, 205, 206, 3, 2, 1, 0, 206, 207, 5, 46,
-		0, 0, 207, 209, 1, 0, 0, 0, 208, 178, 1, 0, 0, 0, 208, 193, 1, 0, 0, 0,
-		209, 17, 1, 0, 0, 0, 210, 211, 5, 41, 0, 0, 211, 212, 5, 49, 0, 0, 212,
-		219, 3, 64, 32, 0, 213, 214, 5, 50, 0, 0, 214, 215, 5, 41, 0, 0, 215, 216,
-		5, 49, 0, 0, 216, 218, 3, 64, 32, 0, 217, 213, 1, 0, 0, 0, 218, 221, 1,
-		0, 0, 0, 219, 217, 1, 0, 0, 0, 219, 220, 1, 0, 0, 0, 220, 19, 1, 0, 0,
-		0, 221, 219, 1, 0, 0, 0, 222, 223, 3, 22, 11, 0, 223, 224, 5, 41, 0, 0,
-		224, 225, 5, 52, 0, 0, 225, 226, 5, 41, 0, 0, 226, 227, 5, 43, 0, 0, 227,
-		228, 3, 18, 9, 0, 228, 229, 5, 44, 0, 0, 229, 263, 1, 0, 0, 0, 230, 231,
-		3, 22, 11, 0, 231, 232, 5, 41, 0, 0, 232, 233, 5, 49, 0, 0, 233, 234, 3,
-		66, 33, 0, 234, 235, 5, 52, 0, 0, 235, 236, 3, 64, 32, 0, 236, 263, 1,
-		0, 0, 0, 237, 238, 3, 22, 11, 0, 238, 239, 5, 41, 0, 0, 239, 240, 5, 49,
-		0, 0, 240, 241, 3, 66, 33, 0, 241, 242, 5, 55, 0, 0, 242, 263, 1, 0, 0,
-		0, 243, 244, 3, 22, 11, 0, 244, 245, 5, 41, 0, 0, 245, 246, 5, 52, 0, 0,
-		246, 247, 3, 64, 32, 0, 247, 263, 1, 0, 0, 0, 248, 249, 3, 22, 11, 0, 249,
-		250, 5, 41, 0, 0, 250, 251, 5, 49, 0, 0, 251, 252, 5, 47, 0, 0, 252, 253,
-		3, 66, 33, 0, 253, 254, 5, 48, 0, 0, 254, 260, 5, 52, 0, 0, 255, 256, 5,
-		47, 0, 0, 256, 257, 3, 56, 28, 0, 257, 258, 5, 48, 0, 0, 258, 261, 1, 0,
-		0, 0, 259, 261, 5, 41, 0, 0, 260, 255, 1, 0, 0, 0, 260, 259, 1, 0, 0, 0,
-		261, 263, 1, 0, 0, 0, 262, 222, 1, 0, 0, 0, 262, 230, 1, 0, 0, 0, 262,
-		237, 1, 0, 0, 0, 262, 243, 1, 0, 0, 0, 262, 248, 1, 0, 0, 0, 263, 21, 1,
-		0, 0, 0, 264, 265, 7, 0, 0, 0, 265, 23, 1, 0, 0, 0, 266, 267, 5, 41, 0,
-		0, 267, 268, 5, 52, 0, 0, 268, 297, 3, 64, 32, 0, 269, 270, 5, 41, 0, 0,
-		270, 271, 5, 53, 0, 0, 271, 297, 3, 64, 32, 0, 272, 273, 5, 41, 0, 0, 273,
-		274, 5, 54, 0, 0, 274, 297, 3, 64, 32, 0, 275, 276, 5, 41, 0, 0, 276, 277,
-		5, 47, 0, 0, 277, 278, 3, 64, 32, 0, 278, 279, 5, 48, 0, 0, 279, 280, 5,
-		52, 0, 0, 280, 281, 3, 64, 32, 0, 281, 297, 1, 0, 0, 0, 282, 283, 5, 41,
-		0, 0, 283, 284, 5, 47, 0, 0, 284, 285, 3, 64, 32, 0, 285, 286, 5, 48, 0,
-		0, 286, 287, 5, 54, 0, 0, 287, 288, 3, 64, 32, 0, 288, 297, 1, 0, 0, 0,
-		289, 290, 5, 41, 0, 0, 290, 291, 5, 47, 0, 0, 291, 292, 3, 64, 32, 0, 292,
-		293, 5, 48, 0, 0, 293, 294, 5, 53, 0, 0, 294, 295, 3, 64, 32, 0, 295, 297,
-		1, 0, 0, 0, 296, 266, 1, 0, 0, 0, 296, 269, 1, 0, 0, 0, 296, 272, 1, 0,
-		0, 0, 296, 275, 1, 0, 0, 0, 296, 282, 1, 0, 0, 0, 296, 289, 1, 0, 0, 0,
-		297, 25, 1, 0, 0, 0, 298, 299, 5, 6, 0, 0, 299, 300, 3, 64, 32, 0, 300,
-		301, 5, 45, 0, 0, 301, 302, 3, 2, 1, 0, 302, 308, 5, 46, 0, 0, 303, 304,
-		5, 16, 0, 0, 304, 305, 5, 45, 0, 0, 305, 306, 3, 2, 1, 0, 306, 307, 5,
-		46, 0, 0, 307, 309, 1, 0, 0, 0, 308, 303, 1, 0, 0, 0, 308, 309, 1, 0, 0,
-		0, 309, 319, 1, 0, 0, 0, 310, 311, 5, 6, 0, 0, 311, 312, 3, 64, 32, 0,
-		312, 313, 5, 45, 0, 0, 313, 314, 3, 2, 1, 0, 314, 315, 5, 46, 0, 0, 315,
-		316, 5, 16, 0, 0, 316, 317, 3, 26, 13, 0, 317, 319, 1, 0, 0, 0, 318, 298,
-		1, 0, 0, 0, 318, 310, 1, 0, 0, 0, 319, 27, 1, 0, 0, 0, 320, 321, 5, 17,
-		0, 0, 321, 322, 3, 64, 32, 0, 322, 326, 5, 45, 0, 0, 323, 325, 3, 30, 15,
-		0, 324, 323, 1, 0, 0, 0, 325, 328, 1, 0, 0, 0, 326, 324, 1, 0, 0, 0, 326,
-		327, 1, 0, 0, 0, 327, 330, 1, 0, 0, 0, 328, 326, 1, 0, 0, 0, 329, 331,
-		3, 32, 16, 0, 330, 329, 1, 0, 0, 0, 330, 331, 1, 0, 0, 0, 331, 332, 1,
-		0, 0, 0, 332, 333, 5, 46, 0, 0, 333, 29, 1, 0, 0, 0, 334, 335, 5, 18, 0,
-		0, 335, 336, 3, 64, 32, 0, 336, 337, 5, 49, 0, 0, 337, 338, 3, 2, 1, 0,
-		338, 31, 1, 0, 0, 0, 339, 340, 5, 19, 0, 0, 340, 341, 5, 49, 0, 0, 341,
-		342, 3, 2, 1, 0, 342, 33, 1, 0, 0, 0, 343, 344, 5, 23, 0, 0, 344, 345,
-		3, 64, 32, 0, 345, 346, 5, 45, 0, 0, 346, 347, 3, 2, 1, 0, 347, 348, 5,
-		46, 0, 0, 348, 35, 1, 0, 0, 0, 349, 350, 5, 24, 0, 0, 350, 351, 5, 41,
-		0, 0, 351, 352, 5, 27, 0, 0, 352, 353, 3, 38, 19, 0, 353, 354, 5, 45, 0,
-		0, 354, 355, 3, 2, 1, 0, 355, 356, 5, 46, 0, 0, 356, 366, 1, 0, 0, 0, 357,
-		358, 5, 24, 0, 0, 358, 359, 5, 41, 0, 0, 359, 360, 5, 27, 0, 0, 360, 361,
-		3, 64, 32, 0, 361, 362, 5, 45, 0, 0, 362, 363, 3, 2, 1, 0, 363, 364, 5,
-		46, 0, 0, 364, 366, 1, 0, 0, 0, 365, 349, 1, 0, 0, 0, 365, 357, 1, 0, 0,
-		0, 366, 37, 1, 0, 0, 0, 367, 368, 3, 64, 32, 0, 368, 369, 5, 28, 0, 0,
-		369, 370, 5, 28, 0, 0, 370, 371, 5, 28, 0, 0, 371, 372, 3, 64, 32, 0, 372,
-		39, 1, 0, 0, 0, 373, 374, 5, 29, 0, 0, 374, 375, 3, 64, 32, 0, 375, 376,
-		5, 16, 0, 0, 376, 377, 5, 45, 0, 0, 377, 378, 3, 2, 1, 0, 378, 379, 5,
-		46, 0, 0, 379, 41, 1, 0, 0, 0, 380, 381, 5, 25, 0, 0, 381, 382, 5, 41,
-		0, 0, 382, 383, 5, 43, 0, 0, 383, 386, 5, 44, 0, 0, 384, 385, 5, 26, 0,
-		0, 385, 387, 3, 66, 33, 0, 386, 384, 1, 0, 0, 0, 386, 387, 1, 0, 0, 0,
-		387, 388, 1, 0, 0, 0, 388, 389, 5, 45, 0, 0, 389, 390, 3, 2, 1, 0, 390,
-		391, 5, 46, 0, 0, 391, 406, 1, 0, 0, 0, 392, 393, 5, 25, 0, 0, 393, 394,
-		5, 41, 0, 0, 394, 395, 5, 43, 0, 0, 395, 396, 3, 44, 22, 0, 396, 399, 5,
-		44, 0, 0, 397, 398, 5, 26, 0, 0, 398, 400, 3, 66, 33, 0, 399, 397, 1, 0,
-		0, 0, 399, 400, 1, 0, 0, 0, 400, 401, 1, 0, 0, 0, 401, 402, 5, 45, 0, 0,
-		402, 403, 3, 2, 1, 0, 403, 404, 5, 46, 0, 0, 404, 406, 1, 0, 0, 0, 405,
-		380, 1, 0, 0, 0, 405, 392, 1, 0, 0, 0, 406, 43, 1, 0, 0, 0, 407, 408, 5,
-		41, 0, 0, 408, 409, 5, 41, 0, 0, 409, 411, 5, 49, 0, 0, 410, 412, 5, 37,
-		0, 0, 411, 410, 1, 0, 0, 0, 411, 412, 1, 0, 0, 0, 412, 413, 1, 0, 0, 0,
-		413, 421, 3, 66, 33, 0, 414, 415, 5, 50, 0, 0, 415, 416, 5, 41, 0, 0, 416,
-		417, 5, 41, 0, 0, 417, 418, 5, 49, 0, 0, 418, 420, 3, 66, 33, 0, 419, 414,
-		1, 0, 0, 0, 420, 423, 1, 0, 0, 0, 421, 419, 1, 0, 0, 0, 421, 422, 1, 0,
-		0, 0, 422, 533, 1, 0, 0, 0, 423, 421, 1, 0, 0, 0, 424, 425, 5, 38, 0, 0,
-		425, 426, 5, 41, 0, 0, 426, 428, 5, 49, 0, 0, 427, 429, 5, 37, 0, 0, 428,
-		427, 1, 0, 0, 0, 428, 429, 1, 0, 0, 0, 429, 430, 1, 0, 0, 0, 430, 438,
-		3, 66, 33, 0, 431, 432, 5, 50, 0, 0, 432, 433, 5, 38, 0, 0, 433, 434, 5,
-		41, 0, 0, 434, 435, 5, 49, 0, 0, 435, 437, 3, 66, 33, 0, 436, 431, 1, 0,
-		0, 0, 437, 440, 1, 0, 0, 0, 438, 436, 1, 0, 0, 0, 438, 439, 1, 0, 0, 0,
-		439, 533, 1, 0, 0, 0, 440, 438, 1, 0, 0, 0, 441, 442, 5, 41, 0, 0, 442,
+		1, 32, 1, 32, 1, 32, 1, 32, 1, 32, 1, 32, 3, 32, 685, 8, 32, 1, 32, 1,
+		32, 3, 32, 689, 8, 32, 1, 32, 1, 32, 1, 32, 1, 32, 1, 32, 1, 32, 3, 32,
+		697, 8, 32, 1, 32, 1, 32, 1, 32, 1, 32, 1, 32, 1, 32, 1, 32, 1, 32, 1,
+		32, 1, 32, 1, 32, 1, 32, 1, 32, 1, 32, 1, 32, 5, 32, 714, 8, 32, 10, 32,
+		12, 32, 717, 9, 32, 1, 33, 1, 33, 1, 33, 0, 1, 64, 34, 0, 2, 4, 6, 8, 10,
+		12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46,
+		48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 0, 8, 1, 0, 34, 35, 1, 0, 31, 32,
+		1, 0, 58, 60, 1, 0, 56, 57, 1, 0, 61, 62, 1, 0, 63, 66, 1, 0, 67, 68, 2,
+		0, 1, 5, 41, 41, 802, 0, 68, 1, 0, 0, 0, 2, 74, 1, 0, 0, 0, 4, 106, 1,
+		0, 0, 0, 6, 123, 1, 0, 0, 0, 8, 125, 1, 0, 0, 0, 10, 134, 1, 0, 0, 0, 12,
+		142, 1, 0, 0, 0, 14, 175, 1, 0, 0, 0, 16, 208, 1, 0, 0, 0, 18, 210, 1,
+		0, 0, 0, 20, 262, 1, 0, 0, 0, 22, 264, 1, 0, 0, 0, 24, 296, 1, 0, 0, 0,
+		26, 318, 1, 0, 0, 0, 28, 320, 1, 0, 0, 0, 30, 334, 1, 0, 0, 0, 32, 339,
+		1, 0, 0, 0, 34, 343, 1, 0, 0, 0, 36, 365, 1, 0, 0, 0, 38, 367, 1, 0, 0,
+		0, 40, 373, 1, 0, 0, 0, 42, 405, 1, 0, 0, 0, 44, 532, 1, 0, 0, 0, 46, 542,
+		1, 0, 0, 0, 48, 576, 1, 0, 0, 0, 50, 633, 1, 0, 0, 0, 52, 638, 1, 0, 0,
+		0, 54, 640, 1, 0, 0, 0, 56, 645, 1, 0, 0, 0, 58, 653, 1, 0, 0, 0, 60, 658,
+		1, 0, 0, 0, 62, 663, 1, 0, 0, 0, 64, 696, 1, 0, 0, 0, 66, 718, 1, 0, 0,
+		0, 68, 69, 3, 2, 1, 0, 69, 70, 5, 0, 0, 1, 70, 1, 1, 0, 0, 0, 71, 73, 3,
+		4, 2, 0, 72, 71, 1, 0, 0, 0, 73, 76, 1, 0, 0, 0, 74, 72, 1, 0, 0, 0, 74,
+		75, 1, 0, 0, 0, 75, 3, 1, 0, 0, 0, 76, 74, 1, 0, 0, 0, 77, 79, 3, 20, 10,
+		0, 78, 80, 5, 51, 0, 0, 79, 78, 1, 0, 0, 0, 79, 80, 1, 0, 0, 0, 80, 107,
+		1, 0, 0, 0, 81, 83, 3, 24, 12, 0, 82, 84, 5, 51, 0, 0, 83, 82, 1, 0, 0,
+		0, 83, 84, 1, 0, 0, 0, 84, 107, 1, 0, 0, 0, 85, 87, 3, 52, 26, 0, 86, 88,
+		5, 51, 0, 0, 87, 86, 1, 0, 0, 0, 87, 88, 1, 0, 0, 0, 88, 107, 1, 0, 0,
+		0, 89, 107, 3, 26, 13, 0, 90, 107, 3, 28, 14, 0, 91, 107, 3, 34, 17, 0,
+		92, 107, 3, 36, 18, 0, 93, 107, 3, 40, 20, 0, 94, 107, 3, 6, 3, 0, 95,
+		107, 3, 42, 21, 0, 96, 107, 3, 54, 27, 0, 97, 99, 3, 46, 23, 0, 98, 100,
+		5, 51, 0, 0, 99, 98, 1, 0, 0, 0, 99, 100, 1, 0, 0, 0, 100, 107, 1, 0, 0,
+		0, 101, 103, 3, 50, 25, 0, 102, 104, 5, 51, 0, 0, 103, 102, 1, 0, 0, 0,
+		103, 104, 1, 0, 0, 0, 104, 107, 1, 0, 0, 0, 105, 107, 3, 8, 4, 0, 106,
+		77, 1, 0, 0, 0, 106, 81, 1, 0, 0, 0, 106, 85, 1, 0, 0, 0, 106, 89, 1, 0,
+		0, 0, 106, 90, 1, 0, 0, 0, 106, 91, 1, 0, 0, 0, 106, 92, 1, 0, 0, 0, 106,
+		93, 1, 0, 0, 0, 106, 94, 1, 0, 0, 0, 106, 95, 1, 0, 0, 0, 106, 96, 1, 0,
+		0, 0, 106, 97, 1, 0, 0, 0, 106, 101, 1, 0, 0, 0, 106, 105, 1, 0, 0, 0,
+		107, 5, 1, 0, 0, 0, 108, 110, 5, 20, 0, 0, 109, 111, 5, 51, 0, 0, 110,
+		109, 1, 0, 0, 0, 110, 111, 1, 0, 0, 0, 111, 124, 1, 0, 0, 0, 112, 114,
+		5, 21, 0, 0, 113, 115, 5, 51, 0, 0, 114, 113, 1, 0, 0, 0, 114, 115, 1,
+		0, 0, 0, 115, 124, 1, 0, 0, 0, 116, 118, 5, 22, 0, 0, 117, 119, 3, 64,
+		32, 0, 118, 117, 1, 0, 0, 0, 118, 119, 1, 0, 0, 0, 119, 121, 1, 0, 0, 0,
+		120, 122, 5, 51, 0, 0, 121, 120, 1, 0, 0, 0, 121, 122, 1, 0, 0, 0, 122,
+		124, 1, 0, 0, 0, 123, 108, 1, 0, 0, 0, 123, 112, 1, 0, 0, 0, 123, 116,
+		1, 0, 0, 0, 124, 7, 1, 0, 0, 0, 125, 126, 5, 7, 0, 0, 126, 127, 5, 41,
+		0, 0, 127, 128, 5, 45, 0, 0, 128, 129, 3, 10, 5, 0, 129, 130, 5, 46, 0,
+		0, 130, 9, 1, 0, 0, 0, 131, 133, 3, 12, 6, 0, 132, 131, 1, 0, 0, 0, 133,
+		136, 1, 0, 0, 0, 134, 132, 1, 0, 0, 0, 134, 135, 1, 0, 0, 0, 135, 11, 1,
+		0, 0, 0, 136, 134, 1, 0, 0, 0, 137, 139, 3, 14, 7, 0, 138, 140, 5, 51,
+		0, 0, 139, 138, 1, 0, 0, 0, 139, 140, 1, 0, 0, 0, 140, 143, 1, 0, 0, 0,
+		141, 143, 3, 16, 8, 0, 142, 137, 1, 0, 0, 0, 142, 141, 1, 0, 0, 0, 143,
+		13, 1, 0, 0, 0, 144, 145, 3, 22, 11, 0, 145, 146, 5, 41, 0, 0, 146, 147,
+		5, 49, 0, 0, 147, 148, 3, 66, 33, 0, 148, 149, 5, 52, 0, 0, 149, 150, 3,
+		64, 32, 0, 150, 176, 1, 0, 0, 0, 151, 152, 3, 22, 11, 0, 152, 153, 5, 41,
+		0, 0, 153, 154, 5, 49, 0, 0, 154, 155, 3, 66, 33, 0, 155, 176, 1, 0, 0,
+		0, 156, 157, 3, 22, 11, 0, 157, 158, 5, 41, 0, 0, 158, 159, 5, 52, 0, 0,
+		159, 160, 3, 64, 32, 0, 160, 176, 1, 0, 0, 0, 161, 162, 3, 22, 11, 0, 162,
+		163, 5, 41, 0, 0, 163, 164, 5, 49, 0, 0, 164, 165, 5, 47, 0, 0, 165, 166,
+		3, 66, 33, 0, 166, 167, 5, 48, 0, 0, 167, 173, 5, 52, 0, 0, 168, 169, 5,
+		47, 0, 0, 169, 170, 3, 56, 28, 0, 170, 171, 5, 48, 0, 0, 171, 174, 1, 0,
+		0, 0, 172, 174, 5, 41, 0, 0, 173, 168, 1, 0, 0, 0, 173, 172, 1, 0, 0, 0,
+		174, 176, 1, 0, 0, 0, 175, 144, 1, 0, 0, 0, 175, 151, 1, 0, 0, 0, 175,
+		156, 1, 0, 0, 0, 175, 161, 1, 0, 0, 0, 176, 15, 1, 0, 0, 0, 177, 179, 5,
+		8, 0, 0, 178, 177, 1, 0, 0, 0, 178, 179, 1, 0, 0, 0, 179, 180, 1, 0, 0,
+		0, 180, 181, 5, 25, 0, 0, 181, 182, 5, 41, 0, 0, 182, 183, 5, 43, 0, 0,
+		183, 186, 5, 44, 0, 0, 184, 185, 5, 26, 0, 0, 185, 187, 3, 66, 33, 0, 186,
+		184, 1, 0, 0, 0, 186, 187, 1, 0, 0, 0, 187, 188, 1, 0, 0, 0, 188, 189,
+		5, 45, 0, 0, 189, 190, 3, 2, 1, 0, 190, 191, 5, 46, 0, 0, 191, 209, 1,
+		0, 0, 0, 192, 194, 5, 8, 0, 0, 193, 192, 1, 0, 0, 0, 193, 194, 1, 0, 0,
+		0, 194, 195, 1, 0, 0, 0, 195, 196, 5, 25, 0, 0, 196, 197, 5, 41, 0, 0,
+		197, 198, 5, 43, 0, 0, 198, 199, 3, 44, 22, 0, 199, 202, 5, 44, 0, 0, 200,
+		201, 5, 26, 0, 0, 201, 203, 3, 66, 33, 0, 202, 200, 1, 0, 0, 0, 202, 203,
+		1, 0, 0, 0, 203, 204, 1, 0, 0, 0, 204, 205, 5, 45, 0, 0, 205, 206, 3, 2,
+		1, 0, 206, 207, 5, 46, 0, 0, 207, 209, 1, 0, 0, 0, 208, 178, 1, 0, 0, 0,
+		208, 193, 1, 0, 0, 0, 209, 17, 1, 0, 0, 0, 210, 211, 5, 41, 0, 0, 211,
+		212, 5, 49, 0, 0, 212, 219, 3, 64, 32, 0, 213, 214, 5, 50, 0, 0, 214, 215,
+		5, 41, 0, 0, 215, 216, 5, 49, 0, 0, 216, 218, 3, 64, 32, 0, 217, 213, 1,
+		0, 0, 0, 218, 221, 1, 0, 0, 0, 219, 217, 1, 0, 0, 0, 219, 220, 1, 0, 0,
+		0, 220, 19, 1, 0, 0, 0, 221, 219, 1, 0, 0, 0, 222, 223, 3, 22, 11, 0, 223,
+		224, 5, 41, 0, 0, 224, 225, 5, 52, 0, 0, 225, 226, 5, 41, 0, 0, 226, 227,
+		5, 43, 0, 0, 227, 228, 3, 18, 9, 0, 228, 229, 5, 44, 0, 0, 229, 263, 1,
+		0, 0, 0, 230, 231, 3, 22, 11, 0, 231, 232, 5, 41, 0, 0, 232, 233, 5, 49,
+		0, 0, 233, 234, 3, 66, 33, 0, 234, 235, 5, 52, 0, 0, 235, 236, 3, 64, 32,
+		0, 236, 263, 1, 0, 0, 0, 237, 238, 3, 22, 11, 0, 238, 239, 5, 41, 0, 0,
+		239, 240, 5, 49, 0, 0, 240, 241, 3, 66, 33, 0, 241, 242, 5, 55, 0, 0, 242,
+		263, 1, 0, 0, 0, 243, 244, 3, 22, 11, 0, 244, 245, 5, 41, 0, 0, 245, 246,
+		5, 52, 0, 0, 246, 247, 3, 64, 32, 0, 247, 263, 1, 0, 0, 0, 248, 249, 3,
+		22, 11, 0, 249, 250, 5, 41, 0, 0, 250, 251, 5, 49, 0, 0, 251, 252, 5, 47,
+		0, 0, 252, 253, 3, 66, 33, 0, 253, 254, 5, 48, 0, 0, 254, 260, 5, 52, 0,
+		0, 255, 256, 5, 47, 0, 0, 256, 257, 3, 56, 28, 0, 257, 258, 5, 48, 0, 0,
+		258, 261, 1, 0, 0, 0, 259, 261, 5, 41, 0, 0, 260, 255, 1, 0, 0, 0, 260,
+		259, 1, 0, 0, 0, 261, 263, 1, 0, 0, 0, 262, 222, 1, 0, 0, 0, 262, 230,
+		1, 0, 0, 0, 262, 237, 1, 0, 0, 0, 262, 243, 1, 0, 0, 0, 262, 248, 1, 0,
+		0, 0, 263, 21, 1, 0, 0, 0, 264, 265, 7, 0, 0, 0, 265, 23, 1, 0, 0, 0, 266,
+		267, 5, 41, 0, 0, 267, 268, 5, 52, 0, 0, 268, 297, 3, 64, 32, 0, 269, 270,
+		5, 41, 0, 0, 270, 271, 5, 53, 0, 0, 271, 297, 3, 64, 32, 0, 272, 273, 5,
+		41, 0, 0, 273, 274, 5, 54, 0, 0, 274, 297, 3, 64, 32, 0, 275, 276, 5, 41,
+		0, 0, 276, 277, 5, 47, 0, 0, 277, 278, 3, 64, 32, 0, 278, 279, 5, 48, 0,
+		0, 279, 280, 5, 52, 0, 0, 280, 281, 3, 64, 32, 0, 281, 297, 1, 0, 0, 0,
+		282, 283, 5, 41, 0, 0, 283, 284, 5, 47, 0, 0, 284, 285, 3, 64, 32, 0, 285,
+		286, 5, 48, 0, 0, 286, 287, 5, 54, 0, 0, 287, 288, 3, 64, 32, 0, 288, 297,
+		1, 0, 0, 0, 289, 290, 5, 41, 0, 0, 290, 291, 5, 47, 0, 0, 291, 292, 3,
+		64, 32, 0, 292, 293, 5, 48, 0, 0, 293, 294, 5, 53, 0, 0, 294, 295, 3, 64,
+		32, 0, 295, 297, 1, 0, 0, 0, 296, 266, 1, 0, 0, 0, 296, 269, 1, 0, 0, 0,
+		296, 272, 1, 0, 0, 0, 296, 275, 1, 0, 0, 0, 296, 282, 1, 0, 0, 0, 296,
+		289, 1, 0, 0, 0, 297, 25, 1, 0, 0, 0, 298, 299, 5, 6, 0, 0, 299, 300, 3,
+		64, 32, 0, 300, 301, 5, 45, 0, 0, 301, 302, 3, 2, 1, 0, 302, 308, 5, 46,
+		0, 0, 303, 304, 5, 16, 0, 0, 304, 305, 5, 45, 0, 0, 305, 306, 3, 2, 1,
+		0, 306, 307, 5, 46, 0, 0, 307, 309, 1, 0, 0, 0, 308, 303, 1, 0, 0, 0, 308,
+		309, 1, 0, 0, 0, 309, 319, 1, 0, 0, 0, 310, 311, 5, 6, 0, 0, 311, 312,
+		3, 64, 32, 0, 312, 313, 5, 45, 0, 0, 313, 314, 3, 2, 1, 0, 314, 315, 5,
+		46, 0, 0, 315, 316, 5, 16, 0, 0, 316, 317, 3, 26, 13, 0, 317, 319, 1, 0,
+		0, 0, 318, 298, 1, 0, 0, 0, 318, 310, 1, 0, 0, 0, 319, 27, 1, 0, 0, 0,
+		320, 321, 5, 17, 0, 0, 321, 322, 3, 64, 32, 0, 322, 326, 5, 45, 0, 0, 323,
+		325, 3, 30, 15, 0, 324, 323, 1, 0, 0, 0, 325, 328, 1, 0, 0, 0, 326, 324,
+		1, 0, 0, 0, 326, 327, 1, 0, 0, 0, 327, 330, 1, 0, 0, 0, 328, 326, 1, 0,
+		0, 0, 329, 331, 3, 32, 16, 0, 330, 329, 1, 0, 0, 0, 330, 331, 1, 0, 0,
+		0, 331, 332, 1, 0, 0, 0, 332, 333, 5, 46, 0, 0, 333, 29, 1, 0, 0, 0, 334,
+		335, 5, 18, 0, 0, 335, 336, 3, 64, 32, 0, 336, 337, 5, 49, 0, 0, 337, 338,
+		3, 2, 1, 0, 338, 31, 1, 0, 0, 0, 339, 340, 5, 19, 0, 0, 340, 341, 5, 49,
+		0, 0, 341, 342, 3, 2, 1, 0, 342, 33, 1, 0, 0, 0, 343, 344, 5, 23, 0, 0,
+		344, 345, 3, 64, 32, 0, 345, 346, 5, 45, 0, 0, 346, 347, 3, 2, 1, 0, 347,
+		348, 5, 46, 0, 0, 348, 35, 1, 0, 0, 0, 349, 350, 5, 24, 0, 0, 350, 351,
+		5, 41, 0, 0, 351, 352, 5, 27, 0, 0, 352, 353, 3, 38, 19, 0, 353, 354, 5,
+		45, 0, 0, 354, 355, 3, 2, 1, 0, 355, 356, 5, 46, 0, 0, 356, 366, 1, 0,
+		0, 0, 357, 358, 5, 24, 0, 0, 358, 359, 5, 41, 0, 0, 359, 360, 5, 27, 0,
+		0, 360, 361, 3, 64, 32, 0, 361, 362, 5, 45, 0, 0, 362, 363, 3, 2, 1, 0,
+		363, 364, 5, 46, 0, 0, 364, 366, 1, 0, 0, 0, 365, 349, 1, 0, 0, 0, 365,
+		357, 1, 0, 0, 0, 366, 37, 1, 0, 0, 0, 367, 368, 3, 64, 32, 0, 368, 369,
+		5, 28, 0, 0, 369, 370, 5, 28, 0, 0, 370, 371, 5, 28, 0, 0, 371, 372, 3,
+		64, 32, 0, 372, 39, 1, 0, 0, 0, 373, 374, 5, 29, 0, 0, 374, 375, 3, 64,
+		32, 0, 375, 376, 5, 16, 0, 0, 376, 377, 5, 45, 0, 0, 377, 378, 3, 2, 1,
+		0, 378, 379, 5, 46, 0, 0, 379, 41, 1, 0, 0, 0, 380, 381, 5, 25, 0, 0, 381,
+		382, 5, 41, 0, 0, 382, 383, 5, 43, 0, 0, 383, 386, 5, 44, 0, 0, 384, 385,
+		5, 26, 0, 0, 385, 387, 3, 66, 33, 0, 386, 384, 1, 0, 0, 0, 386, 387, 1,
+		0, 0, 0, 387, 388, 1, 0, 0, 0, 388, 389, 5, 45, 0, 0, 389, 390, 3, 2, 1,
+		0, 390, 391, 5, 46, 0, 0, 391, 406, 1, 0, 0, 0, 392, 393, 5, 25, 0, 0,
+		393, 394, 5, 41, 0, 0, 394, 395, 5, 43, 0, 0, 395, 396, 3, 44, 22, 0, 396,
+		399, 5, 44, 0, 0, 397, 398, 5, 26, 0, 0, 398, 400, 3, 66, 33, 0, 399, 397,
+		1, 0, 0, 0, 399, 400, 1, 0, 0, 0, 400, 401, 1, 0, 0, 0, 401, 402, 5, 45,
+		0, 0, 402, 403, 3, 2, 1, 0, 403, 404, 5, 46, 0, 0, 404, 406, 1, 0, 0, 0,
+		405, 380, 1, 0, 0, 0, 405, 392, 1, 0, 0, 0, 406, 43, 1, 0, 0, 0, 407, 408,
+		5, 41, 0, 0, 408, 409, 5, 41, 0, 0, 409, 411, 5, 49, 0, 0, 410, 412, 5,
+		37, 0, 0, 411, 410, 1, 0, 0, 0, 411, 412, 1, 0, 0, 0, 412, 413, 1, 0, 0,
+		0, 413, 421, 3, 66, 33, 0, 414, 415, 5, 50, 0, 0, 415, 416, 5, 41, 0, 0,
+		416, 417, 5, 41, 0, 0, 417, 418, 5, 49, 0, 0, 418, 420, 3, 66, 33, 0, 419,
+		414, 1, 0, 0, 0, 420, 423, 1, 0, 0, 0, 421, 419, 1, 0, 0, 0, 421, 422,
+		1, 0, 0, 0, 422, 533, 1, 0, 0, 0, 423, 421, 1, 0, 0, 0, 424, 425, 5, 38,
+		0, 0, 425, 426, 5, 41, 0, 0, 426, 428, 5, 49, 0, 0, 427, 429, 5, 37, 0,
+		0, 428, 427, 1, 0, 0, 0, 428, 429, 1, 0, 0, 0, 429, 430, 1, 0, 0, 0, 430,
+		438, 3, 66, 33, 0, 431, 432, 5, 50, 0, 0, 432, 433, 5, 38, 0, 0, 433, 434,
+		5, 41, 0, 0, 434, 435, 5, 49, 0, 0, 435, 437, 3, 66, 33, 0, 436, 431, 1,
+		0, 0, 0, 437, 440, 1, 0, 0, 0, 438, 436, 1, 0, 0, 0, 438, 439, 1, 0, 0,
+		0, 439, 533, 1, 0, 0, 0, 440, 438, 1, 0, 0, 0, 441, 442, 5, 41, 0, 0, 442,
 		444, 5, 49, 0, 0, 443, 445, 5, 37, 0, 0, 444, 443, 1, 0, 0, 0, 444, 445,
 		1, 0, 0, 0, 445, 446, 1, 0, 0, 0, 446, 456, 3, 66, 33, 0, 447, 448, 5,
 		50, 0, 0, 448, 449, 5, 41, 0, 0, 449, 451, 5, 49, 0, 0, 450, 452, 5, 37,
@@ -372,15 +372,15 @@ func sfgrammarParserInit() {
 		0, 668, 669, 6, 32, -1, 0, 669, 670, 5, 42, 0, 0, 670, 697, 3, 64, 32,
 		17, 671, 672, 5, 57, 0, 0, 672, 697, 3, 64, 32, 16, 673, 674, 5, 43, 0,
 		0, 674, 675, 3, 64, 32, 0, 675, 676, 5, 44, 0, 0, 676, 697, 1, 0, 0, 0,
-		677, 679, 3, 46, 23, 0, 678, 680, 5, 51, 0, 0, 679, 678, 1, 0, 0, 0, 679,
-		680, 1, 0, 0, 0, 680, 697, 1, 0, 0, 0, 681, 683, 3, 50, 25, 0, 682, 684,
-		5, 51, 0, 0, 683, 682, 1, 0, 0, 0, 683, 684, 1, 0, 0, 0, 684, 697, 1, 0,
-		0, 0, 685, 697, 3, 52, 26, 0, 686, 687, 5, 41, 0, 0, 687, 688, 5, 43, 0,
-		0, 688, 689, 3, 18, 9, 0, 689, 690, 5, 44, 0, 0, 690, 697, 1, 0, 0, 0,
+		677, 678, 5, 41, 0, 0, 678, 679, 5, 43, 0, 0, 679, 680, 3, 18, 9, 0, 680,
+		681, 5, 44, 0, 0, 681, 697, 1, 0, 0, 0, 682, 684, 3, 46, 23, 0, 683, 685,
+		5, 51, 0, 0, 684, 683, 1, 0, 0, 0, 684, 685, 1, 0, 0, 0, 685, 697, 1, 0,
+		0, 0, 686, 688, 3, 50, 25, 0, 687, 689, 5, 51, 0, 0, 688, 687, 1, 0, 0,
+		0, 688, 689, 1, 0, 0, 0, 689, 697, 1, 0, 0, 0, 690, 697, 3, 52, 26, 0,
 		691, 697, 5, 39, 0, 0, 692, 697, 5, 40, 0, 0, 693, 697, 5, 41, 0, 0, 694,
 		697, 5, 33, 0, 0, 695, 697, 7, 1, 0, 0, 696, 668, 1, 0, 0, 0, 696, 671,
-		1, 0, 0, 0, 696, 673, 1, 0, 0, 0, 696, 677, 1, 0, 0, 0, 696, 681, 1, 0,
-		0, 0, 696, 685, 1, 0, 0, 0, 696, 686, 1, 0, 0, 0, 696, 691, 1, 0, 0, 0,
+		1, 0, 0, 0, 696, 673, 1, 0, 0, 0, 696, 677, 1, 0, 0, 0, 696, 682, 1, 0,
+		0, 0, 696, 686, 1, 0, 0, 0, 696, 690, 1, 0, 0, 0, 696, 691, 1, 0, 0, 0,
 		696, 692, 1, 0, 0, 0, 696, 693, 1, 0, 0, 0, 696, 694, 1, 0, 0, 0, 696,
 		695, 1, 0, 0, 0, 697, 715, 1, 0, 0, 0, 698, 699, 10, 15, 0, 0, 699, 700,
 		7, 2, 0, 0, 700, 714, 3, 64, 32, 16, 701, 702, 10, 14, 0, 0, 702, 703,
@@ -395,7 +395,7 @@ func sfgrammarParserInit() {
 		139, 142, 173, 175, 178, 186, 193, 202, 208, 219, 260, 262, 296, 308, 318,
 		326, 330, 365, 386, 399, 405, 411, 421, 428, 438, 444, 451, 456, 463, 473,
 		481, 488, 498, 506, 512, 521, 529, 532, 542, 545, 552, 559, 563, 568, 573,
-		576, 617, 624, 633, 638, 650, 679, 683, 696, 713, 715,
+		576, 617, 624, 633, 638, 650, 684, 688, 696, 713, 715,
 	}
 	deserializer := antlr.NewATNDeserializer(nil)
 	staticData.atn = deserializer.Deserialize(staticData.serializedATN)
@@ -620,6 +620,18 @@ func (s *StartContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) 
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
+func (s *StartContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterStart(s)
+	}
+}
+
+func (s *StartContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitStart(s)
+	}
+}
+
 func (s *StartContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -754,6 +766,18 @@ func (s *BlockContext) GetRuleContext() antlr.RuleContext {
 
 func (s *BlockContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *BlockContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterBlock(s)
+	}
+}
+
+func (s *BlockContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitBlock(s)
+	}
 }
 
 func (s *BlockContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -1102,6 +1126,18 @@ func (s *StmtsContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) 
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
+func (s *StmtsContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterStmts(s)
+	}
+}
+
+func (s *StmtsContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitStmts(s)
+	}
+}
+
 func (s *StmtsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -1409,6 +1445,18 @@ func (s *ContinueStmtContext) SEMICOLON() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserSEMICOLON, 0)
 }
 
+func (s *ContinueStmtContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterContinueStmt(s)
+	}
+}
+
+func (s *ContinueStmtContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitContinueStmt(s)
+	}
+}
+
 func (s *ContinueStmtContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -1443,6 +1491,18 @@ func (s *BreakStmtContext) BREAK() antlr.TerminalNode {
 
 func (s *BreakStmtContext) SEMICOLON() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserSEMICOLON, 0)
+}
+
+func (s *BreakStmtContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterBreakStmt(s)
+	}
+}
+
+func (s *BreakStmtContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitBreakStmt(s)
+	}
 }
 
 func (s *BreakStmtContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -1495,6 +1555,18 @@ func (s *ReturnStmtContext) Expr() IExprContext {
 
 func (s *ReturnStmtContext) SEMICOLON() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserSEMICOLON, 0)
+}
+
+func (s *ReturnStmtContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterReturnStmt(s)
+	}
+}
+
+func (s *ReturnStmtContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitReturnStmt(s)
+	}
 }
 
 func (s *ReturnStmtContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -1729,6 +1801,18 @@ func (s *StructStmtContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
+func (s *StructStmtContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterStructStmt(s)
+	}
+}
+
+func (s *StructStmtContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitStructStmt(s)
+	}
+}
+
 func (s *StructStmtContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -1889,6 +1973,18 @@ func (s *StructBlockContext) ToStringTree(ruleNames []string, recog antlr.Recogn
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
+func (s *StructBlockContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterStructBlock(s)
+	}
+}
+
+func (s *StructBlockContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitStructBlock(s)
+	}
+}
+
 func (s *StructBlockContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -2029,6 +2125,18 @@ func (s *StructStmtsContext) GetRuleContext() antlr.RuleContext {
 
 func (s *StructStmtsContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *StructStmtsContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterStructStmts(s)
+	}
+}
+
+func (s *StructStmtsContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitStructStmts(s)
+	}
 }
 
 func (s *StructStmtsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -2235,6 +2343,18 @@ func (s *StructDeclarationWithValueAndTypeContext) Expr() IExprContext {
 	return t.(IExprContext)
 }
 
+func (s *StructDeclarationWithValueAndTypeContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterStructDeclarationWithValueAndType(s)
+	}
+}
+
+func (s *StructDeclarationWithValueAndTypeContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitStructDeclarationWithValueAndType(s)
+	}
+}
+
 func (s *StructDeclarationWithValueAndTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -2301,6 +2421,18 @@ func (s *StructDeclarationWithoutValueContext) Type_() ITypeContext {
 	}
 
 	return t.(ITypeContext)
+}
+
+func (s *StructDeclarationWithoutValueContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterStructDeclarationWithoutValue(s)
+	}
+}
+
+func (s *StructDeclarationWithoutValueContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitStructDeclarationWithoutValue(s)
+	}
 }
 
 func (s *StructDeclarationWithoutValueContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -2411,6 +2543,18 @@ func (s *StructDeclarationVectorContext) ExprList() IExprListContext {
 	return t.(IExprListContext)
 }
 
+func (s *StructDeclarationVectorContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterStructDeclarationVector(s)
+	}
+}
+
+func (s *StructDeclarationVectorContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitStructDeclarationVector(s)
+	}
+}
+
 func (s *StructDeclarationVectorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -2477,6 +2621,18 @@ func (s *StructDeclarationImplicitValueContext) Expr() IExprContext {
 	}
 
 	return t.(IExprContext)
+}
+
+func (s *StructDeclarationImplicitValueContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterStructDeclarationImplicitValue(s)
+	}
+}
+
+func (s *StructDeclarationImplicitValueContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitStructDeclarationImplicitValue(s)
+	}
 }
 
 func (s *StructDeclarationImplicitValueContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -2843,6 +2999,18 @@ func (s *StructFunctionWithoutParamsContext) Type_() ITypeContext {
 	return t.(ITypeContext)
 }
 
+func (s *StructFunctionWithoutParamsContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterStructFunctionWithoutParams(s)
+	}
+}
+
+func (s *StructFunctionWithoutParamsContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitStructFunctionWithoutParams(s)
+	}
+}
+
 func (s *StructFunctionWithoutParamsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -2949,6 +3117,18 @@ func (s *StructFunctionWithParamsContext) Type_() ITypeContext {
 	}
 
 	return t.(ITypeContext)
+}
+
+func (s *StructFunctionWithParamsContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterStructFunctionWithParams(s)
+	}
+}
+
+func (s *StructFunctionWithParamsContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitStructFunctionWithParams(s)
+	}
 }
 
 func (s *StructFunctionWithParamsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -3312,6 +3492,18 @@ func (s *StructCallListContext) ToStringTree(ruleNames []string, recog antlr.Rec
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
+func (s *StructCallListContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterStructCallList(s)
+	}
+}
+
+func (s *StructCallListContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitStructCallList(s)
+	}
+}
+
 func (s *StructCallListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -3558,6 +3750,18 @@ func (s *VectorDeclarationContext) ExprList() IExprListContext {
 	return t.(IExprListContext)
 }
 
+func (s *VectorDeclarationContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterVectorDeclaration(s)
+	}
+}
+
+func (s *VectorDeclarationContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitVectorDeclaration(s)
+	}
+}
+
 func (s *VectorDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -3624,6 +3828,18 @@ func (s *ValueDeclarationContext) Expr() IExprContext {
 	}
 
 	return t.(IExprContext)
+}
+
+func (s *ValueDeclarationContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterValueDeclaration(s)
+	}
+}
+
+func (s *ValueDeclarationContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitValueDeclaration(s)
+	}
 }
 
 func (s *ValueDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -3704,6 +3920,18 @@ func (s *StructCreationContext) StructCallList() IStructCallListContext {
 
 func (s *StructCreationContext) RPAREN() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserRPAREN, 0)
+}
+
+func (s *StructCreationContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterStructCreation(s)
+	}
+}
+
+func (s *StructCreationContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitStructCreation(s)
+	}
 }
 
 func (s *StructCreationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -3794,6 +4022,18 @@ func (s *TypeValueDeclarationContext) Expr() IExprContext {
 	return t.(IExprContext)
 }
 
+func (s *TypeValueDeclarationContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterTypeValueDeclaration(s)
+	}
+}
+
+func (s *TypeValueDeclarationContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitTypeValueDeclaration(s)
+	}
+}
+
 func (s *TypeValueDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -3864,6 +4104,18 @@ func (s *TypeOptionalValueDeclarationContext) Type_() ITypeContext {
 
 func (s *TypeOptionalValueDeclarationContext) QUESTION_MARK() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserQUESTION_MARK, 0)
+}
+
+func (s *TypeOptionalValueDeclarationContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterTypeOptionalValueDeclaration(s)
+	}
+}
+
+func (s *TypeOptionalValueDeclarationContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitTypeOptionalValueDeclaration(s)
+	}
 }
 
 func (s *TypeOptionalValueDeclarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -4217,6 +4469,18 @@ func (s *Type_declarationContext) ToStringTree(ruleNames []string, recog antlr.R
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
+func (s *Type_declarationContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterType_declaration(s)
+	}
+}
+
+func (s *Type_declarationContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitType_declaration(s)
+	}
+}
+
 func (s *Type_declarationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -4354,6 +4618,18 @@ func (s *ValueAssignmentContext) Expr() IExprContext {
 	return t.(IExprContext)
 }
 
+func (s *ValueAssignmentContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterValueAssignment(s)
+	}
+}
+
+func (s *ValueAssignmentContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitValueAssignment(s)
+	}
+}
+
 func (s *ValueAssignmentContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -4404,6 +4680,18 @@ func (s *MinusAssignmentContext) Expr() IExprContext {
 	}
 
 	return t.(IExprContext)
+}
+
+func (s *MinusAssignmentContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterMinusAssignment(s)
+	}
+}
+
+func (s *MinusAssignmentContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitMinusAssignment(s)
+	}
 }
 
 func (s *MinusAssignmentContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -4491,6 +4779,18 @@ func (s *VectorAssignmentContext) IS_() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserIS_, 0)
 }
 
+func (s *VectorAssignmentContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterVectorAssignment(s)
+	}
+}
+
+func (s *VectorAssignmentContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitVectorAssignment(s)
+	}
+}
+
 func (s *VectorAssignmentContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -4576,6 +4876,18 @@ func (s *VectorPlusAssignmentContext) PLUS_IS() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserPLUS_IS, 0)
 }
 
+func (s *VectorPlusAssignmentContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterVectorPlusAssignment(s)
+	}
+}
+
+func (s *VectorPlusAssignmentContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitVectorPlusAssignment(s)
+	}
+}
+
 func (s *VectorPlusAssignmentContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -4626,6 +4938,18 @@ func (s *PlusAssignmentContext) Expr() IExprContext {
 	}
 
 	return t.(IExprContext)
+}
+
+func (s *PlusAssignmentContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterPlusAssignment(s)
+	}
+}
+
+func (s *PlusAssignmentContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitPlusAssignment(s)
+	}
 }
 
 func (s *PlusAssignmentContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -4711,6 +5035,18 @@ func (s *VectorMinusAssignmentContext) RBRACKET() antlr.TerminalNode {
 
 func (s *VectorMinusAssignmentContext) MINUS_IS() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserMINUS_IS, 0)
+}
+
+func (s *VectorMinusAssignmentContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterVectorMinusAssignment(s)
+	}
+}
+
+func (s *VectorMinusAssignmentContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitVectorMinusAssignment(s)
+	}
 }
 
 func (s *VectorMinusAssignmentContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -5090,6 +5426,18 @@ func (s *ElseIfStmtContext) Ifstmt() IIfstmtContext {
 	return t.(IIfstmtContext)
 }
 
+func (s *ElseIfStmtContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterElseIfStmt(s)
+	}
+}
+
+func (s *ElseIfStmtContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitElseIfStmt(s)
+	}
+}
+
 func (s *ElseIfStmtContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -5197,6 +5545,18 @@ func (s *IfElseStmtContext) RBRACE(i int) antlr.TerminalNode {
 
 func (s *IfElseStmtContext) ELSE() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserELSE, 0)
+}
+
+func (s *IfElseStmtContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterIfElseStmt(s)
+	}
+}
+
+func (s *IfElseStmtContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitIfElseStmt(s)
+	}
 }
 
 func (s *IfElseStmtContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -5505,6 +5865,18 @@ func (s *SwitchStmtContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
+func (s *SwitchStmtContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterSwitchStmt(s)
+	}
+}
+
+func (s *SwitchStmtContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitSwitchStmt(s)
+	}
+}
+
 func (s *SwitchStmtContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -5694,6 +6066,18 @@ func (s *CaseBlockContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
+func (s *CaseBlockContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterCaseBlock(s)
+	}
+}
+
+func (s *CaseBlockContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitCaseBlock(s)
+	}
+}
+
 func (s *CaseBlockContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -5824,6 +6208,18 @@ func (s *DefaultBlockContext) GetRuleContext() antlr.RuleContext {
 
 func (s *DefaultBlockContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *DefaultBlockContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterDefaultBlock(s)
+	}
+}
+
+func (s *DefaultBlockContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitDefaultBlock(s)
+	}
 }
 
 func (s *DefaultBlockContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -5974,6 +6370,18 @@ func (s *WhileStmtContext) GetRuleContext() antlr.RuleContext {
 
 func (s *WhileStmtContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *WhileStmtContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterWhileStmt(s)
+	}
+}
+
+func (s *WhileStmtContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitWhileStmt(s)
+	}
 }
 
 func (s *WhileStmtContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -6160,6 +6568,18 @@ func (s *ForRangeExprContext) RBRACE() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserRBRACE, 0)
 }
 
+func (s *ForRangeExprContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterForRangeExpr(s)
+	}
+}
+
+func (s *ForRangeExprContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitForRangeExpr(s)
+	}
+}
+
 func (s *ForRangeExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -6238,6 +6658,18 @@ func (s *ForExprContext) Block() IBlockContext {
 
 func (s *ForExprContext) RBRACE() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserRBRACE, 0)
+}
+
+func (s *ForExprContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterForExpr(s)
+	}
+}
+
+func (s *ForExprContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitForExpr(s)
+	}
 }
 
 func (s *ForExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -6509,6 +6941,18 @@ func (s *ForRangeContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
+func (s *ForRangeContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterForRange(s)
+	}
+}
+
+func (s *ForRangeContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitForRange(s)
+	}
+}
+
 func (s *ForRangeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -6680,6 +7124,18 @@ func (s *GuardStmtContext) GetRuleContext() antlr.RuleContext {
 
 func (s *GuardStmtContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *GuardStmtContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterGuardStmt(s)
+	}
+}
+
+func (s *GuardStmtContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitGuardStmt(s)
+	}
 }
 
 func (s *GuardStmtContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -6898,6 +7354,18 @@ func (s *FunctionWithParamsContext) Type_() ITypeContext {
 	return t.(ITypeContext)
 }
 
+func (s *FunctionWithParamsContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterFunctionWithParams(s)
+	}
+}
+
+func (s *FunctionWithParamsContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitFunctionWithParams(s)
+	}
+}
+
 func (s *FunctionWithParamsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -6984,6 +7452,18 @@ func (s *FunctionWithoutParamsContext) Type_() ITypeContext {
 	}
 
 	return t.(ITypeContext)
+}
+
+func (s *FunctionWithoutParamsContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterFunctionWithoutParams(s)
+	}
+}
+
+func (s *FunctionWithoutParamsContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitFunctionWithoutParams(s)
+	}
 }
 
 func (s *FunctionWithoutParamsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -7346,6 +7826,18 @@ func (s *ListFunctionParamsEIVectorContext) COMMA(i int) antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserCOMMA, i)
 }
 
+func (s *ListFunctionParamsEIVectorContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterListFunctionParamsEIVector(s)
+	}
+}
+
+func (s *ListFunctionParamsEIVectorContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitListFunctionParamsEIVector(s)
+	}
+}
+
 func (s *ListFunctionParamsEIVectorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -7471,6 +7963,18 @@ func (s *ListFunctionParamsNEIVectorContext) COMMA(i int) antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserCOMMA, i)
 }
 
+func (s *ListFunctionParamsNEIVectorContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterListFunctionParamsNEIVector(s)
+	}
+}
+
+func (s *ListFunctionParamsNEIVectorContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitListFunctionParamsNEIVector(s)
+	}
+}
+
 func (s *ListFunctionParamsNEIVectorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -7566,6 +8070,18 @@ func (s *ListFunctionParamsEIContext) AllCOMMA() []antlr.TerminalNode {
 
 func (s *ListFunctionParamsEIContext) COMMA(i int) antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserCOMMA, i)
+}
+
+func (s *ListFunctionParamsEIContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterListFunctionParamsEI(s)
+	}
+}
+
+func (s *ListFunctionParamsEIContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitListFunctionParamsEI(s)
+	}
 }
 
 func (s *ListFunctionParamsEIContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -7673,6 +8189,18 @@ func (s *ListFunctionParamsNEIContext) COMMA(i int) antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserCOMMA, i)
 }
 
+func (s *ListFunctionParamsNEIContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterListFunctionParamsNEI(s)
+	}
+}
+
+func (s *ListFunctionParamsNEIContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitListFunctionParamsNEI(s)
+	}
+}
+
 func (s *ListFunctionParamsNEIContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -7772,6 +8300,18 @@ func (s *ListFunctionParamsBEIContext) AllCOMMA() []antlr.TerminalNode {
 
 func (s *ListFunctionParamsBEIContext) COMMA(i int) antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserCOMMA, i)
+}
+
+func (s *ListFunctionParamsBEIContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterListFunctionParamsBEI(s)
+	}
+}
+
+func (s *ListFunctionParamsBEIContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitListFunctionParamsBEI(s)
+	}
 }
 
 func (s *ListFunctionParamsBEIContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -7889,6 +8429,18 @@ func (s *ListFunctionParamsBEIVectorContext) AllCOMMA() []antlr.TerminalNode {
 
 func (s *ListFunctionParamsBEIVectorContext) COMMA(i int) antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserCOMMA, i)
+}
+
+func (s *ListFunctionParamsBEIVectorContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterListFunctionParamsBEIVector(s)
+	}
+}
+
+func (s *ListFunctionParamsBEIVectorContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitListFunctionParamsBEIVector(s)
+	}
 }
 
 func (s *ListFunctionParamsBEIVectorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -8762,6 +9314,18 @@ func (s *CallFunctionWithoutParamsContext) RPAREN() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserRPAREN, 0)
 }
 
+func (s *CallFunctionWithoutParamsContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterCallFunctionWithoutParams(s)
+	}
+}
+
+func (s *CallFunctionWithoutParamsContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitCallFunctionWithoutParams(s)
+	}
+}
+
 func (s *CallFunctionWithoutParamsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -8816,6 +9380,18 @@ func (s *CallFunctionWithParamsContext) ListCallFunctionStmt() IListCallFunction
 
 func (s *CallFunctionWithParamsContext) RPAREN() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserRPAREN, 0)
+}
+
+func (s *CallFunctionWithParamsContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterCallFunctionWithParams(s)
+	}
+}
+
+func (s *CallFunctionWithParamsContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitCallFunctionWithParams(s)
+	}
 }
 
 func (s *CallFunctionWithParamsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -9060,6 +9636,18 @@ func (s *ListCallFunctionStmtEIContext) COMMA(i int) antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserCOMMA, i)
 }
 
+func (s *ListCallFunctionStmtEIContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterListCallFunctionStmtEI(s)
+	}
+}
+
+func (s *ListCallFunctionStmtEIContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitListCallFunctionStmtEI(s)
+	}
+}
+
 func (s *ListCallFunctionStmtEIContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -9143,6 +9731,18 @@ func (s *ListCallFunctionStmtNEIContext) AllCOMMA() []antlr.TerminalNode {
 
 func (s *ListCallFunctionStmtNEIContext) COMMA(i int) antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserCOMMA, i)
+}
+
+func (s *ListCallFunctionStmtNEIContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterListCallFunctionStmtNEI(s)
+	}
+}
+
+func (s *ListCallFunctionStmtNEIContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitListCallFunctionStmtNEI(s)
+	}
 }
 
 func (s *ListCallFunctionStmtNEIContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -9460,6 +10060,18 @@ func (s *AccessVectorContext) RBRACKET() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserRBRACKET, 0)
 }
 
+func (s *AccessVectorContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterAccessVector(s)
+	}
+}
+
+func (s *AccessVectorContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitAccessVector(s)
+	}
+}
+
 func (s *AccessVectorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -9524,6 +10136,18 @@ func (s *AppendVectorContext) Expr() IExprContext {
 	return t.(IExprContext)
 }
 
+func (s *AppendVectorContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterAppendVector(s)
+	}
+}
+
+func (s *AppendVectorContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitAppendVector(s)
+	}
+}
+
 func (s *AppendVectorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -9570,6 +10194,18 @@ func (s *RemoveLastVectorContext) LPAREN() antlr.TerminalNode {
 
 func (s *RemoveLastVectorContext) RPAREN() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserRPAREN, 0)
+}
+
+func (s *RemoveLastVectorContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterRemoveLastVector(s)
+	}
+}
+
+func (s *RemoveLastVectorContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitRemoveLastVector(s)
+	}
 }
 
 func (s *RemoveLastVectorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -9636,6 +10272,18 @@ func (s *StructFunctionContext) RPAREN() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserRPAREN, 0)
 }
 
+func (s *StructFunctionContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterStructFunction(s)
+	}
+}
+
+func (s *StructFunctionContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitStructFunction(s)
+	}
+}
+
 func (s *StructFunctionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -9696,6 +10344,18 @@ func (s *SelfFunctionContext) Expr() IExprContext {
 	return t.(IExprContext)
 }
 
+func (s *SelfFunctionContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterSelfFunction(s)
+	}
+}
+
+func (s *SelfFunctionContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitSelfFunction(s)
+	}
+}
+
 func (s *SelfFunctionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -9754,6 +10414,18 @@ func (s *StructAttributeContext) Expr() IExprContext {
 	}
 
 	return t.(IExprContext)
+}
+
+func (s *StructAttributeContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterStructAttribute(s)
+	}
+}
+
+func (s *StructAttributeContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitStructAttribute(s)
+	}
 }
 
 func (s *StructAttributeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -9828,6 +10500,18 @@ func (s *RemoveAtVectorContext) RPAREN() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserRPAREN, 0)
 }
 
+func (s *RemoveAtVectorContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterRemoveAtVector(s)
+	}
+}
+
+func (s *RemoveAtVectorContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitRemoveAtVector(s)
+	}
+}
+
 func (s *RemoveAtVectorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -9876,6 +10560,18 @@ func (s *IsEmptyVectorContext) RPAREN() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserRPAREN, 0)
 }
 
+func (s *IsEmptyVectorContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterIsEmptyVector(s)
+	}
+}
+
+func (s *IsEmptyVectorContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitIsEmptyVector(s)
+	}
+}
+
 func (s *IsEmptyVectorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -9914,6 +10610,18 @@ func (s *CountVectorContext) DOT() antlr.TerminalNode {
 
 func (s *CountVectorContext) COUNT() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserCOUNT, 0)
+}
+
+func (s *CountVectorContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterCountVector(s)
+	}
+}
+
+func (s *CountVectorContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitCountVector(s)
+	}
 }
 
 func (s *CountVectorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -10461,6 +11169,18 @@ func (s *EmbbededFuncContext) ToStringTree(ruleNames []string, recog antlr.Recog
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
+func (s *EmbbededFuncContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterEmbbededFunc(s)
+	}
+}
+
+func (s *EmbbededFuncContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitEmbbededFunc(s)
+	}
+}
+
 func (s *EmbbededFuncContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -10603,6 +11323,18 @@ func (s *PrintstmtContext) GetRuleContext() antlr.RuleContext {
 
 func (s *PrintstmtContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *PrintstmtContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterPrintstmt(s)
+	}
+}
+
+func (s *PrintstmtContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitPrintstmt(s)
+	}
 }
 
 func (s *PrintstmtContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -10767,6 +11499,18 @@ func (s *ExprListContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
+func (s *ExprListContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterExprList(s)
+	}
+}
+
+func (s *ExprListContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitExprList(s)
+	}
+}
+
 func (s *ExprListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -10914,6 +11658,18 @@ func (s *IntstmtContext) ToStringTree(ruleNames []string, recog antlr.Recognizer
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
+func (s *IntstmtContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterIntstmt(s)
+	}
+}
+
+func (s *IntstmtContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitIntstmt(s)
+	}
+}
+
 func (s *IntstmtContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -11053,6 +11809,18 @@ func (s *FloatstmtContext) GetRuleContext() antlr.RuleContext {
 
 func (s *FloatstmtContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *FloatstmtContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterFloatstmt(s)
+	}
+}
+
+func (s *FloatstmtContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitFloatstmt(s)
+	}
 }
 
 func (s *FloatstmtContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -11196,6 +11964,18 @@ func (s *StringstmtContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
+func (s *StringstmtContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterStringstmt(s)
+	}
+}
+
+func (s *StringstmtContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitStringstmt(s)
+	}
+}
+
 func (s *StringstmtContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -11328,6 +12108,18 @@ func (s *StringExprContext) STRING_PRIMITIVE() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserSTRING_PRIMITIVE, 0)
 }
 
+func (s *StringExprContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterStringExpr(s)
+	}
+}
+
+func (s *StringExprContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitStringExpr(s)
+	}
+}
+
 func (s *StringExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -11372,6 +12164,18 @@ func (s *EmbeddedFunctionExprContext) EmbbededFunc() IEmbbededFuncContext {
 	return t.(IEmbbededFuncContext)
 }
 
+func (s *EmbeddedFunctionExprContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterEmbeddedFunctionExpr(s)
+	}
+}
+
+func (s *EmbeddedFunctionExprContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitEmbeddedFunctionExpr(s)
+	}
+}
+
 func (s *EmbeddedFunctionExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -11404,6 +12208,18 @@ func (s *NilExprContext) NIL() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserNIL, 0)
 }
 
+func (s *NilExprContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterNilExpr(s)
+	}
+}
+
+func (s *NilExprContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitNilExpr(s)
+	}
+}
+
 func (s *NilExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -11434,6 +12250,18 @@ func (s *IdExprContext) GetRuleContext() antlr.RuleContext {
 
 func (s *IdExprContext) ID_PRIMITIVE() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserID_PRIMITIVE, 0)
+}
+
+func (s *IdExprContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterIdExpr(s)
+	}
+}
+
+func (s *IdExprContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitIdExpr(s)
+	}
 }
 
 func (s *IdExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -11482,6 +12310,18 @@ func (s *CallBackExprContext) CallBack() ICallBackContext {
 
 func (s *CallBackExprContext) SEMICOLON() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserSEMICOLON, 0)
+}
+
+func (s *CallBackExprContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterCallBackExpr(s)
+	}
+}
+
+func (s *CallBackExprContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitCallBackExpr(s)
+	}
 }
 
 func (s *CallBackExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -11576,6 +12416,18 @@ func (s *LogicalOperationExprContext) OR() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserOR, 0)
 }
 
+func (s *LogicalOperationExprContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterLogicalOperationExpr(s)
+	}
+}
+
+func (s *LogicalOperationExprContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitLogicalOperationExpr(s)
+	}
+}
+
 func (s *LogicalOperationExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -11627,6 +12479,18 @@ func (s *NegExprContext) Expr() IExprContext {
 	}
 
 	return t.(IExprContext)
+}
+
+func (s *NegExprContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterNegExpr(s)
+	}
+}
+
+func (s *NegExprContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitNegExpr(s)
+	}
 }
 
 func (s *NegExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -11719,6 +12583,18 @@ func (s *ComparationOperationExprContext) EQUALS() antlr.TerminalNode {
 
 func (s *ComparationOperationExprContext) NOT_EQUALS() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserNOT_EQUALS, 0)
+}
+
+func (s *ComparationOperationExprContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterComparationOperationExpr(s)
+	}
+}
+
+func (s *ComparationOperationExprContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitComparationOperationExpr(s)
+	}
 }
 
 func (s *ComparationOperationExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -11825,6 +12701,18 @@ func (s *ArithmeticOperationExprContext) MINUS() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserMINUS, 0)
 }
 
+func (s *ArithmeticOperationExprContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterArithmeticOperationExpr(s)
+	}
+}
+
+func (s *ArithmeticOperationExprContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitArithmeticOperationExpr(s)
+	}
+}
+
 func (s *ArithmeticOperationExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -11879,6 +12767,18 @@ func (s *StructCallExprContext) StructCallList() IStructCallListContext {
 
 func (s *StructCallExprContext) RPAREN() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserRPAREN, 0)
+}
+
+func (s *StructCallExprContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterStructCallExpr(s)
+	}
+}
+
+func (s *StructCallExprContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitStructCallExpr(s)
+	}
 }
 
 func (s *StructCallExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -11981,6 +12881,18 @@ func (s *RelationalOperationExprContext) LESS_EQUALS() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserLESS_EQUALS, 0)
 }
 
+func (s *RelationalOperationExprContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterRelationalOperationExpr(s)
+	}
+}
+
+func (s *RelationalOperationExprContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitRelationalOperationExpr(s)
+	}
+}
+
 func (s *RelationalOperationExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -12011,6 +12923,18 @@ func (s *DigitExprContext) GetRuleContext() antlr.RuleContext {
 
 func (s *DigitExprContext) DIGIT_PRIMITIVE() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserDIGIT_PRIMITIVE, 0)
+}
+
+func (s *DigitExprContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterDigitExpr(s)
+	}
+}
+
+func (s *DigitExprContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitDigitExpr(s)
+	}
 }
 
 func (s *DigitExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -12066,6 +12990,18 @@ func (s *NotExprContext) Expr() IExprContext {
 	return t.(IExprContext)
 }
 
+func (s *NotExprContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterNotExpr(s)
+	}
+}
+
+func (s *NotExprContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitNotExpr(s)
+	}
+}
+
 func (s *NotExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -12118,6 +13054,18 @@ func (s *ParenExprContext) RPAREN() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserRPAREN, 0)
 }
 
+func (s *ParenExprContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterParenExpr(s)
+	}
+}
+
+func (s *ParenExprContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitParenExpr(s)
+	}
+}
+
 func (s *ParenExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -12166,6 +13114,18 @@ func (s *CallFunctionExprContext) SEMICOLON() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserSEMICOLON, 0)
 }
 
+func (s *CallFunctionExprContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterCallFunctionExpr(s)
+	}
+}
+
+func (s *CallFunctionExprContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitCallFunctionExpr(s)
+	}
+}
+
 func (s *CallFunctionExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 	switch t := visitor.(type) {
 	case SFGrammarVisitor:
@@ -12200,6 +13160,18 @@ func (s *BooleanExprContext) TRU() antlr.TerminalNode {
 
 func (s *BooleanExprContext) FAL() antlr.TerminalNode {
 	return s.GetToken(SFGrammarParserFAL, 0)
+}
+
+func (s *BooleanExprContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterBooleanExpr(s)
+	}
+}
+
+func (s *BooleanExprContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitBooleanExpr(s)
+	}
 }
 
 func (s *BooleanExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
@@ -12304,44 +13276,52 @@ func (p *SFGrammarParser) expr(_p int) (localctx IExprContext) {
 		}
 
 	case 4:
-		localctx = NewCallFunctionExprContext(p, localctx)
+		localctx = NewStructCallExprContext(p, localctx)
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
 		{
 			p.SetState(677)
+			p.Match(SFGrammarParserID_PRIMITIVE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+		{
+			p.SetState(678)
+			p.Match(SFGrammarParserLPAREN)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+		{
+			p.SetState(679)
+			p.StructCallList()
+		}
+		{
+			p.SetState(680)
+			p.Match(SFGrammarParserRPAREN)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+
+	case 5:
+		localctx = NewCallFunctionExprContext(p, localctx)
+		p.SetParserRuleContext(localctx)
+		_prevctx = localctx
+		{
+			p.SetState(682)
 			p.CallFunctionStmt()
 		}
-		p.SetState(679)
+		p.SetState(684)
 		p.GetErrorHandler().Sync(p)
 
 		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 64, p.GetParserRuleContext()) == 1 {
 			{
-				p.SetState(678)
-				p.Match(SFGrammarParserSEMICOLON)
-				if p.HasError() {
-					// Recognition error - abort rule
-					goto errorExit
-				}
-			}
-
-		} else if p.HasError() { // JIM
-			goto errorExit
-		}
-
-	case 5:
-		localctx = NewCallBackExprContext(p, localctx)
-		p.SetParserRuleContext(localctx)
-		_prevctx = localctx
-		{
-			p.SetState(681)
-			p.CallBack()
-		}
-		p.SetState(683)
-		p.GetErrorHandler().Sync(p)
-
-		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 65, p.GetParserRuleContext()) == 1 {
-			{
-				p.SetState(682)
+				p.SetState(683)
 				p.Match(SFGrammarParserSEMICOLON)
 				if p.HasError() {
 					// Recognition error - abort rule
@@ -12354,45 +13334,37 @@ func (p *SFGrammarParser) expr(_p int) (localctx IExprContext) {
 		}
 
 	case 6:
-		localctx = NewEmbeddedFunctionExprContext(p, localctx)
-		p.SetParserRuleContext(localctx)
-		_prevctx = localctx
-		{
-			p.SetState(685)
-			p.EmbbededFunc()
-		}
-
-	case 7:
-		localctx = NewStructCallExprContext(p, localctx)
+		localctx = NewCallBackExprContext(p, localctx)
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
 		{
 			p.SetState(686)
-			p.Match(SFGrammarParserID_PRIMITIVE)
-			if p.HasError() {
-				// Recognition error - abort rule
-				goto errorExit
-			}
+			p.CallBack()
 		}
-		{
-			p.SetState(687)
-			p.Match(SFGrammarParserLPAREN)
-			if p.HasError() {
-				// Recognition error - abort rule
-				goto errorExit
+		p.SetState(688)
+		p.GetErrorHandler().Sync(p)
+
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 65, p.GetParserRuleContext()) == 1 {
+			{
+				p.SetState(687)
+				p.Match(SFGrammarParserSEMICOLON)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
+
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
+
+	case 7:
+		localctx = NewEmbeddedFunctionExprContext(p, localctx)
+		p.SetParserRuleContext(localctx)
+		_prevctx = localctx
 		{
-			p.SetState(688)
-			p.StructCallList()
-		}
-		{
-			p.SetState(689)
-			p.Match(SFGrammarParserRPAREN)
-			if p.HasError() {
-				// Recognition error - abort rule
-				goto errorExit
-			}
+			p.SetState(690)
+			p.EmbbededFunc()
 		}
 
 	case 8:
@@ -12784,6 +13756,18 @@ func (s *TypeContext) GetRuleContext() antlr.RuleContext {
 
 func (s *TypeContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *TypeContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.EnterType(s)
+	}
+}
+
+func (s *TypeContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(SFGrammarListener); ok {
+		listenerT.ExitType(s)
+	}
 }
 
 func (s *TypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {

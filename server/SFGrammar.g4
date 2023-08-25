@@ -164,14 +164,14 @@ expr: NEGATION_OPERATOR right=expr                                      #NotExpr
     // add logical operators
     | left=expr op=(AND|OR) right=expr                                  #LogicalOperationExpr
     | LPAREN expr RPAREN                                                #ParenExpr
+    // struct call
+    | ID_PRIMITIVE LPAREN structCallList RPAREN                         #StructCallExpr //TODO: PENDING IMPLEMENTATION 
     // function call
     | callFunctionStmt  (SEMICOLON)?                                    #CallFunctionExpr
     // callbacks
     | callBack (SEMICOLON)?                                             #CallBackExpr
     // emmbeded functions
     | embbededFunc                                                      #EmbeddedFunctionExpr
-    // struct call
-    | ID_PRIMITIVE LPAREN structCallList RPAREN                         #StructCallExpr //TODO: PENDING IMPLEMENTATION 
     // Primitives
     | DIGIT_PRIMITIVE                                                   #DigitExpr
     | STRING_PRIMITIVE                                                  #StringExpr

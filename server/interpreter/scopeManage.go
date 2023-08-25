@@ -33,7 +33,8 @@ type LoopContext struct {
 // create the visitor struct based on the SymbolTable struct
 type Visitor struct {
 	parser.BaseSFGrammarVisitor
-	symbolStack []map[string]SymbolTable
+	SymbolStack []map[string]SymbolTable
+	TableSymbol []SymbolTable
 	Outputs     []string
 	Errors      []Error
 	// manage loop context
@@ -45,12 +46,12 @@ type Visitor struct {
 }
 
 func (v *Visitor) pushScope() {
-	v.symbolStack = append(v.symbolStack, make(map[string]SymbolTable))
+	v.SymbolStack = append(v.SymbolStack, make(map[string]SymbolTable))
 }
 
 func (v *Visitor) popScope() {
-	if len(v.symbolStack) > 1 {
-		v.symbolStack = v.symbolStack[:len(v.symbolStack)-1]
+	if len(v.SymbolStack) > 1 {
+		v.SymbolStack = v.SymbolStack[:len(v.SymbolStack)-1]
 	}
 }
 
@@ -96,13 +97,13 @@ func (v *Visitor) DeleteVariable(varName string) {
 
 // MANAGE SYMBOL TABLE
 func (v *Visitor) getCurrentScope() map[string]SymbolTable {
-	return v.symbolStack[len(v.symbolStack)-1]
+	return v.SymbolStack[len(v.SymbolStack)-1]
 }
 
 // udpate a variable in the scope
 func (v *Visitor) UpdateVariable(varName string, value interface{}) {
-	for i := len(v.symbolStack) - 1; i >= 0; i-- {
-		scope := v.symbolStack[i]
+	for i := len(v.SymbolStack) - 1; i >= 0; i-- {
+		scope := v.SymbolStack[i]
 		if _, ok := scope[varName]; ok {
 			scope[varName] = value.(SymbolTable)
 			return
@@ -113,8 +114,8 @@ func (v *Visitor) UpdateVariable(varName string, value interface{}) {
 // VerifyScope verify if the variable is in the scope
 func (v *Visitor) VerifyScope(varName string) (interface{}, bool) {
 
-	for i := len(v.symbolStack) - 1; i >= 0; i-- {
-		scope := v.symbolStack[i]
+	for i := len(v.SymbolStack) - 1; i >= 0; i-- {
+		scope := v.SymbolStack[i]
 		if val, ok := scope[varName]; ok {
 			return val, true
 		}
@@ -125,8 +126,8 @@ func (v *Visitor) VerifyScope(varName string) (interface{}, bool) {
 // VerifyVariableScope verify if the variable is already declared in the current scope, if not navigate to the others scopes
 func (v *Visitor) VerifyVariableScope(varName string) bool {
 
-	for i := len(v.symbolStack) - 1; i >= 0; i-- {
-		scope := v.symbolStack[i]
+	for i := len(v.SymbolStack) - 1; i >= 0; i-- {
+		scope := v.SymbolStack[i]
 		if _, ok := scope[varName]; ok {
 			return true
 		}
@@ -137,7 +138,7 @@ func (v *Visitor) VerifyVariableScope(varName string) bool {
 // VerifyVariableCurrentScope verify if the variable is already declared in the current scope
 func (v *Visitor) VerifyVariableCurrentScope(varName string) bool {
 
-	scope := v.symbolStack[len(v.symbolStack)-1]
+	scope := v.SymbolStack[len(v.SymbolStack)-1]
 	// fmt.Println("Current scope ->", scope)
 	if variable, ok := scope[varName]; ok {
 		// evaluate if the variable is not a function
@@ -150,7 +151,7 @@ func (v *Visitor) VerifyVariableCurrentScope(varName string) bool {
 // VerifyFunctionScope verify if the function is already declared in the current scope
 func (v *Visitor) VerifyFunctionScope(varName string) bool {
 
-	scope := v.symbolStack[len(v.symbolStack)-1]
+	scope := v.SymbolStack[len(v.SymbolStack)-1]
 	if variable, ok := scope[varName]; ok {
 		// evaluate if the variable is a function
 		return variable.TypeSymbol == values.Type_Function
@@ -161,8 +162,8 @@ func (v *Visitor) VerifyFunctionScope(varName string) bool {
 
 // GetFunction from the scope
 func (v *Visitor) GetFunction(varName string) (SymbolTable, bool) {
-	for i := len(v.symbolStack) - 1; i >= 0; i-- {
-		scope := v.symbolStack[i]
+	for i := len(v.SymbolStack) - 1; i >= 0; i-- {
+		scope := v.SymbolStack[i]
 		if val, ok := scope[varName]; ok {
 			if val.TypeSymbol == values.Type_Function {
 				return val, true

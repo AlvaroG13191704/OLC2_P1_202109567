@@ -46,8 +46,8 @@ func (v *Visitor) VisitTypeValueDeclaration(ctx *parser.TypeValueDeclarationCont
 		})
 		return nil
 	}
-	// add the variable to the scope
-	v.getCurrentScope()[varId] = SymbolTable{
+
+	symbol := SymbolTable{
 		Id:           varId,
 		TypeSymbol:   values.Type_Variable,
 		TypeVariable: varType,
@@ -56,6 +56,12 @@ func (v *Visitor) VisitTypeValueDeclaration(ctx *parser.TypeValueDeclarationCont
 		Line:         ctx.GetStart().GetLine(),
 		Column:       ctx.GetStart().GetColumn(),
 	}
+
+	// add the variable to the scope
+	v.getCurrentScope()[varId] = symbol
+
+	// apppend to the TableSymbol
+	v.TableSymbol = append(v.TableSymbol, symbol)
 
 	// print the symbol table
 	// fmt.Println("Current scope or symbol table ->", v.getCurrentScope())
@@ -94,7 +100,7 @@ func (v *Visitor) VisitTypeOptionalValueDeclaration(ctx *parser.TypeOptionalValu
 			Value: nil,
 		}
 		// add the variable to the scope
-		v.getCurrentScope()[varId] = SymbolTable{
+		symbol := SymbolTable{
 			Id:           varId,
 			TypeSymbol:   values.Type_Variable,
 			TypeVariable: varType,
@@ -103,6 +109,12 @@ func (v *Visitor) VisitTypeOptionalValueDeclaration(ctx *parser.TypeOptionalValu
 			Line:         ctx.GetStart().GetLine(),
 			Column:       ctx.GetStart().GetColumn(),
 		}
+
+		// add the variable to the scope
+		v.getCurrentScope()[varId] = symbol
+
+		// apppend to the TableSymbol
+		v.TableSymbol = append(v.TableSymbol, symbol)
 
 	} else if varType == "let" {
 		if questionMark != nil {
@@ -151,7 +163,7 @@ func (v *Visitor) VisitValueDeclaration(ctx *parser.ValueDeclarationContext) int
 	varTypeValue := varValue.GetType()
 
 	// add the variable to the scope
-	v.getCurrentScope()[varId] = SymbolTable{
+	symbol := SymbolTable{
 		Id:           varId,
 		TypeSymbol:   values.Type_Variable,
 		TypeVariable: varType,
@@ -160,6 +172,12 @@ func (v *Visitor) VisitValueDeclaration(ctx *parser.ValueDeclarationContext) int
 		Line:         ctx.GetStart().GetLine(),
 		Column:       ctx.GetStart().GetColumn(),
 	}
+
+	// add the variable to the scope
+	v.getCurrentScope()[varId] = symbol
+
+	// apppend to the TableSymbol
+	v.TableSymbol = append(v.TableSymbol, symbol)
 
 	// print the symbol table
 	// fmt.Println("Current scope or symbol table ->", v.getCurrentScope())
@@ -238,7 +256,7 @@ func (v *Visitor) VisitVectorDeclaration(ctx *parser.VectorDeclarationContext) i
 		}
 
 		// add the variable to the scope
-		v.getCurrentScope()[varId] = SymbolTable{
+		symbolV := SymbolTable{
 			Id:           varId,
 			TypeSymbol:   values.Type_Vector,
 			TypeVariable: varType,
@@ -247,6 +265,12 @@ func (v *Visitor) VisitVectorDeclaration(ctx *parser.VectorDeclarationContext) i
 			Line:         ctx.GetStart().GetLine(),
 			Column:       ctx.GetStart().GetColumn(),
 		}
+
+		// add the variable to the scope
+		v.getCurrentScope()[varId] = symbolV
+
+		// apppend to the TableSymbol
+		v.TableSymbol = append(v.TableSymbol, symbolV)
 
 		return nil
 	}
@@ -287,7 +311,7 @@ func (v *Visitor) VisitVectorDeclaration(ctx *parser.VectorDeclarationContext) i
 	}
 
 	// save the variable as a vector in the scope
-	v.getCurrentScope()[varId] = SymbolTable{
+	symbol := SymbolTable{
 		Id:           varId,
 		TypeSymbol:   values.Type_Vector,
 		TypeVariable: varType,
@@ -296,6 +320,12 @@ func (v *Visitor) VisitVectorDeclaration(ctx *parser.VectorDeclarationContext) i
 		Line:         ctx.GetStart().GetLine(),
 		Column:       ctx.GetStart().GetColumn(),
 	}
+
+	// add the variable to the scope
+	v.getCurrentScope()[varId] = symbol
+
+	// apppend to the TableSymbol
+	v.TableSymbol = append(v.TableSymbol, symbol)
 
 	// print the symbol table
 	// fmt.Println("Current scope or symbol table ->", v.getCurrentScope())

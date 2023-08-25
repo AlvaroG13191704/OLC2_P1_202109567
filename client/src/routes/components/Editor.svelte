@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { dataContext } from '../../store';
+  
   import loader from '@monaco-editor/loader';
   import { onDestroy, onMount } from 'svelte';
   import type * as Monaco from 'monaco-editor/esm/vs/editor/editor.api';
@@ -6,6 +8,7 @@
   let editor: Monaco.editor.IStandaloneCodeEditor;
   let monaco: typeof Monaco;
   let editorContainer: HTMLElement;
+
 
   onMount(async () => {
 
@@ -37,6 +40,11 @@
       );
       
       editor.setModel(model);
+
+      // Set the editor value
+      editor.onDidChangeModelContent(() => {
+        $dataContext.editorText = editor.getValue();
+      });
   });
 
   onDestroy(() => {

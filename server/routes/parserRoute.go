@@ -12,6 +12,9 @@ import (
 func AnalyzeAndParseCode() fiber.Handler {
 	return func(c *fiber.Ctx) error {
 
+		// Errors
+		var TotalErrors []interpreter.Error
+
 		// get the code from the request body
 		code := string(c.Body())
 		fmt.Println(code)
@@ -22,6 +25,12 @@ func AnalyzeAndParseCode() fiber.Handler {
 		lexer := parser.NewSFGrammarLexer(input)                               // create lexer
 		tokens := antlr.NewCommonTokenStream(lexer, antlr.TokenDefaultChannel) // create tokens
 		p := parser.NewSFGrammarParser(tokens)                                 // create parser
+
+		// new list of errors
+		sintacticErrors := &interpreter.NewCustomErrorListener{}
+		// add the errors to the parser
+		p.RemoveErrorListeners()
+		p.AddErrorListener(sintacticErrors)
 
 		p.BuildParseTrees = true // tell the parser to build parse trees
 		tree := p.Start_()       // parse the input
@@ -38,9 +47,18 @@ func AnalyzeAndParseCode() fiber.Handler {
 			out += v + "\n"
 		}
 
+		// append the errors
+		TotalErrors = append(TotalErrors, sintacticErrors.Errors...)
+
+		// append the errors
+		TotalErrors = append(TotalErrors, visitor.Errors...)
+
+		fmt.Println("errors: ", TotalErrors)
+
 		return c.Status(fiber.StatusOK).JSON(fiber.Map{
-			"message": "Code parsed successfully",
-			"result":  out,
+			"result": out,
+			"errors": TotalErrors,
+			"symbol": visitor.TableSymbol,
 		})
 	}
 }

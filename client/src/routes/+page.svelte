@@ -1,17 +1,19 @@
 <script>
 	import ActionBar from "./components/ActionBar.svelte";
+	import Console from "./components/Console.svelte";
 	import Editor from "./components/Editor.svelte";
 	import Navbar from "./components/Navbar.svelte";
 
 </script>
-<div class="flex min-h-full w-full flex-col">
+<div class="flex w-full flex-col">
   <Navbar />
-  <div class="flex flex-row h-full">
+  <div class="flex flex-row">
     <div class="flex flex-col grow">
       <Editor />
-      <!-- Add the  -->
+      <!-- Add the three  -->
+      <Console />
     </div>
-    <div class="flex flex-col grow ">
+    <div class="flex flex-col grow w-[400px] ">
       <ActionBar />
     </div>
   </div>

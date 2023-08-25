@@ -34,7 +34,7 @@ func (v *Visitor) VisitPrintstmt(ctx *parser.PrintstmtContext) interface{} {
 
 		case values.StringType:
 			// add "" to the string
-			output += fmt.Sprintf("\"%s\"", value.GetValue().(string))
+			output += fmt.Sprint(value.GetValue().(string))
 
 		case values.BooleanType:
 

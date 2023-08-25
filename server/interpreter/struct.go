@@ -3,6 +3,7 @@ package interpreter
 import (
 	"fmt"
 	"log"
+	"reflect"
 	"server/parserInterpreter/interpreter/values"
 	"server/parserInterpreter/parser"
 )
@@ -22,7 +23,7 @@ func (v *Visitor) VisitStructStmt(ctx *parser.StructStmtContext) interface{} {
 	block := v.Visit(ctx.StructBlock()).(map[string]SymbolTable)
 
 	// add the variable to the scope
-	v.getCurrentScope()[id] = SymbolTable{
+	symbol := SymbolTable{
 		Id:           id,
 		TypeSymbol:   values.Type_Struct,
 		TypeVariable: values.StructType,
@@ -31,6 +32,9 @@ func (v *Visitor) VisitStructStmt(ctx *parser.StructStmtContext) interface{} {
 		Line:         ctx.GetStart().GetLine(),
 		Column:       ctx.GetStart().GetColumn(),
 	}
+
+	// add the variable to the scope
+	v.getCurrentScope()[id] = symbol
 
 	return nil
 }
@@ -105,6 +109,24 @@ func (v *Visitor) VisitStructCreation(ctx *parser.StructCreationContext) interfa
 	// iterate over the symbolStruct to verify
 	// 1. If the variable is var
 	for _, symbol := range scopeStruct {
+
+		// TODO: CORRECT IMPLEMENTATION OF VECTORS
+		// if symbol is a vector
+		if symbol.TypeSymbol == values.Type_Vector {
+			// print the argument
+			// save the vector
+			newScope[symbol.Id] = SymbolTable{
+				Id:           symbol.Id,
+				TypeSymbol:   values.Type_Vector,
+				TypeVariable: symbol.TypeVariable,
+				TypeData:     symbol.TypeData,
+				Value:        symbol.Value,
+				Line:         symbol.Line,
+				Column:       symbol.Column,
+			}
+			continue
+		}
+
 		// if var?
 		if symbol.TypeVariable == "var" {
 			// if value is not nil and the argument doesn't comes, continue
@@ -218,7 +240,7 @@ func (v *Visitor) VisitStructCreation(ctx *parser.StructCreationContext) interfa
 
 	fmt.Println("scopeStruct after changes", newScope)
 
-	v.getCurrentScope()[ctx.AllID_PRIMITIVE()[0].GetText()] = SymbolTable{
+	newSymbolStruct := SymbolTable{
 		Id:           ctx.AllID_PRIMITIVE()[0].GetText(),
 		TypeSymbol:   values.Type_Variable,
 		TypeVariable: ctx.Type_declaration().GetText(),
@@ -228,8 +250,12 @@ func (v *Visitor) VisitStructCreation(ctx *parser.StructCreationContext) interfa
 		Column:       ctx.GetStart().GetColumn(),
 	}
 
+	v.getCurrentScope()[ctx.AllID_PRIMITIVE()[0].GetText()] = newSymbolStruct
+
+	v.TableSymbol = append(v.TableSymbol, newSymbolStruct)
+
 	fmt.Println("----------------------------------------------------")
-	fmt.Println("Global scope or symbol table ->", v.symbolStack)
+	fmt.Println("Global scope or symbol table ->", v.SymbolStack)
 	fmt.Println("----------------------------------------------------")
 
 	return nil
@@ -240,12 +266,21 @@ func (v *Visitor) VisitStructCallList(ctx *parser.StructCallListContext) interfa
 	// create a map of values
 	list := map[string]values.PRIMITIVE{}
 
-	// TODO: implement the logic to accept struct as a parameter
+	// TODO: IMPLEMENT VECTORS AND STRUCTS AS ARGUMENTS
 
 	// get the list of values
 	for i, value := range ctx.AllID_PRIMITIVE() {
-		// use the id as the key adn the value as the value
-		list[value.GetText()] = v.Visit(ctx.AllExpr()[i]).(values.PRIMITIVE)
+
+		assertion := v.Visit(ctx.AllExpr()[i])
+
+		// evaluate if a struct
+		if reflect.TypeOf(assertion).Kind() == reflect.Struct {
+			fmt.Println("assertion struct -> ", assertion)
+
+		} else {
+			fmt.Println("assertion primitive -> ", assertion)
+			list[value.GetText()] = assertion.(values.PRIMITIVE)
+		}
 	}
 
 	return list

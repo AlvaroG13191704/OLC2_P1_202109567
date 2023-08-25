@@ -167,6 +167,7 @@ var testFor = 0
 var testGuard = 2
 var num = 0
 
+
 while (testGuard <= 10){
     guard testGuard % 2 == 0 else {
         print(testGuard, "es impar")
@@ -384,22 +385,19 @@ struct Persona{
     }
 }
 
+struct Profesion {
+    var trabajo: String
+    var salario: Float
+}
+
 struct Persona{
     var Nombre: String
     var edad = 0
+    var dedicacion: Profesion
 }
 
-// creacion
-var p1 = Persona(Nombre: "Alvaro", edad: 20)
+var pf = Profesion(trabajo:"Ingeniero", salario:10230.00)
 
-struct Avion {
-    var pasajeros = 0
-    var velocidad = 100
-    var nombre: String
-    var piloto: Persona
-}
+//var p1 = Persona(Nombre: "Alvaro", edad: 20, date:10, profesion: pf)
 
-// creacion
-var avion1 = Avion(pasajeros: 100, velocidad: 1000, nombre: "Avion1", piloto: p1)
-// o
-var avion2 = Avion(pasajeros: 100, velocidad: 1000, nombre: "Avion1", piloto: Persona(Nombre: "Alvaro", edad: 20))
+//var p1 = Persona(Nombre: "Alvaro", edad: 20, date:10, dedicacion: Profesion(trabajo:"Ingeniero", salario:10230.00) )
