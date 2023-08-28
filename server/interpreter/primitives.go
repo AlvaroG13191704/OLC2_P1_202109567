@@ -13,6 +13,7 @@ func (v *Visitor) VisitDigitExpr(ctx *parser.DigitExprContext) interface{} {
 	// evalue if the digit has a . to know if it is a float or an integer
 	if strings.Contains(digit, ".") {
 		f, _ := strconv.ParseFloat(digit, 64) // convert to float
+
 		// fmt.Println("Digito primitivo float: ", f)
 		return &values.Float{Value: f}
 	} else {

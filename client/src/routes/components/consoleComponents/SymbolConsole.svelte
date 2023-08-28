@@ -4,7 +4,7 @@
 
  
   /** @type {any[]} */
-  $: symbols = $dataContext.TableSymbols;
+  $: symbols = $dataContext.TableSymbols == null ? [] : $dataContext.TableSymbols;
 
 
 </script>

@@ -1,4 +1,5 @@
 import { analyzeAPI } from '$lib/API.js';
+import { fail } from '@sveltejs/kit';
 import type { Analyzer, Response } from '../interface.js';
 
 
@@ -14,5 +15,26 @@ export const actions = {
     console.log(response);
 
     return response
+  },
+  openFile: async ({request}) => {
+    const formData = Object.fromEntries(await request.formData());
+    if (
+      !(formData.fileToUpload as File).name ||
+      (formData.fileToUpload as File).name === 'undefined'
+    ) {
+      return fail(400, {
+        error: true,
+        message: 'You must provide a file to upload'
+      });
+    }
+    const { fileToUpload } = formData as { fileToUpload: File };
+
+    // read file
+    const fileContent = await fileToUpload.text();
+
+    // return 
+    return {
+      fileContent
+    }
   }
 }

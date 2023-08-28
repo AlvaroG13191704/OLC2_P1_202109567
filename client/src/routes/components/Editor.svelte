@@ -2,12 +2,14 @@
 	import { dataContext } from '../../store';
   
   import loader from '@monaco-editor/loader';
-  import { onDestroy, onMount } from 'svelte';
+  import { onDestroy, onMount, setContext } from 'svelte';
   import type * as Monaco from 'monaco-editor/esm/vs/editor/editor.api';
 
   let editor: Monaco.editor.IStandaloneCodeEditor;
   let monaco: typeof Monaco;
+
   let editorContainer: HTMLElement;
+
 
 
   onMount(async () => {
@@ -33,17 +35,17 @@
         
       });
       const model = monaco.editor.createModel(
-          "print(\"Hello World from T-swift\")",
-          'swift',
+          $dataContext.editorText,
           // Give monaco a hint which syntax highlighting to use
-          monaco.Uri.file('sample.swift')
+          'swift',
       );
       
       editor.setModel(model);
 
-      // Set the editor value
+    // Set the editor value
       editor.onDidChangeModelContent(() => {
-        $dataContext.editorText = editor.getValue();
+        $dataContext.editorText = editor.getValue(); // Update the data context directly
+        // update the data context
       });
   });
 

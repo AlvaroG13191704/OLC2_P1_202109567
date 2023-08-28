@@ -2,7 +2,8 @@
 	import { dataContext } from "../../../store";
 
   /** @type {any[]} */
-  $: errors = $dataContext.TableErrors;
+  $: errors = $dataContext.TableErrors == null ? [] : $dataContext.TableErrors;
+  
 </script>
 <div class="bg-red-100 p-4 h-full mt-2 rounded">
   <h3 class="text-red-700 font-semibold mb-2">Errores:</h3>

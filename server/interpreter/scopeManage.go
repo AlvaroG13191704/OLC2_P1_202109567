@@ -43,6 +43,7 @@ type Visitor struct {
 	IsReturn        bool
 	FirstPass       bool
 	FunctionContext []string
+	// CST
 }
 
 func (v *Visitor) pushScope() {

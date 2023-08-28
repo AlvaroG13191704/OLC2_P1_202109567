@@ -19,6 +19,7 @@ func NewVisitor() *Visitor {
 
 // The visit method
 func (v *Visitor) Visit(tree antlr.ParseTree) interface{} {
+
 	switch val := tree.(type) {
 	case *antlr.ErrorNodeImpl:
 		log.Fatal(val.GetText())
@@ -31,6 +32,7 @@ func (v *Visitor) Visit(tree antlr.ParseTree) interface{} {
 
 // visit start
 func (v *Visitor) VisitStart(ctx *parser.StartContext) interface{} {
+
 	return v.Visit(ctx.Block())
 }
 

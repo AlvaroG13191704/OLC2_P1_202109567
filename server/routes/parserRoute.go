@@ -39,6 +39,9 @@ func AnalyzeAndParseCode() fiber.Handler {
 		visitor := interpreter.NewVisitor()
 		visitor.Visit(tree) // visit the tree
 
+		// fmt.Printf("dot: %s\n", dot)
+
+		// get the output
 		output := visitor.Outputs
 
 		// join the output array and separate by new line
@@ -59,6 +62,7 @@ func AnalyzeAndParseCode() fiber.Handler {
 			"result": out,
 			"errors": TotalErrors,
 			"symbol": visitor.TableSymbol,
+			// "dot":    dot,
 		})
 	}
 }

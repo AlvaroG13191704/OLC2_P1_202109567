@@ -61,6 +61,7 @@ func (v *Visitor) VisitPrintstmt(ctx *parser.PrintstmtContext) interface{} {
 	}
 
 	v.Outputs = append(v.Outputs, output)
+
 	return nil
 
 }

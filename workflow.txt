@@ -10,7 +10,7 @@ Tasks external of coding
 2. Create report of the errors ✅
 3. Create the Symbol Table ✅
 4. Create the CST and send it to frontend 
-5. Add options to open, save and save as in the menu 
+5. Add options to open, save and save as in the menu ✅
 6. Grammar used
 7. Documentation
 --------------------------------
