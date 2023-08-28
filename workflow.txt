@@ -9,7 +9,7 @@ Tasks external of coding
 1. Create the client to send the code to the server ✅
 2. Create report of the errors ✅
 3. Create the Symbol Table ✅
-4. Create the CST and send it to frontend 
+4. Create the CST and send it to frontend ✅ ⏸️ update with new grammar later
 5. Add options to open, save and save as in the menu ✅
 6. Grammar used
 7. Documentation

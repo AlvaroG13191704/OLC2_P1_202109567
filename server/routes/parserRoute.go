@@ -2,6 +2,7 @@ package routes
 
 import (
 	"fmt"
+	"server/parserInterpreter/cst"
 	"server/parserInterpreter/interpreter"
 	"server/parserInterpreter/parser"
 
@@ -39,7 +40,8 @@ func AnalyzeAndParseCode() fiber.Handler {
 		visitor := interpreter.NewVisitor()
 		visitor.Visit(tree) // visit the tree
 
-		// fmt.Printf("dot: %s\n", dot)
+		// create dot
+		dot := cst.CreateCST(code)
 
 		// get the output
 		output := visitor.Outputs
@@ -58,11 +60,16 @@ func AnalyzeAndParseCode() fiber.Handler {
 
 		fmt.Println("errors: ", TotalErrors)
 
+		// if errors is null return []
+		if TotalErrors == nil {
+			TotalErrors = []interpreter.Error{}
+		}
+
 		return c.Status(fiber.StatusOK).JSON(fiber.Map{
 			"result": out,
 			"errors": TotalErrors,
 			"symbol": visitor.TableSymbol,
-			// "dot":    dot,
+			"dot":    dot,
 		})
 	}
 }

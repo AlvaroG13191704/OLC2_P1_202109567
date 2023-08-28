@@ -7,6 +7,7 @@ import type { Analyzer } from "./interface";
 export const dataContext = writable<Analyzer>({
   editorText: "",
   outputAnalysis: "",
+  cstTree: "",
   TableErrors: [],
   TableSymbols: [],
 });

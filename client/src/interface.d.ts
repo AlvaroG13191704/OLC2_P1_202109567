@@ -23,6 +23,7 @@ export interface SymbolTable {
 export interface Analyzer {
   editorText: string;
   outputAnalysis: string;
+  cstTree: string;
   TableErrors: Errors[]
   TableSymbols: SymbolTable[]
 }
