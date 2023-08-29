@@ -12,7 +12,7 @@ export const actions = {
     // send code to server
     const response: Response = await analyzeAPI(code);
 
-    console.log(response);
+    // console.log(response);
 
     return response
   },

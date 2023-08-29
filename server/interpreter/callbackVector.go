@@ -7,12 +7,6 @@ import (
 	"server/parserInterpreter/parser"
 )
 
-// VisitCallBackExpr -> Visit a parse tree produced by SFGrammarParser#CallBackExpr.
-func (v *Visitor) VisitCallBackExpr(ctx *parser.CallBackExprContext) interface{} {
-
-	return v.Visit(ctx.CallBack())
-}
-
 // VisitAccessVector
 func (v *Visitor) VisitAccessVector(ctx *parser.AccessVectorContext) interface{} {
 	// get the vector name

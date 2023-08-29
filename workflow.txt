@@ -11,8 +11,8 @@ Tasks external of coding
 3. Create the Symbol Table ✅
 4. Create the CST and send it to frontend ✅ ⏸️ update with new grammar later
 5. Add options to open, save and save as in the menu ✅
-6. Grammar used
-7. Documentation
+6. Grammar used in the project 
+7. Documentation of the project 
 --------------------------------
 Tasks of coding
 --------------------------------
@@ -46,12 +46,16 @@ Tasks of coding
         3.3.2 Initialize structs with other structs
 
     3.4 Access to structs
+        3.4.1 Access to attributes of structs ✅
+        3.4.2 Access to functions of structs
     
 5. Functions by value
     5.1 Pass by value in functions -> copy of the value 
         5.1.1 variables ✅
         5.1.2 vectors ✅
         5.1.3 structs 
+
+    5.2 Implement the self keyword 
 
 4. Functions by reference ❌
     4.1 Functions by reference in functions -> only id 

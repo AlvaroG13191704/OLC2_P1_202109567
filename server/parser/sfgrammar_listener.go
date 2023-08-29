@@ -181,8 +181,8 @@ type SFGrammarListener interface {
 	// EnterStructAttribute is called when entering the StructAttribute production.
 	EnterStructAttribute(c *StructAttributeContext)
 
-	// EnterStructFunction is called when entering the StructFunction production.
-	EnterStructFunction(c *StructFunctionContext)
+	// EnterStructCallFunction is called when entering the StructCallFunction production.
+	EnterStructCallFunction(c *StructCallFunctionContext)
 
 	// EnterEmbbededFunc is called when entering the embbededFunc production.
 	EnterEmbbededFunc(c *EmbbededFuncContext)
@@ -427,8 +427,8 @@ type SFGrammarListener interface {
 	// ExitStructAttribute is called when exiting the StructAttribute production.
 	ExitStructAttribute(c *StructAttributeContext)
 
-	// ExitStructFunction is called when exiting the StructFunction production.
-	ExitStructFunction(c *StructFunctionContext)
+	// ExitStructCallFunction is called when exiting the StructCallFunction production.
+	ExitStructCallFunction(c *StructCallFunctionContext)
 
 	// ExitEmbbededFunc is called when exiting the embbededFunc production.
 	ExitEmbbededFunc(c *EmbbededFuncContext)

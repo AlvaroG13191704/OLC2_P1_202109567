@@ -181,8 +181,8 @@ type SFGrammarVisitor interface {
 	// Visit a parse tree produced by SFGrammarParser#StructAttribute.
 	VisitStructAttribute(ctx *StructAttributeContext) interface{}
 
-	// Visit a parse tree produced by SFGrammarParser#StructFunction.
-	VisitStructFunction(ctx *StructFunctionContext) interface{}
+	// Visit a parse tree produced by SFGrammarParser#StructCallFunction.
+	VisitStructCallFunction(ctx *StructCallFunctionContext) interface{}
 
 	// Visit a parse tree produced by SFGrammarParser#embbededFunc.
 	VisitEmbbededFunc(ctx *EmbbededFuncContext) interface{}

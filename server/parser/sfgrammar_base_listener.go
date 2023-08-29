@@ -386,11 +386,11 @@ func (s *BaseSFGrammarListener) EnterStructAttribute(ctx *StructAttributeContext
 // ExitStructAttribute is called when production StructAttribute is exited.
 func (s *BaseSFGrammarListener) ExitStructAttribute(ctx *StructAttributeContext) {}
 
-// EnterStructFunction is called when production StructFunction is entered.
-func (s *BaseSFGrammarListener) EnterStructFunction(ctx *StructFunctionContext) {}
+// EnterStructCallFunction is called when production StructCallFunction is entered.
+func (s *BaseSFGrammarListener) EnterStructCallFunction(ctx *StructCallFunctionContext) {}
 
-// ExitStructFunction is called when production StructFunction is exited.
-func (s *BaseSFGrammarListener) ExitStructFunction(ctx *StructFunctionContext) {}
+// ExitStructCallFunction is called when production StructCallFunction is exited.
+func (s *BaseSFGrammarListener) ExitStructCallFunction(ctx *StructCallFunctionContext) {}
 
 // EnterEmbbededFunc is called when production embbededFunc is entered.
 func (s *BaseSFGrammarListener) EnterEmbbededFunc(ctx *EmbbededFuncContext) {}

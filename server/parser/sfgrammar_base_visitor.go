@@ -239,7 +239,7 @@ func (v *BaseSFGrammarVisitor) VisitStructAttribute(ctx *StructAttributeContext)
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseSFGrammarVisitor) VisitStructFunction(ctx *StructFunctionContext) interface{} {
+func (v *BaseSFGrammarVisitor) VisitStructCallFunction(ctx *StructCallFunctionContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

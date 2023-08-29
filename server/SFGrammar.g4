@@ -131,8 +131,8 @@ callBack: ID_PRIMITIVE DOT APPEND LPAREN expr LPAREN            #AppendVector //
         | ID_PRIMITIVE DOT COUNT                                #CountVector // vector.count
         | ID_PRIMITIVE LBRACKET expr RBRACKET                   #AccessVector // let value = vector[0]
         | SELF DOT ID_PRIMITIVE (IS_ expr)?                     #SelfFunction // self.function(10) // TODO: PENDING IMPLEMENTATION
-        | ID_PRIMITIVE DOT ID_PRIMITIVE (IS_ expr)?             #StructAttribute // struct.value = 10 //TODO: PENDING IMPLEMENTATION
-        | ID_PRIMITIVE DOT ID_PRIMITIVE LPAREN listFunctionParams RPAREN #StructFunction // struct.function(params) // TODO: PENDING IMPLEMENTATION
+        | ID_PRIMITIVE (DOT ID_PRIMITIVE)+ (IS_ expr)?             #StructAttribute // struct.value = 10 or struct.value
+        | ID_PRIMITIVE DOT ID_PRIMITIVE LPAREN (listFunctionParams)? RPAREN #StructCallFunction // struct.function(params) // TODO: PENDING IMPLEMENTATION
         ;
 
 // Embedded functions

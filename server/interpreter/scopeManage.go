@@ -112,6 +112,14 @@ func (v *Visitor) UpdateVariable(varName string, value interface{}) {
 	}
 }
 
+// VerifyStructScope verify if the id is in the scope of the struct
+func (v *Visitor) VerifyStructScopeValue(scope map[string]SymbolTable, varName string) (interface{}, bool) {
+	if val, ok := scope[varName]; ok {
+		return val, true
+	}
+	return nil, false
+}
+
 // VerifyScope verify if the variable is in the scope
 func (v *Visitor) VerifyScope(varName string) (interface{}, bool) {
 
