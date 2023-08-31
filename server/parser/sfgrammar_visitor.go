@@ -175,14 +175,14 @@ type SFGrammarVisitor interface {
 	// Visit a parse tree produced by SFGrammarParser#AccessVector.
 	VisitAccessVector(ctx *AccessVectorContext) interface{}
 
-	// Visit a parse tree produced by SFGrammarParser#SelfFunction.
-	VisitSelfFunction(ctx *SelfFunctionContext) interface{}
+	// Visit a parse tree produced by SFGrammarParser#StructCallFunction.
+	VisitStructCallFunction(ctx *StructCallFunctionContext) interface{}
 
 	// Visit a parse tree produced by SFGrammarParser#StructAttribute.
 	VisitStructAttribute(ctx *StructAttributeContext) interface{}
 
-	// Visit a parse tree produced by SFGrammarParser#StructCallFunction.
-	VisitStructCallFunction(ctx *StructCallFunctionContext) interface{}
+	// Visit a parse tree produced by SFGrammarParser#SelfFunction.
+	VisitSelfFunction(ctx *SelfFunctionContext) interface{}
 
 	// Visit a parse tree produced by SFGrammarParser#embbededFunc.
 	VisitEmbbededFunc(ctx *EmbbededFuncContext) interface{}

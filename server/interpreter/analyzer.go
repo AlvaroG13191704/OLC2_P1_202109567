@@ -11,6 +11,7 @@ import (
 func NewVisitor() *Visitor {
 	return &Visitor{
 		SymbolStack: []map[string]SymbolTable{},
+		SelfStructs: make(map[string]SelfStruct),
 		TableSymbol: []SymbolTable{},
 		Outputs:     []string{},
 		Errors:      []Error{},
@@ -101,10 +102,10 @@ func (v *Visitor) VisitBlock(ctx *parser.BlockContext) interface{} {
 
 	}
 	// pop the scope
-	fmt.Println("----------------------------------------------------")
-	fmt.Println("Current scope or symbol table ->", v.getCurrentScope())
-	fmt.Println("Global scope or symbol table ->", v.SymbolStack)
-	fmt.Println("----------------------------------------------------")
+	// fmt.Println("----------------------------------------------------")
+	// fmt.Println("Current scope or symbol table ->", v.getCurrentScope())
+	// fmt.Println("Global scope or symbol table ->", v.SymbolStack)
+	// fmt.Println("----------------------------------------------------")
 	v.popScope()
 	return nil
 }

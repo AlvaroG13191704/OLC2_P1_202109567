@@ -40,14 +40,15 @@ structStmts: declarationStructs (SEMICOLON)?
            ;
 
 declarationStructs :type_declaration  ID_PRIMITIVE COLON type IS_ expr #StructDeclarationWithValueAndType
-           | type_declaration  ID_PRIMITIVE COLON type #StructDeclarationWithoutValue
+           | type_declaration  ID_PRIMITIVE COLON type QUESTION_MARK? #StructDeclarationWithoutValue
            | type_declaration  ID_PRIMITIVE IS_ expr #StructDeclarationImplicitValue
            | type_declaration  ID_PRIMITIVE COLON LBRACKET type RBRACKET IS_ (LBRACKET exprList RBRACKET | ID_PRIMITIVE ) #StructDeclarationVector
            ;
 
-functionStructs:MUTATING? FUNC ID_PRIMITIVE LPAREN  RPAREN (ARROW_FUNCTION type)? LBRACE block RBRACE                  #StructFunctionWithoutParams
-            |MUTATING? FUNC ID_PRIMITIVE LPAREN listFunctionParams  RPAREN (ARROW_FUNCTION type)? LBRACE block RBRACE  #StructFunctionWithParams
-            ;
+functionStructs
+ :MUTATING? FUNC ID_PRIMITIVE LPAREN  RPAREN (ARROW_FUNCTION type)? LBRACE block RBRACE                  #StructFunctionWithoutParams
+ |MUTATING? FUNC ID_PRIMITIVE LPAREN listFunctionParams  RPAREN (ARROW_FUNCTION type)? LBRACE block RBRACE  #StructFunctionWithParams
+ ;
            
 structCallList: ID_PRIMITIVE COLON expr (COMMA ID_PRIMITIVE COLON expr)* ;
 
@@ -130,9 +131,9 @@ callBack: ID_PRIMITIVE DOT APPEND LPAREN expr LPAREN            #AppendVector //
         | ID_PRIMITIVE DOT ISEMPTY LPAREN  RPAREN               #IsEmptyVector // vector.isEmpty()
         | ID_PRIMITIVE DOT COUNT                                #CountVector // vector.count
         | ID_PRIMITIVE LBRACKET expr RBRACKET                   #AccessVector // let value = vector[0]
-        | SELF DOT ID_PRIMITIVE (IS_ expr)?                     #SelfFunction // self.function(10) // TODO: PENDING IMPLEMENTATION
-        | ID_PRIMITIVE (DOT ID_PRIMITIVE)+ (IS_ expr)?             #StructAttribute // struct.value = 10 or struct.value
-        | ID_PRIMITIVE DOT ID_PRIMITIVE LPAREN (listFunctionParams)? RPAREN #StructCallFunction // struct.function(params) // TODO: PENDING IMPLEMENTATION
+        | ID_PRIMITIVE (DOT ID_PRIMITIVE)+ LPAREN listFunctionParams? RPAREN   #StructCallFunction // struct.function()
+        | ID_PRIMITIVE (DOT ID_PRIMITIVE)+ (IS_ expr)?          #StructAttribute // struct.value = 10 or struct.value
+        | SELF DOT ID_PRIMITIVE (IS_ expr)?                     #SelfFunction // self.value  // TODO: PENDING IMPLEMENTATION
         ;
 
 // Embedded functions

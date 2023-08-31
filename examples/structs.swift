@@ -83,6 +83,9 @@ struct Fruta{
 // si se llega a definir nombre será un error 
 var pera = Fruta(precio: 10)
 
+print(pera.nombre, pera.precio)
+
+
 
 struct Persona {
     var name: String var age: Int
@@ -114,3 +117,48 @@ var Distros = [
 
 print(Distros[0].Nombre) // Imprime Ubuntu 
 print(Distros[1].Version) // Imprime 13
+
+
+// Structs con funciones
+struct Avion {
+    var pasajeros = 0 
+    var velocidad = 1200
+    var nombre: String
+    var piloto: String
+
+    // metodo dentro de struct 
+
+    mutating func frenar(){
+        //al ser mutable sí afecta al struct 
+        self.velocidad = 100
+    }
+        
+    // funcion inmutable 
+    func mostrarVelocidad(){
+        print("Velocidad -> ",self.velocidad) 
+    }
+}
+
+var avioneta = Avion( nombre: "78496", piloto: "Joel") 
+var avionet2 = Avion( nombre: "78296", piloto: "Alvaro") 
+
+avionet2.frenar()
+avioneta.mostrarVelocidad()
+avionet2.mostrarVelocidad()
+
+// funciion con retorno
+struct Materia {
+    var nombre: String
+    var calificacion: Int
+
+    func calificacionFinal() -> String {
+        if self.calificacion >= 70 {
+            return "Aprobado"
+        } else {
+            return "Reprobado"
+        }
+    }
+}
+
+var materia = Materia(nombre: "OLC2", calificacion: 80)
+print(materia.calificacionFinal())

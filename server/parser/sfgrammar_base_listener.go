@@ -374,11 +374,11 @@ func (s *BaseSFGrammarListener) EnterAccessVector(ctx *AccessVectorContext) {}
 // ExitAccessVector is called when production AccessVector is exited.
 func (s *BaseSFGrammarListener) ExitAccessVector(ctx *AccessVectorContext) {}
 
-// EnterSelfFunction is called when production SelfFunction is entered.
-func (s *BaseSFGrammarListener) EnterSelfFunction(ctx *SelfFunctionContext) {}
+// EnterStructCallFunction is called when production StructCallFunction is entered.
+func (s *BaseSFGrammarListener) EnterStructCallFunction(ctx *StructCallFunctionContext) {}
 
-// ExitSelfFunction is called when production SelfFunction is exited.
-func (s *BaseSFGrammarListener) ExitSelfFunction(ctx *SelfFunctionContext) {}
+// ExitStructCallFunction is called when production StructCallFunction is exited.
+func (s *BaseSFGrammarListener) ExitStructCallFunction(ctx *StructCallFunctionContext) {}
 
 // EnterStructAttribute is called when production StructAttribute is entered.
 func (s *BaseSFGrammarListener) EnterStructAttribute(ctx *StructAttributeContext) {}
@@ -386,11 +386,11 @@ func (s *BaseSFGrammarListener) EnterStructAttribute(ctx *StructAttributeContext
 // ExitStructAttribute is called when production StructAttribute is exited.
 func (s *BaseSFGrammarListener) ExitStructAttribute(ctx *StructAttributeContext) {}
 
-// EnterStructCallFunction is called when production StructCallFunction is entered.
-func (s *BaseSFGrammarListener) EnterStructCallFunction(ctx *StructCallFunctionContext) {}
+// EnterSelfFunction is called when production SelfFunction is entered.
+func (s *BaseSFGrammarListener) EnterSelfFunction(ctx *SelfFunctionContext) {}
 
-// ExitStructCallFunction is called when production StructCallFunction is exited.
-func (s *BaseSFGrammarListener) ExitStructCallFunction(ctx *StructCallFunctionContext) {}
+// ExitSelfFunction is called when production SelfFunction is exited.
+func (s *BaseSFGrammarListener) ExitSelfFunction(ctx *SelfFunctionContext) {}
 
 // EnterEmbbededFunc is called when production embbededFunc is entered.
 func (s *BaseSFGrammarListener) EnterEmbbededFunc(ctx *EmbbededFuncContext) {}

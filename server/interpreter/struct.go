@@ -131,6 +131,19 @@ func (v *Visitor) VisitStructCreation(ctx *parser.StructCreationContext) interfa
 		if symbol.TypeVariable == "var" {
 			// if value is not nil and the argument doesn't comes, continue
 			if symbol.Value.(values.PRIMITIVE).GetType() != values.NilType && listInitArguments[symbol.Id] == nil {
+				// add the existing values
+				newScope[symbol.Id] = SymbolTable{
+					Id:           symbol.Id,
+					TypeSymbol:   values.Type_Variable,
+					TypeVariable: symbol.TypeVariable,
+					TypeData:     symbol.TypeData,
+					Value:        symbol.Value,
+					Line:         symbol.Line,
+					Column:       symbol.Column,
+					ListParams:   symbol.ListParams,
+					Mutating:     symbol.Mutating,
+					StructOf:     symbol.StructOf,
+				}
 				continue
 			}
 			// if value is nil and the argument comes, assing the value
@@ -146,7 +159,6 @@ func (v *Visitor) VisitStructCreation(ctx *parser.StructCreationContext) interfa
 						Line:         symbol.Line,
 						Column:       symbol.Column,
 					}
-
 				} else {
 					v.Errors = append(v.Errors, Error{Line: ctx.GetStart().GetLine(), Column: ctx.GetStart().GetColumn(), Msg: "The type of the argument " + symbol.Id + " is not the same as the type of the variable", Type: "Variable"})
 					log.Printf("The type of the argument %s is not the same as the type of the variable", symbol.Id)
@@ -186,6 +198,18 @@ func (v *Visitor) VisitStructCreation(ctx *parser.StructCreationContext) interfa
 		} else if symbol.TypeVariable == "let" {
 			// if value is not nil and the argument doesn't comes, continue
 			if symbol.Value.(values.PRIMITIVE).GetType() != values.NilType && listInitArguments[symbol.Id] == nil {
+				// save the value
+				newScope[symbol.Id] = SymbolTable{
+					Id:           symbol.Id,
+					TypeSymbol:   values.Type_Variable,
+					TypeVariable: symbol.TypeVariable,
+					TypeData:     symbol.TypeData,
+					Value:        symbol.Value,
+					Line:         symbol.Line,
+					Column:       symbol.Column,
+					ListParams:   symbol.ListParams,
+					Mutating:     symbol.Mutating,
+				}
 				continue
 			}
 			// if value is nil and the argument comes, assing the value
@@ -245,6 +269,7 @@ func (v *Visitor) VisitStructCreation(ctx *parser.StructCreationContext) interfa
 		TypeSymbol:   values.Type_Variable,
 		TypeVariable: ctx.Type_declaration().GetText(),
 		TypeData:     values.StructType,
+		StructOf:     ctx.AllID_PRIMITIVE()[1].GetText(),
 		Value:        newScope,
 		Line:         ctx.GetStart().GetLine(),
 		Column:       ctx.GetStart().GetColumn(),
@@ -252,11 +277,14 @@ func (v *Visitor) VisitStructCreation(ctx *parser.StructCreationContext) interfa
 
 	v.getCurrentScope()[ctx.AllID_PRIMITIVE()[0].GetText()] = newSymbolStruct
 
+	// append his self where the was created
+	v.SelfStructs[newSymbolStruct.Id] = SelfStruct{VarId: newSymbolStruct.Id, StructOf: newSymbolStruct.StructOf}
+
 	v.TableSymbol = append(v.TableSymbol, newSymbolStruct)
 
-	fmt.Println("----------------------------------------------------")
-	fmt.Println("Global scope or symbol table ->", v.SymbolStack)
-	fmt.Println("----------------------------------------------------")
+	// fmt.Println("----------------------------------------------------")
+	// fmt.Println("Global scope or symbol table ->", v.SymbolStack)
+	// fmt.Println("----------------------------------------------------")
 
 	return nil
 }

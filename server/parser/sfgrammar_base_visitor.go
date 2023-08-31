@@ -231,7 +231,7 @@ func (v *BaseSFGrammarVisitor) VisitAccessVector(ctx *AccessVectorContext) inter
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseSFGrammarVisitor) VisitSelfFunction(ctx *SelfFunctionContext) interface{} {
+func (v *BaseSFGrammarVisitor) VisitStructCallFunction(ctx *StructCallFunctionContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -239,7 +239,7 @@ func (v *BaseSFGrammarVisitor) VisitStructAttribute(ctx *StructAttributeContext)
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseSFGrammarVisitor) VisitStructCallFunction(ctx *StructCallFunctionContext) interface{} {
+func (v *BaseSFGrammarVisitor) VisitSelfFunction(ctx *SelfFunctionContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

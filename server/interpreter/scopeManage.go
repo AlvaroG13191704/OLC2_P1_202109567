@@ -10,6 +10,7 @@ type SymbolTable struct {
 	TypeSymbol   string // the type of the symbol variable or function, vector, reference, struct
 	TypeVariable string // the type of the variable -> var or let, struct
 	TypeData     string // the type of the data -> Int, Float, String, Boolean, Character
+	StructOf     string // the name of the struct that contains the variable
 	Value        interface{}
 	ListParams   interface{}
 	Mutating     bool
@@ -30,6 +31,13 @@ type LoopContext struct {
 	BreakFound    bool
 }
 
+type SelfStruct struct {
+	VarId        string
+	StructOf     string
+	FunctionName string
+	FunctionCall bool
+}
+
 // create the visitor struct based on the SymbolTable struct
 type Visitor struct {
 	parser.BaseSFGrammarVisitor
@@ -43,7 +51,8 @@ type Visitor struct {
 	IsReturn        bool
 	FirstPass       bool
 	FunctionContext []string
-	// CST
+	// manage father structs to use it with the self keyword
+	SelfStructs map[string]SelfStruct
 }
 
 func (v *Visitor) pushScope() {
@@ -101,6 +110,53 @@ func (v *Visitor) getCurrentScope() map[string]SymbolTable {
 	return v.SymbolStack[len(v.SymbolStack)-1]
 }
 
+// VerifySelfStruct
+func (v *Visitor) VerifySelfStruct(attributeName string) (interface{}, bool, string) {
+	// iterate over the self stack and find which is activate
+	for _, i := range v.SelfStructs {
+		if i.FunctionCall {
+			// find the variable in the scope
+			variable, ok := v.VerifyScope(i.VarId)
+			if !ok {
+				return nil, false, ""
+			}
+			// verify if the variable is the same type of the struct
+			if variable.(SymbolTable).StructOf == i.StructOf {
+				// find the attribute in the scope of the struct
+				structScope := variable.(SymbolTable).Value.(map[string]SymbolTable)
+				_, ok := v.VerifyStructScopeValue(structScope, attributeName)
+
+				if !ok {
+					return nil, false, ""
+				}
+				// return variable
+				return variable.(SymbolTable), true, i.FunctionName
+			}
+		}
+	}
+	return nil, false, ""
+}
+
+// ActiveFunctionInSelfStack
+func (v *Visitor) ActiveFunctionInSelfStack(idStruct string, functionName string) {
+	// find the struct in the self stack
+	for a, i := range v.SelfStructs {
+		if a == idStruct {
+			v.SelfStructs[a] = SelfStruct{VarId: i.VarId, StructOf: i.StructOf, FunctionCall: true, FunctionName: functionName}
+		}
+	}
+}
+
+// DeactiveFunctionInSelfStack
+func (v *Visitor) DeactiveFunctionInSelfStack(idStruct string) {
+	// find the struct in the self stack
+	for a, i := range v.SelfStructs {
+		if a == idStruct {
+			v.SelfStructs[a] = SelfStruct{VarId: i.VarId, StructOf: i.StructOf, FunctionCall: false, FunctionName: ""}
+		}
+	}
+}
+
 // udpate a variable in the scope
 func (v *Visitor) UpdateVariable(varName string, value interface{}) {
 	for i := len(v.SymbolStack) - 1; i >= 0; i-- {
@@ -131,6 +187,8 @@ func (v *Visitor) VerifyScope(varName string) (interface{}, bool) {
 	}
 	return nil, false
 }
+
+// verifySelf verify if the attribute is in the scope of the struct from the self
 
 // VerifyVariableScope verify if the variable is already declared in the current scope, if not navigate to the others scopes
 func (v *Visitor) VerifyVariableScope(varName string) bool {

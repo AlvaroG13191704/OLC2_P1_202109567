@@ -175,14 +175,14 @@ type SFGrammarListener interface {
 	// EnterAccessVector is called when entering the AccessVector production.
 	EnterAccessVector(c *AccessVectorContext)
 
-	// EnterSelfFunction is called when entering the SelfFunction production.
-	EnterSelfFunction(c *SelfFunctionContext)
+	// EnterStructCallFunction is called when entering the StructCallFunction production.
+	EnterStructCallFunction(c *StructCallFunctionContext)
 
 	// EnterStructAttribute is called when entering the StructAttribute production.
 	EnterStructAttribute(c *StructAttributeContext)
 
-	// EnterStructCallFunction is called when entering the StructCallFunction production.
-	EnterStructCallFunction(c *StructCallFunctionContext)
+	// EnterSelfFunction is called when entering the SelfFunction production.
+	EnterSelfFunction(c *SelfFunctionContext)
 
 	// EnterEmbbededFunc is called when entering the embbededFunc production.
 	EnterEmbbededFunc(c *EmbbededFuncContext)
@@ -421,14 +421,14 @@ type SFGrammarListener interface {
 	// ExitAccessVector is called when exiting the AccessVector production.
 	ExitAccessVector(c *AccessVectorContext)
 
-	// ExitSelfFunction is called when exiting the SelfFunction production.
-	ExitSelfFunction(c *SelfFunctionContext)
+	// ExitStructCallFunction is called when exiting the StructCallFunction production.
+	ExitStructCallFunction(c *StructCallFunctionContext)
 
 	// ExitStructAttribute is called when exiting the StructAttribute production.
 	ExitStructAttribute(c *StructAttributeContext)
 
-	// ExitStructCallFunction is called when exiting the StructCallFunction production.
-	ExitStructCallFunction(c *StructCallFunctionContext)
+	// ExitSelfFunction is called when exiting the SelfFunction production.
+	ExitSelfFunction(c *SelfFunctionContext)
 
 	// ExitEmbbededFunc is called when exiting the embbededFunc production.
 	ExitEmbbededFunc(c *EmbbededFuncContext)
