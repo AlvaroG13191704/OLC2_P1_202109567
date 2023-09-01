@@ -1,7 +1,11 @@
 ## OLC2 Proyecto 1
 
-## Alvaro Norberto García Meza
-## 202109567
+## Estudiante: Alvaro Norberto García Meza
+## Carné: 202109567
+
+## Navegar a documentación
+### [Manual de Usuario](/docs/user.md)
+### [Manual Técnico](/docs/tech.md)
 
 ## Iniciar proyectos
 
