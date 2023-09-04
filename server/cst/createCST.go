@@ -83,7 +83,7 @@ func CreateCST(input string) string {
 	// fmt.Println("Response Body:", result["svgtree"])
 
 	// create the file
-	err = os.WriteFile("cst.svg", []byte(result["svgtree"].(string)), 0644)
+	err = os.WriteFile("../client/src/assets/cst.svg", []byte(result["svgtree"].(string)), 0644)
 	if err != nil {
 		fmt.Println("Error creating file:", err)
 		return ""

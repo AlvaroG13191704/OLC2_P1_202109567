@@ -78,7 +78,7 @@ func (v *Visitor) VisitIntstmt(ctx *parser.IntstmtContext) interface{} {
 	expr := v.Visit(ctx.Expr()).(values.PRIMITIVE)
 
 	// evaluate the type
-	if expr.GetType() == values.StringType {
+	if expr.GetType() == values.StringType || expr.GetType() == values.CharType {
 		// evalue if the digit has a . to know if it is a float or an integer
 		if strings.Contains(expr.GetValue().(string), ".") {
 			// truncate the float and return an integer

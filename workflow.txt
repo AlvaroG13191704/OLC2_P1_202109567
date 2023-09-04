@@ -9,13 +9,46 @@ Tasks external of coding
 1. Create the client to send the code to the server ✅
 2. Create report of the errors ✅
 3. Create the Symbol Table ✅
-4. Create the CST and send it to frontend ✅ ⏸️ update with new grammar later
+4. Create the CST and send it to frontend ✅ ⏸️ update with new grammar later, re render the tree to fit in the screen
 5. Add options to open, save and save as in the menu ✅
 6. Grammar used in the project 
-7. Documentation of the project 
+7. Documentation of the project ✅
+8. test the entrie given ✅
+    Basicas ✅
+    Intermedias ✅
+    Embebidas ✅
+    Recursivas ✅
+    Vectores ✅
+    Matrices ❌
+    Struct1 ⏸️
+    Struct2 ⏸️
 --------------------------------
-Tasks of coding
+Tasks pending of coding
 --------------------------------
+1. Fix the _ in the for ✅
+2. Fix cst in frontend 
+3. Create structs with structs as attributes 
+4. Declare vectors with structs
+5. Try to work with inout and & of vectors ✅
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

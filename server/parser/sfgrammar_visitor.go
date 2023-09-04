@@ -226,11 +226,11 @@ type SFGrammarVisitor interface {
 	// Visit a parse tree produced by SFGrammarParser#ComparationOperationExpr.
 	VisitComparationOperationExpr(ctx *ComparationOperationExprContext) interface{}
 
+	// Visit a parse tree produced by SFGrammarParser#StructAsArgument.
+	VisitStructAsArgument(ctx *StructAsArgumentContext) interface{}
+
 	// Visit a parse tree produced by SFGrammarParser#ArithmeticOperationExpr.
 	VisitArithmeticOperationExpr(ctx *ArithmeticOperationExprContext) interface{}
-
-	// Visit a parse tree produced by SFGrammarParser#StructCallExpr.
-	VisitStructCallExpr(ctx *StructCallExprContext) interface{}
 
 	// Visit a parse tree produced by SFGrammarParser#RelationalOperationExpr.
 	VisitRelationalOperationExpr(ctx *RelationalOperationExprContext) interface{}

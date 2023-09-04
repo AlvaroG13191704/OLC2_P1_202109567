@@ -47,7 +47,7 @@ NOT_PARAM: '_';
 // RE
 DIGIT_PRIMITIVE: [0-9]+ ('.'[0-9]+)?;
 STRING_PRIMITIVE: '"' ( '\\' [nrt"\\] | ~[\n\r"])* '"'; // : '"' (~["\r\n] | '""')* '"' ;   '"'~["]*'"'
-ID_PRIMITIVE: ([a-zA-Z_])[a-zA-Z0-9_]*;
+ID_PRIMITIVE: [a-zA-Z_][a-zA-Z0-9_]*;
 
 // -- Symbols
 NEGATION_OPERATOR: '!';

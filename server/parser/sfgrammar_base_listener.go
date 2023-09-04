@@ -476,17 +476,17 @@ func (s *BaseSFGrammarListener) EnterComparationOperationExpr(ctx *ComparationOp
 // ExitComparationOperationExpr is called when production ComparationOperationExpr is exited.
 func (s *BaseSFGrammarListener) ExitComparationOperationExpr(ctx *ComparationOperationExprContext) {}
 
+// EnterStructAsArgument is called when production StructAsArgument is entered.
+func (s *BaseSFGrammarListener) EnterStructAsArgument(ctx *StructAsArgumentContext) {}
+
+// ExitStructAsArgument is called when production StructAsArgument is exited.
+func (s *BaseSFGrammarListener) ExitStructAsArgument(ctx *StructAsArgumentContext) {}
+
 // EnterArithmeticOperationExpr is called when production ArithmeticOperationExpr is entered.
 func (s *BaseSFGrammarListener) EnterArithmeticOperationExpr(ctx *ArithmeticOperationExprContext) {}
 
 // ExitArithmeticOperationExpr is called when production ArithmeticOperationExpr is exited.
 func (s *BaseSFGrammarListener) ExitArithmeticOperationExpr(ctx *ArithmeticOperationExprContext) {}
-
-// EnterStructCallExpr is called when production StructCallExpr is entered.
-func (s *BaseSFGrammarListener) EnterStructCallExpr(ctx *StructCallExprContext) {}
-
-// ExitStructCallExpr is called when production StructCallExpr is exited.
-func (s *BaseSFGrammarListener) ExitStructCallExpr(ctx *StructCallExprContext) {}
 
 // EnterRelationalOperationExpr is called when production RelationalOperationExpr is entered.
 func (s *BaseSFGrammarListener) EnterRelationalOperationExpr(ctx *RelationalOperationExprContext) {}

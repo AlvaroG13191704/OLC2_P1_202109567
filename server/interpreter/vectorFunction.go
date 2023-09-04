@@ -21,7 +21,7 @@ func (v *Visitor) VisitListFunctionParamsEIVector(ctx *parser.ListFunctionParams
 	// iterate over the list of ids
 	for i, id := range listIds {
 		// get the type
-		typeParam := listTypes[i/2].GetText()
+		typeParam := listTypes[i].GetText()
 
 		// create a new symbol table
 		symbol := SymbolTable{
@@ -64,7 +64,7 @@ func (v *Visitor) VisitListFunctionParamsNEIVector(ctx *parser.ListFunctionParam
 	for i, id := range listIds {
 		// create the
 		// get the type
-		typeParam := listTypes[i/2].GetText()
+		typeParam := listTypes[i].GetText()
 		// create a new symbol table
 		symbol := SymbolTable{
 			Id:           id.GetText(),
@@ -99,7 +99,7 @@ func (v *Visitor) VisitListFunctionParamsBEIVector(ctx *parser.ListFunctionParam
 	// iterate over the list of ids
 	for i, id := range listIds {
 		// get the type
-		typeParam := listTypes[i/2].GetText()
+		typeParam := listTypes[i].GetText()
 
 		// create a new symbol table
 		symbol := SymbolTable{

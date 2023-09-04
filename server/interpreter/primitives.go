@@ -26,7 +26,7 @@ func (v *Visitor) VisitDigitExpr(ctx *parser.DigitExprContext) interface{} {
 // visit stringexpr and char
 func (v *Visitor) VisitStringExpr(ctx *parser.StringExprContext) interface{} {
 	str := strings.Trim(ctx.GetText(), "\"") // get the string
-	if len(str) == 1 {
+	if len(str) == 1 && str != " " {
 		// fmt.Println("Primitive Character: ", str)
 		return &values.Character{Value: str}
 	}

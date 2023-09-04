@@ -299,8 +299,8 @@ func (v *Visitor) VisitStructCallList(ctx *parser.StructCallListContext) interfa
 	// get the list of values
 	for i, value := range ctx.AllID_PRIMITIVE() {
 
+		// get the value
 		assertion := v.Visit(ctx.AllExpr()[i])
-
 		// evaluate if a struct
 		if reflect.TypeOf(assertion).Kind() == reflect.Struct {
 			fmt.Println("assertion struct -> ", assertion)
@@ -309,7 +309,9 @@ func (v *Visitor) VisitStructCallList(ctx *parser.StructCallListContext) interfa
 			fmt.Println("assertion primitive -> ", assertion)
 			list[value.GetText()] = assertion.(values.PRIMITIVE)
 		}
+
 	}
 
+	fmt.Println("list of arguments -> ", list)
 	return list
 }

@@ -226,11 +226,11 @@ type SFGrammarListener interface {
 	// EnterComparationOperationExpr is called when entering the ComparationOperationExpr production.
 	EnterComparationOperationExpr(c *ComparationOperationExprContext)
 
+	// EnterStructAsArgument is called when entering the StructAsArgument production.
+	EnterStructAsArgument(c *StructAsArgumentContext)
+
 	// EnterArithmeticOperationExpr is called when entering the ArithmeticOperationExpr production.
 	EnterArithmeticOperationExpr(c *ArithmeticOperationExprContext)
-
-	// EnterStructCallExpr is called when entering the StructCallExpr production.
-	EnterStructCallExpr(c *StructCallExprContext)
 
 	// EnterRelationalOperationExpr is called when entering the RelationalOperationExpr production.
 	EnterRelationalOperationExpr(c *RelationalOperationExprContext)
@@ -472,11 +472,11 @@ type SFGrammarListener interface {
 	// ExitComparationOperationExpr is called when exiting the ComparationOperationExpr production.
 	ExitComparationOperationExpr(c *ComparationOperationExprContext)
 
+	// ExitStructAsArgument is called when exiting the StructAsArgument production.
+	ExitStructAsArgument(c *StructAsArgumentContext)
+
 	// ExitArithmeticOperationExpr is called when exiting the ArithmeticOperationExpr production.
 	ExitArithmeticOperationExpr(c *ArithmeticOperationExprContext)
-
-	// ExitStructCallExpr is called when exiting the StructCallExpr production.
-	ExitStructCallExpr(c *StructCallExprContext)
 
 	// ExitRelationalOperationExpr is called when exiting the RelationalOperationExpr production.
 	ExitRelationalOperationExpr(c *RelationalOperationExprContext)

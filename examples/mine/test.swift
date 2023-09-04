@@ -351,19 +351,21 @@ struct Persona{
     var edad = 0
 
     // mutable
-    mutating func cambiarNombre() {
+    mutating func resetearEdad() {
         self.edad = 0;
     }
 
 
     // function inmutable
     func mostrarNombre() {
-        self.Nombre = "Alvaro" /// error
-        print("nombre: " )
+        print("nombre: " self.Nombre )
     }
 
 }
 
+var p1 = Persona(Nombre: "Alvaro", edad: 20)
+p1.resetearEdad()
+p1.mostrarNombre()
 
 struct Persona{
     var Nombre: String

@@ -12,8 +12,11 @@ func (v *Visitor) VisitForRangeExpr(ctx *parser.ForRangeExprContext) interface{}
 	v.PushLoopContext("for")
 	defer v.PopLoopContext() // pop the loop context after the execution
 
-	// get the loopVarName
-	loopVarName := ctx.ID_PRIMITIVE().GetText()
+	var loopVarName string = "_"
+	if ctx.ID_PRIMITIVE() != nil {
+		// get the loopVarName
+		loopVarName = ctx.ID_PRIMITIVE().GetText()
+	}
 	// get the range
 	rangeValue := v.Visit(ctx.ForRange())
 

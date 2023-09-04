@@ -149,7 +149,7 @@ func (v *Visitor) VisitListFunctionParamsEI(ctx *parser.ListFunctionParamsEICont
 	// iterate over the list of ids
 	for i, id := range listIds {
 		// get the type
-		typeParam := listTypes[i/2].GetText()
+		typeParam := listTypes[i].GetText()
 
 		// create a new symbol table
 		symbol := SymbolTable{
@@ -190,7 +190,8 @@ func (v *Visitor) VisitListFunctionParamsNEI(ctx *parser.ListFunctionParamsNEICo
 	// iterate over the list of ids
 	for i, id := range listIds {
 		// get the type
-		typeParam := listTypes[i/2].GetText()
+		typeParam := listTypes[i].GetText()
+
 		// create a new symbol table
 		symbol := SymbolTable{
 			Id:           id.GetText(),
@@ -203,7 +204,6 @@ func (v *Visitor) VisitListFunctionParamsNEI(ctx *parser.ListFunctionParamsNEICo
 		}
 		// comes external then internal
 		params["internal"] = append(params["internal"], symbol)
-
 	}
 
 	fmt.Println("ListFunctionParamsNEI:\n", params)
@@ -226,7 +226,7 @@ func (v *Visitor) VisitListFunctionParamsBEI(ctx *parser.ListFunctionParamsBEICo
 	// iterate over the list of ids
 	for i, id := range listIds {
 		// get the type
-		typeParam := listTypes[i/2].GetText()
+		typeParam := listTypes[i].GetText()
 
 		// create a new symbol table
 		symbol := SymbolTable{

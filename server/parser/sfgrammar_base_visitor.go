@@ -299,11 +299,11 @@ func (v *BaseSFGrammarVisitor) VisitComparationOperationExpr(ctx *ComparationOpe
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseSFGrammarVisitor) VisitArithmeticOperationExpr(ctx *ArithmeticOperationExprContext) interface{} {
+func (v *BaseSFGrammarVisitor) VisitStructAsArgument(ctx *StructAsArgumentContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseSFGrammarVisitor) VisitStructCallExpr(ctx *StructCallExprContext) interface{} {
+func (v *BaseSFGrammarVisitor) VisitArithmeticOperationExpr(ctx *ArithmeticOperationExprContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

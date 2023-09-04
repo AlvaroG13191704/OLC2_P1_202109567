@@ -16,9 +16,9 @@ stmts: declaration (SEMICOLON)?
      | whileStmt
      | forStmt
      | guardStmt
-     | transferStmt
+     | transferStmt 
      | functionStmt
-     | printstmt
+     | printstmt (SEMICOLON)?
      | callFunctionStmt (SEMICOLON)?
      | callBack (SEMICOLON)?
      | structStmt
@@ -92,7 +92,7 @@ whileStmt : WHILE expr LBRACE block RBRACE ;
 
 
 // for
-forStmt :FOR ID_PRIMITIVE IN forRange LBRACE block RBRACE #ForRangeExpr
+forStmt :FOR (ID_PRIMITIVE || '_') IN forRange LBRACE block RBRACE #ForRangeExpr
         |FOR ID_PRIMITIVE IN expr LBRACE block RBRACE     #ForExpr
         ;
 
@@ -110,9 +110,9 @@ functionStmt:FUNC ID_PRIMITIVE LPAREN  RPAREN (ARROW_FUNCTION type)? LBRACE bloc
 listFunctionParams: ID_PRIMITIVE ID_PRIMITIVE COLON INOUT? type (COMMA ID_PRIMITIVE ID_PRIMITIVE COLON type)* #listFunctionParamsEI
                   | NOT_PARAM ID_PRIMITIVE COLON INOUT? type (COMMA NOT_PARAM ID_PRIMITIVE COLON type)*       #listFunctionParamsNEI
                   | ID_PRIMITIVE COLON INOUT?  type (COMMA ID_PRIMITIVE COLON INOUT? type)*                          #listFunctionParamsBEI
-                  | ID_PRIMITIVE ID_PRIMITIVE COLON INOUT? LBRACKET type RBRACKET (COMMA ID_PRIMITIVE ID_PRIMITIVE COLON INOUT? LBRACKET type RBRACKET )* #listFunctionParamsEIVector
-                  | NOT_PARAM ID_PRIMITIVE COLON INOUT? LBRACKET type RBRACKET (COMMA NOT_PARAM ID_PRIMITIVE COLON INOUT? LBRACKET type RBRACKET )*       #listFunctionParamsNEIVector
-                  | ID_PRIMITIVE COLON INOUT? LBRACKET type RBRACKET (COMMA ID_PRIMITIVE COLON INOUT? LBRACKET type RBRACKET )*                          #listFunctionParamsBEIVector
+                  | ID_PRIMITIVE ID_PRIMITIVE COLON INOUT? LBRACKET? type RBRACKET? (COMMA ID_PRIMITIVE ID_PRIMITIVE COLON INOUT? LBRACKET? type RBRACKET? )* #listFunctionParamsEIVector
+                  | NOT_PARAM ID_PRIMITIVE COLON INOUT? LBRACKET? type RBRACKET? (COMMA NOT_PARAM ID_PRIMITIVE COLON INOUT? LBRACKET? type RBRACKET? )*       #listFunctionParamsNEIVector
+                  | ID_PRIMITIVE COLON INOUT? LBRACKET? type RBRACKET? (COMMA ID_PRIMITIVE COLON INOUT? LBRACKET? type RBRACKET? )*                          #listFunctionParamsBEIVector
                   ;
 
 
@@ -125,15 +125,15 @@ listCallFunctionStmt: REFERENCE? ID_PRIMITIVE COLON expr (COMMA REFERENCE? ID_PR
                     ;
 
 
-callBack: ID_PRIMITIVE DOT APPEND LPAREN expr LPAREN            #AppendVector // vector.append(10)
+callBack: ID_PRIMITIVE DOT APPEND LPAREN expr RPAREN            #AppendVector // vector.append(10)
         | ID_PRIMITIVE DOT REMOVELAST LPAREN  RPAREN            #RemoveLastVector // vector.removeLast()
         | ID_PRIMITIVE DOT REMOVE LPAREN AT COLON expr RPAREN   #RemoveAtVector // vector.remove(at: 0)
-        | ID_PRIMITIVE DOT ISEMPTY LPAREN  RPAREN               #IsEmptyVector // vector.isEmpty()
+        | ID_PRIMITIVE DOT ISEMPTY                #IsEmptyVector // vector.isEmpty()
         | ID_PRIMITIVE DOT COUNT                                #CountVector // vector.count
         | ID_PRIMITIVE LBRACKET expr RBRACKET                   #AccessVector // let value = vector[0]
         | ID_PRIMITIVE (DOT ID_PRIMITIVE)+ LPAREN listFunctionParams? RPAREN   #StructCallFunction // struct.function()
         | ID_PRIMITIVE (DOT ID_PRIMITIVE)+ (IS_ expr)?          #StructAttribute // struct.value = 10 or struct.value
-        | SELF DOT ID_PRIMITIVE (IS_ expr)?                     #SelfFunction // self.value  // TODO: PENDING IMPLEMENTATION
+        | SELF DOT ID_PRIMITIVE (IS_ expr)?                     #SelfFunction // self.value  
         ;
 
 // Embedded functions
@@ -166,7 +166,7 @@ expr: NEGATION_OPERATOR right=expr                                      #NotExpr
     | left=expr op=(AND|OR) right=expr                                  #LogicalOperationExpr
     | LPAREN expr RPAREN                                                #ParenExpr
     // struct call
-    | ID_PRIMITIVE LPAREN structCallList RPAREN                         #StructCallExpr //TODO: PENDING IMPLEMENTATION 
+    | ID_PRIMITIVE LPAREN structCallList RPAREN                         #StructAsArgument  
     // function call
     | callFunctionStmt  (SEMICOLON)?                                    #CallFunctionExpr
     // callbacks

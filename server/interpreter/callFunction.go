@@ -103,7 +103,7 @@ func (v *Visitor) VisitCallFunctionWithParams(ctx *parser.CallFunctionWithParams
 
 	// if both list has external and internal keys then validate
 	if listParams["external"] != nil && listArguments.(map[string][]SymbolTable)["external"] != nil && listParams["internal"] != nil && listArguments.(map[string][]SymbolTable)["internal"] != nil {
-		fmt.Println("params with external and internal --> _ value")
+		fmt.Println("params with external and internal --> Value value")
 		fmt.Println("listParams ->", listParams)
 		fmt.Println("listArguments ->", listArguments)
 		// validate external params with external arguments
@@ -201,6 +201,7 @@ func (v *Visitor) VisitCallFunctionWithParams(ctx *parser.CallFunctionWithParams
 				// evaluate if the values are the same type
 				if param.TypeData != typeValue {
 					// add error
+					fmt.Println("THE ERROR IS HERE?")
 					v.Errors = append(v.Errors, Error{
 						Line:   ctx.GetStart().GetLine(),
 						Column: ctx.GetStart().GetColumn(),
@@ -214,9 +215,13 @@ func (v *Visitor) VisitCallFunctionWithParams(ctx *parser.CallFunctionWithParams
 			} else {
 				value = listArguments.(map[string][]SymbolTable)["internal"][i].Value.(values.PRIMITIVE)
 				valueP := listArguments.(map[string][]SymbolTable)["internal"][i].Value.(values.PRIMITIVE)
+
+				fmt.Println("valueP ->", valueP)
+				fmt.Println("param ->", param)
 				// evaluate if the values are the same type
 				if param.TypeData != valueP.GetType() {
 					// add error
+					fmt.Println("THE ERROR IS HERE WITH NOT VECTORS?")
 					v.Errors = append(v.Errors, Error{
 						Line:   ctx.GetStart().GetLine(),
 						Column: ctx.GetStart().GetColumn(),
