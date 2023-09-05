@@ -400,6 +400,6 @@ struct Persona{
 
 var pf = Profesion(trabajo:"Ingeniero", salario:10230.00)
 
-//var p1 = Persona(Nombre: "Alvaro", edad: 20, date:10, profesion: pf)
+var p1 = Persona(Nombre: "Alvaro", edad: 20, date:10, profesion: pf)
 
 //var p1 = Persona(Nombre: "Alvaro", edad: 20, date:10, dedicacion: Profesion(trabajo:"Ingeniero", salario:10230.00) )

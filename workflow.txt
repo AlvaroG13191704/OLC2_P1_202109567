@@ -20,14 +20,14 @@ Tasks external of coding
     Recursivas ✅
     Vectores ✅
     Matrices ❌
-    Struct1 ⏸️
-    Struct2 ⏸️
+    Struct1  ✅
+    Struct2  ⏸️
 --------------------------------
 Tasks pending of coding
 --------------------------------
 1. Fix the _ in the for ✅
-2. Fix cst in frontend 
-3. Create structs with structs as attributes 
+2. Fix cst in frontend ✅
+3. Create structs with structs as attributes  ✅
 4. Declare vectors with structs
 5. Try to work with inout and & of vectors ✅
 

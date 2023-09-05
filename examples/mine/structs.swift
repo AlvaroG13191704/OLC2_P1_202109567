@@ -162,3 +162,53 @@ struct Materia {
 
 var materia = Materia(nombre: "OLC2", calificacion: 80)
 print(materia.calificacionFinal())
+
+
+
+struct Persona {
+    var nombre: String
+}
+
+struct Profesion {
+    var sueldo: Int
+    var persona: Persona
+}
+
+var persona = Persona(nombre: "Joel")
+var profesion = Profesion(sueldo: 1000, persona: persona)
+
+
+
+struct Persona {
+    var nombre: String
+}
+
+struct Profesion {
+    var sueldo: Int
+    var persona: Persona
+}
+
+
+var profesion = Profesion(sueldo: 1000, persona: Persona(nombre: "Joel"))
+
+print(profesion.sueldo)
+
+
+
+struct Persona{
+    var Nombre: String
+    var edad = 0
+}
+
+struct Transporte {
+    var pasajeros = 0
+    var velocidad = 100
+    var nombre: String
+    var piloto: Persona
+}
+
+var transmetro = Transporte(nombre: "RutaPerifericoUsac", piloto: Persona(Nombre: "Joel", edad: 43))
+
+print(transmetro.nombre)
+
+print(transmetro.piloto.Nombre)

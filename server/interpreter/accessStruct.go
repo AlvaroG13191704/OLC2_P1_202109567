@@ -3,6 +3,7 @@ package interpreter
 import (
 	"fmt"
 	"log"
+	"reflect"
 	"server/parserInterpreter/interpreter/values"
 	"server/parserInterpreter/parser"
 )
@@ -56,11 +57,59 @@ func (v *Visitor) VisitStructAttribute(ctx *parser.StructAttributeContext) inter
 
 	// evaluate if we want to only access or change the value
 	if ctx.IS_() == nil {
+		// get attribute
+		assertAttribute := attribute.(SymbolTable).Value
+
+		// assert
+		if reflect.TypeOf(assertAttribute).Kind() == reflect.Map {
+			// get the third id
+			idThird := ctx.AllID_PRIMITIVE()[2].GetText()
+			// fmt.Println("idThird -> ", idThird)
+			// get the value
+			value := assertAttribute.(map[string]SymbolTable)
+			// fmt.Println("value -> ", value)
+			// fmt.Println("value -> ", value[idThird])
+
+			if value[idThird].Value == nil {
+				// add the error to the errors
+				v.Errors = append(v.Errors, Error{
+					Line:   ctx.GetStart().GetLine(),
+					Column: ctx.GetStart().GetColumn(),
+					Msg:    "Attribute '" + idThird + "' not declared or incorrect",
+					Type:   "SintacticError",
+				})
+
+				log.Printf("Error: Attribute '%s' not declared", idThird)
+				return values.Nil{Value: nil}
+			}
+
+			return value[idThird].Value.(values.PRIMITIVE)
+
+		}
 		// return the value
 		return attribute.(SymbolTable).Value.(values.PRIMITIVE)
 	}
 
 	// change the value
+	assert := v.Visit(ctx.Expr())
+	if reflect.TypeOf(assert).Kind() == reflect.Map {
+		symbolExpr := assert.(map[string]SymbolTable)
+		// fmt.Println("symbolExpr -> ", symbolExpr)
+		// assign the value to the attribute
+		structScope[idAttribute] = SymbolTable{
+			Id:           attribute.(SymbolTable).Id,
+			TypeSymbol:   attribute.(SymbolTable).TypeSymbol,
+			TypeData:     attribute.(SymbolTable).TypeData,
+			TypeVariable: attribute.(SymbolTable).TypeVariable,
+			Value:        symbolExpr,
+			ListParams:   attribute.(SymbolTable).ListParams,
+			Mutating:     attribute.(SymbolTable).Mutating,
+			Line:         attribute.(SymbolTable).Line,
+			Column:       attribute.(SymbolTable).Column,
+			StructOf:     structCreation.(SymbolTable).Id,
+		}
+		return nil
+	}
 	// get the expression
 	expr := v.Visit(ctx.Expr()).(values.PRIMITIVE)
 

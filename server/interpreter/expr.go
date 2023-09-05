@@ -3,6 +3,7 @@ package interpreter
 import (
 	"fmt"
 	"log"
+	"reflect"
 	"server/parserInterpreter/interpreter/values"
 	"server/parserInterpreter/parser"
 )
@@ -81,172 +82,191 @@ func (v *Visitor) VisitStructAsArgument(ctx *parser.StructAsArgumentContext) int
 		return nil
 	}
 	// get list of init arguments
-	listInitArguments := v.Visit(ctx.StructCallList()).(map[string]values.PRIMITIVE)
-	// assert the type of the struct
-	symbolStruct := structValue.(SymbolTable)
-
-	// get the scope of the struct
-	scopeStruct := symbolStruct.Value.(map[string]SymbolTable)
-	fmt.Println("scopeStruct before changes in struct as argument", scopeStruct)
-
+	assertionArguments := v.Visit(ctx.StructCallList())
 	// new Scope
 	newScope := map[string]SymbolTable{}
-	// iterate over the symbolStruct to verify
-	// 1. If the variable is var
-	for _, symbol := range scopeStruct {
+	for key, value := range assertionArguments.(map[string]interface{}) {
 
-		// TODO: CORRECT IMPLEMENTATION OF VECTORS
+		// get the value
+		assertlistInitArguments := value
 
-		// if var?
-		if symbol.TypeVariable == "var" {
+		// assert the type of the struct
+		if reflect.TypeOf(assertlistInitArguments).Kind() == reflect.Map {
+			listInitArguments := assertlistInitArguments.(map[string]SymbolTable)
+
+			fmt.Println("listInitArguments map (another struct)", listInitArguments)
+
+			newScope[key] = SymbolTable{
+				Id:           key,
+				TypeSymbol:   values.Type_Variable,
+				TypeVariable: "var",
+				TypeData:     values.StructType,
+				Value:        listInitArguments,
+				Line:         ctx.GetStart().GetLine(),
+				Column:       ctx.GetStart().GetColumn(),
+			}
+
+			continue
+		}
+		listInitArguments := assertlistInitArguments.(values.PRIMITIVE)
+		fmt.Println("listInitArguments values primitve", listInitArguments)
+		// assert the type of the struct
+		symbolStruct := structValue.(SymbolTable)
+		// get the scope of the struct
+		scopeStruct := symbolStruct.Value.(map[string]SymbolTable)
+
+		// iterate over the symbolStruct to verify
+		// 1. If the variable is var
+		if scopeStruct[key].TypeVariable == "var" {
 			// if value is not nil and the argument doesn't comes, continue
-			if symbol.Value.(values.PRIMITIVE).GetType() != values.NilType && listInitArguments[symbol.Id] == nil {
+			if scopeStruct[key].Value.(values.PRIMITIVE).GetType() != values.NilType && listInitArguments == nil {
 				// add the existing values
-				newScope[symbol.Id] = SymbolTable{
-					Id:           symbol.Id,
+				newScope[key] = SymbolTable{
+					Id:           scopeStruct[key].Id,
 					TypeSymbol:   values.Type_Variable,
-					TypeVariable: symbol.TypeVariable,
-					TypeData:     symbol.TypeData,
-					Value:        symbol.Value,
-					Line:         symbol.Line,
-					Column:       symbol.Column,
-					ListParams:   symbol.ListParams,
-					Mutating:     symbol.Mutating,
-					StructOf:     symbol.StructOf,
+					TypeVariable: scopeStruct[key].TypeVariable,
+					TypeData:     scopeStruct[key].TypeData,
+					Value:        scopeStruct[key].Value,
+					Line:         scopeStruct[key].Line,
+					Column:       scopeStruct[key].Column,
+					ListParams:   scopeStruct[key].ListParams,
+					Mutating:     scopeStruct[key].Mutating,
+					StructOf:     scopeStruct[key].StructOf,
 				}
-				continue
+
 			}
 			// if value is nil and the argument comes, assing the value
-			if symbol.Value.(values.PRIMITIVE).GetType() == values.NilType && listInitArguments[symbol.Id] != nil {
+			if scopeStruct[key].Value.(values.PRIMITIVE).GetType() == values.NilType && listInitArguments != nil {
 				// evaluate if the type of the argument is the same as the type of the variable
-				if symbol.TypeData == listInitArguments[symbol.Id].GetType() {
-					newScope[symbol.Id] = SymbolTable{
-						Id:           symbol.Id,
+				if scopeStruct[key].TypeData == listInitArguments.GetType() {
+					newScope[key] = SymbolTable{
+						Id:           scopeStruct[key].Id,
 						TypeSymbol:   values.Type_Variable,
-						TypeVariable: symbol.TypeVariable,
-						TypeData:     symbol.TypeData,
-						Value:        listInitArguments[symbol.Id],
-						Line:         symbol.Line,
-						Column:       symbol.Column,
+						TypeVariable: scopeStruct[key].TypeVariable,
+						TypeData:     scopeStruct[key].TypeData,
+						Value:        listInitArguments,
+						Line:         scopeStruct[key].Line,
+						Column:       scopeStruct[key].Column,
 					}
 				} else {
-					v.Errors = append(v.Errors, Error{Line: ctx.GetStart().GetLine(), Column: ctx.GetStart().GetColumn(), Msg: "The type of the argument " + symbol.Id + " is not the same as the type of the variable", Type: "Variable"})
-					log.Printf("The type of the argument %s is not the same as the type of the variable", symbol.Id)
+					v.Errors = append(v.Errors, Error{Line: ctx.GetStart().GetLine(), Column: ctx.GetStart().GetColumn(), Msg: "The type of the argument " + scopeStruct[key].Id + " is not the same as the type of the variable", Type: "Variable"})
+					log.Printf("The type of the argument %s is not the same as the type of the variable", scopeStruct[key].Id)
 					return nil
 				}
-				continue
+
 			}
 			// if value is not nil and the argument comes, assing the value
-			if symbol.Value.(values.PRIMITIVE).GetType() != values.NilType && listInitArguments[symbol.Id] != nil {
+			if scopeStruct[key].Value.(values.PRIMITIVE).GetType() != values.NilType && listInitArguments != nil {
 				// evaluate if the type of the argument is the same as the type of the variable
-				if symbol.TypeData == listInitArguments[symbol.Id].GetType() {
-
-					newScope[symbol.Id] = SymbolTable{
-						Id:           symbol.Id,
+				if scopeStruct[key].TypeData == listInitArguments.GetType() {
+					newScope[key] = SymbolTable{
+						Id:           scopeStruct[key].Id,
 						TypeSymbol:   values.Type_Variable,
-						TypeVariable: symbol.TypeVariable,
-						TypeData:     symbol.TypeData,
-						Value:        listInitArguments[symbol.Id],
-						Line:         symbol.Line,
-						Column:       symbol.Column,
+						TypeVariable: scopeStruct[key].TypeVariable,
+						TypeData:     scopeStruct[key].TypeData,
+						Value:        listInitArguments,
+						Line:         scopeStruct[key].Line,
+						Column:       scopeStruct[key].Column,
 					}
-
 				} else {
-					v.Errors = append(v.Errors, Error{Line: ctx.GetStart().GetLine(), Column: ctx.GetStart().GetColumn(), Msg: "The type of the argument " + symbol.Id + " is not the same as the type of the variable", Type: "Variable"})
-					log.Printf("The type of the argument %s is not the same as the type of the variable", symbol.Id)
+					v.Errors = append(v.Errors, Error{Line: ctx.GetStart().GetLine(), Column: ctx.GetStart().GetColumn(), Msg: "The type of the argument " + scopeStruct[key].Id + " is not the same as the type of the variable", Type: "Variable"})
+					log.Printf("The type of the argument %s is not the same as the type of the variable", scopeStruct[key].Id)
 					return nil
 				}
-				continue
 			}
 			// throw error if the value is nil and the argument doesn't comes
-			if symbol.Value.(values.PRIMITIVE).GetType() == values.NilType && listInitArguments[symbol.Id] == nil {
-				v.Errors = append(v.Errors, Error{Line: ctx.GetStart().GetLine(), Column: ctx.GetStart().GetColumn(), Msg: "The variable " + symbol.Id + " is not initialized or the name is not the same", Type: "Variable"})
-				log.Printf("The variable %s is not initialized or the name is not the same", symbol.Id)
+			if scopeStruct[key].Value.(values.PRIMITIVE).GetType() == values.NilType && listInitArguments == nil {
+				v.Errors = append(v.Errors, Error{Line: ctx.GetStart().GetLine(), Column: ctx.GetStart().GetColumn(), Msg: "The variable " + scopeStruct[key].Id + " is not initialized or the name is not the same", Type: "Variable"})
+				log.Printf("The variable %s is not initialized or the name is not the same", scopeStruct[key].Id)
 				return nil
 			}
-
-		} else if symbol.TypeVariable == "let" {
+		} else if scopeStruct[key].TypeVariable == "let" {
 			// if value is not nil and the argument doesn't comes, continue
-			if symbol.Value.(values.PRIMITIVE).GetType() != values.NilType && listInitArguments[symbol.Id] == nil {
+			if scopeStruct[key].Value.(values.PRIMITIVE).GetType() != values.NilType && listInitArguments == nil {
 				// save the value
-				newScope[symbol.Id] = SymbolTable{
-					Id:           symbol.Id,
+				newScope[key] = SymbolTable{
+					Id:           scopeStruct[key].Id,
 					TypeSymbol:   values.Type_Variable,
-					TypeVariable: symbol.TypeVariable,
-					TypeData:     symbol.TypeData,
-					Value:        symbol.Value,
-					Line:         symbol.Line,
-					Column:       symbol.Column,
-					ListParams:   symbol.ListParams,
-					Mutating:     symbol.Mutating,
+					TypeVariable: scopeStruct[key].TypeVariable,
+					TypeData:     scopeStruct[key].TypeData,
+					Value:        scopeStruct[key].Value,
+					Line:         scopeStruct[key].Line,
+					Column:       scopeStruct[key].Column,
+					ListParams:   scopeStruct[key].ListParams,
+					Mutating:     scopeStruct[key].Mutating,
 				}
-				continue
 			}
 			// if value is nil and the argument comes, assing the value
-			if symbol.Value.(values.PRIMITIVE).GetType() == values.NilType && listInitArguments[symbol.Id] != nil {
+			if scopeStruct[key].Value.(values.PRIMITIVE).GetType() == values.NilType && listInitArguments != nil {
 				// evaluate if the type of the argument is the same as the type of the variable
-				if symbol.TypeData == listInitArguments[symbol.Id].GetType() {
-					newScope[symbol.Id] = SymbolTable{
-						Id:           symbol.Id,
+				if scopeStruct[key].TypeData == listInitArguments.GetType() {
+					newScope[key] = SymbolTable{
+						Id:           scopeStruct[key].Id,
 						TypeSymbol:   values.Type_Variable,
-						TypeVariable: symbol.TypeVariable,
-						TypeData:     symbol.TypeData,
-						Value:        listInitArguments[symbol.Id],
-						Line:         symbol.Line,
-						Column:       symbol.Column,
+						TypeVariable: scopeStruct[key].TypeVariable,
+						TypeData:     scopeStruct[key].TypeData,
+						Value:        listInitArguments,
+						Line:         scopeStruct[key].Line,
+						Column:       scopeStruct[key].Column,
 					}
-
 				} else {
-					v.Errors = append(v.Errors, Error{Line: ctx.GetStart().GetLine(), Column: ctx.GetStart().GetColumn(), Msg: "The type of the argument " + symbol.Id + " is not the same as the type of the variable", Type: "Variable"})
-					log.Printf("The type of the argument %s is not the same as the type of the variable", symbol.Id)
+					v.Errors = append(v.Errors, Error{Line: ctx.GetStart().GetLine(), Column: ctx.GetStart().GetColumn(), Msg: "The type of the argument " + scopeStruct[key].Id + " is not the same as the type of the variable", Type: "Variable"})
+					log.Printf("The type of the argument %s is not the same as the type of the variable", scopeStruct[key].Id)
 					return nil
 				}
-				continue
 			}
 			// if value is not nil and the argument comes, throw error because the variable is let
-			if symbol.Value.(values.PRIMITIVE).GetType() != values.NilType && listInitArguments[symbol.Id] != nil {
-				v.Errors = append(v.Errors, Error{Line: ctx.GetStart().GetLine(), Column: ctx.GetStart().GetColumn(), Msg: "The variable " + symbol.Id + " is let", Type: "Variable"})
-				log.Printf("The variable %s is inmutable, cannot be initializated", symbol.Id)
+			if scopeStruct[key].Value.(values.PRIMITIVE).GetType() != values.NilType && listInitArguments != nil {
+				v.Errors = append(v.Errors, Error{Line: ctx.GetStart().GetLine(), Column: ctx.GetStart().GetColumn(), Msg: "The variable " + scopeStruct[key].Id + " is let", Type: "Variable"})
+				log.Printf("The variable %s is inmutable, cannot be initializated", scopeStruct[key].Id)
 				return nil
 			}
 			// throw error if the value is nil and the argument doesn't comes
-			if symbol.Value.(values.PRIMITIVE).GetType() == values.NilType && listInitArguments[symbol.Id] == nil {
-				v.Errors = append(v.Errors, Error{Line: ctx.GetStart().GetLine(), Column: ctx.GetStart().GetColumn(), Msg: "The variable " + symbol.Id + " is not initialized or the name is not the same", Type: "Variable"})
-				log.Printf("The variable %s is not initialized or the name is not the same", symbol.Id)
+			if scopeStruct[key].Value.(values.PRIMITIVE).GetType() == values.NilType && listInitArguments == nil {
+				v.Errors = append(v.Errors, Error{Line: ctx.GetStart().GetLine(), Column: ctx.GetStart().GetColumn(), Msg: "The variable " + scopeStruct[key].Id + " is not initialized or the name is not the same", Type: "Variable"})
+				log.Printf("The variable %s is not initialized or the name is not the same", scopeStruct[key].Id)
 				return nil
-			}
-		} else if symbol.TypeSymbol == values.Type_Function {
-			// copy
-			newScope[symbol.Id] = SymbolTable{
-				Id:           symbol.Id,
-				TypeSymbol:   symbol.TypeSymbol,
-				TypeVariable: symbol.TypeVariable,
-				TypeData:     symbol.TypeData,
-				Value:        symbol.Value,
-				ListParams:   symbol.ListParams,
-				Mutating:     symbol.Mutating,
-				Line:         symbol.Line,
-				Column:       symbol.Column,
 			}
 		}
 
+		// copy functions, iterate over the scopeStruct to verify if the variable is a function
+		for _, symbol := range scopeStruct {
+			if symbol.TypeSymbol == values.Type_Function {
+				// copy
+				newScope[symbol.Id] = SymbolTable{
+					Id:           symbol.Id,
+					TypeSymbol:   symbol.TypeSymbol,
+					TypeVariable: symbol.TypeVariable,
+					TypeData:     symbol.TypeData,
+					Value:        symbol.Value,
+					ListParams:   symbol.ListParams,
+					Mutating:     symbol.Mutating,
+					Line:         symbol.Line,
+					Column:       symbol.Column,
+				}
+			}
+		}
+
+		fmt.Println("scopeStruct after changes", newScope)
+
+		newSymbolStruct := SymbolTable{
+			Id:           ctx.ID_PRIMITIVE().GetText(),
+			TypeSymbol:   values.Type_Variable,
+			TypeVariable: ctx.ID_PRIMITIVE().GetText(),
+			TypeData:     values.StructType,
+			StructOf:     ctx.ID_PRIMITIVE().GetText(),
+			Value:        newScope,
+			Line:         ctx.GetStart().GetLine(),
+			Column:       ctx.GetStart().GetColumn(),
+		}
+
+		v.getCurrentScope()[ctx.ID_PRIMITIVE().GetText()] = newSymbolStruct
+
+		// append his self where the was created
+		v.SelfStructs[newSymbolStruct.Id] = SelfStruct{VarId: newSymbolStruct.Id, StructOf: newSymbolStruct.StructOf}
+
+		v.TableSymbol = append(v.TableSymbol, newSymbolStruct)
 	}
-
-	fmt.Println("scopeStruct after changes", newScope)
-
-	// newSymbolStruct := SymbolTable{
-	// 	Id:           ctx.ID_PRIMITIVE().GetText(),
-	// 	TypeSymbol:   values.Type_Variable,
-	// 	TypeVariable: values.StructType,
-	// 	TypeData:     values.StructType,
-	// 	StructOf:     ctx.ID_PRIMITIVE().GetText(),
-	// 	Value:        newScope,
-	// 	Line:         ctx.GetStart().GetLine(),
-	// 	Column:       ctx.GetStart().GetColumn(),
-	// }
-
-	// v.SelfStructs[newSymbolStruct.Id] = SelfStruct{VarId: newSymbolStruct.Id, StructOf: newSymbolStruct.StructOf}
-	// v.TableSymbol = append(v.TableSymbol, newSymbolStruct)
 
 	return newScope
 }

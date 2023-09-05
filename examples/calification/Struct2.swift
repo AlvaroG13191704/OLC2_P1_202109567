@@ -12,7 +12,7 @@ struct Transporte {
         self.velocidad = 0
     }
     mutating func acelerar(){
-        self.velocidad += 50 
+        self.velocidad = self.velocidad + 50 
     }
     func mostrarVelocidad(){
         print("Velocidad: ", self.velocidad)

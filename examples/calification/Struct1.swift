@@ -20,15 +20,6 @@ struct Personaje {
     var numeros: StructArr
 }
 
-// func nuevoCentro(nombre: String) -> CentroTuristico {
-//     return CentroTuristico(nombre: nombre)
-// }
-// let centro1 = nuevoCentro(nombre: "Volcan de pacaya")
-// let centro2 = nuevoCentro(nombre: "Rio dulce")
-// let centro3 = nuevoCentro(nombre: "Laguna Luchoa")
-// let centro4 = nuevoCentro(nombre: "Playa Blanca")
-// let centro5 = nuevoCentro(nombre: "Antigua Guatemala")
-// let centro6 = nuevoCentro(nombre: "Lago de Atitlan")
 print("*******************STRUCTS")
 let centro1 = CentroTuristico(nombre: "Volcan de pacaya")
 let centro2 = CentroTuristico(nombre: "Rio dulce")
@@ -77,28 +68,3 @@ El nombre del Centro turistico 6 es: Lago de Atitlan
 Persona nombre: Jose, edad: 18, carroTipo: mecanico, numeros: 0.0
 Persona nombre: Jose, edad: 18, carroTipo: mecanico, nuevos numeros: 23.43
 */
-
-
-
-
-
-struct StructArr {
-    var datos: Float
-}
-
-struct Personaje {
-    var nombre: String
-    var numeros: StructArr
-}
-
-var p1 = Personaje(
-    nombre: "Jose",
-    numeros: StructArr(datos: 0.0)
-)
-
-var nums = StructArr(datos: 0.0)
-
-var p1 = Personaje(
-    nombre: "Jose",
-    numeros: nums
-)

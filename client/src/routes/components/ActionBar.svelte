@@ -1,9 +1,6 @@
 <script>
 // @ts-nocheck
-  import treeSVG from '../../assets/cst.svg';
 	import { enhance } from '$app/forms';
-
-  // const cstSVGEconded = `data:image/svg+xml,${encodeURIComponent(cstsvg)}`;
   // get the store
   import { dataContext } from '../../store';
 
@@ -19,8 +16,6 @@
     }
   }  
 
-
-  
 
 
 </script>
@@ -53,14 +48,12 @@
 
 {#if modal === true}
   // Create a modal to set an svg image  
-  <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+  <div class="relative z-10 w-full" >
   <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
   <div class="fixed inset-0 z-10 m-10">
-    <div class="bg-white  ">
-      <div style="width: 50%;">
-        {@html $dataContext.cstTree }
-      </div>
+    <div class="bg-white " >
       <div class="mt-5 sm:mt-6">
+        {@html $dataContext.cstTree}
         <button type="button" on:click={setModal} class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Regresar</button>
       </div>
     </div>
@@ -68,4 +61,3 @@
 </div>
 
 {/if}
-<!-- {@html $dataContext.cstTree} -->
