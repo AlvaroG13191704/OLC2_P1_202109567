@@ -327,10 +327,139 @@ func (v *Visitor) VisitVectorDeclaration(ctx *parser.VectorDeclarationContext) i
 	// apppend to the TableSymbol
 	v.TableSymbol = append(v.TableSymbol, symbol)
 
-	// print the symbol table
-	// fmt.Println("Current scope or symbol table ->", v.getCurrentScope())
-	// fmt.Println("Global scope or symbol table ->", v.symbolStack)
-
 	return nil
 
+}
+
+// VisitVectorOfStructCreation
+func (v *Visitor) VisitVectorOfStructCreation(ctx *parser.VectorOfStructCreationContext) interface{} {
+
+	// get the id of the variable
+	varId := ctx.AllID_PRIMITIVE()[0].GetText()
+	// verify if the variable is in the scope
+	if v.VerifyVariableCurrentScope(varId) {
+		log.Printf("Error: Variable '%s' already declared \n", varId)
+		// add error
+		v.Errors = append(v.Errors, Error{
+			Line:   ctx.GetStart().GetLine(),
+			Column: ctx.GetStart().GetColumn(),
+			Msg:    fmt.Sprintf("Error: Variable '%s' already declared", varId),
+			Type:   "Semantic",
+		})
+		return nil
+	}
+
+	// get the type of the variable -> var or let
+	varType := ctx.Type_declaration().GetText()
+
+	// get the name of the struct
+	structName := ctx.AllID_PRIMITIVE()[1].GetText()
+
+	// verify if the struct is in the scope
+	_, ok := v.VerifyScope(structName)
+	if !ok {
+		log.Printf("Error: Struct '%s' not declared \n", structName)
+		// add error
+		v.Errors = append(v.Errors, Error{
+			Line:   ctx.GetStart().GetLine(),
+			Column: ctx.GetStart().GetColumn(),
+			Msg:    fmt.Sprintf("Error: Struct '%s' not declared", structName),
+			Type:   "Semantic",
+		})
+		return nil
+	}
+
+	var listExpr []map[string]SymbolTable
+	// save the variable as a vector in the scope
+	symbol := SymbolTable{
+		Id:           varId,
+		TypeSymbol:   values.Type_Vector,
+		TypeVariable: varType,
+		TypeData:     structName,
+		Value:        listExpr, // check this
+		StructOf:     structName,
+		Line:         ctx.GetStart().GetLine(),
+		Column:       ctx.GetStart().GetColumn(),
+	}
+
+	// add the variable to the scope
+	v.getCurrentScope()[varId] = symbol
+
+	// apppend to the TableSymbol
+	v.TableSymbol = append(v.TableSymbol, symbol)
+
+	return nil
+}
+
+// VisitVectorOfStructDeclaration
+func (v *Visitor) VisitVectorOfStructDeclaration(ctx *parser.VectorOfStructDeclarationContext) interface{} {
+	// get the id of the variable
+	varId := ctx.AllID_PRIMITIVE()[0].GetText()
+	// verify if the variable is in the scope
+	if v.VerifyVariableCurrentScope(varId) {
+		log.Printf("Error: Variable '%s' already declared \n", varId)
+		// add error
+		v.Errors = append(v.Errors, Error{
+			Line:   ctx.GetStart().GetLine(),
+			Column: ctx.GetStart().GetColumn(),
+			Msg:    fmt.Sprintf("Error: Variable '%s' already declared", varId),
+			Type:   "Semantic",
+		})
+		return nil
+	}
+	//
+	var listValues []map[string]SymbolTable
+
+	// get the name of the struct
+	structName := ctx.AllID_PRIMITIVE()[1].GetText()
+
+	// verify if the struct is in the scope
+	_, ok := v.VerifyScope(structName)
+	if !ok {
+		log.Printf("Error: Struct '%s' not declared \n", structName)
+		// add error
+		v.Errors = append(v.Errors, Error{
+			Line:   ctx.GetStart().GetLine(),
+			Column: ctx.GetStart().GetColumn(),
+			Msg:    fmt.Sprintf("Error: Struct '%s' not declared", structName),
+			Type:   "Semantic",
+		})
+		return nil
+	}
+
+	// get the list of expresions
+	exprList := ctx.ExprList()
+
+	// iterate
+	for _, expr := range exprList.AllExpr() {
+		// visit
+		value := v.Visit(expr)
+
+		fmt.Println("expr attribute ->", value)
+
+		// evaluate if the value is nil
+		if value != nil {
+			// add the value to the list
+			listValues = append(listValues, value.(map[string]SymbolTable))
+		}
+	}
+
+	// save the variable as a vector in the scope
+	symbol := SymbolTable{
+		Id:           varId,
+		TypeSymbol:   values.Type_Vector,
+		TypeVariable: ctx.Type_declaration().GetText(),
+		TypeData:     structName,
+		Value:        listValues, // check this
+		StructOf:     structName,
+		Line:         ctx.GetStart().GetLine(),
+		Column:       ctx.GetStart().GetColumn(),
+	}
+	// add the variable to the scope
+	v.getCurrentScope()[varId] = symbol
+
+	// apppend to the TableSymbol
+	v.TableSymbol = append(v.TableSymbol, symbol)
+
+	return nil
 }

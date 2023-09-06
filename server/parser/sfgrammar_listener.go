@@ -67,8 +67,14 @@ type SFGrammarListener interface {
 	// EnterValueDeclaration is called when entering the ValueDeclaration production.
 	EnterValueDeclaration(c *ValueDeclarationContext)
 
+	// EnterVectorOfStructDeclaration is called when entering the VectorOfStructDeclaration production.
+	EnterVectorOfStructDeclaration(c *VectorOfStructDeclarationContext)
+
 	// EnterVectorDeclaration is called when entering the VectorDeclaration production.
 	EnterVectorDeclaration(c *VectorDeclarationContext)
+
+	// EnterVectorOfStructCreation is called when entering the VectorOfStructCreation production.
+	EnterVectorOfStructCreation(c *VectorOfStructCreationContext)
 
 	// EnterType_declaration is called when entering the type_declaration production.
 	EnterType_declaration(c *Type_declarationContext)
@@ -171,6 +177,9 @@ type SFGrammarListener interface {
 
 	// EnterCountVector is called when entering the CountVector production.
 	EnterCountVector(c *CountVectorContext)
+
+	// EnterAccessVectorStruct is called when entering the AccessVectorStruct production.
+	EnterAccessVectorStruct(c *AccessVectorStructContext)
 
 	// EnterAccessVector is called when entering the AccessVector production.
 	EnterAccessVector(c *AccessVectorContext)
@@ -313,8 +322,14 @@ type SFGrammarListener interface {
 	// ExitValueDeclaration is called when exiting the ValueDeclaration production.
 	ExitValueDeclaration(c *ValueDeclarationContext)
 
+	// ExitVectorOfStructDeclaration is called when exiting the VectorOfStructDeclaration production.
+	ExitVectorOfStructDeclaration(c *VectorOfStructDeclarationContext)
+
 	// ExitVectorDeclaration is called when exiting the VectorDeclaration production.
 	ExitVectorDeclaration(c *VectorDeclarationContext)
+
+	// ExitVectorOfStructCreation is called when exiting the VectorOfStructCreation production.
+	ExitVectorOfStructCreation(c *VectorOfStructCreationContext)
 
 	// ExitType_declaration is called when exiting the type_declaration production.
 	ExitType_declaration(c *Type_declarationContext)
@@ -417,6 +432,9 @@ type SFGrammarListener interface {
 
 	// ExitCountVector is called when exiting the CountVector production.
 	ExitCountVector(c *CountVectorContext)
+
+	// ExitAccessVectorStruct is called when exiting the AccessVectorStruct production.
+	ExitAccessVectorStruct(c *AccessVectorStructContext)
 
 	// ExitAccessVector is called when exiting the AccessVector production.
 	ExitAccessVector(c *AccessVectorContext)

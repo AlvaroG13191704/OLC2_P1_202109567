@@ -87,7 +87,15 @@ func (v *BaseSFGrammarVisitor) VisitValueDeclaration(ctx *ValueDeclarationContex
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseSFGrammarVisitor) VisitVectorOfStructDeclaration(ctx *VectorOfStructDeclarationContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseSFGrammarVisitor) VisitVectorDeclaration(ctx *VectorDeclarationContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitVectorOfStructCreation(ctx *VectorOfStructCreationContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -224,6 +232,10 @@ func (v *BaseSFGrammarVisitor) VisitIsEmptyVector(ctx *IsEmptyVectorContext) int
 }
 
 func (v *BaseSFGrammarVisitor) VisitCountVector(ctx *CountVectorContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseSFGrammarVisitor) VisitAccessVectorStruct(ctx *AccessVectorStructContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

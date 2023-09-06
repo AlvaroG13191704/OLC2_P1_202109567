@@ -109,7 +109,6 @@ func (v *Visitor) VisitStructAsArgument(ctx *parser.StructAsArgumentContext) int
 			continue
 		}
 		listInitArguments := assertlistInitArguments.(values.PRIMITIVE)
-		fmt.Println("listInitArguments values primitve", listInitArguments)
 		// assert the type of the struct
 		symbolStruct := structValue.(SymbolTable)
 		// get the scope of the struct
@@ -118,23 +117,6 @@ func (v *Visitor) VisitStructAsArgument(ctx *parser.StructAsArgumentContext) int
 		// iterate over the symbolStruct to verify
 		// 1. If the variable is var
 		if scopeStruct[key].TypeVariable == "var" {
-			// if value is not nil and the argument doesn't comes, continue
-			if scopeStruct[key].Value.(values.PRIMITIVE).GetType() != values.NilType && listInitArguments == nil {
-				// add the existing values
-				newScope[key] = SymbolTable{
-					Id:           scopeStruct[key].Id,
-					TypeSymbol:   values.Type_Variable,
-					TypeVariable: scopeStruct[key].TypeVariable,
-					TypeData:     scopeStruct[key].TypeData,
-					Value:        scopeStruct[key].Value,
-					Line:         scopeStruct[key].Line,
-					Column:       scopeStruct[key].Column,
-					ListParams:   scopeStruct[key].ListParams,
-					Mutating:     scopeStruct[key].Mutating,
-					StructOf:     scopeStruct[key].StructOf,
-				}
-
-			}
 			// if value is nil and the argument comes, assing the value
 			if scopeStruct[key].Value.(values.PRIMITIVE).GetType() == values.NilType && listInitArguments != nil {
 				// evaluate if the type of the argument is the same as the type of the variable
@@ -228,7 +210,6 @@ func (v *Visitor) VisitStructAsArgument(ctx *parser.StructAsArgumentContext) int
 				return nil
 			}
 		}
-
 		// copy functions, iterate over the scopeStruct to verify if the variable is a function
 		for _, symbol := range scopeStruct {
 			if symbol.TypeSymbol == values.Type_Function {
@@ -245,27 +226,63 @@ func (v *Visitor) VisitStructAsArgument(ctx *parser.StructAsArgumentContext) int
 					Column:       symbol.Column,
 				}
 			}
+			if symbol.TypeSymbol == values.Type_Variable {
+				if key != symbol.Id {
+					fmt.Println("symbol ----", symbol)
+					fmt.Println("symbol.Value ----", symbol.Value)
+					if symbol.Value == nil {
+						// save the value
+						newScope[symbol.Id] = SymbolTable{
+							Id:           symbol.Id,
+							TypeSymbol:   symbol.TypeSymbol,
+							TypeVariable: symbol.TypeVariable,
+							TypeData:     symbol.TypeData,
+							Value:        symbol.Value,
+							ListParams:   symbol.ListParams,
+							Mutating:     symbol.Mutating,
+							Line:         symbol.Line,
+							Column:       symbol.Column,
+						}
+					} else if symbol.Value != nil {
+						// verify if not already saved in the newScope
+						if _, ok := newScope[symbol.Id]; !ok {
+							// save the value
+							newScope[symbol.Id] = SymbolTable{
+								Id:           symbol.Id,
+								TypeSymbol:   symbol.TypeSymbol,
+								TypeVariable: symbol.TypeVariable,
+								TypeData:     symbol.TypeData,
+								Value:        symbol.Value,
+								ListParams:   symbol.ListParams,
+								Mutating:     symbol.Mutating,
+								Line:         symbol.Line,
+								Column:       symbol.Column,
+							}
+						}
+					}
+				}
+			}
 		}
 
 		fmt.Println("scopeStruct after changes", newScope)
 
-		newSymbolStruct := SymbolTable{
-			Id:           ctx.ID_PRIMITIVE().GetText(),
-			TypeSymbol:   values.Type_Variable,
-			TypeVariable: ctx.ID_PRIMITIVE().GetText(),
-			TypeData:     values.StructType,
-			StructOf:     ctx.ID_PRIMITIVE().GetText(),
-			Value:        newScope,
-			Line:         ctx.GetStart().GetLine(),
-			Column:       ctx.GetStart().GetColumn(),
-		}
+		// newSymbolStruct := SymbolTable{
+		// 	Id:           ctx.ID_PRIMITIVE().GetText(),
+		// 	TypeSymbol:   values.Type_Variable,
+		// 	TypeVariable: ctx.ID_PRIMITIVE().GetText(),
+		// 	TypeData:     values.StructType,
+		// 	StructOf:     ctx.ID_PRIMITIVE().GetText(),
+		// 	Value:        newScope,
+		// 	Line:         ctx.GetStart().GetLine(),
+		// 	Column:       ctx.GetStart().GetColumn(),
+		// }
 
-		v.getCurrentScope()[ctx.ID_PRIMITIVE().GetText()] = newSymbolStruct
+		// v.getCurrentScope()[ctx.ID_PRIMITIVE().GetText()] = newSymbolStruct
 
-		// append his self where the was created
-		v.SelfStructs[newSymbolStruct.Id] = SelfStruct{VarId: newSymbolStruct.Id, StructOf: newSymbolStruct.StructOf}
+		// // append his self where the was created
+		// v.SelfStructs[newSymbolStruct.Id] = SelfStruct{VarId: newSymbolStruct.Id, StructOf: newSymbolStruct.StructOf}
 
-		v.TableSymbol = append(v.TableSymbol, newSymbolStruct)
+		// v.TableSymbol = append(v.TableSymbol, newSymbolStruct)
 	}
 
 	return newScope

@@ -67,8 +67,14 @@ type SFGrammarVisitor interface {
 	// Visit a parse tree produced by SFGrammarParser#ValueDeclaration.
 	VisitValueDeclaration(ctx *ValueDeclarationContext) interface{}
 
+	// Visit a parse tree produced by SFGrammarParser#VectorOfStructDeclaration.
+	VisitVectorOfStructDeclaration(ctx *VectorOfStructDeclarationContext) interface{}
+
 	// Visit a parse tree produced by SFGrammarParser#VectorDeclaration.
 	VisitVectorDeclaration(ctx *VectorDeclarationContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#VectorOfStructCreation.
+	VisitVectorOfStructCreation(ctx *VectorOfStructCreationContext) interface{}
 
 	// Visit a parse tree produced by SFGrammarParser#type_declaration.
 	VisitType_declaration(ctx *Type_declarationContext) interface{}
@@ -171,6 +177,9 @@ type SFGrammarVisitor interface {
 
 	// Visit a parse tree produced by SFGrammarParser#CountVector.
 	VisitCountVector(ctx *CountVectorContext) interface{}
+
+	// Visit a parse tree produced by SFGrammarParser#AccessVectorStruct.
+	VisitAccessVectorStruct(ctx *AccessVectorStructContext) interface{}
 
 	// Visit a parse tree produced by SFGrammarParser#AccessVector.
 	VisitAccessVector(ctx *AccessVectorContext) interface{}

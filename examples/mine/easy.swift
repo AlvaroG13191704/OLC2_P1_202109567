@@ -133,3 +133,40 @@ func printWord(_ word: String) {
 }
 
 printWord("Hola mundo")
+
+
+struct Verdura{
+    let nombre: String
+    var precio: Int
+}
+
+var verduras = [Verdura]()
+
+var verduras = [Verdura]()
+
+verduras.append(Verdura(nombre: "Coliflor", precio: 15))
+verduras.append(Verdura(nombre: "Cebolla", precio: 5))
+verduras.append(Verdura(nombre: "VerduraGenerica", precio: 12))
+
+var verduras: [Verdura] = [
+    Verdura(nombre:"Tomate", precio: 10),
+    Verdura(nombre:"Cebolla", precio: 5),
+    Verdura(nombre:"Coliflor", precio: 15)
+]
+
+var ver1 = Verdura(nombre: "Coliflor", precio: 15)
+var ver2 = Verdura(nombre: "Cebolla", precio: 5)
+var ver3 = Verdura(nombre: "VerduraGenerica", precio: 12)
+
+verduras.append(ver1)
+verduras.append(ver2)
+verduras.append(ver3)
+
+// print
+print(ver1.nombre, ver1.precio)
+print(ver2.nombre, ver2.precio)
+print(ver3.nombre, ver3.precio)
+
+print(verduras[0].nombre, verduras[0].precio)
+print(verduras[1].nombre, verduras[1].precio)
+print(verduras[2].nombre, verduras[2].precio)

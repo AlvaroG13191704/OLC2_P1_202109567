@@ -60,7 +60,9 @@ declaration  // var fruta = Fruta(nombre: "pera", precio: 10) -> Struct creation
            | type_declaration  ID_PRIMITIVE COLON type IS_ expr          #TypeValueDeclaration // var value: String = "Hola"
            | type_declaration  ID_PRIMITIVE COLON type QUESTION_MARK     #TypeOptionalValueDeclaration // var value: String?
            | type_declaration  ID_PRIMITIVE IS_ expr                     #ValueDeclaration // var value = 10
+           | type_declaration ID_PRIMITIVE COLON LBRACKET ID_PRIMITIVE RBRACKET IS_ LBRACKET exprList RBRACKET #VectorOfStructDeclaration //  var value: [Fruta] = [Fruta(nombre: "pera", precio: 10)]
            | type_declaration  ID_PRIMITIVE COLON LBRACKET type RBRACKET IS_ (LBRACKET exprList RBRACKET | ID_PRIMITIVE ) #VectorDeclaration // var value: [Int] = [1,2,3]
+           | type_declaration ID_PRIMITIVE IS_ LBRACKET ID_PRIMITIVE RBRACKET LPAREN RPAREN #VectorOfStructCreation // var value = [Fruta]()
            ;
 
 type_declaration: DECLARATION_VAR | DECLARATION_LET ;
@@ -130,6 +132,7 @@ callBack: ID_PRIMITIVE DOT APPEND LPAREN expr RPAREN            #AppendVector //
         | ID_PRIMITIVE DOT REMOVE LPAREN AT COLON expr RPAREN   #RemoveAtVector // vector.remove(at: 0)
         | ID_PRIMITIVE DOT ISEMPTY                #IsEmptyVector // vector.isEmpty()
         | ID_PRIMITIVE DOT COUNT                                #CountVector // vector.count
+        | ID_PRIMITIVE LBRACKET expr RBRACKET DOT ID_PRIMITIVE  #AccessVectorStruct // let value = vector[0].value
         | ID_PRIMITIVE LBRACKET expr RBRACKET                   #AccessVector // let value = vector[0]
         | ID_PRIMITIVE (DOT ID_PRIMITIVE)+ LPAREN listFunctionParams? RPAREN   #StructCallFunction // struct.function()
         | ID_PRIMITIVE (DOT ID_PRIMITIVE)+ (IS_ expr)?          #StructAttribute // struct.value = 10 or struct.value

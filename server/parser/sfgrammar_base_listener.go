@@ -150,11 +150,25 @@ func (s *BaseSFGrammarListener) EnterValueDeclaration(ctx *ValueDeclarationConte
 // ExitValueDeclaration is called when production ValueDeclaration is exited.
 func (s *BaseSFGrammarListener) ExitValueDeclaration(ctx *ValueDeclarationContext) {}
 
+// EnterVectorOfStructDeclaration is called when production VectorOfStructDeclaration is entered.
+func (s *BaseSFGrammarListener) EnterVectorOfStructDeclaration(ctx *VectorOfStructDeclarationContext) {
+}
+
+// ExitVectorOfStructDeclaration is called when production VectorOfStructDeclaration is exited.
+func (s *BaseSFGrammarListener) ExitVectorOfStructDeclaration(ctx *VectorOfStructDeclarationContext) {
+}
+
 // EnterVectorDeclaration is called when production VectorDeclaration is entered.
 func (s *BaseSFGrammarListener) EnterVectorDeclaration(ctx *VectorDeclarationContext) {}
 
 // ExitVectorDeclaration is called when production VectorDeclaration is exited.
 func (s *BaseSFGrammarListener) ExitVectorDeclaration(ctx *VectorDeclarationContext) {}
+
+// EnterVectorOfStructCreation is called when production VectorOfStructCreation is entered.
+func (s *BaseSFGrammarListener) EnterVectorOfStructCreation(ctx *VectorOfStructCreationContext) {}
+
+// ExitVectorOfStructCreation is called when production VectorOfStructCreation is exited.
+func (s *BaseSFGrammarListener) ExitVectorOfStructCreation(ctx *VectorOfStructCreationContext) {}
 
 // EnterType_declaration is called when production type_declaration is entered.
 func (s *BaseSFGrammarListener) EnterType_declaration(ctx *Type_declarationContext) {}
@@ -367,6 +381,12 @@ func (s *BaseSFGrammarListener) EnterCountVector(ctx *CountVectorContext) {}
 
 // ExitCountVector is called when production CountVector is exited.
 func (s *BaseSFGrammarListener) ExitCountVector(ctx *CountVectorContext) {}
+
+// EnterAccessVectorStruct is called when production AccessVectorStruct is entered.
+func (s *BaseSFGrammarListener) EnterAccessVectorStruct(ctx *AccessVectorStructContext) {}
+
+// ExitAccessVectorStruct is called when production AccessVectorStruct is exited.
+func (s *BaseSFGrammarListener) ExitAccessVectorStruct(ctx *AccessVectorStructContext) {}
 
 // EnterAccessVector is called when production AccessVector is entered.
 func (s *BaseSFGrammarListener) EnterAccessVector(ctx *AccessVectorContext) {}

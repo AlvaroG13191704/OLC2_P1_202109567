@@ -21,14 +21,14 @@ Tasks external of coding
     Vectores ✅
     Matrices ❌
     Struct1  ✅
-    Struct2  ⏸️
+    Struct2  ✅ -> rest vector of structs
 --------------------------------
 Tasks pending of coding
 --------------------------------
 1. Fix the _ in the for ✅
 2. Fix cst in frontend ✅
 3. Create structs with structs as attributes  ✅
-4. Declare vectors with structs
+4. Declare vectors with structs ✅
 5. Try to work with inout and & of vectors ✅
 
 
